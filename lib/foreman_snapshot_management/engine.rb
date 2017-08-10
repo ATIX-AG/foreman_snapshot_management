@@ -9,14 +9,7 @@ module ForemanSnapshotManagement
     config.autoload_paths += Dir["#{config.root}/app/models/foreman_snapshot_management"]
     config.autoload_paths += Dir["#{config.root}/app/overrides"]
 
-    # Add any db migrations
-    initializer 'foreman_snapshot_management.load_app_instance_data' do |app|
-      ForemanSnapshotManagement::Engine.paths['db/migrate'].existent.each do |path|
-        app.config.paths['db/migrate'] << path
-      end
-    end
-
-    initializer 'foreman_snapshot_management.register_plugin', :before => :finisher_hook do |_app|
+    initializer 'foreman_snapshot_management.register_plugin', before: :finisher_hook do |_app|
       Foreman::Plugin.register :foreman_snapshot_management do
         requires_foreman '>= 1.14'
 
@@ -28,7 +21,7 @@ module ForemanSnapshotManagement
           permission :view_foreman_snapshot_management, :'foreman_snapshot_management/createsnapshot' => [:createSnapshot]
         end
 
-        # Add a new role called 'Discovery' if it doesn't exist
+        # Add a new role called 'ForemanSnapshotManagement' if it doesn't exist
         role 'ForemanSnapshotManagement', [:view_foreman_snapshot_management]
       end
     end

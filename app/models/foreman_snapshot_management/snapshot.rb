@@ -27,7 +27,7 @@ module ForemanSnapshotManagement
     end
 
     def self.new_from_vmware(host, vmware_snapshot)
-      new({host: host, id: vmware_snapshot.ref, vmware_snapshot: vmware_snapshot, name: vmware_snapshot.name, description: vmware_snapshot.description})
+      new(host: host, id: vmware_snapshot.ref, vmware_snapshot: vmware_snapshot, name: vmware_snapshot.name, description: vmware_snapshot.description)
     end
 
     def persisted?
@@ -69,6 +69,5 @@ module ForemanSnapshotManagement
         host.compute_resource.revert_snapshot(vmware_snapshot)
       end
     end
-
   end
 end
