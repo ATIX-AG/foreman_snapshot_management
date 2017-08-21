@@ -15,7 +15,7 @@ As Hypervisor VMware vSphere is supported.
 See [How_to_Install_a_Plugin](http://projects.theforeman.org/projects/foreman/wiki/How_to_Install_a_Plugin) for how to install Foreman plugins
 
 ## Copyright
-Copyright (c) ATIX AG - http://www.atix.de
+Copyright (c) 2017 ATIX AG - http://www.atix.de
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
