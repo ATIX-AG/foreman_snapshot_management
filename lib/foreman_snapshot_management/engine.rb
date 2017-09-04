@@ -15,14 +15,36 @@ module ForemanSnapshotManagement
 
         # Add permissions
         security_block :foreman_snapshot_management do
-          permission :view_foreman_snapshot_management, :'foreman_snapshot_management/hosts' => [:new_action]
-          permission :view_foreman_snapshot_management, :'foreman_snapshot_management/virtualmachines' => [:index]
-          permission :view_foreman_snapshot_management, :'foreman_snapshot_management/createsnapshot' => [:index]
-          permission :view_foreman_snapshot_management, :'foreman_snapshot_management/createsnapshot' => [:createSnapshot]
+          permission :view_snapshots, {
+            :'foreman_snapshot_management/snapshots' => [:index]
+          }, :resource_type => 'Host'
+
+          permission :create_snapshots, {
+            :'foreman_snapshot_management/snapshots' => [:create]
+          }, :resource_type => 'Host'
+
+          permission :edit_snapshots, {
+            :'foreman_snapshot_management/snapshots' => [:update]
+          }, :resource_type => 'Host'
+
+          permission :destroy_snapshots, {
+            :'foreman_snapshot_management/snapshots' => [:destroy]
+          }, :resource_type => 'Host'
+
+          permission :revert_snapshots, {
+            :'foreman_snapshot_management/snapshots' => [:revert]
+          }, :resource_type => 'Host'
         end
 
-        # Add a new role called 'ForemanSnapshotManagement' if it doesn't exist
-        role 'ForemanSnapshotManagement', [:view_foreman_snapshot_management]
+        # Adds roles if they do not exist
+        role 'Snapshot Viewer', [:view_snapshots]
+        role 'Snapshot Manager', [
+          :view_snapshots,
+          :create_snapshots,
+          :edit_snapshots,
+          :destroy_snapshots,
+          :revert_snapshots
+        ]
       end
     end
 
