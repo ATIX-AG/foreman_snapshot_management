@@ -8,24 +8,34 @@
   </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>
-        <%= f.text_field :name, class: 'form-control' %>
-      </td>
-      <td>
-        <%= f.text_field :description, class: 'form-control' %>
-      </td>
-      <td>
-        <%= f.submit _('Create'), class: 'btn btn-success' %>
-      </td>
-    </tr>
+    <% if authorized_for(:controller => 'foreman_snapshot_management/snapshots', :action => :create) %>
+      <tr>
+        <td>
+          <%= f.text_field :name, class: 'form-control' %>
+        </td>
+        <td>
+          <%= f.text_field :description, class: 'form-control' %>
+        </td>
+        <td>
+          <%= f.submit _('Create'), class: 'btn btn-success' %>
+        </td>
+      </tr>
+    <% end %>
   <% @snapshots.each do |ref, snap| %>
       <tr>
         <td>
-          <%= edit_textfield snap, :name %>
+          <% if authorized_for(:controller => 'foreman_snapshot_management/snapshots', :action => :edit) %>
+            <%= edit_textfield snap, :name %>
+          <% else %>
+            <%= snap.name %>
+          <% end %>
         </td>
         <td>
-          <%= edit_textarea snap, :description %>
+          <% if authorized_for(:controller => 'foreman_snapshot_management/snapshots', :action => :edit) %>
+            <%= edit_textarea snap, :description %>
+          <% else %>
+            <%= snap.description %>
+          <% end %>
         </td>
         <td>
           <%= action_buttons(
