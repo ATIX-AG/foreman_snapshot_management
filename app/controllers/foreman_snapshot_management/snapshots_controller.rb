@@ -1,6 +1,7 @@
 module ForemanSnapshotManagement
   class SnapshotsController < ApplicationController
     before_action :find_host
+    before_action :check_snapshot_capability
     before_action :enumerate_snapshots, only: [:index]
     before_action :find_snapshot, only: %i[destroy revert update]
     helper_method :xeditable?
@@ -103,6 +104,10 @@ module ForemanSnapshotManagement
       @host = Host.find_by! name: params['host_id']
     rescue => e
       process_ajax_error e, 'Host not found!'
+    end
+
+    def check_snapshot_capability
+      not_found unless @host.compute_resource && @host.compute_resource.capabilities.include?(:snapshots)
     end
 
     def enumerate_snapshots

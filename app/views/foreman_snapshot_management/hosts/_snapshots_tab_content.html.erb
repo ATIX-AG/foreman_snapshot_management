@@ -1,4 +1,4 @@
-<% if @host.provider == 'VMware' %>
+<% if @host.compute_resource && @host.compute_resource.capabilities.include?(:snapshots) && authorized_for(:controller => 'foreman_snapshot_management/snapshots', :action => :index) %>
 <div id='snapshots' class='tab-pane'
   data-ajax-url='<%= host_snapshots_path(host_id: @host)%>'
   data-on-complete='onContentLoad'>

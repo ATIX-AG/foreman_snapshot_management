@@ -67,7 +67,7 @@ module ForemanSnapshotManagement
     # Include concerns in this config.to_prepare block
     config.to_prepare do
       begin
-        ::Foreman::Model::Vmware.send(:include, ForemanSnapshotManagement::VmwareExtensions)
+        ::Foreman::Model::Vmware.send(:prepend, ForemanSnapshotManagement::VmwareExtensions)
       rescue => e
         Rails.logger.warn "ForemanSnapshotManagement: skipping engine hook (#{e})"
       end
