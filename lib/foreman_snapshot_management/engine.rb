@@ -4,6 +4,7 @@ module ForemanSnapshotManagement
   class Engine < ::Rails::Engine
     engine_name 'foreman_snapshot_management'
 
+    config.autoload_paths += Dir["#{config.root}/app/models/concerns"]
     config.autoload_paths += Dir["#{config.root}/app/controllers/concerns"]
 
     initializer 'foreman_snapshot_management.register_plugin', before: :finisher_hook do |_app|
@@ -64,7 +65,14 @@ module ForemanSnapshotManagement
     # Include concerns in this config.to_prepare block
     config.to_prepare do
       begin
+        # Load Foreman extensions
         ::Foreman::Model::Vmware.send(:prepend, ForemanSnapshotManagement::VmwareExtensions)
+
+        # Load Fog extensions
+        if Foreman::Model::Vmware.available?
+          Fog::Compute::Vsphere::Real.send(:prepend, FogExtensions::Vsphere::Snapshots::Real)
+          Fog::Compute::Vsphere::Mock.send(:prepend, FogExtensions::Vsphere::Snapshots::Mock)
+        end
       rescue => e
         Rails.logger.warn "ForemanSnapshotManagement: skipping engine hook (#{e})"
       end
