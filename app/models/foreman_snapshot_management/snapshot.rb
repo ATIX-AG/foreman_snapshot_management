@@ -4,70 +4,125 @@ module ForemanSnapshotManagement
     include ActiveModel::Conversion
     include ActiveModel::Model
     include ActiveModel::Dirty
+    include ActiveModel::ForbiddenAttributesProtection
 
     define_model_callbacks :create, :save, :destroy, :revert
-    attr_accessor :id, :vmware_snapshot, :name, :description, :host_id
+    attr_accessor :id, :raw_snapshot, :name, :description, :host_id, :parent
 
-    def self.add_snapshot_with_children(snapshots, host, vmware_snapshot)
-      snapshots[vmware_snapshot.ref] = new_from_vmware(host, vmware_snapshot)
-      vmware_snapshot.child_snapshots.each do |snap|
-        add_snapshot_with_children(snapshots, host, snap)
-      end
+    def self.root_for_host(host)
+      raw_snapshot = host.compute_resource.get_snapshots(host.uuid).first
+      new_from_vmware(host, raw_snapshot)
     end
 
     def self.all_for_host(host)
-      snapshots = {}
-      root_snapshot = host.compute_resource.get_snapshots(host.uuid).first
-      add_snapshot_with_children(snapshots, host, root_snapshot) if root_snapshot
+      root_snapshot = root_for_host(host)
+      snapshots = [root_snapshot] + root_snapshot.children
       snapshots
     end
 
     def self.find_for_host(host, id)
-      all_for_host(host)[id]
+      all_for_host(host).detect { |snapshot| snapshot.id == id }
     end
 
-    def self.new_from_vmware(host, vmware_snapshot)
-      new(host: host, id: vmware_snapshot.ref, vmware_snapshot: vmware_snapshot, name: vmware_snapshot.name, description: vmware_snapshot.description)
+    def self.new_from_vmware(host, raw_snapshot, opts = {})
+      new(
+        host: host,
+        id: raw_snapshot.ref,
+        raw_snapshot: raw_snapshot,
+        name: raw_snapshot.name,
+        description: raw_snapshot.description,
+        parent: opts[:parent]
+      )
+    end
+
+    def children
+      return [] unless raw_snapshot
+      child_snapshots = raw_snapshot.child_snapshots.flat_map do |child_snapshot|
+        self.class.new_from_vmware(host, child_snapshot, parent: self)
+      end
+      child_snapshots + child_snapshots.flat_map(&:children)
+    end
+
+    def inspect
+      "#<#{self.class}:0x#{self.__id__.to_s(16)} name=#{name} id=#{id} description=#{description} host_id=#{host_id} parent=#{parent.try(:id)} children=#{children.map(&:id).inspect}>"
+    end
+
+    def to_s
+      _('Snapshot')
     end
 
     def persisted?
-      @id.present?
+      self.id.present?
     end
 
     # host accessors
     def host
-      Host.find(@host_id)
+      Host.find(self.host_id)
     end
 
     def host=(host)
-      @host_id = host.id
+      self.host_id = host.id
+    end
+
+    def create_time
+      raw_snapshot.try(:create_time)
+    end
+
+    def assign_attributes(new_attributes)
+      attributes = new_attributes.stringify_keys
+      attributes = sanitize_for_mass_assignment(attributes)
+      attributes.each do |k, v|
+        public_send("#{k}=", v)
+      end
+    end
+
+    def update_attributes(new_attributes)
+      assign_attributes(new_attributes)
+      save
     end
 
     # crud
     def create
       run_callbacks(:create) do
-        host.compute_resource.create_snapshot(host.uuid, name, description)
+        handle_snapshot_errors do
+          host.compute_resource.create_snapshot(host.uuid, name, description)
+        end
       end
     end
 
     def save
       run_callbacks(:save) do
-        host.compute_resource.update_snapshot(vmware_snapshot, name, description)
+        handle_snapshot_errors do
+          host.compute_resource.update_snapshot(raw_snapshot, name, description)
+        end
       end
     end
 
     def destroy
       run_callbacks(:destroy) do
-        result = host.compute_resource.remove_snapshot(vmware_snapshot, false)
-        id = nil
+        result = handle_snapshot_errors do
+          result = host.compute_resource.remove_snapshot(raw_snapshot, false)
+        end
+        self.id = nil
         result
       end
     end
 
     def revert
       run_callbacks(:revert) do
-        host.compute_resource.revert_snapshot(vmware_snapshot)
+        handle_snapshot_errors do
+          host.compute_resource.revert_snapshot(raw_snapshot)
+        end
       end
+    end
+
+    private
+
+    def handle_snapshot_errors
+      yield
+    rescue Foreman::WrappedException => e
+      errors.add(:base, e.wrapped_exception.message)
+      false
     end
   end
 end

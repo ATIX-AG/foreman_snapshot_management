@@ -4,10 +4,7 @@ module ForemanSnapshotManagement
   class Engine < ::Rails::Engine
     engine_name 'foreman_snapshot_management'
 
-    config.autoload_paths += Dir["#{config.root}/app/controllers/foreman_snapshot_management/"]
-    config.autoload_paths += Dir["#{config.root}/app/helpers/foreman_snapshot_management/"]
-    config.autoload_paths += Dir["#{config.root}/app/models/foreman_snapshot_management"]
-    config.autoload_paths += Dir["#{config.root}/app/overrides"]
+    config.autoload_paths += Dir["#{config.root}/app/controllers/concerns"]
 
     initializer 'foreman_snapshot_management.register_plugin', before: :finisher_hook do |_app|
       Foreman::Plugin.register :foreman_snapshot_management do
