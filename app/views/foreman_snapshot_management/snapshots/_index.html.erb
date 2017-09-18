@@ -29,6 +29,7 @@
           <% else %>
             <%= snapshot.name %>
           <% end %>
+          <br /><%= snapshot.formatted_create_time() %>
         </td>
         <td>
           <% if authorized_for(:controller => 'foreman_snapshot_management/snapshots', :action => :edit) %>
