@@ -49,11 +49,18 @@ module ForemanSnapshotManagement
       raise ::Foreman::WrappedException.new(e, N_('Unable to update VMWare Snapshot'))
     end
 
+    # Get Snapshot
+    #
+    # This methods returns a specific Snapshot for a given host.
+    def get_snapshot(server_id, snapshot_id)
+      client.snapshots(server_id: server_id).get(snapshot_id)
+    end
+
     # Get Snapshots
     #
     # This methods returns Snapshots from a given host.
     def get_snapshots(server_id)
-      client.snapshots(server_id: server_id)
+      client.snapshots(server_id: server_id).all(recursive: true)
     end
 
     private

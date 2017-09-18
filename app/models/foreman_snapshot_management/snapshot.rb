@@ -9,19 +9,15 @@ module ForemanSnapshotManagement
     define_model_callbacks :create, :save, :destroy, :revert
     attr_accessor :id, :raw_snapshot, :name, :description, :host_id, :parent
 
-    def self.root_for_host(host)
-      raw_snapshot = host.compute_resource.get_snapshots(host.uuid).first
-      new_from_vmware(host, raw_snapshot)
-    end
-
     def self.all_for_host(host)
-      root_snapshot = root_for_host(host)
-      snapshots = [root_snapshot] + root_snapshot.children
-      snapshots
+      snapshots = host.compute_resource.get_snapshots(host.uuid).map do |raw_snapshot|
+        new_from_vmware(host, raw_snapshot)
+      end
     end
 
     def self.find_for_host(host, id)
-      all_for_host(host).detect { |snapshot| snapshot.id == id }
+      raw_snapshot = host.compute_resource.get_snapshot(host.uuid, id)
+      new_from_vmware(host, raw_snapshot)
     end
 
     def self.new_from_vmware(host, raw_snapshot, opts = {})
