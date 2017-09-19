@@ -9,21 +9,33 @@ module ForemanSnapshotManagement
     #
     # This method creates a Snapshot with a given name and optional description.
     def create_snapshot(uuid, name, description)
-      client.vm_take_snapshot('instance_uuid' => uuid, 'name' => name, 'description' => description)
+      task = client.vm_take_snapshot('instance_uuid' => uuid, 'name' => name, 'description' => description)
+      task_successful?(task)
+    rescue RbVmomi::Fault => e
+      Foreman::Logging.exception('Error creating VMWare Snapshot', e)
+      raise ::Foreman::WrappedException.new(e, N_('Unable to create VMWare Snapshot'))
     end
 
     # Remove Snapshot
     #
     # This method removes a Snapshot from a given host.
-    def remove_snapshot(snapshot, removeChildren)
-      client.remove_snapshot('snapshot' => snapshot, 'removeChildren' => removeChildren)
+    def remove_snapshot(snapshot, remove_children)
+      task = client.remove_snapshot('snapshot' => snapshot, 'removeChildren' => remove_children)
+      task_successful?(task)
+    rescue RbVmomi::Fault => e
+      Foreman::Logging.exception('Error removing VMWare Snapshot', e)
+      raise ::Foreman::WrappedException.new(e, N_('Unable to remove VMWare Snapshot'))
     end
 
     # Revert Snapshot
     #
     # This method revert a host to a given Snapshot.
     def revert_snapshot(snapshot)
-      client.revert_to_snapshot(snapshot)
+      task = client.revert_to_snapshot(snapshot)
+      task_successful?(task)
+    rescue RbVmomi::Fault => e
+      Foreman::Logging.exception('Error reverting VMWare Snapshot', e)
+      raise ::Foreman::WrappedException.new(e, N_('Unable to revert VMWare Snapshot'))
     end
 
     # Update Snapshot
@@ -31,13 +43,30 @@ module ForemanSnapshotManagement
     # This method renames a Snapshot from a given host.
     def update_snapshot(snapshot, name, description)
       client.rename_snapshot('snapshot' => snapshot, 'name' => name, 'description' => description)
+      true
+    rescue RbVmomi::Fault => e
+      Foreman::Logging.exception('Error updating VMWare Snapshot', e)
+      raise ::Foreman::WrappedException.new(e, N_('Unable to update VMWare Snapshot'))
+    end
+
+    # Get Snapshot
+    #
+    # This methods returns a specific Snapshot for a given host.
+    def get_snapshot(server_id, snapshot_id)
+      client.snapshots(server_id: server_id).get(snapshot_id)
     end
 
     # Get Snapshots
     #
     # This methods returns Snapshots from a given host.
     def get_snapshots(server_id)
-      client.snapshots(server_id: server_id)
+      client.snapshots(server_id: server_id).all(recursive: true)
+    end
+
+    private
+
+    def task_successful?(task)
+      task['task_state'] == 'success' || task['state'] == 'success'
     end
   end
 end

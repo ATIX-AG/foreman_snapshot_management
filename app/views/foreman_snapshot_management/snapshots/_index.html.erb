@@ -21,26 +21,26 @@
         </td>
       </tr>
     <% end %>
-  <% @snapshots.each do |ref, snap| %>
+  <% @snapshots.each do |snapshot| %>
       <tr>
         <td>
           <% if authorized_for(:controller => 'foreman_snapshot_management/snapshots', :action => :edit) %>
-            <%= edit_textfield snap, :name %>
+            <%= edit_textfield snapshot, :name %>
           <% else %>
-            <%= snap.name %>
+            <%= snapshot.name %>
           <% end %>
         </td>
         <td>
           <% if authorized_for(:controller => 'foreman_snapshot_management/snapshots', :action => :edit) %>
-            <%= edit_textarea snap, :description %>
+            <%= edit_textarea snapshot, :description %>
           <% else %>
-            <%= snap.description %>
+            <%= snapshot.description %>
           <% end %>
         </td>
         <td>
           <%= action_buttons(
-            display_link_if_authorized(_('Rollback'), hash_for_revert_host_snapshot_path(host_id: @host, id: ref), method: :put, class: 'btn btn-primary', data: {confirm: _("Are you sure to revert this Snapshot?")}),
-            display_delete_if_authorized(hash_for_host_snapshot_path(host_id: @host, id: ref), data: {confirm: _("Are you sure to delete this Snapshot?")}),
+            display_link_if_authorized(_('Rollback'), hash_for_revert_host_snapshot_path(host_id: @host, id: snapshot.id), method: :put, class: 'btn btn-primary', data: {confirm: _("Are you sure to revert this Snapshot?")}),
+            display_delete_if_authorized(hash_for_host_snapshot_path(host_id: @host, id: snapshot.id), data: {confirm: _("Are you sure to delete this Snapshot?")}),
           ) %>
         </td>
       </tr>

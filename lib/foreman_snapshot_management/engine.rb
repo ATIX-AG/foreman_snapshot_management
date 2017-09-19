@@ -4,35 +4,40 @@ module ForemanSnapshotManagement
   class Engine < ::Rails::Engine
     engine_name 'foreman_snapshot_management'
 
-    config.autoload_paths += Dir["#{config.root}/app/controllers/foreman_snapshot_management/"]
-    config.autoload_paths += Dir["#{config.root}/app/helpers/foreman_snapshot_management/"]
-    config.autoload_paths += Dir["#{config.root}/app/models/foreman_snapshot_management"]
-    config.autoload_paths += Dir["#{config.root}/app/overrides"]
+    config.autoload_paths += Dir["#{config.root}/app/models/concerns"]
+    config.autoload_paths += Dir["#{config.root}/app/controllers/concerns"]
 
     initializer 'foreman_snapshot_management.register_plugin', before: :finisher_hook do |_app|
       Foreman::Plugin.register :foreman_snapshot_management do
         requires_foreman '>= 1.14'
 
+        apipie_documented_controllers ["#{ForemanSnapshotManagement::Engine.root}/app/controllers/api/v2/*.rb"]
+
         # Add permissions
         security_block :foreman_snapshot_management do
           permission :view_snapshots, {
-            :'foreman_snapshot_management/snapshots' => [:index]
+            :'foreman_snapshot_management/snapshots' => [:index],
+            :'api/v2/snapshots' => [:index, :show]
           }, :resource_type => 'Host'
 
           permission :create_snapshots, {
-            :'foreman_snapshot_management/snapshots' => [:create]
+            :'foreman_snapshot_management/snapshots' => [:create],
+            :'api/v2/snapshots' => [:create]
           }, :resource_type => 'Host'
 
           permission :edit_snapshots, {
-            :'foreman_snapshot_management/snapshots' => [:update]
+            :'foreman_snapshot_management/snapshots' => [:update],
+            :'api/v2/snapshots' => [:update]
           }, :resource_type => 'Host'
 
           permission :destroy_snapshots, {
-            :'foreman_snapshot_management/snapshots' => [:destroy]
+            :'foreman_snapshot_management/snapshots' => [:destroy],
+            :'api/v2/snapshots' => [:destroy]
           }, :resource_type => 'Host'
 
           permission :revert_snapshots, {
-            :'foreman_snapshot_management/snapshots' => [:revert]
+            :'foreman_snapshot_management/snapshots' => [:revert],
+            :'api/v2/snapshots' => [:revert]
           }, :resource_type => 'Host'
         end
 
@@ -67,7 +72,14 @@ module ForemanSnapshotManagement
     # Include concerns in this config.to_prepare block
     config.to_prepare do
       begin
+        # Load Foreman extensions
         ::Foreman::Model::Vmware.send(:prepend, ForemanSnapshotManagement::VmwareExtensions)
+
+        # Load Fog extensions
+        if Foreman::Model::Vmware.available?
+          Fog::Compute::Vsphere::Real.send(:prepend, FogExtensions::Vsphere::Snapshots::Real)
+          Fog::Compute::Vsphere::Mock.send(:prepend, FogExtensions::Vsphere::Snapshots::Mock)
+        end
       rescue => e
         Rails.logger.warn "ForemanSnapshotManagement: skipping engine hook (#{e})"
       end
