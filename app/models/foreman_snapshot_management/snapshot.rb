@@ -1,3 +1,5 @@
+require 'date'
+
 module ForemanSnapshotManagement
   class Snapshot
     extend ActiveModel::Callbacks
@@ -7,7 +9,7 @@ module ForemanSnapshotManagement
     include ActiveModel::ForbiddenAttributesProtection
 
     define_model_callbacks :create, :save, :destroy, :revert
-    attr_accessor :id, :raw_snapshot, :name, :description, :host_id, :parent
+    attr_accessor :id, :raw_snapshot, :name, :description, :host_id, :parent, :create_time
 
     def self.all_for_host(host)
       snapshots = host.compute_resource.get_snapshots(host.uuid).map do |raw_snapshot|
@@ -27,7 +29,8 @@ module ForemanSnapshotManagement
         raw_snapshot: raw_snapshot,
         name: raw_snapshot.name,
         description: raw_snapshot.description,
-        parent: opts[:parent]
+        parent: opts[:parent],
+        create_time: raw_snapshot.create_time
       )
     end
 
@@ -45,6 +48,10 @@ module ForemanSnapshotManagement
 
     def to_s
       _('Snapshot')
+    end
+
+    def formatted_create_time()
+      create_time.strftime("%F %H:%M")
     end
 
     def persisted?
