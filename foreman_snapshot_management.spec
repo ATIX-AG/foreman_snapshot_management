@@ -20,7 +20,7 @@
 
 Summary:    Foreman snapshot management tool
 Name:       %{gem_name}
-Version:    1.0.0
+Version:    1.1.0
 Release:    1%{?dist}
 Group:      Applications/System
 License:    GPLv3
@@ -117,5 +117,11 @@ exit 0
 %doc %{gem_instdir}/README.md
 
 %changelog
+* Tue Sep 19 2017 Matthias Dellweg <dellweg@atix.de> 1.1.0-1
+- Date and time in snapshot list
+- Foreman api v2 entry points
+- Controller tests
+- Code cleanup
+- Reworked Permissions
 * Fri May 12 2017 Bernhard Suttner <suttner@atix.de> 1.0.0-1
 - First release
