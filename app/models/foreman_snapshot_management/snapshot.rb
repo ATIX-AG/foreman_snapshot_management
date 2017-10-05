@@ -10,6 +10,7 @@ module ForemanSnapshotManagement
 
     define_model_callbacks :create, :save, :destroy, :revert
     attr_accessor :id, :raw_snapshot, :name, :description, :host_id, :parent, :create_time
+    define_attribute_methods :name, :description
 
     def self.all_for_host(host)
       snapshots = host.compute_resource.get_snapshots(host.uuid).map do |raw_snapshot|
@@ -55,16 +56,36 @@ module ForemanSnapshotManagement
     end
 
     def persisted?
-      self.id.present?
+      @id.present?
+    end
+
+    def name=(value)
+      name_will_change! unless value == @name
+      @name = value
+    end
+
+    def description=(value)
+      description_will_change! unless value == @description
+      @description = value
     end
 
     # host accessors
     def host
-      Host.find(self.host_id)
+      @host ||= Host.find(@host_id)
+    end
+
+    def host_id=(host_id)
+      if @host_id != host_id
+        @host_id = host_id
+        @host = nil
+      end
     end
 
     def host=(host)
-      self.host_id = host.id
+      if @host_id != host.id
+        @host_id = host.id
+        @host = host
+      end
     end
 
     def create_time
@@ -81,14 +102,17 @@ module ForemanSnapshotManagement
 
     def update_attributes(new_attributes)
       assign_attributes(new_attributes)
-      save
+      save if changed?
     end
 
     # crud
     def create
       run_callbacks(:create) do
         handle_snapshot_errors do
+          host.audit_comment = "Create snapshot #{name}"
+          host.save!
           host.compute_resource.create_snapshot(host.uuid, name, description)
+          changes_applied
         end
       end
     end
@@ -96,7 +120,10 @@ module ForemanSnapshotManagement
     def save
       run_callbacks(:save) do
         handle_snapshot_errors do
+          host.audit_comment = "Update snapshot #{name}"
+          host.save!
           host.compute_resource.update_snapshot(raw_snapshot, name, description)
+          changes_applied
         end
       end
     end
@@ -104,9 +131,11 @@ module ForemanSnapshotManagement
     def destroy
       run_callbacks(:destroy) do
         result = handle_snapshot_errors do
+          host.audit_comment = "Destroy snapshot #{name}"
+          host.save!
           result = host.compute_resource.remove_snapshot(raw_snapshot, false)
         end
-        self.id = nil
+        @id = nil
         result
       end
     end
@@ -114,6 +143,8 @@ module ForemanSnapshotManagement
     def revert
       run_callbacks(:revert) do
         handle_snapshot_errors do
+          host.audit_comment = "Revert snapshot #{name}"
+          host.save!
           host.compute_resource.revert_snapshot(raw_snapshot)
         end
       end
