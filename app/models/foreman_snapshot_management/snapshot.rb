@@ -20,7 +20,7 @@ module ForemanSnapshotManagement
 
     def self.find_for_host(host, id)
       raw_snapshot = host.compute_resource.get_snapshot(host.uuid, id)
-      new_from_vmware(host, raw_snapshot)
+      new_from_vmware(host, raw_snapshot) if raw_snapshot
     end
 
     def self.new_from_vmware(host, raw_snapshot, opts = {})
