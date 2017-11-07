@@ -5,7 +5,7 @@
 %global plugin_name snapshot_management
 
 Name: %{?scl_prefix}rubygem-%{gem_name}
-Version: 1.1.0
+Version: 1.2.0
 Release: 1%{?foremandist}%{?dist}
 Summary: Snapshot Management for VMware vSphere
 Group: Applications/Systems
@@ -88,6 +88,13 @@ cp -pa .%{gem_dir}/* \
 exit 0
 
 %changelog
+* Tue Nov 07 2017 Matthias Dellweg <dellweg@atix.de> 1.2.0-1
+- snapshot auditing
+* Tue Sep 19 2017 Matthias Dellweg <dellweg@atix.de> 1.1.0-1
+- Date and time in snapshot list
+- Foreman api v2 entry points
+- Controller tests
+- Code cleanup
+- Reworked Permissions
 * Tue Aug 15 2017 Eric D. Helms <ericdhelms@gmail.com> 1.0.0-1
 - new package built with tito
-
