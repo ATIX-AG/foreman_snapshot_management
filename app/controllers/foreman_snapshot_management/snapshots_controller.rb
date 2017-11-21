@@ -79,23 +79,10 @@ module ForemanSnapshotManagement
         not_found
         return false
       end
-      @host = Host.authorized(host_permission).friendly.find(host_id)
+      @host = Host.authorized("#{action_permission}_snapshots".to_sym, Host).friendly.find(host_id)
       unless @host
         not_found
         return(false)
-      end
-    end
-
-    def host_permission
-      case action_permission.to_s
-      when 'create', 'destroy'
-        'edit'
-      when 'edit', 'view'
-        'view'
-      when 'revert'
-        'revert'
-      else
-        raise ::Foreman::Exception.new(N_('unknown host permission for %s'), "#{params[:controller]}##{action_permission}")
       end
     end
 
