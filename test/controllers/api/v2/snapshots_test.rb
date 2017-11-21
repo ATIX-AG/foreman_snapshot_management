@@ -2,11 +2,11 @@ require 'test_helper'
 
 class Api::V2::SnapshotsControllerTest < ActionController::TestCase
   let(:compute_resource) do
-    cr = FactoryGirl.create(:compute_resource, :vmware, :uuid => 'Solutions')
+    cr = FactoryBot.create(:compute_resource, :vmware, :uuid => 'Solutions')
     ComputeResource.find_by_id(cr.id)
   end
   let(:uuid) { '5032c8a5-9c5e-ba7a-3804-832a03e16381' }
-  let(:host) { FactoryGirl.create(:host, :managed, :compute_resource => compute_resource, :uuid => uuid) }
+  let(:host) { FactoryBot.create(:host, :managed, :compute_resource => compute_resource, :uuid => uuid) }
   let(:snapshot_id) { 'snapshot-0101' }
   setup { ::Fog.mock! }
   teardown { ::Fog.unmock! }
