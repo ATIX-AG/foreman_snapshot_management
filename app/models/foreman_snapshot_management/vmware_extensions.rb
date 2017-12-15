@@ -53,7 +53,13 @@ module ForemanSnapshotManagement
     #
     # This methods returns a specific Snapshot for a given host.
     def get_snapshot(server_id, snapshot_id)
-      client.snapshots(server_id: server_id).get(snapshot_id)
+      snapshot = client.snapshots(server_id: server_id).get(snapshot_id)
+      # Workaround for https://github.com/fog/fog-vsphere/commit/d808255cd19c3d43d3227825f1e0d72d3f6ee6b9
+      # Remove, when fog-vshpere 1.11 lands in foreman
+      while snapshot && snapshot.ref != snapshot_id
+        snapshot = snapshot.get_child(snapshot_id)
+      end
+      snapshot
     end
 
     # Get Snapshots
