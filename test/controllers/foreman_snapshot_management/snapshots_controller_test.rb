@@ -14,7 +14,7 @@ module ForemanSnapshotManagement
 
     context 'GET #index' do
       test 'should get index' do
-        get :index, { :host_id => host.to_param }, set_session_user
+        get :index, params: { :host_id => host.to_param }, session: set_session_user
         assert_response :success
         assert_not_nil assigns(:snapshots)
         assert_template 'foreman_snapshot_management/snapshots/_index'
@@ -23,14 +23,14 @@ module ForemanSnapshotManagement
 
     context 'POST #create' do
       test 'create valid' do
-        post :create, { :host_id => host.to_param, :snapshot => { :name => 'test' } }, set_session_user
+        post :create, params: { :host_id => host.to_param, :snapshot => { :name => 'test' } }, session: set_session_user
         assert_redirected_to host_url(host, :anchor => 'snapshots')
         assert_includes flash[:notice], 'Successfully created Snapshot.'
       end
 
       test 'create invalid' do
         ForemanSnapshotManagement::Snapshot.any_instance.stubs(:create).returns(false)
-        post :create, { :host_id => host.to_param, :snapshot => { :name => nil } }, set_session_user
+        post :create, params: { :host_id => host.to_param, :snapshot => { :name => nil } }, session: set_session_user
         assert_redirected_to host_url(host, :anchor => 'snapshots')
         assert_includes flash[:error], 'Error occurred while creating Snapshot'
       end
@@ -38,14 +38,14 @@ module ForemanSnapshotManagement
 
     context 'DELETE #destroy' do
       test 'destroy successful' do
-        delete :destroy, { :host_id => host.to_param, :id => snapshot_id }, set_session_user
+        delete :destroy, params: { :host_id => host.to_param, :id => snapshot_id }, session: set_session_user
         assert_redirected_to host_url(host, :anchor => 'snapshots')
         assert_includes flash[:notice], 'Successfully deleted Snapshot.'
       end
 
       test 'destroy with error' do
         ForemanSnapshotManagement::Snapshot.any_instance.stubs(:destroy).returns(false)
-        delete :destroy, { :host_id => host.to_param, :id => snapshot_id }, set_session_user
+        delete :destroy, params: { :host_id => host.to_param, :id => snapshot_id }, session: set_session_user
         assert_redirected_to host_url(host, :anchor => 'snapshots')
         assert_includes flash[:error], 'Error occurred while removing Snapshot'
       end
@@ -53,14 +53,14 @@ module ForemanSnapshotManagement
 
     context 'PUT #revert' do
       test 'revert successful' do
-        put :revert, { :host_id => host.to_param, :id => snapshot_id }, set_session_user
+        put :revert, params: { :host_id => host.to_param, :id => snapshot_id }, session: set_session_user
         assert_redirected_to host_url(host, :anchor => 'snapshots')
         assert_includes flash[:notice], 'VM successfully rolled back.'
       end
 
       test 'revert with error' do
         ForemanSnapshotManagement::Snapshot.any_instance.stubs(:revert).returns(false)
-        put :revert, { :host_id => host.to_param, :id => snapshot_id }, set_session_user
+        put :revert, params: { :host_id => host.to_param, :id => snapshot_id }, session: set_session_user
         assert_redirected_to host_url(host, :anchor => 'snapshots')
         assert_includes flash[:error], 'Error occurred while rolling back VM'
       end
@@ -69,7 +69,7 @@ module ForemanSnapshotManagement
     context 'PUT #update' do
       test 'update successful' do
         data = { 'name' => 'test 2', 'description' => '' }
-        put :update, { :host_id => host.to_param, :id => snapshot_id, :snapshot => data }, set_session_user
+        put :update, params: { :host_id => host.to_param, :id => snapshot_id, :snapshot => data }, session: set_session_user
         assert_response :success
         body = ActiveSupport::JSON.decode(@response.body)
         assert_equal(data, body)
@@ -77,7 +77,7 @@ module ForemanSnapshotManagement
 
       test 'update with error' do
         ForemanSnapshotManagement::Snapshot.any_instance.stubs(:save).returns(false)
-        put :update, { :host_id => host.to_param, :id => snapshot_id, :snapshot => { :name => 'test 2' } }, set_session_user
+        put :update, params: { :host_id => host.to_param, :id => snapshot_id, :snapshot => { :name => 'test 2' } }, session: set_session_user
         assert_response :unprocessable_entity
       end
     end
