@@ -12,7 +12,7 @@ class Api::V2::SnapshotsControllerTest < ActionController::TestCase
   teardown { ::Fog.unmock! }
 
   test 'should get index' do
-    get :index, { :host_id => host.to_param }
+    get :index, params: { :host_id => host.to_param }
     assert_response :success
     assert_not_nil assigns(:snapshots)
     body = ActiveSupport::JSON.decode(@response.body)
@@ -21,7 +21,7 @@ class Api::V2::SnapshotsControllerTest < ActionController::TestCase
   end
 
   test 'should show snapshot' do
-    get :show, { :host_id => host.to_param, :id => snapshot_id }
+    get :show, params: { :host_id => host.to_param, :id => snapshot_id }
     assert_not_nil assigns(:snapshot)
     assert_response :success
     body = ActiveSupport::JSON.decode(@response.body)
@@ -29,29 +29,29 @@ class Api::V2::SnapshotsControllerTest < ActionController::TestCase
   end
 
   test 'should 404 for unknown snapshot' do
-    get :show, { :host_id => host.to_param, :id => 'does-not-exist' }
+    get :show, params: { :host_id => host.to_param, :id => 'does-not-exist' }
     assert_response :not_found
   end
 
   test 'should create snapshot' do
-    post :create, { :host_id => host.to_param, :name => 'test' }
+    post :create, params: { :host_id => host.to_param, :name => 'test' }
     assert_response :created
     assert_not_nil assigns(:snapshot)
   end
 
   test 'should update snapshot' do
     name = 'test'
-    put :update, { :host_id => host.to_param, :id => snapshot_id.to_param, :name => name.to_param }
+    put :update, params: { :host_id => host.to_param, :id => snapshot_id.to_param, :name => name.to_param }
     assert_response :success
   end
 
   test 'should destroy snapshot' do
-    delete :destroy, { :host_id => host.to_param, :id => snapshot_id.to_param }
+    delete :destroy, params: { :host_id => host.to_param, :id => snapshot_id.to_param }
     assert_response :success
   end
 
   test 'should revert snapshot' do
-    put :revert, { :host_id => host.to_param, :id => snapshot_id.to_param }
+    put :revert, params: { :host_id => host.to_param, :id => snapshot_id.to_param }
     assert_response :success
   end
 end
