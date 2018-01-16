@@ -19,7 +19,7 @@ namespace :foreman_snapshot_management do
                          "#{ForemanSnapshotManagement::Engine.root}/lib/**/*.rb",
                          "#{ForemanSnapshotManagement::Engine.root}/test/**/*.rb"]
       end
-    rescue
+    rescue StandardError
       puts 'Rubocop not loaded.'
     end
 
@@ -30,6 +30,4 @@ end
 Rake::Task[:test].enhance ['test:foreman_snapshot_management']
 
 load 'tasks/jenkins.rake'
-if Rake::Task.task_defined?(:'jenkins:unit')
-  Rake::Task['jenkins:unit'].enhance ['test:foreman_snapshot_management', 'foreman_snapshot_management:rubocop']
-end
+Rake::Task['jenkins:unit'].enhance ['test:foreman_snapshot_management', 'foreman_snapshot_management:rubocop'] if Rake::Task.task_defined?(:'jenkins:unit')

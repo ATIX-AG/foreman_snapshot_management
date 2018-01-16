@@ -9,11 +9,13 @@ module ForemanSnapshotManagement
     include ActiveModel::ForbiddenAttributesProtection
 
     define_model_callbacks :create, :save, :destroy, :revert
-    attr_accessor :id, :raw_snapshot, :name, :description, :host_id, :parent, :create_time
+    attr_accessor :id, :raw_snapshot, :parent
+    attr_writer :create_time
+    attr_reader :name, :description, :host_id
     define_attribute_methods :name, :description
 
     def self.all_for_host(host)
-      snapshots = host.compute_resource.get_snapshots(host.uuid).map do |raw_snapshot|
+      host.compute_resource.get_snapshots(host.uuid).map do |raw_snapshot|
         new_from_vmware(host, raw_snapshot)
       end
     end
@@ -51,8 +53,8 @@ module ForemanSnapshotManagement
       _('Snapshot')
     end
 
-    def formatted_create_time()
-      create_time.strftime("%F %H:%M")
+    def formatted_create_time
+      create_time.strftime('%F %H:%M')
     end
 
     def persisted?
@@ -75,17 +77,15 @@ module ForemanSnapshotManagement
     end
 
     def host_id=(host_id)
-      if @host_id != host_id
-        @host_id = host_id
-        @host = nil
-      end
+      return if @host_id == host_id
+      @host_id = host_id
+      @host = nil
     end
 
     def host=(host)
-      if @host_id != host.id
-        @host_id = host.id
-        @host = host
-      end
+      return if @host_id == host.id
+      @host_id = host.id
+      @host = host
     end
 
     def create_time

@@ -5,8 +5,7 @@ module FogExtensions
         # Overwrite this to stop infinite recursion
         # TODO: Add proper test data
         def list_child_snapshots(_snapshot, _opts = {})
-          [
-          ]
+          []
         end
 
         def remove_snapshot(options = {})

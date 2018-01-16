@@ -56,9 +56,7 @@ module ForemanSnapshotManagement
       snapshot = client.snapshots(server_id: server_id).get(snapshot_id)
       # Workaround for https://github.com/fog/fog-vsphere/commit/d808255cd19c3d43d3227825f1e0d72d3f6ee6b9
       # Remove, when fog-vshpere 1.11 lands in foreman
-      while snapshot && snapshot.ref != snapshot_id
-        snapshot = snapshot.get_child(snapshot_id)
-      end
+      snapshot = snapshot.get_child(snapshot_id) while snapshot && snapshot.ref != snapshot_id
       snapshot
     end
 

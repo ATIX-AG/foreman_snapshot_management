@@ -80,7 +80,7 @@ module ForemanSnapshotManagement
           Fog::Compute::Vsphere::Real.send(:prepend, FogExtensions::Vsphere::Snapshots::Real)
           Fog::Compute::Vsphere::Mock.send(:prepend, FogExtensions::Vsphere::Snapshots::Mock)
         end
-      rescue => e
+      rescue StandardError => e
         Rails.logger.warn "ForemanSnapshotManagement: skipping engine hook (#{e})"
       end
     end

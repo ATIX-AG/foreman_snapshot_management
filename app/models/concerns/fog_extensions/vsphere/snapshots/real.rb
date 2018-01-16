@@ -7,9 +7,7 @@ module FogExtensions
           raise ArgumentError, 'snapshot is a required parameter' unless options.key? 'snapshot'
           raise ArgumentError, 'removeChildren is a required parameter' unless options.key? 'removeChildren'
 
-          unless ::Fog::Compute::Vsphere::Snapshot === options['snapshot']
-            raise ArgumentError, 'snapshot is a required parameter'
-          end
+          raise ArgumentError, 'snapshot is a required parameter' unless ::Fog::Compute::Vsphere::Snapshot === options['snapshot']
 
           task = options['snapshot'].mo_ref.RemoveSnapshot_Task(
             removeChildren: options['removeChildren']
@@ -28,9 +26,7 @@ module FogExtensions
           raise ArgumentError, 'name is a required parameter' unless options.key? 'name'
           raise ArgumentError, 'description is a required parameter' unless options.key? 'description'
 
-          unless ::Fog::Compute::Vsphere::Snapshot === options['snapshot']
-            raise ArgumentError, 'snapshot is a required parameter'
-          end
+          raise ArgumentError, 'snapshot is a required parameter' unless ::Fog::Compute::Vsphere::Snapshot === options['snapshot']
 
           options['snapshot'].mo_ref.RenameSnapshot(
             name: options['name'],
