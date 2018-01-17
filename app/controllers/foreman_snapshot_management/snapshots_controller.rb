@@ -80,10 +80,9 @@ module ForemanSnapshotManagement
         return false
       end
       @host = Host.authorized("#{action_permission}_snapshots".to_sym, Host).friendly.find(host_id)
-      unless @host
-        not_found
-        return(false)
-      end
+      return @host if @host
+      not_found
+      false
     end
 
     def action_permission
