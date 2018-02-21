@@ -4,6 +4,7 @@
   <tr>
     <th class="col-md-1"><%= _('Snapshot') %></th>
     <th class="col-md-2"><%= _('Description') %></th>
+    <th class="col-md-1"><%= _('Include RAM') %></th>
     <th class="col-md-1"><%= _('Action') %></th>
   </tr>
   </thead>
@@ -15,6 +16,9 @@
         </td>
         <td>
           <%= f.text_field :description, class: 'form-control' %>
+        </td>
+        <td>
+          <%= f.check_box :include_ram, class: 'form-control' %>
         </td>
         <td>
           <%= f.submit _('Create'), class: 'btn btn-success' %>
@@ -37,6 +41,8 @@
           <% else %>
             <%= snapshot.description %>
           <% end %>
+        </td>
+        <td>
         </td>
         <td>
           <%= action_buttons(

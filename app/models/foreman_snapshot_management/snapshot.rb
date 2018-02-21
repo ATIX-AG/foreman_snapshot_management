@@ -11,8 +11,8 @@ module ForemanSnapshotManagement
     define_model_callbacks :create, :save, :destroy, :revert
     attr_accessor :id, :raw_snapshot, :parent
     attr_writer :create_time
-    attr_reader :name, :description, :host_id
-    define_attribute_methods :name, :description
+    attr_reader :name, :description, :include_ram, :host_id
+    define_attribute_methods :name, :description, :include_ram
 
     def self.all_for_host(host)
       host.compute_resource.get_snapshots(host.uuid).map do |raw_snapshot|
@@ -71,6 +71,11 @@ module ForemanSnapshotManagement
       @description = value
     end
 
+    def include_ram=(value)
+      raise Exception('Cannot modify include_ram on existing snapshots.') if persisted?
+      @include_ram = value
+    end
+
     # host accessors
     def host
       @host ||= Host.find(@host_id)
@@ -111,7 +116,7 @@ module ForemanSnapshotManagement
         handle_snapshot_errors do
           host.audit_comment = "Create snapshot #{name}"
           host.save!
-          host.compute_resource.create_snapshot(host.uuid, name, description)
+          host.compute_resource.create_snapshot(host.uuid, name, description, include_ram)
           changes_applied
         end
       end

@@ -21,7 +21,7 @@ module ForemanSnapshotManagement
     #
     # This method creates a Snapshot with a given name and optional description.
     def create
-      @snapshot = Snapshot.new(snapshot_params.merge(host: @host))
+      @snapshot = Snapshot.new(snapshot_params.merge(host: @host).merge(include_ram: params[:snapshot][:include_ram]))
 
       if @snapshot.create
         process_success
@@ -67,11 +67,11 @@ module ForemanSnapshotManagement
       end
     end
 
+    private
+
     # Find Host
     #
     # This method is responsible that methods of the controller know the current host.
-
-    private
 
     def find_host
       host_id = params[:host_id]

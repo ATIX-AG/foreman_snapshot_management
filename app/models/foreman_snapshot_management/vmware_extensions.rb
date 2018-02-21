@@ -8,8 +8,8 @@ module ForemanSnapshotManagement
     # Create a Snapshot.
     #
     # This method creates a Snapshot with a given name and optional description.
-    def create_snapshot(uuid, name, description)
-      task = client.vm_take_snapshot('instance_uuid' => uuid, 'name' => name, 'description' => description)
+    def create_snapshot(uuid, name, description, include_ram = false)
+      task = client.vm_take_snapshot('instance_uuid' => uuid, 'name' => name, 'description' => description, 'memory' => include_ram)
       task_successful?(task)
     rescue RbVmomi::Fault => e
       Foreman::Logging.exception('Error creating VMWare Snapshot', e)
