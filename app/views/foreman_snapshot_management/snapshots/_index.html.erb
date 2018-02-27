@@ -21,7 +21,7 @@
           <%= f.check_box :include_ram, class: 'form-control' %>
         </td>
         <td>
-          <%= f.submit _('Create'), class: 'btn btn-success' %>
+          <%= f.submit _('Create'), class: 'btn btn-success', :onclick => "$(this).attr('disabled', 'disabled'); $(this).parents('form').submit();" %>
         </td>
       </tr>
     <% end %>
@@ -46,8 +46,8 @@
         </td>
         <td>
           <%= action_buttons(
-            display_link_if_authorized(_('Rollback'), hash_for_revert_host_snapshot_path(host_id: @host, id: snapshot.id).merge(:auth_object => @host, :permission => :revert_snapshots), method: :put, class: 'btn btn-primary', data: {confirm: _("Are you sure to revert this Snapshot?")}),
-            display_delete_if_authorized(hash_for_host_snapshot_path(host_id: @host, id: snapshot.id).merge(:auth_object => @host, :permission => :destroy_snapshots), data: {confirm: _("Are you sure to delete this Snapshot?")}),
+            display_link_if_authorized(_('Rollback'), hash_for_revert_host_snapshot_path(host_id: @host, id: snapshot.id).merge(:auth_object => @host, :permission => :revert_snapshots), method: :put, class: 'btn btn-primary', data: {confirm: _('Are you sure to revert this Snapshot?'), 'disable-with': _('Reverting...')}),
+            display_delete_if_authorized(hash_for_host_snapshot_path(host_id: @host, id: snapshot.id).merge(:auth_object => @host, :permission => :destroy_snapshots), data: {confirm: _("Are you sure to delete this Snapshot?"), 'disable-with': _('Deleting...')}),
           ) %>
         </td>
       </tr>
