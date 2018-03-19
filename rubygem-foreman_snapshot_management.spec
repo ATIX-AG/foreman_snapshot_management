@@ -88,7 +88,7 @@ cp -pa .%{gem_dir}/* \
 exit 0
 
 %changelog
-* Mon Mar 19 2017 Matthias Dellweg <dellweg@atix.de> 1.4.0-1
+* Mon Mar 19 2018 Matthias Dellweg <dellweg@atix.de> 1.4.0-1
 - disable buttons after submit
 - Add option to include RAM in snapshot
 - Make rubocop happy
