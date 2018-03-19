@@ -5,7 +5,7 @@
 %global plugin_name snapshot_management
 
 Name: %{?scl_prefix}rubygem-%{gem_name}
-Version: 1.3.0
+Version: 1.4.0
 Release: 1%{?foremandist}%{?dist}
 Summary: Snapshot Management for VMware vSphere
 Group: Applications/Systems
@@ -88,6 +88,13 @@ cp -pa .%{gem_dir}/* \
 exit 0
 
 %changelog
+* Mon Mar 19 2017 Matthias Dellweg <dellweg@atix.de> 1.4.0-1
+- disable buttons after submit
+- Add option to include RAM in snapshot
+- Make rubocop happy
+- Call rubocop from travis
+- fix delete permission name
+- Fix broken controller tests
 * Fri Dec 15 2017 Matthias Dellweg <dellweg@atix.de> 1.3.0-1
 - Use FactoryBot
 - Add automated testing
