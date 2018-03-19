@@ -5,7 +5,7 @@ gemfile: foreman/Gemfile
 before_install:
   - sudo apt-get -qq update
   - cd ..
-  - git clone https://github.com/theforeman/foreman.git
+  - git clone https://github.com/theforeman/foreman.git -b 1.17-stable --depth 1
 install:
   - sudo apt-get -y install nodejs git libsqlite3-dev libpq-dev libmysqlclient-dev zlib1g-dev libvirt-dev
   - cd foreman
