@@ -1,8 +1,15 @@
 module ForemanSnapshotManagement
   module VmwareExtensions
+    extend ActiveSupport::Concern
+
+    included do
+      alias_method :capabilities_without_snapshotmgmt, :capabilities
+      alias_method :capabilities, :capabilities_with_snapshotmgmt
+    end
+
     # Extend VMWare's capabilities with snapshots.
-    def capabilities
-      super + [:snapshots]
+    def capabilities_with_snapshotmgmt
+      capabilities_without_snapshotmgmt + [:snapshots]
     end
 
     # Create a Snapshot.
