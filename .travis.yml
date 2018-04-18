@@ -1,19 +1,39 @@
 language: ruby
 rvm:
   - 2.2
+  - 2.3
 gemfile: foreman/Gemfile
 before_install:
-  - sudo apt-get -qq update
   - cd ..
-  - git clone https://github.com/theforeman/foreman.git -b 1.17-stable --depth 1
+  - git clone https://github.com/theforeman/foreman.git -b ${FOREMAN_CORE_BRANCH} --depth 1
 install:
-  - sudo apt-get -y install nodejs git libsqlite3-dev libpq-dev libmysqlclient-dev zlib1g-dev libvirt-dev
   - cd foreman
   - echo "gemspec :path => '../foreman_snapshot_management'" > bundler.d/foreman_snapshot_management.local.rb
   - ln -s settings.yaml.test config/settings.yaml
   - ln -s database.yml.example config/database.yml
-  - bundle install --jobs=3 --retry=3
-  - rake db:migrate RAILS_ENV=test
+  - bundle install --jobs=3 --retry=3 --without journald development postgresql mysql2 console
+  - bundle exec rake db:migrate RAILS_ENV=test
 script:
   - bundle exec rubocop ../foreman_snapshot_management
-  - rake test:foreman_snapshot_management
+  - bundle exec rake test:foreman_snapshot_management
+env:
+  global:
+    - TESTOPTS=-v
+  matrix:
+    - FOREMAN_CORE_BRANCH=1.18-stable
+    - FOREMAN_CORE_BRANCH=1.17-stable
+    - FOREMAN_CORE_BRANCH=1.16-stable
+matrix:
+  exclude:
+    - rvm: 2.2
+      env: FOREMAN_CORE_BRANCH=1.18-stable
+  allow_failures:
+    - env: FOREMAN_CORE_BRANCH=1.16-stable
+addons:
+  apt:
+    packages:
+    - nodejs
+    - git
+    - libsqlite3-dev
+    - zlib1g-dev
+    - libvirt-dev
