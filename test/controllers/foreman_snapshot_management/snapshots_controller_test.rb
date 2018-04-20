@@ -25,7 +25,7 @@ module ForemanSnapshotManagement
       test 'create valid' do
         post :create, params: { :host_id => host.to_param, :snapshot => { :name => 'test' } }, session: set_session_user
         assert_redirected_to host_url(host, :anchor => 'snapshots')
-        assert_includes flash[:notice], 'Successfully created Snapshot.'
+        assert_includes flash[:notice] || flash[:success], 'Successfully created Snapshot.'
       end
 
       test 'create invalid' do
@@ -40,7 +40,7 @@ module ForemanSnapshotManagement
       test 'destroy successful' do
         delete :destroy, params: { :host_id => host.to_param, :id => snapshot_id }, session: set_session_user
         assert_redirected_to host_url(host, :anchor => 'snapshots')
-        assert_includes flash[:notice], 'Successfully deleted Snapshot.'
+        assert_includes flash[:notice] || flash[:success], 'Successfully deleted Snapshot.'
       end
 
       test 'destroy with error' do
@@ -55,7 +55,7 @@ module ForemanSnapshotManagement
       test 'revert successful' do
         put :revert, params: { :host_id => host.to_param, :id => snapshot_id }, session: set_session_user
         assert_redirected_to host_url(host, :anchor => 'snapshots')
-        assert_includes flash[:notice], 'VM successfully rolled back.'
+        assert_includes flash[:notice] || flash[:success], 'VM successfully rolled back.'
       end
 
       test 'revert with error' do

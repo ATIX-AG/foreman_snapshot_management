@@ -9,7 +9,7 @@ module ForemanSnapshotManagement
 
     initializer 'foreman_snapshot_management.register_plugin', before: :finisher_hook do |_app|
       Foreman::Plugin.register :foreman_snapshot_management do
-        requires_foreman '>= 1.14'
+        requires_foreman '>= 1.17'
 
         apipie_documented_controllers ["#{ForemanSnapshotManagement::Engine.root}/app/controllers/api/v2/*.rb"]
 
@@ -92,7 +92,7 @@ module ForemanSnapshotManagement
     end
 
     initializer 'foreman_snapshot_management.register_gettext', after: :load_config_initializers do |_app|
-      locale_dir = File.join(File.expand_path('../../..', __FILE__), 'locale')
+      locale_dir = File.join(File.expand_path('../..', __dir__), 'locale')
       locale_domain = 'foreman_snapshot_management'
       Foreman::Gettext::Support.add_text_domain locale_domain, locale_dir
     end
