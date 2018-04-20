@@ -9,7 +9,7 @@ module ForemanSnapshotManagement
 
     initializer 'foreman_snapshot_management.register_plugin', before: :finisher_hook do |_app|
       Foreman::Plugin.register :foreman_snapshot_management do
-        requires_foreman '>= 1.16'
+        requires_foreman '~> 1.16.0'
 
         apipie_documented_controllers ["#{ForemanSnapshotManagement::Engine.root}/app/controllers/api/v2/*.rb"]
 
