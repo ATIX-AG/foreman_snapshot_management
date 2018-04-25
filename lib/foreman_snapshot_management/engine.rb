@@ -9,7 +9,7 @@ module ForemanSnapshotManagement
 
     initializer 'foreman_snapshot_management.register_plugin', before: :finisher_hook do |_app|
       Foreman::Plugin.register :foreman_snapshot_management do
-        requires_foreman '>= 1.17'
+        requires_foreman '~> 1.16.0'
 
         apipie_documented_controllers ["#{ForemanSnapshotManagement::Engine.root}/app/controllers/api/v2/*.rb"]
 
@@ -73,7 +73,7 @@ module ForemanSnapshotManagement
     config.to_prepare do
       begin
         # Load Foreman extensions
-        ::Foreman::Model::Vmware.send(:prepend, ForemanSnapshotManagement::VmwareExtensions)
+        ::Foreman::Model::Vmware.send(:include, ForemanSnapshotManagement::VmwareExtensions)
 
         # Load Fog extensions
         if Foreman::Model::Vmware.available?
