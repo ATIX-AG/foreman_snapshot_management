@@ -1,0 +1,17 @@
+<%= render 'hosts/selected_hosts', :hosts => @hosts %>
+
+<% if @hosts.empty? %>
+  <%= _('No capable hosts selected') %>
+<% else %>
+  <%= form_for :snapshot, :url => create_multiple_host_snapshots_path(:host_ids => @hosts.map{ | h| h.id}) do |f| %>
+    <%= text_f f, :name,
+      { :label => _("Snapshot")}
+    %>
+    <%= textarea_f f, :description,
+      { :label => _("Description")}
+    %>
+    <%= checkbox_f f, :include_ram,
+      { :label => _("Include RAM")}
+    %>
+  <% end %>
+<% end %>
