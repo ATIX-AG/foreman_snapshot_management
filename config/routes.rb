@@ -25,4 +25,10 @@ Rails.application.routes.draw do
       end
     end
   end
+  resources :snapshots, module: 'foreman_snapshot_management', only: [] do
+    collection do
+      post :select_multiple_host
+      post :create_multiple_host
+    end
+  end
 end

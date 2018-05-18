@@ -1,9 +1,14 @@
 module ForemanSnapshotManagement
   class SnapshotsController < ApplicationController
+    include Foreman::Controller::ActionPermissionDsl
     include ::Foreman::Controller::Parameters::Snapshot
 
-    before_action :find_host
-    before_action :check_snapshot_capability
+    MULTIPLE_ACTIONS = %w[select_multiple_host create_multiple_host].freeze
+
+    before_action :find_hosts, only: MULTIPLE_ACTIONS
+    before_action :find_host, except: MULTIPLE_ACTIONS
+    before_action :check_snapshot_capability, except: MULTIPLE_ACTIONS
+    before_action :check_multiple_snapshot_capability, only: MULTIPLE_ACTIONS
     before_action :enumerate_snapshots, only: [:index]
     before_action :find_snapshot, only: %i[destroy revert update]
     helper_method :xeditable?
@@ -67,7 +72,37 @@ module ForemanSnapshotManagement
       end
     end
 
+    define_action_permission ['select_multiple_host', 'create_multiple_host'], :create
+    def select_multiple_host; end
+
+    def create_multiple_host
+      data = snapshot_params
+      snapshots_created = 0
+      errors = []
+      @hosts.each do |h|
+        s = Snapshot.new(data.merge(host: h))
+        if s.create
+          snapshots_created += 1
+        else
+          errors << [h.name, s.errors.full_messages.to_sentence]
+        end
+      end
+      error _("Error occurred while creating Snapshot for\n%s") % errors.map { |e| "\"#{e[0]}\": #{e[1]}" }.join("\n") unless errors.empty?
+      if snapshots_created > 0
+        notice _('Created %{snapshots} for %{num} %{hosts}') % {
+          snapshots: n_('Snapshot', 'Snapshots', snapshots_created),
+          num: snapshots_created,
+          hosts: n_('host', 'hosts', snapshots_created)
+        }
+      end
+      redirect_back_or_to hosts_path
+    end
+
     private
+
+    def snapshot_params
+      params.require(:snapshot).permit(:name, :description, :include_ram)
+    end
 
     # Find Host
     #
@@ -85,12 +120,44 @@ module ForemanSnapshotManagement
       false
     end
 
+    def find_hosts
+      resource_base = Host.authorized("#{action_permission}_snapshots".to_sym, Host).friendly
+
+      # Lets search by name or id and make sure one of them exists first
+      @hosts = resource_base.search_for(params[:search]) if params.key?(:search)
+      @hosts ||= resource_base.where('hosts.id IN (?) or hosts.name IN (?)', params[:host_ids], params[:host_names]) if params.key?(:host_names) || params.key?(:host_ids)
+
+      if @hosts.empty?
+        error _('No hosts were found with that id, name or query filter')
+        redirect_to(hosts_path)
+        return false
+      end
+
+      @hosts
+    rescue StandardError => error
+      message = _('Something went wrong while selecting hosts - %s') % error
+      error(message)
+      Foreman::Logging.exception(message, error)
+      redirect_to hosts_path
+      false
+    end
+
     def action_permission
       case params[:action]
       when 'revert'
         :revert
       else
         super
+      end
+    end
+
+    def check_multiple_snapshot_capability
+      capable_hosts = @hosts.select { |h| h.capabilities.include?(:snapshots) }
+      if capable_hosts.empty?
+        warning _('No capable hosts found.')
+        @hosts = Host.where('false')
+      else
+        @hosts = Host.where('hosts.id IN (?)', capable_hosts.map(&:id))
       end
     end
 
