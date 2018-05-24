@@ -162,6 +162,9 @@ module ForemanSnapshotManagement
     rescue Foreman::WrappedException => e
       errors.add(:base, e.wrapped_exception.message)
       false
+    rescue ActiveRecord::RecordInvalid => e
+      errors.add(:base, e.message)
+      false
     end
   end
 end
