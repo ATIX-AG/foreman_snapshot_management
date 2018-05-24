@@ -7,7 +7,9 @@ module ForemanSnapshotManagement
       ComputeResource.find_by_id(cr.id)
     end
     let(:uuid) { '5032c8a5-9c5e-ba7a-3804-832a03e16381' }
+    let(:uuid2) { 'a7169e20-74d3-4367-afc2-d355716e7555' }
     let(:host) { FactoryGirl.create(:host, :managed, :compute_resource => compute_resource, :uuid => uuid) }
+    let(:host2) { FactoryGirl.create(:host, :managed, :compute_resource => compute_resource, :uuid => uuid2) }
     let(:snapshot_id) { 'snapshot-0101' }
     setup { ::Fog.mock! }
     teardown { ::Fog.unmock! }
@@ -28,11 +30,24 @@ module ForemanSnapshotManagement
         assert_includes flash[:notice] || flash[:success], 'Successfully created Snapshot.'
       end
 
+      test 'create valid multiple' do
+        post :create_multiple_host, { :host_ids => [host.id, host2.id], :snapshot => { :name => 'test' } }, set_session_user
+        assert_redirected_to hosts_url
+        assert_includes flash[:notice] || flash[:success], 'Created Snapshots for 2 hosts'
+      end
+
       test 'create invalid' do
         ForemanSnapshotManagement::Snapshot.any_instance.stubs(:create).returns(false)
         post :create, { :host_id => host.to_param, :snapshot => { :name => nil } }, set_session_user
         assert_redirected_to host_url(host, :anchor => 'snapshots')
         assert_includes flash[:error], 'Error occurred while creating Snapshot'
+      end
+
+      test 'create invalid multiple' do
+        ForemanSnapshotManagement::Snapshot.any_instance.stubs(:create).returns(false)
+        post :create_multiple_host, { :host_ids => [host.id, host2.id], :snapshot => { :name => nil } }, set_session_user
+        assert_redirected_to hosts_url
+        assert_match(/^Error occurred while creating Snapshot for/, flash[:error])
       end
     end
 
