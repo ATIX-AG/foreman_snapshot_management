@@ -6,6 +6,7 @@ module ForemanSnapshotManagement
 
     config.autoload_paths += Dir["#{config.root}/app/models/concerns"]
     config.autoload_paths += Dir["#{config.root}/app/controllers/concerns"]
+    config.autoload_paths += Dir["#{config.root}/app/helpers/concerns"]
 
     initializer 'foreman_snapshot_management.register_plugin', before: :finisher_hook do |_app|
       Foreman::Plugin.register :foreman_snapshot_management do
@@ -74,6 +75,7 @@ module ForemanSnapshotManagement
       begin
         # Load Foreman extensions
         ::Foreman::Model::Vmware.send(:prepend, ForemanSnapshotManagement::VmwareExtensions)
+        ::HostsHelper.send(:prepend, ForemanSnapshotManagement::HostsHelperExtension)
 
         # Load Fog extensions
         if Foreman::Model::Vmware.available?
