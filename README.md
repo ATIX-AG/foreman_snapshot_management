@@ -16,6 +16,16 @@ As Hypervisor VMware vSphere is supported.
 
 See [How_to_Install_a_Plugin](http://projects.theforeman.org/projects/foreman/wiki/How_to_Install_a_Plugin) for how to install Foreman plugins
 
+## Compatibility
+
+| Foreman Version | Plugin Version |
+| --------------- | -------------- |
+| 1.17            | >= 1.5.0       |
+
+## Contributing
+
+Fork and send a Pull Request. Thanks!
+
 ## Copyright
 Copyright (c) 2017 ATIX AG - http://www.atix.de
 
