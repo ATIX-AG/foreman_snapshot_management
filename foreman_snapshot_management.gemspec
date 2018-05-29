@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.date        = Date.today.to_s
   s.authors     = ['ATIX AG']
   s.email       = ['info@atix.de']
-  s.homepage    = 'http://www.orcharhino.com'
+  s.homepage    = 'https://www.orcharhino.com'
   s.summary     = 'Snapshot Management for VMware vSphere'
   # also update locale/gemspec.rb
   s.description = 'Foreman-plugin to manage snapshots in a vSphere environment.'
