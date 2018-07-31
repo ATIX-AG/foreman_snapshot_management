@@ -2,11 +2,10 @@ language: ruby
 rvm:
   - 2.2
   - 2.3
-gemfile: foreman/Gemfile
-before_install:
+install:
+  - unset BUNDLE_GEMFILE
   - cd ..
   - git clone https://github.com/theforeman/foreman.git -b ${FOREMAN_CORE_BRANCH} --depth 1
-install:
   - cd foreman
   - echo "gemspec :path => '../foreman_snapshot_management'" > bundler.d/foreman_snapshot_management.local.rb
   - ln -s settings.yaml.test config/settings.yaml
