@@ -8,7 +8,7 @@ module Api
       before_action :check_snapshot_capability
       before_action :find_resource, :only => %w[show update destroy revert]
 
-      api :GET, 'hosts/:host_id/snapshots/', N_('List all snapshots')
+      api :GET, '/hosts/:host_id/snapshots', N_('List all snapshots')
       param :host_id, :identifier_dottable, :required => true
       def index
         @snapshots = resource_scope_for_index
@@ -27,7 +27,7 @@ module Api
         end
       end
 
-      api :POST, '/hosts/:host_id/snapshots/', N_('Create a snapshot')
+      api :POST, '/hosts/:host_id/snapshots', N_('Create a snapshot')
       param :host_id, :identifier_dottable, :required => true
       param :include_ram, :bool, :default_value => false, :desc => N_('Whether to include the RAM state in the snapshot')
       param_group :snapshot, :as => :create
@@ -37,7 +37,7 @@ module Api
         process_response @snapshot.save
       end
 
-      api :PUT, '/hosts/:host_id/snapshots/:id/', N_('Update a snapshot')
+      api :PUT, '/hosts/:host_id/snapshots/:id', N_('Update a snapshot')
       param :host_id, :identifier_dottable, :required => true
       param :id, :identifier_dottable, :required => true
       param_group :snapshot
