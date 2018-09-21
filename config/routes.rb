@@ -8,7 +8,9 @@ Rails.application.routes.draw do
         resources :hosts, :only => [] do
           constraints(:id => /[^\/]+/) do
             resources :snapshots, except: [:new, :edit] do
-              put :revert, :on => :collection
+              member do
+                put :revert
+              end
             end
           end
         end

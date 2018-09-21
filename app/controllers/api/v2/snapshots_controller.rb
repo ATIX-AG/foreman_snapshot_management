@@ -34,7 +34,7 @@ module Api
 
       def create
         @snapshot = resource_class.new(snapshot_params.to_h.merge(host: @nested_obj).merge(include_ram: params[:include_ram]))
-        process_response @snapshot.save
+        process_response @snapshot.create
       end
 
       api :PUT, '/hosts/:host_id/snapshots/:id', N_('Update a snapshot')

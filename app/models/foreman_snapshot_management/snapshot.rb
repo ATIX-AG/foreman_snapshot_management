@@ -159,6 +159,7 @@ module ForemanSnapshotManagement
 
     def handle_snapshot_errors
       yield
+      true
     rescue Foreman::WrappedException => e
       errors.add(:base, e.wrapped_exception.message)
       false
