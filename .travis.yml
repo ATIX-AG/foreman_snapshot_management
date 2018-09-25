@@ -1,7 +1,8 @@
 language: ruby
 rvm:
-  - 2.2
   - 2.3
+  - 2.4
+  - 2.5
 install:
   - unset BUNDLE_GEMFILE
   - cd ..
@@ -19,12 +20,13 @@ env:
   global:
     - TESTOPTS=-v
   matrix:
-    - FOREMAN_CORE_BRANCH=1.18-stable
     - FOREMAN_CORE_BRANCH=1.17-stable
-matrix:
-  exclude:
-    - rvm: 2.2
-      env: FOREMAN_CORE_BRANCH=1.18-stable
+    - FOREMAN_CORE_BRANCH=1.18-stable
+    - FOREMAN_CORE_BRANCH=1.19-stable
+#matrix:
+  #exclude:
+    #- rvm: 2.2
+      #env: FOREMAN_CORE_BRANCH=1.18-stable
 addons:
   apt:
     packages:
