@@ -20,6 +20,8 @@ See [How_to_Install_a_Plugin](http://projects.theforeman.org/projects/foreman/wi
 
 | Foreman Version | Plugin Version |
 | --------------- | -------------- |
+| 1.19            | >= 1.5.0       |
+| 1.18            | >= 1.5.0       |
 | 1.17            | >= 1.5.0       |
 
 ## Contributing

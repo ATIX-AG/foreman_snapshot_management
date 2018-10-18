@@ -5,7 +5,7 @@
 %global plugin_name snapshot_management
 
 Name: %{?scl_prefix}rubygem-%{gem_name}
-Version: 1.5.0
+Version: 1.5.1
 Release: 1%{?foremandist}%{?dist}
 Summary: Snapshot Management for VMware vSphere
 Group: Applications/Systems
@@ -88,6 +88,8 @@ cp -pa .%{gem_dir}/* \
 exit 0
 
 %changelog
+* Wed Oct 18 2018 Matthias Dellweg <dellweg@atix.de> 1.5.1-1
+- Api v2 requests actually work (timogoebel)
 * Fri May 25 2018 Matthias Dellweg <dellweg@atix.de> 1.5.0-1
 - Add a bulk action for snapshots
 * Mon Mar 19 2018 Matthias Dellweg <dellweg@atix.de> 1.4.0-1
