@@ -79,8 +79,8 @@ module ForemanSnapshotManagement
 
         # Load Fog extensions
         if Foreman::Model::Vmware.available?
-          Fog::Compute::Vsphere::Real.send(:prepend, FogExtensions::Vsphere::Snapshots::Real)
-          Fog::Compute::Vsphere::Mock.send(:prepend, FogExtensions::Vsphere::Snapshots::Mock)
+          ForemanSnapshotManagement.fog_vsphere_namespace::Real.send(:prepend, FogExtensions::Vsphere::Snapshots::Real)
+          ForemanSnapshotManagement.fog_vsphere_namespace::Mock.send(:prepend, FogExtensions::Vsphere::Snapshots::Mock)
         end
       rescue StandardError => e
         Rails.logger.warn "ForemanSnapshotManagement: skipping engine hook (#{e})"
@@ -97,6 +97,19 @@ module ForemanSnapshotManagement
       locale_dir = File.join(File.expand_path('../..', __dir__), 'locale')
       locale_domain = 'foreman_snapshot_management'
       Foreman::Gettext::Support.add_text_domain locale_domain, locale_dir
+    end
+  end
+
+  def self.fog_vsphere_namespace
+    @fog_vsphere_namespace ||= calculate_fog_vsphere_namespace
+  end
+
+  def self.calculate_fog_vsphere_namespace
+    require 'fog/vsphere/version'
+    if Gem::Version.new(Fog::Vsphere::VERSION) >= Gem::Version.new('3.0.0')
+      Fog::Vsphere::Compute
+    else
+      Fog::Compute::Vsphere
     end
   end
 end
