@@ -20,13 +20,13 @@ env:
   global:
     - TESTOPTS=-v
   matrix:
-    - FOREMAN_CORE_BRANCH=1.17-stable
-    - FOREMAN_CORE_BRANCH=1.18-stable
-    - FOREMAN_CORE_BRANCH=1.19-stable
-#matrix:
-  #exclude:
-    #- rvm: 2.2
-      #env: FOREMAN_CORE_BRANCH=1.18-stable
+    - FOREMAN_CORE_BRANCH=1.20-stable
+    - FOREMAN_CORE_BRANCH=1.21-stable
+    # - FOREMAN_CORE_BRANCH=1.22-stable
+# matrix:
+  # exclude:
+    # - rvm: 2.2
+      # env: FOREMAN_CORE_BRANCH=1.18-stable
 addons:
   apt:
     packages:

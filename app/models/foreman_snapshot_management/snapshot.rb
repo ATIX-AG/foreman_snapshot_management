@@ -39,6 +39,7 @@ module ForemanSnapshotManagement
 
     def children
       return [] unless raw_snapshot
+
       child_snapshots = raw_snapshot.child_snapshots.flat_map do |child_snapshot|
         self.class.new_from_vmware(host, child_snapshot, parent: self)
       end
@@ -73,6 +74,7 @@ module ForemanSnapshotManagement
 
     def include_ram=(value)
       raise Exception('Cannot modify include_ram on existing snapshots.') if persisted?
+
       @include_ram = value
     end
 
@@ -83,12 +85,14 @@ module ForemanSnapshotManagement
 
     def host_id=(host_id)
       return if @host_id == host_id
+
       @host_id = host_id
       @host = nil
     end
 
     def host=(host)
       return if @host_id == host.id
+
       @host_id = host.id
       @host = host
     end

@@ -122,6 +122,7 @@ module ForemanSnapshotManagement
       end
       @host = Host.authorized("#{action_permission}_snapshots".to_sym, Host).friendly.find(host_id)
       return @host if @host
+
       not_found
       false
     end
