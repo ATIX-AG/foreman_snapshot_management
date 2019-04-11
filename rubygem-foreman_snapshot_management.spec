@@ -1,27 +1,35 @@
+# template: foreman_plugin
 %{?scl:%scl_package rubygem-%{gem_name}}
 %{!?scl:%global pkg_name %{name}}
 
 %global gem_name foreman_snapshot_management
 %global plugin_name snapshot_management
+%global foreman_min_version 1.20.0
 
 Name: %{?scl_prefix}rubygem-%{gem_name}
-Version: 1.5.1
+Version: 1.6.0
 Release: 1%{?foremandist}%{?dist}
 Summary: Snapshot Management for VMware vSphere
 Group: Applications/Systems
-License: GPL-3.0
-URL: http://www.orcharhino.com
+License: GPLv3
+URL: https://www.orcharhino.com
 Source0: https://rubygems.org/downloads/%{gem_name}-%{version}.gem
-Requires: foreman >= 1.17.0
+
+# start specfile generated dependencies
+Requires: foreman >= %{foreman_min_version}
+Requires: %{?scl_prefix_ruby}ruby(release)
 Requires: %{?scl_prefix_ruby}ruby
 Requires: %{?scl_prefix_ruby}ruby(rubygems)
-BuildRequires: foreman-plugin >= 1.17.0
+Requires: %{?scl_prefix}rubygem(deface)
+BuildRequires: foreman-plugin >= %{foreman_min_version}
+BuildRequires: %{?scl_prefix}rubygem(deface)
 BuildRequires: %{?scl_prefix_ruby}ruby(release)
 BuildRequires: %{?scl_prefix_ruby}ruby
 BuildRequires: %{?scl_prefix_ruby}rubygems-devel
 BuildArch: noarch
 Provides: %{?scl_prefix}rubygem(%{gem_name}) = %{version}
-Provides: foreman-plugin-%{plugin_name}
+Provides: foreman-plugin-%{plugin_name} = %{version}
+# end specfile generated dependencies
 
 %description
 Foreman-plugin to manage snapshots in a vSphere environment.
@@ -65,6 +73,7 @@ cp -pa .%{gem_dir}/* \
         %{buildroot}%{gem_dir}/
 
 %foreman_bundlerd_file
+%foreman_precompile_plugin -a
 
 %files
 %dir %{gem_instdir}
@@ -76,6 +85,8 @@ cp -pa .%{gem_dir}/* \
 %exclude %{gem_cache}
 %{gem_spec}
 %{foreman_bundlerd_plugin}
+%{foreman_apipie_cache_foreman}
+%{foreman_apipie_cache_plugin}
 
 %files doc
 %doc %{gem_docdir}
@@ -84,34 +95,41 @@ cp -pa .%{gem_dir}/* \
 %{gem_instdir}/test
 
 %posttrans
+%{foreman_apipie_cache}
 %{foreman_restart}
 exit 0
 
 %changelog
-* Wed Oct 18 2018 Matthias Dellweg <dellweg@atix.de> 1.5.1-1
-- Api v2 requests actually work (timogoebel)
+* Thu Apr 11 2019 Matthias Dellweg <dellweg@atix.de> 1.6.0-1
+- Update to 1.6.0
+- Add compatibility workaround for foreman-1.22 (timogoebel)
+
+* Fri Oct 19 2018 Matthias Dellweg <dellweg@atix.de> 1.5.1-1
+- Update to 1.5.1
+
+* Fri Sep 07 2018 Eric D. Helms <ericdhelms@gmail.com> - 1.5.0-3
+- Rebuild for Rails 5.2 and Ruby 2.5
+
+* Mon May 28 2018 Ewoud Kohl van Wijngaarden <ewoud@kohlvanwijngaarden.nl> - 1.5.0-2
+- Regenerate spec file based on the current template
+
 * Fri May 25 2018 Matthias Dellweg <dellweg@atix.de> 1.5.0-1
+- Update to 1.5.0
 - Add a bulk action for snapshots
-* Mon Mar 19 2018 Matthias Dellweg <dellweg@atix.de> 1.4.0-1
-- disable buttons after submit
-- Add option to include RAM in snapshot
-- Make rubocop happy
-- Call rubocop from travis
-- fix delete permission name
-- Fix broken controller tests
-* Fri Dec 15 2017 Matthias Dellweg <dellweg@atix.de> 1.3.0-1
-- Use FactoryBot
-- Add automated testing
-- support granular permissions
-- remove superfluous routes
-- Workaround for vsphere bug
-* Tue Nov 07 2017 Matthias Dellweg <dellweg@atix.de> 1.2.0-1
-- snapshot auditing
-* Tue Sep 19 2017 Matthias Dellweg <dellweg@atix.de> 1.1.0-1
-- Date and time in snapshot list
-- Foreman api v2 entry points
-- Controller tests
-- Code cleanup
-- Reworked Permissions
+
+* Thu Apr 05 2018 Ewoud Kohl van Wijngaarden <ewoud@kohlvanwijngaarden.nl> 1.4.0-1
+- Update to 1.4.0
+
+* Wed Jan 10 2018 Ewoud Kohl van Wijngaarden <ewoud@kohlvanwijngaarden.nl> 1.3.0-2
+- Bump Foreman plugins release (ericdhelms@gmail.com)
+
+* Fri Dec 15 2017 Ewoud Kohl van Wijngaarden <ewoud@kohlvanwijngaarden.nl> 1.3.0-1
+- Update foreman_snapshot_management to 1.3.0 (mail@timogoebel.name)
+
+* Tue Sep 26 2017 Daniel Lobato Garcia <me@daniellobato.me> 1.1.0-1
+- Update foreman_snapshot_management to 1.1.0 (mail@timogoebel.name)
+- Use HTTPS URLs for github and rubygems (ewoud@kohlvanwijngaarden.nl)
+
 * Tue Aug 15 2017 Eric D. Helms <ericdhelms@gmail.com> 1.0.0-1
 - new package built with tito
+
