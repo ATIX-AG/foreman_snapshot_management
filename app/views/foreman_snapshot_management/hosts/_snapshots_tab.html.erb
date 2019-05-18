@@ -1,3 +1,0 @@
-<% if @host.compute_resource && @host.compute_resource.capabilities.include?(:snapshots) && authorized_for(:auth_object => @host, :permission => :view_snapshots) %>
-  <li><a href='#snapshots' data-toggle='tab'><%= _('Snapshots') %></a></li>
-<% end %>
