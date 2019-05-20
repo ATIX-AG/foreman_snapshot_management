@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ForemanSnapshotManagement
   module SnapshotHelper
     def foreman_snapshot_management_snapshot_path(snapshot)

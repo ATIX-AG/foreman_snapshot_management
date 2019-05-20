@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ForemanSnapshotManagement
   module HostsHelperExtension
     def multiple_actions

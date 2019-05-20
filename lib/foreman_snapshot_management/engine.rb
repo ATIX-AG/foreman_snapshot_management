@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ForemanSnapshotManagement
   class Engine < ::Rails::Engine
     engine_name 'foreman_snapshot_management'

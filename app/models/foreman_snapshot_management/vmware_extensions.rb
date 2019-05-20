@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ForemanSnapshotManagement
   module VmwareExtensions
     # Extend VMWare's capabilities with snapshots.
