@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Api
   module V2
     class SnapshotsController < V2::BaseController
@@ -83,7 +85,7 @@ module Api
       end
 
       def check_snapshot_capability
-        not_found unless @nested_obj.compute_resource && @nested_obj.compute_resource.capabilities.include?(:snapshots)
+        not_found unless @nested_obj.compute_resource&.capabilities&.include?(:snapshots)
       end
 
       def action_permission

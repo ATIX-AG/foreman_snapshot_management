@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ForemanSnapshotManagement
   class SnapshotsController < ApplicationController
     include Foreman::Controller::ActionPermissionDsl
@@ -88,7 +90,7 @@ module ForemanSnapshotManagement
         end
       end
       error _('Error occurred while creating Snapshot for<br /><dl>%s</dl>') % errors.map { |e| "<dt>#{e[0]}</dt><dd>#{e[1]}</dd>" }.join('<br />') unless errors.empty?
-      if snapshots_created > 0
+      if snapshots_created.positive?
         msg = _('Created %{snapshots} for %{num} %{hosts}') % {
           snapshots: n_('Snapshot', 'Snapshots', snapshots_created),
           num: snapshots_created,
@@ -169,7 +171,7 @@ module ForemanSnapshotManagement
     end
 
     def check_snapshot_capability
-      not_found unless @host.compute_resource && @host.compute_resource.capabilities.include?(:snapshots)
+      not_found unless @host.compute_resource&.capabilities&.include?(:snapshots)
     end
 
     def enumerate_snapshots

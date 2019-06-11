@@ -1,4 +1,4 @@
-require 'deface'
+# frozen_string_literal: true
 
 module ForemanSnapshotManagement
   class Engine < ::Rails::Engine
@@ -51,6 +51,13 @@ module ForemanSnapshotManagement
           :destroy_snapshots,
           :revert_snapshots
         ]
+
+        extend_page('hosts/show') do |context|
+          context.add_pagelet :main_tabs,
+                              :name => N_('Snapshots'),
+                              :partial => 'hosts/snapshots_tab',
+                              :onlyif => proc { |host| host&.compute_resource&.capable?(:snapshots) }
+        end
       end
     end
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module FogExtensions
   module Vsphere
     module Snapshots
