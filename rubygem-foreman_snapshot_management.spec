@@ -7,7 +7,7 @@
 %global foreman_min_version 1.20.0
 
 Name: %{?scl_prefix}rubygem-%{gem_name}
-Version: 1.6.0
+Version: 1.6.1
 Release: 1%{?foremandist}%{?dist}
 Summary: Snapshot Management for VMware vSphere
 Group: Applications/Systems
@@ -98,6 +98,10 @@ cp -pa .%{gem_dir}/* \
 exit 0
 
 %changelog
+* Thu Sep 17 2019 Matthias Dellweg <dellweg@atix.de> 1.6.1-1
+- Update to 1.6.1
+- Remove dependency on deface
+
 * Thu Apr 11 2019 Matthias Dellweg <dellweg@atix.de> 1.6.0-1
 - Update to 1.6.0
 - Add compatibility workaround for foreman-1.22 (timogoebel)
