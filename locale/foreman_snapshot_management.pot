@@ -1,19 +1,182 @@
-# foreman_snapshot_management
-#
-# This file is distributed under the same license as foreman_snapshot_management.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the foreman_snapshot_management package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: version 0.0.1\n"
+"Project-Id-Version: foreman_snapshot_management 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-20 08:46+0100\n"
-"PO-Revision-Date: 2014-08-20 08:46+0100\n"
-"Last-Translator: Foreman Team <foreman-dev@googlegroups.com>\n"
-"Language-Team: Foreman Team <foreman-dev@googlegroups.com>\n"
+"POT-Creation-Date: 2019-10-22 13:22+0000\n"
+"PO-Revision-Date: 2019-10-22 13:22+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
+#: ../app/controllers/api/v2/snapshots_controller.rb:13
+msgid "List all snapshots"
+msgstr ""
+
+#: ../app/controllers/api/v2/snapshots_controller.rb:27
+msgid "Name of this snapshot"
+msgstr ""
+
+#: ../app/controllers/api/v2/snapshots_controller.rb:28
+msgid "Description of this snapshot"
+msgstr ""
+
+#: ../app/controllers/api/v2/snapshots_controller.rb:32
+msgid "Create a snapshot"
+msgstr ""
+
+#: ../app/controllers/api/v2/snapshots_controller.rb:34
+msgid "Whether to include the RAM state in the snapshot"
+msgstr ""
+
+#: ../app/controllers/api/v2/snapshots_controller.rb:42
+msgid "Update a snapshot"
+msgstr ""
+
+#: ../app/controllers/api/v2/snapshots_controller.rb:51
+msgid "Delete a snapshot"
+msgstr ""
+
+#: ../app/controllers/api/v2/snapshots_controller.rb:59
+msgid "Revert Host to a snapshot"
+msgstr ""
+
+#: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:36
+msgid "Error occurred while creating Snapshot: %s"
+msgstr ""
+
+#: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:48
+msgid "Error occurred while removing Snapshot: %s"
+msgstr ""
+
+#: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:58
+msgid "VM successfully rolled back."
+msgstr ""
+
+#: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:60
+msgid "Error occurred while rolling back VM: %s"
+msgstr ""
+
+#: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:72
+msgid "Failed to update Snapshot: %s"
+msgstr ""
+
+#: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:92
+msgid "Error occurred while creating Snapshot for:%s"
+msgstr ""
+
+#: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:94
+msgid "Created %{snapshots} for %{num} %{hosts}"
+msgstr ""
+
+#: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:95
+#: ../app/models/foreman_snapshot_management/snapshot.rb:56
+#: ../app/views/foreman_snapshot_management/snapshots/_index.html.erb:5
+#: ../app/views/foreman_snapshot_management/snapshots/select_multiple_host.html.erb:8
+msgid "Snapshot"
+msgid_plural "Snapshots"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:97
+msgid "host"
+msgid_plural "hosts"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:140
+msgid "No hosts were found with that id, name or query filter"
+msgstr ""
+
+#: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:147
+msgid "Something went wrong while selecting hosts - %s"
+msgstr ""
+
+#: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:166
+msgid "No capable hosts found."
+msgstr ""
+
+#:
+#: ../app/helpers/concerns/foreman_snapshot_management/hosts_helper_extension.rb:6
+msgid "Create Snapshot"
+msgstr ""
+
+#: ../app/models/foreman_snapshot_management/vmware_extensions.rb:18
+msgid "Unable to create VMWare Snapshot"
+msgstr ""
+
+#: ../app/models/foreman_snapshot_management/vmware_extensions.rb:29
+msgid "Unable to remove VMWare Snapshot"
+msgstr ""
+
+#: ../app/models/foreman_snapshot_management/vmware_extensions.rb:40
+msgid "Unable to revert VMWare Snapshot"
+msgstr ""
+
+#: ../app/models/foreman_snapshot_management/vmware_extensions.rb:51
+msgid "Unable to update VMWare Snapshot"
+msgstr ""
+
+#: ../app/views/foreman_snapshot_management/snapshots/_index.html.erb:6
+#: ../app/views/foreman_snapshot_management/snapshots/select_multiple_host.html.erb:11
+msgid "Description"
+msgstr ""
+
+#: ../app/views/foreman_snapshot_management/snapshots/_index.html.erb:7
+#: ../app/views/foreman_snapshot_management/snapshots/select_multiple_host.html.erb:14
+msgid "Include RAM"
+msgstr ""
+
+#: ../app/views/foreman_snapshot_management/snapshots/_index.html.erb:8
+msgid "Action"
+msgstr ""
+
+#: ../app/views/foreman_snapshot_management/snapshots/_index.html.erb:24
+msgid "Create"
+msgstr ""
+
+#: ../app/views/foreman_snapshot_management/snapshots/_index.html.erb:49
+msgid "Rollback"
+msgstr ""
+
+#: ../app/views/foreman_snapshot_management/snapshots/_index.html.erb:49
+msgid "Are you sure to revert this Snapshot?"
+msgstr ""
+
+#: ../app/views/foreman_snapshot_management/snapshots/_index.html.erb:49
+msgid "Reverting..."
+msgstr ""
+
+#: ../app/views/foreman_snapshot_management/snapshots/_index.html.erb:50
+msgid "Are you sure to delete this Snapshot?"
+msgstr ""
+
+#: ../app/views/foreman_snapshot_management/snapshots/_index.html.erb:50
+msgid "Deleting..."
+msgstr ""
+
+#:
+#: ../app/views/foreman_snapshot_management/snapshots/select_multiple_host.html.erb:4
+msgid "No capable hosts selected"
+msgstr ""
+
+#: ../app/views/hosts/_snapshots_tab.html.erb:5
+msgid "Loading Snapshots information ..."
+msgstr ""
+
+#: ../lib/foreman_snapshot_management/engine.rb:57
+msgid "Snapshots"
+msgstr ""
+
+#: gemspec.rb:4
+msgid "Foreman-plugin to manage snapshots in a vSphere environment."
+msgstr ""
