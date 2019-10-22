@@ -1,0 +1,9 @@
+[main]
+host = https://www.transifex.com
+
+[foreman.foreman_snapshot_management]
+file_filter = locale/<lang>/foreman_snapshot_management.edit.po
+source_file = locale/foreman_snapshot_management.pot
+source_lang = en
+type = PO
+
