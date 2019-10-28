@@ -89,7 +89,7 @@ module ForemanSnapshotManagement
           errors << [h.name, s.errors.full_messages.to_sentence]
         end
       end
-      error _('Error occurred while creating Snapshot for<br /><dl>%s</dl>') % errors.map { |e| "<dt>#{e[0]}</dt><dd>#{e[1]}</dd>" }.join('<br />') unless errors.empty?
+      error _('Error occurred while creating Snapshot for:%s') % "<br /><dl>#{errors.map { |e| "<dt>#{e[0]}</dt><dd>#{e[1]}</dd>" }.join('<br />')}</dl>" unless errors.empty?
       if snapshots_created.positive?
         msg = _('Created %{snapshots} for %{num} %{hosts}') % {
           snapshots: n_('Snapshot', 'Snapshots', snapshots_created),
