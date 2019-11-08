@@ -4,7 +4,7 @@ module ForemanSnapshotManagement
   module VmwareExtensions
     # Extend VMWare's capabilities with snapshots.
     def capabilities
-      super + [:snapshots]
+      super + [:snapshots, :snapshot_include_ram, :editable_snapshot_name]
     end
 
     # Create a Snapshot.
