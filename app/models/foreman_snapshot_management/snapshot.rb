@@ -28,6 +28,10 @@ module ForemanSnapshotManagement
       host.compute_resource.get_snapshot(host, id)
     end
 
+    def self.find_for_host_by_name(host, name)
+      host.compute_resource.get_snapshot_by_name(host, name)
+    end
+
     def inspect
       "#<#{self.class}:0x#{self.__id__.to_s(16)} name=#{name} id=#{id} description=#{description} host_id=#{host_id} parent=#{parent.try(:id)}>"
     end

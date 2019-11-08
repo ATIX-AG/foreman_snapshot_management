@@ -12,8 +12,22 @@ module Api
 
       api :GET, '/hosts/:host_id/snapshots', N_('List all snapshots')
       param :host_id, :identifier_dottable, :required => true
+      param_group :search_and_pagination, ::Api::V2::BaseController
+      meta :search => [{ :name => 'name', :type => 'string' }]
       def index
-        @snapshots = resource_scope_for_index
+        if params[:search]
+          search = params[:search].match(/^\s*name\s*=\s*(\w+)\s*$/) || params[:search].match(/^\s*name\s*=\s*\"([^"]+)\"\s*$/)
+          raise "Field '#{params[:search]}' not recognized for searching!" unless search
+
+          snapshot = resource_class.find_for_host_by_name(@nested_obj, search[1])
+          @snapshots = if snapshot
+                         [snapshot].paginate(paginate_options)
+                       else
+                         []
+                       end
+        else
+          @snapshots = resource_scope_for_index
+        end
       end
 
       api :GET, '/hosts/:host_id/snapshots/:id', 'Show a snapshot'
