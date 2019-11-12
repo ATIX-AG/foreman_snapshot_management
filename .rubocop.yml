@@ -88,3 +88,6 @@ Metrics/PerceivedComplexity:
 
 Style/CaseEquality:
   Enabled: false
+
+Style/GuardClause:
+  Enabled: false

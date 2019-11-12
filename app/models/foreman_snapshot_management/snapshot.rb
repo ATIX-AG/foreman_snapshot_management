@@ -16,40 +16,20 @@ module ForemanSnapshotManagement
     attr_reader :name, :description, :include_ram, :host_id
     define_attribute_methods :name, :description, :include_ram
 
+    def self.new_for_host(host)
+      host.compute_resource.new_snapshot(host)
+    end
+
     def self.all_for_host(host)
-      host.compute_resource.get_snapshots(host.uuid).map do |raw_snapshot|
-        new_from_vmware(host, raw_snapshot)
-      end
+      host.compute_resource.get_snapshots(host)
     end
 
     def self.find_for_host(host, id)
-      raw_snapshot = host.compute_resource.get_snapshot(host.uuid, id)
-      new_from_vmware(host, raw_snapshot) if raw_snapshot
-    end
-
-    def self.new_from_vmware(host, raw_snapshot, opts = {})
-      new(
-        host: host,
-        id: raw_snapshot.ref,
-        raw_snapshot: raw_snapshot,
-        name: raw_snapshot.name,
-        description: raw_snapshot.description,
-        parent: opts[:parent],
-        create_time: raw_snapshot.create_time
-      )
-    end
-
-    def children
-      return [] unless raw_snapshot
-
-      child_snapshots = raw_snapshot.child_snapshots.flat_map do |child_snapshot|
-        self.class.new_from_vmware(host, child_snapshot, parent: self)
-      end
-      child_snapshots + child_snapshots.flat_map(&:children)
+      host.compute_resource.get_snapshot(host, id)
     end
 
     def inspect
-      "#<#{self.class}:0x#{self.__id__.to_s(16)} name=#{name} id=#{id} description=#{description} host_id=#{host_id} parent=#{parent.try(:id)} children=#{children.map(&:id).inspect}>"
+      "#<#{self.class}:0x#{self.__id__.to_s(16)} name=#{name} id=#{id} description=#{description} host_id=#{host_id} parent=#{parent.try(:id)}>"
     end
 
     def to_s
@@ -122,7 +102,7 @@ module ForemanSnapshotManagement
         handle_snapshot_errors do
           host.audit_comment = "Create snapshot #{name}"
           host.save!
-          host.compute_resource.create_snapshot(host.uuid, name, description, include_ram)
+          host.compute_resource.create_snapshot(host, name, description, include_ram)
           changes_applied
         end
       end
@@ -144,7 +124,7 @@ module ForemanSnapshotManagement
         result = handle_snapshot_errors do
           host.audit_comment = "Destroy snapshot #{name}"
           host.save!
-          result = host.compute_resource.remove_snapshot(raw_snapshot, false)
+          result = host.compute_resource.remove_snapshot(raw_snapshot)
         end
         @id = nil
         result
