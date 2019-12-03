@@ -59,6 +59,20 @@ module ForemanSnapshotManagement
       raw_to_snapshot(host, raw_snapshot)
     end
 
+    # Get Snapshot by name
+    #
+    # This method returns a specific Snapshot for a given host.
+    def get_snapshot_by_name(host, name)
+      raw_snapshot = nil
+      client.snapshots(server_id: host.uuid).all(recursive: true).each do |snapshot|
+        if name == snapshot.name
+          raw_snapshot = snapshot
+          break
+        end
+      end
+      raw_to_snapshot(host, raw_snapshot)
+    end
+
     # Get Snapshots
     #
     # This methods returns Snapshots for a given host.

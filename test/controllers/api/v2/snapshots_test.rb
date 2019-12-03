@@ -24,6 +24,21 @@ class Api::V2::SnapshotsControllerTest < ActionController::TestCase
     refute_empty body['results']
   end
 
+  test 'should search snapshot' do
+    get :index, params: { :host_id => host.to_param, :search => 'name= clean' }
+    assert_response :success
+    assert_not_nil assigns(:snapshots)
+    body = ActiveSupport::JSON.decode(@response.body)
+    refute_empty body
+    refute_empty body['results']
+    assert body['results'].count == 1
+  end
+
+  test 'should refute search snapshot' do
+    get :index, params: { :host_id => host.to_param, :search => 'name != clean' }
+    assert_response :internal_server_error
+  end
+
   test 'should show snapshot' do
     get :show, params: { :host_id => host.to_param, :id => snapshot_id }
     assert_not_nil assigns(:snapshot)
