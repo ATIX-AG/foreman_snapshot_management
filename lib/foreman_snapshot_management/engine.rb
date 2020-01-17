@@ -22,7 +22,7 @@ module ForemanSnapshotManagement
           }, :resource_type => 'Host'
 
           permission :create_snapshots, {
-            :'foreman_snapshot_management/snapshots' => [:create],
+            :'foreman_snapshot_management/snapshots' => [:create, :select_multiple_host, :create_multiple_host],
             :'api/v2/snapshots' => [:create]
           }, :resource_type => 'Host'
 
