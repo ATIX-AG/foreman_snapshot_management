@@ -12,6 +12,7 @@ install:
 script:
   - bundle exec rubocop ../foreman_snapshot_management
   - bundle exec rake test:foreman_snapshot_management
+  - bundle exec rake test TEST="test/unit/foreman/access_permissions_test.rb"
 env:
   global:
     - TESTOPTS=-v
