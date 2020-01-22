@@ -4,11 +4,11 @@ require 'test_helper'
 
 module ForemanSnapshotManagement
   class SnapshotsControllerTest < ActionController::TestCase
-    let(:tax_location) { Location.find_by_name('Location 1') }
-    let(:tax_organization) { Organization.find_by_name('Organization 1') }
+    let(:tax_location) { Location.find_by(name: 'Location 1') }
+    let(:tax_organization) { Organization.find_by(name: 'Organization 1') }
     let(:compute_resource) do
       cr = FactoryBot.create(:compute_resource, :vmware, :uuid => 'Solutions', :locations => [tax_location], organizations: [tax_organization])
-      ComputeResource.find_by_id(cr.id)
+      ComputeResource.find_by(id: cr.id)
     end
     let(:uuid) { '5032c8a5-9c5e-ba7a-3804-832a03e16381' }
     let(:uuid2) { 'a7169e20-74d3-4367-afc2-d355716e7555' }

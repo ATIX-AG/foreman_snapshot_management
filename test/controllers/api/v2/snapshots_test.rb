@@ -3,11 +3,11 @@
 require 'test_helper'
 
 class Api::V2::SnapshotsControllerTest < ActionController::TestCase
-  let(:tax_location) { Location.find_by_name('Location 1') }
-  let(:tax_organization) { Organization.find_by_name('Organization 1') }
+  let(:tax_location) { Location.find_by(name: 'Location 1') }
+  let(:tax_organization) { Organization.find_by(name: 'Organization 1') }
   let(:compute_resource) do
     cr = FactoryBot.create(:compute_resource, :vmware, :uuid => 'Solutions', :locations => [tax_location], organizations: [tax_organization])
-    ComputeResource.find_by_id(cr.id)
+    ComputeResource.find_by(id: cr.id)
   end
   let(:uuid) { '5032c8a5-9c5e-ba7a-3804-832a03e16381' }
   let(:host) { FactoryBot.create(:host, :managed, :compute_resource => compute_resource, :uuid => uuid) }
@@ -20,8 +20,8 @@ class Api::V2::SnapshotsControllerTest < ActionController::TestCase
     assert_response :success
     assert_not_nil assigns(:snapshots)
     body = ActiveSupport::JSON.decode(@response.body)
-    refute_empty body
-    refute_empty body['results']
+    assert_not_empty body
+    assert_not_empty body['results']
   end
 
   test 'should search snapshot' do
@@ -29,8 +29,8 @@ class Api::V2::SnapshotsControllerTest < ActionController::TestCase
     assert_response :success
     assert_not_nil assigns(:snapshots)
     body = ActiveSupport::JSON.decode(@response.body)
-    refute_empty body
-    refute_empty body['results']
+    assert_not_empty body
+    assert_not_empty body['results']
     assert body['results'].count == 1
   end
 
@@ -44,7 +44,7 @@ class Api::V2::SnapshotsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:snapshot)
     assert_response :success
     body = ActiveSupport::JSON.decode(@response.body)
-    refute_empty body
+    assert_not_empty body
   end
 
   test 'should 404 for unknown snapshot' do

@@ -66,7 +66,7 @@ module ForemanSnapshotManagement
     #
     # This method renames a Snapshot from a given host.
     def update
-      if @snapshot.update_attributes(snapshot_params)
+      if @snapshot.update(snapshot_params)
         render json: { name: @snapshot.name, description: @snapshot.description }
       else
         msg = _('Failed to update Snapshot: %s') % @snapshot.errors.full_messages.to_sentence
@@ -143,10 +143,10 @@ module ForemanSnapshotManagement
       end
 
       @hosts
-    rescue StandardError => error
-      message = _('Something went wrong while selecting hosts - %s') % error
+    rescue StandardError => e
+      message = _('Something went wrong while selecting hosts - %s') % e
       error(message)
-      Foreman::Logging.exception(message, error)
+      Foreman::Logging.exception(message, e)
       redirect_to hosts_path
       false
     end

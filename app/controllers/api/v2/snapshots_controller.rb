@@ -59,7 +59,7 @@ module Api
       param_group :snapshot
 
       def update
-        process_response @snapshot.update_attributes(snapshot_params)
+        process_response @snapshot.update(snapshot_params)
       end
 
       api :DELETE, '/hosts/:host_id/snapshots/:id', N_('Delete a snapshot')
