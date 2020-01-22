@@ -7,7 +7,7 @@
 %global foreman_min_version 1.20.0
 
 Name: %{?scl_prefix}rubygem-%{gem_name}
-Version: 1.6.1
+Version: 1.7.0
 Release: 1%{?foremandist}%{?dist}
 Summary: Snapshot Management for VMware vSphere
 Group: Applications/Systems
@@ -92,15 +92,14 @@ cp -pa .%{gem_dir}/* \
 %{gem_instdir}/Rakefile
 %{gem_instdir}/test
 
-%posttrans
-%{foreman_apipie_cache}
-%{foreman_restart}
-exit 0
-
 %changelog
-* Thu Sep 17 2019 Matthias Dellweg <dellweg@atix.de> 1.6.1-1
-- Update to 1.6.1
+* Wed Jan 22 2020 Matthias Dellweg <dellweg@atix.de> 1.7.0-1
+- Update to 1.7.0
 - Remove dependency on deface
+- Update translations
+
+* Fri Jan 17 2020 Eric D. Helms <ericdhelms@gmail.com> - 1.6.0-2
+- Drop posttrans macros
 
 * Thu Apr 11 2019 Matthias Dellweg <dellweg@atix.de> 1.6.0-1
 - Update to 1.6.0
