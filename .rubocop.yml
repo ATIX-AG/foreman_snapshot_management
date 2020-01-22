@@ -4,13 +4,20 @@ AllCops:
     - '*.spec'
     - 'doc/plugins/**'
 
+Rails/Date:
+  Exclude:
+    - 'foreman_snapshot_management.gemspec'
+
+Rails:
+  Enabled: True
+
+Rails/FindEach:
+  Exclude:
+    - 'app/models/foreman_snapshot_management/vmware_extensions.rb'
+
 # Don't enforce documentation
 Style/Documentation:
   Enabled: false
-
-# Force before_filter until upgrade to Rails 4
-Rails/ActionFilter:
-  EnforcedStyle: action
 
 Metrics/MethodLength:
   Max: 40
@@ -26,7 +33,7 @@ Metrics/ClassLength:
 
 Naming/FileName:
   Exclude:
-      - 'db/seeds.d/*'
+    - 'db/seeds.d/*'
 
 Style/WordArray:
   Enabled: false

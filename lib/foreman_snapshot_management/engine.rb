@@ -81,13 +81,13 @@ module ForemanSnapshotManagement
     config.to_prepare do
       begin
         # Load Foreman extensions
-        ::Foreman::Model::Vmware.send(:prepend, ForemanSnapshotManagement::VmwareExtensions)
-        ::HostsHelper.send(:prepend, ForemanSnapshotManagement::HostsHelperExtension)
+        ::Foreman::Model::Vmware.prepend(ForemanSnapshotManagement::VmwareExtensions)
+        ::HostsHelper.prepend(ForemanSnapshotManagement::HostsHelperExtension)
 
         # Load Fog extensions
         if Foreman::Model::Vmware.available?
-          ForemanSnapshotManagement.fog_vsphere_namespace::Real.send(:prepend, FogExtensions::Vsphere::Snapshots::Real)
-          ForemanSnapshotManagement.fog_vsphere_namespace::Mock.send(:prepend, FogExtensions::Vsphere::Snapshots::Mock)
+          ForemanSnapshotManagement.fog_vsphere_namespace::Real.prepend(FogExtensions::Vsphere::Snapshots::Real)
+          ForemanSnapshotManagement.fog_vsphere_namespace::Mock.prepend(FogExtensions::Vsphere::Snapshots::Mock)
         end
       rescue StandardError => e
         Rails.logger.warn "ForemanSnapshotManagement: skipping engine hook (#{e})"

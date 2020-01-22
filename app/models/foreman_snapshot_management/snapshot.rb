@@ -107,7 +107,7 @@ module ForemanSnapshotManagement
       end
     end
 
-    def update_attributes(new_attributes)
+    def update(new_attributes)
       assign_attributes(new_attributes)
       save if changed?
     end
