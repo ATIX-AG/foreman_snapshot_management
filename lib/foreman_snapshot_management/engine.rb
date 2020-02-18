@@ -43,14 +43,18 @@ module ForemanSnapshotManagement
         end
 
         # Adds roles if they do not exist
-        role 'Snapshot Viewer', [:view_snapshots]
-        role 'Snapshot Manager', [
-          :view_snapshots,
-          :create_snapshots,
-          :edit_snapshots,
-          :destroy_snapshots,
-          :revert_snapshots
-        ]
+        role 'Snapshot Viewer',
+             [:view_snapshots],
+             'Role granting permission only to view snapshots for hosts'
+        role 'Snapshot Manager',
+             [
+               :view_snapshots,
+               :create_snapshots,
+               :edit_snapshots,
+               :destroy_snapshots,
+               :revert_snapshots
+             ],
+             'Role granting permission to manage snapshots for hosts'
 
         extend_page('hosts/show') do |context|
           context.add_pagelet :main_tabs,
