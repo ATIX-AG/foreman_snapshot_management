@@ -4,7 +4,9 @@
   <tr>
     <th class="col-md-1"><%= _('Snapshot') %></th>
     <th class="col-md-2"><%= _('Description') %></th>
-    <th class="col-md-1"><%= _('Include RAM') %></th>
+    <% if @host.compute_resource.capable?(:snapshot_include_ram) %>
+      <th class="col-md-1"><%= _('Include RAM') %></th>
+    <% end %>
     <th class="col-md-1"><%= _('Action') %></th>
   </tr>
   </thead>
@@ -17,9 +19,11 @@
         <td>
           <%= f.text_field :description, class: 'form-control' %>
         </td>
-        <td>
-          <%= f.check_box :include_ram, class: 'form-control' %>
-        </td>
+        <% if @host.compute_resource.capable?(:snapshot_include_ram) %>
+          <td>
+            <%= f.check_box :include_ram, class: 'form-control' %>
+          </td>
+        <% end %>
         <td>
           <%= f.submit _('Create'), class: 'btn btn-success', :onclick => "$(this).attr('disabled', 'disabled'); $(this).parents('form').submit();" %>
         </td>
@@ -28,7 +32,7 @@
   <% @snapshots.each do |snapshot| %>
       <tr>
         <td>
-          <% if authorized_for(:auth_object => @host, :permission => :edit_snapshots) %>
+          <% if authorized_for(:auth_object => @host, :permission => :edit_snapshots) && @host.compute_resource.capable?(:editable_snapshot_name) %>
             <%= edit_textfield snapshot, :name %>
           <% else %>
             <%= snapshot.name %>
@@ -42,8 +46,10 @@
             <%= snapshot.description %>
           <% end %>
         </td>
-        <td>
-        </td>
+        <% if @host.compute_resource.capable?(:snapshot_include_ram) %>
+          <td>
+          </td>
+        <% end %>
         <td>
           <%= action_buttons(
             display_link_if_authorized(_('Rollback'), hash_for_revert_host_snapshot_path(host_id: @host, id: snapshot.id).merge(:auth_object => @host, :permission => :revert_snapshots), method: :put, class: 'btn btn-primary', data: {confirm: _('Are you sure to revert this Snapshot?'), 'disable-with': _('Reverting...')}),
