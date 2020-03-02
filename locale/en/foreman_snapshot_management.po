@@ -1,19 +1,21 @@
-# foreman_snapshot_management
-#
-# This file is distributed under the same license as foreman_snapshot_management.
+# English translations for foreman_snapshot_management package.
+# Copyright (C) 2020 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the foreman_snapshot_management package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: version 0.0.1\n"
+"Project-Id-Version: foreman_snapshot_management 1.7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2014-08-20 08:54+0100\n"
-"Last-Translator: Foreman Team <foreman-dev@googlegroups.com>\n"
-"Language-Team: Foreman Team <foreman-dev@googlegroups.com>\n"
-"Language: \n"
+"PO-Revision-Date: 2020-03-02 10:27+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: English\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"\n"
 
 msgid "Action"
 msgstr ""
@@ -63,7 +65,7 @@ msgstr ""
 msgid "Failed to update Snapshot: %s"
 msgstr ""
 
-msgid "Foreman-plugin to manage snapshots in a vSphere environment."
+msgid "Foreman-plugin to manage snapshots in a virtual-hardware environments."
 msgstr ""
 
 msgid "Include RAM"
@@ -73,6 +75,9 @@ msgid "List all snapshots"
 msgstr ""
 
 msgid "Loading Snapshots information ..."
+msgstr ""
+
+msgid "Name must contain at least 2 characters starting with alphabet. Valid characters are A-Z a-z 0-9 _"
 msgstr ""
 
 msgid "Name of this snapshot"
@@ -101,19 +106,34 @@ msgid_plural "Snapshots"
 msgstr[0] ""
 msgstr[1] ""
 
+msgid "Snapshot name cannot be changed"
+msgstr ""
+
 msgid "Snapshots"
 msgstr ""
 
 msgid "Something went wrong while selecting hosts - %s"
 msgstr ""
 
+msgid "Unable to create Proxmox Snapshot"
+msgstr ""
+
 msgid "Unable to create VMWare Snapshot"
+msgstr ""
+
+msgid "Unable to remove Proxmox Snapshot"
 msgstr ""
 
 msgid "Unable to remove VMWare Snapshot"
 msgstr ""
 
+msgid "Unable to revert Proxmox Snapshot"
+msgstr ""
+
 msgid "Unable to revert VMWare Snapshot"
+msgstr ""
+
+msgid "Unable to update Proxmox Snapshot"
 msgstr ""
 
 msgid "Unable to update VMWare Snapshot"
