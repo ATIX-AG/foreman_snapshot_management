@@ -6,6 +6,7 @@ require 'date'
 Gem::Specification.new do |s|
   s.name        = 'foreman_snapshot_management'
   s.version     = ForemanSnapshotManagement::VERSION
+  s.licenses    = ['GPL-3.0-only']
   s.date        = Date.today.to_s
   s.authors     = ['ATIX AG']
   s.email       = ['info@atix.de']
