@@ -12,7 +12,7 @@ module ForemanSnapshotManagement
     # This method creates a Snapshot with a given name and optional description.
     def create_snapshot(host, name, description, _include_ram = false)
       server = find_vm_by_uuid host.uuid
-      raise N_('Name must contain at least 2 characters starting with alphabet. Valid characters are A-Z a-z 0-9 _') unless name =~ /^[A-Za-z][\w]{1,}$/
+      raise _('Name must contain at least 2 characters starting with alphabet. Valid characters are A-Z a-z 0-9 _') unless name =~ /^[A-Za-z][\w]{1,}$/
 
       snapshot = server.snapshots.create(name: name)
       snapshot.description = description
@@ -46,7 +46,7 @@ module ForemanSnapshotManagement
     #
     # This method renames a Snapshot from a given host.
     def update_snapshot(snapshot, name, description)
-      raise N_('Snapshot name cannot be changed') if snapshot.name != name
+      raise _('Snapshot name cannot be changed') if snapshot.name != name
 
       snapshot.description = description
       snapshot.update

@@ -9,14 +9,15 @@
 # Wiederoder <stefanwiederoder@googlemail.com>, 2019
 # Bryan Kearney <bryan.kearney@gmail.com>, 2019
 # Martin Zimmermann <martin.zimmermann@gmx.com>, 2019
-# Markus Bucher <bucher@atix.de>, 2019
+# Markus Bucher <bucher@atix.de>, 2020
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: foreman_snapshot_management 1.7.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2019-10-22 11:54+0000\n"
-"Last-Translator: Markus Bucher <bucher@atix.de>, 2019\n"
+"Last-Translator: Markus Bucher <bucher@atix.de>, 2020\n"
 "Language-Team: German (https://www.transifex.com/foreman/teams/114/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,7 +32,7 @@ msgid "Are you sure to delete this Snapshot?"
 msgstr "Wollen Sie diesen Snapshot wirklich löschen?"
 
 msgid "Are you sure to revert this Snapshot?"
-msgstr ""
+msgstr "Sind Sie sicher, dass Sie diesen Snapshot wiederherstellen wollen?"
 
 msgid "Create"
 msgstr "Erstellen"
@@ -58,22 +59,22 @@ msgid "Description of this snapshot"
 msgstr "Beschreibung dieses Snapshots"
 
 msgid "Error occurred while creating Snapshot for:%s"
-msgstr ""
+msgstr "Beim Erzeugen des Snapshots ist ein Fehler aufgetreten: %s"
 
 msgid "Error occurred while creating Snapshot: %s"
-msgstr ""
+msgstr "Beim Erzeugen des Snaphosts ist ein Fehler aufgetreten: %s"
 
 msgid "Error occurred while removing Snapshot: %s"
-msgstr ""
+msgstr "Beim Löschen des Snapshots ist ein Fehler aufgetreten: %s"
 
 msgid "Error occurred while rolling back VM: %s"
-msgstr ""
+msgstr "Beim Zurücksetzen der VM ist ein Fehler aufgetreten: %s"
 
 msgid "Failed to update Snapshot: %s"
-msgstr ""
+msgstr "Das Aktualisieren des Snapshots ist fehlgeschlagen: %s"
 
 msgid "Foreman-plugin to manage snapshots in a virtual-hardware environments."
-msgstr ""
+msgstr "Ein Foremanplugin, welches Snapshots in Umgebungen mit virtueller Hardware nutzbar macht."
 
 msgid "Include RAM"
 msgstr "RAM einbeziehen"
@@ -85,22 +86,22 @@ msgid "Loading Snapshots information ..."
 msgstr "Lade Snapshot Informationen ..."
 
 msgid "Name must contain at least 2 characters starting with alphabet. Valid characters are A-Z a-z 0-9 _"
-msgstr ""
+msgstr "Der Name muss aus mindestens 2 Zeichen bestehen und mit einem Buchstaben beginnen. Gültige Zeichen: A-Z a-z 0-9 _"
 
 msgid "Name of this snapshot"
 msgstr "Name dieses Snapshots"
 
 msgid "No capable hosts found."
-msgstr ""
+msgstr "Kein unterstützter Host gefunden."
 
 msgid "No capable hosts selected"
-msgstr ""
+msgstr "Keine unterstützten Hosts ausgewählt"
 
 msgid "No hosts were found with that id, name or query filter"
 msgstr "Keine Hosts wurden mit dieser Kennung, Name oder Abfrage-Filter gefunden"
 
 msgid "Revert Host to a snapshot"
-msgstr ""
+msgstr "Host auf einen Snapshot zurücksetzen"
 
 msgid "Reverting..."
 msgstr "Zurücksetzen..."
@@ -114,7 +115,7 @@ msgstr[0] "Snapshot"
 msgstr[1] "Snapshots"
 
 msgid "Snapshot name cannot be changed"
-msgstr ""
+msgstr "Der Name des Snapshots kann nicht geändert werden"
 
 msgid "Snapshots"
 msgstr "Snapshots"
@@ -123,37 +124,37 @@ msgid "Something went wrong while selecting hosts - %s"
 msgstr "Fehler beim Auswählen der Hosts – %s"
 
 msgid "Unable to create Proxmox Snapshot"
-msgstr ""
+msgstr "Proxmox Snapshot konnte nicht erstellt werden"
 
 msgid "Unable to create VMWare Snapshot"
-msgstr ""
+msgstr "VMWare Snapshot konnte nicht erstellt werden"
 
 msgid "Unable to remove Proxmox Snapshot"
-msgstr ""
+msgstr "Proxmox Snapshot konnte nicht gelöscht werden"
 
 msgid "Unable to remove VMWare Snapshot"
-msgstr ""
+msgstr "VMWare Snapshot konnte nicht gelöscht werden"
 
 msgid "Unable to revert Proxmox Snapshot"
-msgstr ""
+msgstr "Proxmox Snapshot konnte nicht wiederhergestellt werden"
 
 msgid "Unable to revert VMWare Snapshot"
-msgstr ""
+msgstr "VMWare Snapshot konnte nicht wiederhergestellt werden"
 
 msgid "Unable to update Proxmox Snapshot"
-msgstr ""
+msgstr "Proxmox Snapshot konnte nicht aktualisiert werden"
 
 msgid "Unable to update VMWare Snapshot"
-msgstr ""
+msgstr "VMWare Snapshot konnte nicht aktualisiert werden"
 
 msgid "Update a snapshot"
-msgstr ""
+msgstr "Snapshot aktualisieren"
 
 msgid "VM successfully rolled back."
-msgstr ""
+msgstr "Die VM wurde erfolgreich zurückgesetzt."
 
 msgid "Whether to include the RAM state in the snapshot"
-msgstr ""
+msgstr "Ob auch der aktuelle Hauptspeicherstand im Snapshot gespeichert werden soll"
 
 msgid "host"
 msgid_plural "hosts"
