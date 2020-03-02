@@ -10,9 +10,9 @@ Gem::Specification.new do |s|
   s.authors     = ['ATIX AG']
   s.email       = ['info@atix.de']
   s.homepage    = 'https://www.orcharhino.com'
-  s.summary     = 'Snapshot Management for VMware vSphere'
+  s.summary     = 'Snapshot Management for machines on virtualization-platforms'
   # also update locale/gemspec.rb
-  s.description = 'Foreman-plugin to manage snapshots in a vSphere environment.'
+  s.description = 'Foreman-plugin to manage snapshots in a virtual-hardware environments.'
 
   s.files = Dir['{app,config,db,lib,locale}/**/*'] + ['LICENSE', 'Rakefile', 'README.md']
   s.test_files = Dir['test/**/*']

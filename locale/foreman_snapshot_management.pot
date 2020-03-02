@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: foreman_snapshot_management 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-22 13:22+0000\n"
-"PO-Revision-Date: 2019-10-22 13:22+0000\n"
+"POT-Creation-Date: 2020-03-02 12:09+0000\n"
+"PO-Revision-Date: 2020-03-02 12:09+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -22,31 +22,31 @@ msgstr ""
 msgid "List all snapshots"
 msgstr ""
 
-#: ../app/controllers/api/v2/snapshots_controller.rb:27
+#: ../app/controllers/api/v2/snapshots_controller.rb:41
 msgid "Name of this snapshot"
 msgstr ""
 
-#: ../app/controllers/api/v2/snapshots_controller.rb:28
+#: ../app/controllers/api/v2/snapshots_controller.rb:42
 msgid "Description of this snapshot"
 msgstr ""
 
-#: ../app/controllers/api/v2/snapshots_controller.rb:32
+#: ../app/controllers/api/v2/snapshots_controller.rb:46
 msgid "Create a snapshot"
 msgstr ""
 
-#: ../app/controllers/api/v2/snapshots_controller.rb:34
+#: ../app/controllers/api/v2/snapshots_controller.rb:48
 msgid "Whether to include the RAM state in the snapshot"
 msgstr ""
 
-#: ../app/controllers/api/v2/snapshots_controller.rb:42
+#: ../app/controllers/api/v2/snapshots_controller.rb:56
 msgid "Update a snapshot"
 msgstr ""
 
-#: ../app/controllers/api/v2/snapshots_controller.rb:51
+#: ../app/controllers/api/v2/snapshots_controller.rb:65
 msgid "Delete a snapshot"
 msgstr ""
 
-#: ../app/controllers/api/v2/snapshots_controller.rb:59
+#: ../app/controllers/api/v2/snapshots_controller.rb:73
 msgid "Revert Host to a snapshot"
 msgstr ""
 
@@ -79,7 +79,7 @@ msgid "Created %{snapshots} for %{num} %{hosts}"
 msgstr ""
 
 #: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:95
-#: ../app/models/foreman_snapshot_management/snapshot.rb:56
+#: ../app/models/foreman_snapshot_management/snapshot.rb:52
 #: ../app/views/foreman_snapshot_management/snapshots/_index.html.erb:5
 #: ../app/views/foreman_snapshot_management/snapshots/select_multiple_host.html.erb:8
 msgid "Snapshot"
@@ -110,6 +110,32 @@ msgstr ""
 msgid "Create Snapshot"
 msgstr ""
 
+#: ../app/models/foreman_snapshot_management/proxmox_extensions.rb:15
+msgid ""
+"Name must contain at least 2 characters starting with alphabet. Valid characte"
+"rs are A-Z a-z 0-9 _"
+msgstr ""
+
+#: ../app/models/foreman_snapshot_management/proxmox_extensions.rb:22
+msgid "Unable to create Proxmox Snapshot"
+msgstr ""
+
+#: ../app/models/foreman_snapshot_management/proxmox_extensions.rb:32
+msgid "Unable to remove Proxmox Snapshot"
+msgstr ""
+
+#: ../app/models/foreman_snapshot_management/proxmox_extensions.rb:42
+msgid "Unable to revert Proxmox Snapshot"
+msgstr ""
+
+#: ../app/models/foreman_snapshot_management/proxmox_extensions.rb:49
+msgid "Snapshot name cannot be changed"
+msgstr ""
+
+#: ../app/models/foreman_snapshot_management/proxmox_extensions.rb:55
+msgid "Unable to update Proxmox Snapshot"
+msgstr ""
+
 #: ../app/models/foreman_snapshot_management/vmware_extensions.rb:18
 msgid "Unable to create VMWare Snapshot"
 msgstr ""
@@ -131,36 +157,36 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: ../app/views/foreman_snapshot_management/snapshots/_index.html.erb:7
+#: ../app/views/foreman_snapshot_management/snapshots/_index.html.erb:8
 #: ../app/views/foreman_snapshot_management/snapshots/select_multiple_host.html.erb:14
 msgid "Include RAM"
 msgstr ""
 
-#: ../app/views/foreman_snapshot_management/snapshots/_index.html.erb:8
+#: ../app/views/foreman_snapshot_management/snapshots/_index.html.erb:10
 msgid "Action"
 msgstr ""
 
-#: ../app/views/foreman_snapshot_management/snapshots/_index.html.erb:24
+#: ../app/views/foreman_snapshot_management/snapshots/_index.html.erb:28
 msgid "Create"
 msgstr ""
 
-#: ../app/views/foreman_snapshot_management/snapshots/_index.html.erb:49
+#: ../app/views/foreman_snapshot_management/snapshots/_index.html.erb:55
 msgid "Rollback"
 msgstr ""
 
-#: ../app/views/foreman_snapshot_management/snapshots/_index.html.erb:49
+#: ../app/views/foreman_snapshot_management/snapshots/_index.html.erb:55
 msgid "Are you sure to revert this Snapshot?"
 msgstr ""
 
-#: ../app/views/foreman_snapshot_management/snapshots/_index.html.erb:49
+#: ../app/views/foreman_snapshot_management/snapshots/_index.html.erb:55
 msgid "Reverting..."
 msgstr ""
 
-#: ../app/views/foreman_snapshot_management/snapshots/_index.html.erb:50
+#: ../app/views/foreman_snapshot_management/snapshots/_index.html.erb:56
 msgid "Are you sure to delete this Snapshot?"
 msgstr ""
 
-#: ../app/views/foreman_snapshot_management/snapshots/_index.html.erb:50
+#: ../app/views/foreman_snapshot_management/snapshots/_index.html.erb:56
 msgid "Deleting..."
 msgstr ""
 
@@ -173,10 +199,10 @@ msgstr ""
 msgid "Loading Snapshots information ..."
 msgstr ""
 
-#: ../lib/foreman_snapshot_management/engine.rb:57
+#: ../lib/foreman_snapshot_management/engine.rb:61
 msgid "Snapshots"
 msgstr ""
 
 #: gemspec.rb:4
-msgid "Foreman-plugin to manage snapshots in a vSphere environment."
+msgid "Foreman-plugin to manage snapshots in a virtual-hardware environments."
 msgstr ""

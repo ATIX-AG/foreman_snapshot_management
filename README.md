@@ -3,7 +3,9 @@
 # ForemanSnapshotManagement
 
 ForemanSnapshotManagement is a Foreman plugin to manage snapshots.
-As Hypervisor VMware vSphere is supported.
+As Hypervisor the following systems are supported:
+- VMware vSphere
+- [Proxmox](https://www.proxmox.com/)
 
 ## Features
 
