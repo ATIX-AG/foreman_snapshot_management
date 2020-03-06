@@ -33,7 +33,7 @@
       <tr>
         <td>
           <% if authorized_for(:auth_object => @host, :permission => :edit_snapshots) && @host.compute_resource.capable?(:editable_snapshot_name) %>
-            <%= edit_textfield snapshot, :name %>
+            <%= edit_textfield snapshot, :name, title: _('Name') %>
           <% else %>
             <%= snapshot.name %>
           <% end %>
@@ -41,7 +41,7 @@
         </td>
         <td>
           <% if authorized_for(:auth_object => @host, :permission => :edit_snapshots) %>
-            <%= edit_textarea snapshot, :description %>
+            <%= edit_textarea snapshot, :description, title: _('Description') %>
           <% else %>
             <%= snapshot.description %>
           <% end %>
