@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SnapshotFormModal renders normal 1`] = `
+<ConnectedForemanModal
+  enforceFocus={true}
+  id="foremanSnapshotMgmtSnapshotFormModal"
+  title="Create Snapshot for deep.thought"
+>
+  <ForemanModalHeader
+    closeButton={false}
+  />
+  <div>
+    <WrappedSnapshotForm
+      hostId={42}
+      setModalClosed={[Function]}
+    />
+  </div>
+</ConnectedForemanModal>
+`;

@@ -1,0 +1,309 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SnapshotForm rendering render with optional Props 1`] = `
+<ForemanForm
+  initialValues={
+    Object {
+      "description": "Hello World",
+      "includeRam": true,
+      "name": "Snapshot1",
+    }
+  }
+  onCancel={[Function]}
+  onSubmit={[Function]}
+  validationSchema={
+    ObjectSchema {
+      "_blacklist": RefSet {
+        "list": Array [],
+        "refs": Array [],
+      },
+      "_conditions": Array [],
+      "_defaultDefault": [Function],
+      "_deps": Array [],
+      "_excludedEdges": Array [],
+      "_exclusive": Object {},
+      "_mutate": undefined,
+      "_nodes": Array [
+        "includeRam",
+        "description",
+        "name",
+      ],
+      "_options": Object {
+        "abortEarly": true,
+        "recursive": true,
+      },
+      "_type": "object",
+      "_typeError": [Function],
+      "_whitelist": RefSet {
+        "list": Array [],
+        "refs": Array [],
+      },
+      "fields": Object {
+        "description": StringSchema {
+          "_blacklist": RefSet {
+            "list": Array [],
+            "refs": Array [],
+          },
+          "_conditions": Array [],
+          "_deps": Array [],
+          "_exclusive": Object {},
+          "_mutate": undefined,
+          "_options": Object {
+            "abortEarly": true,
+            "recursive": true,
+          },
+          "_type": "string",
+          "_typeError": [Function],
+          "_whitelist": RefSet {
+            "list": Array [],
+            "refs": Array [],
+          },
+          "tests": Array [],
+          "transforms": Array [
+            [Function],
+          ],
+          "type": "string",
+        },
+        "includeRam": BooleanSchema {
+          "_blacklist": RefSet {
+            "list": Array [],
+            "refs": Array [],
+          },
+          "_conditions": Array [],
+          "_deps": Array [],
+          "_exclusive": Object {},
+          "_mutate": undefined,
+          "_options": Object {
+            "abortEarly": true,
+            "recursive": true,
+          },
+          "_type": "boolean",
+          "_typeError": [Function],
+          "_whitelist": RefSet {
+            "list": Array [],
+            "refs": Array [],
+          },
+          "tests": Array [],
+          "transforms": Array [
+            [Function],
+          ],
+          "type": "boolean",
+        },
+        "name": StringSchema {
+          "_blacklist": RefSet {
+            "list": Array [],
+            "refs": Array [],
+          },
+          "_conditions": Array [],
+          "_deps": Array [],
+          "_exclusive": Object {
+            "required": true,
+          },
+          "_mutate": undefined,
+          "_options": Object {
+            "abortEarly": true,
+            "recursive": true,
+          },
+          "_type": "string",
+          "_typeError": [Function],
+          "_whitelist": RefSet {
+            "list": Array [],
+            "refs": Array [],
+          },
+          "tests": Array [
+            [Function],
+          ],
+          "transforms": Array [
+            [Function],
+          ],
+          "type": "string",
+        },
+      },
+      "tests": Array [],
+      "transforms": Array [
+        [Function],
+      ],
+      "type": "object",
+    }
+  }
+>
+  <TextField
+    className=""
+    inputClassName="col-md-8"
+    label="Name"
+    name="name"
+    required="true"
+    type="text"
+  />
+  <TextField
+    className=""
+    inputClassName="col-md-8"
+    label="Description"
+    name="description"
+    required={false}
+    type="textarea"
+  />
+  <TextField
+    className=""
+    inputClassName="col-md-8"
+    label="Include RAM"
+    name="includeRam"
+    required={false}
+    type="checkbox"
+  />
+</ForemanForm>
+`;
+
+exports[`SnapshotForm rendering render without optional Props 1`] = `
+<ForemanForm
+  initialValues={
+    Object {
+      "description": "",
+      "includeRam": false,
+      "name": "",
+    }
+  }
+  onCancel={[Function]}
+  onSubmit={[Function]}
+  validationSchema={
+    ObjectSchema {
+      "_blacklist": RefSet {
+        "list": Array [],
+        "refs": Array [],
+      },
+      "_conditions": Array [],
+      "_defaultDefault": [Function],
+      "_deps": Array [],
+      "_excludedEdges": Array [],
+      "_exclusive": Object {},
+      "_mutate": undefined,
+      "_nodes": Array [
+        "includeRam",
+        "description",
+        "name",
+      ],
+      "_options": Object {
+        "abortEarly": true,
+        "recursive": true,
+      },
+      "_type": "object",
+      "_typeError": [Function],
+      "_whitelist": RefSet {
+        "list": Array [],
+        "refs": Array [],
+      },
+      "fields": Object {
+        "description": StringSchema {
+          "_blacklist": RefSet {
+            "list": Array [],
+            "refs": Array [],
+          },
+          "_conditions": Array [],
+          "_deps": Array [],
+          "_exclusive": Object {},
+          "_mutate": undefined,
+          "_options": Object {
+            "abortEarly": true,
+            "recursive": true,
+          },
+          "_type": "string",
+          "_typeError": [Function],
+          "_whitelist": RefSet {
+            "list": Array [],
+            "refs": Array [],
+          },
+          "tests": Array [],
+          "transforms": Array [
+            [Function],
+          ],
+          "type": "string",
+        },
+        "includeRam": BooleanSchema {
+          "_blacklist": RefSet {
+            "list": Array [],
+            "refs": Array [],
+          },
+          "_conditions": Array [],
+          "_deps": Array [],
+          "_exclusive": Object {},
+          "_mutate": undefined,
+          "_options": Object {
+            "abortEarly": true,
+            "recursive": true,
+          },
+          "_type": "boolean",
+          "_typeError": [Function],
+          "_whitelist": RefSet {
+            "list": Array [],
+            "refs": Array [],
+          },
+          "tests": Array [],
+          "transforms": Array [
+            [Function],
+          ],
+          "type": "boolean",
+        },
+        "name": StringSchema {
+          "_blacklist": RefSet {
+            "list": Array [],
+            "refs": Array [],
+          },
+          "_conditions": Array [],
+          "_deps": Array [],
+          "_exclusive": Object {
+            "required": true,
+          },
+          "_mutate": undefined,
+          "_options": Object {
+            "abortEarly": true,
+            "recursive": true,
+          },
+          "_type": "string",
+          "_typeError": [Function],
+          "_whitelist": RefSet {
+            "list": Array [],
+            "refs": Array [],
+          },
+          "tests": Array [
+            [Function],
+          ],
+          "transforms": Array [
+            [Function],
+          ],
+          "type": "string",
+        },
+      },
+      "tests": Array [],
+      "transforms": Array [
+        [Function],
+      ],
+      "type": "object",
+    }
+  }
+>
+  <TextField
+    className=""
+    inputClassName="col-md-8"
+    label="Name"
+    name="name"
+    required="true"
+    type="text"
+  />
+  <TextField
+    className=""
+    inputClassName="col-md-8"
+    label="Description"
+    name="description"
+    required={false}
+    type="textarea"
+  />
+  <TextField
+    className=""
+    inputClassName="col-md-8"
+    label="Include RAM"
+    name="includeRam"
+    required={false}
+    type="checkbox"
+  />
+</ForemanForm>
+`;

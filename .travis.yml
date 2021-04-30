@@ -10,7 +10,11 @@ install:
   - ln -s database.yml.example config/database.yml
   - bundle install --jobs=3 --retry=3 --without journald development postgresql mysql2 console
   - bundle exec rake db:migrate RAILS_ENV=test
+  - npm install
 script:
+  - npm run lint
+  - npm run stylelint
+  - npm run test
   - bundle exec rubocop ../foreman_snapshot_management
   - bundle exec rake test:foreman_snapshot_management
   - bundle exec rake test TEST="test/unit/foreman/access_permissions_test.rb"
@@ -19,12 +23,12 @@ env:
     - TESTOPTS=-v
 matrix:
   include:
-    - rvm: 2.5
-      env: FOREMAN_CORE_BRANCH=1.22-stable FOREMAN_FOG_PROXMOX_VERSION=0.10.2
-    - rvm: 2.5
-      env: FOREMAN_CORE_BRANCH=1.23-stable FOREMAN_FOG_PROXMOX_VERSION=0.10.2
-    - rvm: 2.5
-      env: FOREMAN_CORE_BRANCH=1.24-stable FOREMAN_FOG_PROXMOX_VERSION=0.10.2
+    - rvm: 2.7
+      env: FOREMAN_CORE_BRANCH=2.1-stable FOREMAN_FOG_PROXMOX_VERSION=0.10.2
+    - rvm: 2.7
+      env: FOREMAN_CORE_BRANCH=2.3-stable FOREMAN_FOG_PROXMOX_VERSION=0.10.2
+    - rvm: 2.7
+      env: FOREMAN_CORE_BRANCH=2.4-stable FOREMAN_FOG_PROXMOX_VERSION=0.10.2
 
 addons:
   apt:

@@ -1,0 +1,314 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot list actions should load snapshots and fail 1`] = `
+Array [
+  Array [
+    Object {
+      "payload": Object {
+        "hostId": 42,
+      },
+      "type": "FOREMAN_SNAPSHOT_MANAGEMENT_SNAPSHOT_LIST_REQUEST",
+    },
+  ],
+  Array [
+    Object {
+      "payload": Object {
+        "hostId": 42,
+      },
+      "response": [Error: some-error],
+      "type": "FOREMAN_SNAPSHOT_MANAGEMENT_SNAPSHOT_LIST_FAILURE",
+    },
+  ],
+]
+`;
+
+exports[`Snapshot list actions should load snapshots and success 1`] = `
+Array [
+  Array [
+    Object {
+      "payload": Object {
+        "hostId": 42,
+      },
+      "type": "FOREMAN_SNAPSHOT_MANAGEMENT_SNAPSHOT_LIST_REQUEST",
+    },
+  ],
+  Array [
+    Object {
+      "payload": Object {
+        "hostId": 42,
+      },
+      "response": "some-data",
+      "type": "FOREMAN_SNAPSHOT_MANAGEMENT_SNAPSHOT_LIST_SUCCESS",
+    },
+  ],
+]
+`;
+
+exports[`Snapshot snapshot-delete actions should delete snapshot and success 1`] = `
+Array [
+  Array [
+    Object {
+      "payload": Object {
+        "host": Object {
+          "id": 42,
+          "name": "deep.thought",
+        },
+        "id": "snapshot-0815",
+      },
+      "type": "FOREMAN_SNAPSHOT_MANAGEMENT_SNAPSHOT_DELETE_REQUEST",
+    },
+  ],
+  Array [
+    Object {
+      "payload": Object {
+        "key": "FOREMAN_SNAPSHOT_MANAGEMENT_SNAPSHOT_DELETE_SUCCESS",
+        "message": Object {
+          "key": "FOREMAN_SNAPSHOT_MANAGEMENT_SNAPSHOT_DELETE_SUCCESS",
+          "message": "Successfully removed Snapshot \\"Savegame\\" from host deep.thought",
+          "type": "success",
+        },
+      },
+      "type": "TOASTS_ADD",
+    },
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    Object {
+      "payload": Object {
+        "host": Object {
+          "id": 42,
+          "name": "deep.thought",
+        },
+        "id": "snapshot-0815",
+      },
+      "response": "some-data",
+      "type": "FOREMAN_SNAPSHOT_MANAGEMENT_SNAPSHOT_DELETE_SUCCESS",
+    },
+  ],
+]
+`;
+
+exports[`Snapshot snapshot-delete actions should load snapshots and fail 1`] = `
+Array [
+  Array [
+    Object {
+      "payload": Object {
+        "host": Object {
+          "id": 42,
+          "name": "deep.thought",
+        },
+        "id": "snapshot-0815",
+      },
+      "type": "FOREMAN_SNAPSHOT_MANAGEMENT_SNAPSHOT_DELETE_REQUEST",
+    },
+  ],
+  Array [
+    Object {
+      "payload": Object {
+        "key": "FOREMAN_SNAPSHOT_MANAGEMENT_SNAPSHOT_DELETE_FAILURE",
+        "message": Object {
+          "key": "FOREMAN_SNAPSHOT_MANAGEMENT_SNAPSHOT_DELETE_FAILURE",
+          "message": "Error occurred while removing Snapshot: Error: some-error",
+          "type": "error",
+        },
+      },
+      "type": "TOASTS_ADD",
+    },
+  ],
+  Array [
+    Object {
+      "payload": Object {
+        "host": Object {
+          "id": 42,
+          "name": "deep.thought",
+        },
+        "id": "snapshot-0815",
+      },
+      "response": [Error: some-error],
+      "type": "FOREMAN_SNAPSHOT_MANAGEMENT_SNAPSHOT_DELETE_FAILURE",
+    },
+  ],
+]
+`;
+
+exports[`Snapshot snapshot-rollback actions should load snapshots and fail 1`] = `
+Array [
+  Array [
+    Object {
+      "payload": Object {
+        "host": Object {
+          "id": 42,
+          "name": "deep.thought",
+        },
+        "id": "snapshot-0815",
+      },
+      "type": "FOREMAN_SNAPSHOT_MANAGEMENT_SNAPSHOT_ROLLBACK_REQUEST",
+    },
+  ],
+  Array [
+    Object {
+      "payload": Object {
+        "key": "FOREMAN_SNAPSHOT_MANAGEMENT_SNAPSHOT_ROLLBACK_FAILURE",
+        "message": Object {
+          "key": "FOREMAN_SNAPSHOT_MANAGEMENT_SNAPSHOT_ROLLBACK_FAILURE",
+          "message": "Error occurred while rolling back VM: Error: some-error",
+          "type": "error",
+        },
+      },
+      "type": "TOASTS_ADD",
+    },
+  ],
+  Array [
+    Object {
+      "payload": Object {
+        "host": Object {
+          "id": 42,
+          "name": "deep.thought",
+        },
+        "id": "snapshot-0815",
+      },
+      "response": [Error: some-error],
+      "type": "FOREMAN_SNAPSHOT_MANAGEMENT_SNAPSHOT_ROLLBACK_FAILURE",
+    },
+  ],
+]
+`;
+
+exports[`Snapshot snapshot-rollback actions should rollback snapshot and success 1`] = `
+Array [
+  Array [
+    Object {
+      "payload": Object {
+        "host": Object {
+          "id": 42,
+          "name": "deep.thought",
+        },
+        "id": "snapshot-0815",
+      },
+      "type": "FOREMAN_SNAPSHOT_MANAGEMENT_SNAPSHOT_ROLLBACK_REQUEST",
+    },
+  ],
+  Array [
+    Object {
+      "payload": Object {
+        "key": "FOREMAN_SNAPSHOT_MANAGEMENT_SNAPSHOT_ROLLBACK_SUCCESS",
+        "message": Object {
+          "key": "FOREMAN_SNAPSHOT_MANAGEMENT_SNAPSHOT_ROLLBACK_SUCCESS",
+          "message": "Successfully rolled back Snapshot \\"Savegame\\" on host deep.thought",
+          "type": "success",
+        },
+      },
+      "type": "TOASTS_ADD",
+    },
+  ],
+  Array [
+    Object {
+      "payload": Object {
+        "host": Object {
+          "id": 42,
+          "name": "deep.thought",
+        },
+        "id": "snapshot-0815",
+      },
+      "response": "some-data",
+      "type": "FOREMAN_SNAPSHOT_MANAGEMENT_SNAPSHOT_ROLLBACK_SUCCESS",
+    },
+  ],
+]
+`;
+
+exports[`Snapshot snapshot-update actions should load snapshots and fail 1`] = `
+Array [
+  Array [
+    Object {
+      "payload": Object {
+        "host": Object {
+          "id": 42,
+          "name": "deep.thought",
+        },
+        "id": "snapshot-0815",
+        "snapshot": Object {
+          "description": "Saw the three headed monkey!",
+          "name": "Savegame",
+        },
+      },
+      "type": "FOREMAN_SNAPSHOT_MANAGEMENT_SNAPSHOT_UPDATE_REQUEST",
+    },
+  ],
+  Array [
+    Object {
+      "payload": Object {
+        "key": "FOREMAN_SNAPSHOT_MANAGEMENT_SNAPSHOT_UPDATE_FAILURE",
+        "message": Object {
+          "key": "FOREMAN_SNAPSHOT_MANAGEMENT_SNAPSHOT_UPDATE_FAILURE",
+          "message": "Error occurred while updating Snapshot: Error: some-error",
+          "type": "error",
+        },
+      },
+      "type": "TOASTS_ADD",
+    },
+  ],
+  Array [
+    Object {
+      "payload": Object {
+        "host": Object {
+          "id": 42,
+          "name": "deep.thought",
+        },
+        "id": "snapshot-0815",
+      },
+      "response": [Error: some-error],
+      "type": "FOREMAN_SNAPSHOT_MANAGEMENT_SNAPSHOT_UPDATE_FAILURE",
+    },
+  ],
+]
+`;
+
+exports[`Snapshot snapshot-update actions should update snapshot and success 1`] = `
+Array [
+  Array [
+    Object {
+      "payload": Object {
+        "host": Object {
+          "id": 42,
+          "name": "deep.thought",
+        },
+        "id": "snapshot-0815",
+        "snapshot": Object {
+          "description": "Saw the three headed monkey!",
+          "name": "Savegame",
+        },
+      },
+      "type": "FOREMAN_SNAPSHOT_MANAGEMENT_SNAPSHOT_UPDATE_REQUEST",
+    },
+  ],
+  Array [
+    Object {
+      "payload": Object {
+        "key": "FOREMAN_SNAPSHOT_MANAGEMENT_SNAPSHOT_UPDATE_SUCCESS",
+        "message": Object {
+          "key": "FOREMAN_SNAPSHOT_MANAGEMENT_SNAPSHOT_UPDATE_SUCCESS",
+          "message": "Successfully updated Snapshot \\"Savegame\\"",
+          "type": "success",
+        },
+      },
+      "type": "TOASTS_ADD",
+    },
+  ],
+  Array [
+    Object {
+      "payload": Object {
+        "host": Object {
+          "id": 42,
+          "name": "deep.thought",
+        },
+        "id": "snapshot-0815",
+      },
+      "response": "some-data",
+      "type": "FOREMAN_SNAPSHOT_MANAGEMENT_SNAPSHOT_UPDATE_SUCCESS",
+    },
+  ],
+]
+`;

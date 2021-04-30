@@ -1,4 +1,12 @@
 <% if @host.compute_resource && @host.compute_resource.capabilities.include?(:snapshots) && authorized_for(:auth_object => @host, :permission => :view_snapshots) %>
+
+<% content_for(:javascripts) do %>
+  <%= webpacked_plugins_js_for :foreman_snapshot_management %>
+<% end %>
+<% content_for(:stylesheets) do %>
+  <%= webpacked_plugins_css_for :foreman_snapshot_management %>
+<% end %>
+
 <div id='snapshots' class='tab-pane'
   data-ajax-url='<%= host_snapshots_path(host_id: @host)%>'
   data-on-complete='onContentLoad'>

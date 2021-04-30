@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   # also update locale/gemspec.rb
   s.description = 'Foreman-plugin to manage snapshots in a virtual-hardware environments.'
 
-  s.files = Dir['{app,config,db,lib,locale}/**/*'] + ['LICENSE', 'Rakefile', 'README.md']
+  s.files = Dir['{app,config,db,lib,locale,webpack}/**/*'] + ['LICENSE', 'package.json', 'Rakefile', 'README.md']
   s.test_files = Dir['test/**/*']
 
   s.add_development_dependency 'rdoc', '~> 5.1'
