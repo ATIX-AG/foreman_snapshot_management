@@ -172,6 +172,7 @@ class SnapshotList extends Component {
     this.props.loadSnapshots(this.props.host.id);
   }
 
+  // FIXME: Remove soon, as this is deprecated!
   componentWillReceiveProps(newProps) {
     if (newProps.snapshots !== this.props.snapshots) {
       this.setState({ rows: newProps.snapshots });
