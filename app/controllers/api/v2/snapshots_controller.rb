@@ -6,7 +6,7 @@ module Api
       include Api::Version2
       include Foreman::Controller::Parameters::Snapshot
 
-      before_action :find_required_nested_object
+      before_action :find_host
       before_action :check_snapshot_capability
       before_action :find_resource, :only => %w[show update destroy revert]
 
@@ -19,7 +19,7 @@ module Api
           search = params[:search].match(/^\s*name\s*=\s*(\w+)\s*$/) || params[:search].match(/^\s*name\s*=\s*\"([^"]+)\"\s*$/)
           raise "Field '#{params[:search]}' not recognized for searching!" unless search
 
-          snapshot = resource_class.find_for_host_by_name(@nested_obj, search[1])
+          snapshot = resource_class.find_for_host_by_name(@host, search[1])
           @snapshots = if snapshot
                          [snapshot].paginate(paginate_options)
                        else
@@ -49,7 +49,7 @@ module Api
       param_group :snapshot, :as => :create
 
       def create
-        @snapshot = resource_class.new(snapshot_params.to_h.merge(host: @nested_obj).merge(include_ram: params[:include_ram]))
+        @snapshot = resource_class.new(snapshot_params.to_h.merge(host: @host).merge(include_ram: params[:include_ram]))
         process_response @snapshot.create
       end
 
@@ -80,9 +80,25 @@ module Api
 
       private
 
+      # Find Host
+      #
+      # This method is responsible that methods of the controller know the current host.
+      def find_host
+        host_id = params[:host_id]
+        if host_id.blank?
+          not_found
+          return false
+        end
+        @host = Host.authorized("#{action_permission}_snapshots".to_sym, Host).friendly.find(host_id)
+        return @host if @host
+
+        not_found
+        false
+      end
+
       def resource_scope(_options = {})
         # TODO: Ask host for snapshots
-        @resource_scope ||= resource_class.all_for_host(@nested_obj)
+        @resource_scope ||= resource_class.all_for_host(@host)
       end
 
       def resource_scope_for_index
@@ -94,12 +110,12 @@ module Api
       end
 
       def find_resource
-        @snapshot = resource_class.find_for_host(@nested_obj, params[:id])
+        @snapshot = resource_class.find_for_host(@host, params[:id])
         not_found unless @snapshot
       end
 
       def check_snapshot_capability
-        not_found unless @nested_obj.compute_resource&.capabilities&.include?(:snapshots)
+        not_found unless @host.compute_resource&.capabilities&.include?(:snapshots)
       end
 
       def action_permission
