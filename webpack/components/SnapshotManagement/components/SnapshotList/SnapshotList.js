@@ -101,11 +101,20 @@ class SnapshotList extends Component {
     });
 
     const inlineEditFormatter = inlineEditFormatterFactory({
-      isEditing: additionalData =>
-        inlineEditController.isEditing(additionalData),
+      isEditing: additionalData => {
+        if (
+          additionalData.property === 'name' &&
+          !this.props.capabilities.editableSnapshotName
+        )
+          return false;
+        return inlineEditController.isEditing(additionalData);
+      },
       renderValue: (value, additionalData) => {
         let date = '';
-        if (additionalData.property === 'name')
+        if (
+          additionalData.property === 'name' &&
+          additionalData.rowData.formatted_created_at
+        )
           date = (
             <span className="snapshot-date">
               <ShortDateTime
@@ -277,6 +286,11 @@ SnapshotList.propTypes = {
   canDelete: PropTypes.bool,
   canRevert: PropTypes.bool,
   canUpdate: PropTypes.bool,
+
+  // capabilities
+  capabilities: PropTypes.shape({
+    editableSnapshotName: PropTypes.bool,
+  }),
 };
 
 SnapshotList.defaultProps = {
@@ -292,6 +306,9 @@ SnapshotList.defaultProps = {
   canDelete: false,
   canRevert: false,
   canUpdate: false,
+  capabilities: {
+    editableSnapshotName: true,
+  },
 };
 
 export default SnapshotList;

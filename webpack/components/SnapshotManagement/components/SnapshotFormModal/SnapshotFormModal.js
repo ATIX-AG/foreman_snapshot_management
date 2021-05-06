@@ -8,7 +8,7 @@ import SnapshotForm from '../SnapshotForm';
 
 import { SNAPSHOT_FORM_MODAL } from './SnapshotFormModalConstants';
 
-const SnapshotFormModal = ({ host, setModalClosed }) => (
+const SnapshotFormModal = ({ host, setModalClosed, ...props }) => (
   <ForemanModal
     id={SNAPSHOT_FORM_MODAL}
     title={sprintf(__('Create Snapshot for %s'), host.name)}
@@ -17,7 +17,11 @@ const SnapshotFormModal = ({ host, setModalClosed }) => (
     <ForemanModal.Header closeButton={false} />
 
     <div>
-      <SnapshotForm setModalClosed={setModalClosed} hostId={host.id} />
+      <SnapshotForm
+        setModalClosed={setModalClosed}
+        hostId={host.id}
+        {...props}
+      />
     </div>
   </ForemanModal>
 );

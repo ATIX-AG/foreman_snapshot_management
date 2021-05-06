@@ -59,6 +59,12 @@ const fixtures = {
     canDelete: false,
     ...funcDummies,
   },
+  'without editableSnapshotName capability': {
+    host,
+    snapshots: testSnapshots,
+    capabilities: { editableSnapshotName: false },
+    ...funcDummies,
+  },
 };
 
 describe('SnapshotList', () => {

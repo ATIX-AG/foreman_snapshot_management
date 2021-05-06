@@ -1,7 +1,12 @@
 <%= react_component('SnapshotManagement', {
   host: @host,
   canCreate: authorized_for(:auth_object => @host, :permission => :create_snapshots),
-  canUpdate: authorized_for(:auth_object => @host, :permission => :edit_snapshots) && @host.compute_resource.capable?(:editable_snapshot_name),
+  canUpdate: authorized_for(:auth_object => @host, :permission => :edit_snapshots),
   canRevert: authorized_for(:auth_object => @host, :permission => :revert_snapshots),
   canDelete: authorized_for(:auth_object => @host, :permission => :destroy_snapshots),
+  capabilities:
+  {
+    editableSnapshotName: @host.compute_resource.capable?(:editable_snapshot_name),
+    limitSnapshotNameFormat: @host.compute_resource.type == "ForemanFogProxmox::Proxmox"
+  }
 }) %> 

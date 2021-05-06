@@ -11,9 +11,27 @@ import TextField from 'foremanReact/components/common/forms/TextField';
 import { SNAPSHOT_CREATE_URL } from './SnapshotFormConstants';
 import './snapshotForm.scss';
 
-const SnapshotForm = ({ hostId, initialValues, submitForm, ...props }) => {
+const SnapshotForm = ({
+  hostId,
+  initialValues,
+  submitForm,
+  capabilities,
+  ...props
+}) => {
+  let nameValidation = Yup.string().max(80, 'Too Long!');
+  if (capabilities.limitSnapshotNameFormat)
+    nameValidation = nameValidation
+      .min(2, 'Too Short!')
+      .matches(
+        /^[A-z]\w+$/,
+        __(
+          'Name must contain at least 2 characters starting with alphabet. Valid characters are A-Z a-z 0-9 _'
+        )
+      )
+      .max(40, 'Too Long!');
+
   const validationSchema = Yup.object().shape({
-    name: Yup.string().required('is required'),
+    name: nameValidation.required('is required'),
     description: Yup.string(),
     includeRam: Yup.bool(),
   });
@@ -78,6 +96,9 @@ SnapshotForm.propTypes = {
   }),
   submitForm: PropTypes.func.isRequired,
   setModalClosed: PropTypes.func,
+  capabilities: PropTypes.shape({
+    limitSnapshotNameFormat: PropTypes.bool,
+  }),
 };
 
 SnapshotForm.defaultProps = {
@@ -89,6 +110,9 @@ SnapshotForm.defaultProps = {
     includeRam: false,
   },
   setModalClosed: () => {},
+  capabilities: {
+    limitSnapshotNameFormat: false,
+  },
 };
 
 export default SnapshotForm;

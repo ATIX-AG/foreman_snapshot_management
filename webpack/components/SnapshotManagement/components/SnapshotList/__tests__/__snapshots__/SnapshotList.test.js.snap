@@ -706,6 +706,152 @@ How are you?",
 </div>
 `;
 
+exports[`SnapshotList renders without editableSnapshotName capability 1`] = `
+<div>
+  <Table
+    bodyMessage={
+      <Loading
+        iconSize="xl"
+        showText={true}
+        textSize="sm"
+      />
+    }
+    caption="Snapshot List"
+    columns={
+      Array [
+        Object {
+          "cell": Object {
+            "formatters": Array [
+              [Function],
+            ],
+            "props": Object {},
+          },
+          "header": Object {
+            "formatters": Array [
+              [Function],
+            ],
+            "label": "Snapshot",
+            "props": Object {},
+          },
+          "property": "name",
+        },
+        Object {
+          "cell": Object {
+            "formatters": Array [
+              [Function],
+            ],
+            "props": Object {},
+          },
+          "header": Object {
+            "formatters": Array [
+              [Function],
+            ],
+            "label": "Description",
+            "props": Object {},
+          },
+          "property": "description",
+        },
+      ]
+    }
+    components={
+      Object {
+        "body": Object {
+          "cell": [Function],
+          "row": [Function],
+        },
+      }
+    }
+    inlineEdit={true}
+    rows={
+      Array [
+        Object {
+          "created_at": "2021-01-19 15:03:47 UTC",
+          "description": "123 testSnapshot",
+          "id": "snapshot-15776",
+          "name": "test",
+        },
+        Object {
+          "created_at": "2021-04-28 10:22:06 UTC",
+          "description": "World
+How are you?",
+          "id": "snapshot-17285",
+          "name": "Hello",
+        },
+      ]
+    }
+  >
+    <Header
+      key="header"
+    />
+    <TableBody
+      columns={
+        Array [
+          Object {
+            "cell": Object {
+              "formatters": Array [
+                [Function],
+              ],
+              "props": Object {},
+            },
+            "header": Object {
+              "formatters": Array [
+                [Function],
+              ],
+              "label": "Snapshot",
+              "props": Object {},
+            },
+            "property": "name",
+          },
+          Object {
+            "cell": Object {
+              "formatters": Array [
+                [Function],
+              ],
+              "props": Object {},
+            },
+            "header": Object {
+              "formatters": Array [
+                [Function],
+              ],
+              "label": "Description",
+              "props": Object {},
+            },
+            "property": "description",
+          },
+        ]
+      }
+      key="body"
+      message={
+        <Loading
+          iconSize="xl"
+          showText={true}
+          textSize="sm"
+        />
+      }
+      onRow={[Function]}
+      rowKey="id"
+      rows={
+        Array [
+          Object {
+            "created_at": "2021-01-19 15:03:47 UTC",
+            "description": "123 testSnapshot",
+            "id": "snapshot-15776",
+            "name": "test",
+          },
+          Object {
+            "created_at": "2021-04-28 10:22:06 UTC",
+            "description": "World
+How are you?",
+            "id": "snapshot-17285",
+            "name": "Hello",
+          },
+        ]
+      }
+    />
+  </Table>
+</div>
+`;
+
 exports[`SnapshotList renders without optional Props 1`] = `
 <div>
   <Table

@@ -64,6 +64,10 @@ SnapshotManagement.propTypes = {
   canUpdate: PropTypes.bool,
   canRevert: PropTypes.bool,
   canDelete: PropTypes.bool,
+  capabilities: PropTypes.shape({
+    editSnapshotName: PropTypes.bool,
+    limitSnapshotNameFormat: PropTypes.bool,
+  }),
 };
 
 SnapshotManagement.defaultProps = {
@@ -71,6 +75,10 @@ SnapshotManagement.defaultProps = {
   canUpdate: false,
   canRevert: false,
   canDelete: false,
+  capabilities: {
+    editSnapshotName: true,
+    limitSnapshotNameFormat: false,
+  },
 };
 
 export default SnapshotManagement;
