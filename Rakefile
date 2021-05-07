@@ -14,6 +14,13 @@ rescue LoadError
   RDoc::Task = Rake::RDocTask
 end
 
+begin
+  require 'rubocop/rake_task'
+  RuboCop::RakeTask.new
+rescue StandardError => _e
+  puts 'Rubocop not loaded.'
+end
+
 RDoc::Task.new(:rdoc) do |rdoc|
   rdoc.rdoc_dir = 'rdoc'
   rdoc.title    = 'ForemanSnapshotManagement'
@@ -21,7 +28,5 @@ RDoc::Task.new(:rdoc) do |rdoc|
   rdoc.rdoc_files.include('README.rdoc')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
-
-APP_RAKEFILE = File.expand_path('test/dummy/Rakefile', __dir__)
 
 Bundler::GemHelper.install_tasks

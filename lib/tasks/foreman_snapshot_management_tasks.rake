@@ -20,7 +20,7 @@ begin
                    "#{ForemanSnapshotManagement::Engine.root}/test/**/*.rb"]
 
   namespace :foreman_snapshot_management do
-    task :rubocop do
+    task rubocop: :environment do
       RuboCop::RakeTask.new(:rubocop_foreman_snapshot_management) do |task|
         task.patterns = test_patterns
       end
@@ -42,7 +42,7 @@ end
 
 namespace :jenkins do
   desc 'Test ForemanSnapshotManagement with XML output for jenkins'
-  task 'foreman_snapshot_management' do
+  task 'foreman_snapshot_management' => :environment do
     Rake::Task['jenkins:setup:minitest'].invoke
     Rake::Task['rake:test:foreman_snapshot_management'].invoke
   end

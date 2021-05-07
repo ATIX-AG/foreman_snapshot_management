@@ -86,33 +86,31 @@ module ForemanSnapshotManagement
 
     # Include concerns in this config.to_prepare block
     config.to_prepare do
+      # Load Foreman extensions
+      ::HostsHelper.prepend ForemanSnapshotManagement::HostsHelperExtension
+
       begin
-        # Load Foreman extensions
-        ::HostsHelper.prepend ForemanSnapshotManagement::HostsHelperExtension
+        ::ForemanFogProxmox::Proxmox.prepend ForemanSnapshotManagement::ProxmoxExtensions
 
-        begin
-          ::ForemanFogProxmox::Proxmox.prepend ForemanSnapshotManagement::ProxmoxExtensions
+        # Load Fog extensions
+        Fog::Proxmox::Compute::Mock.prepend FogExtensions::Proxmox::Snapshots::Mock if ForemanFogProxmox::Proxmox.available?
+      rescue StandardError => e
+        Rails.logger.warn "Failed to load Proxmox extension #{e}"
+      end
 
-          # Load Fog extensions
-          Fog::Proxmox::Compute::Mock.prepend FogExtensions::Proxmox::Snapshots::Mock if ForemanFogProxmox::Proxmox.available?
-        rescue StandardError => e
-          Rails.logger.warn "Failed to load Proxmox extension #{e}"
-        end
+      begin
+        ::Foreman::Model::Vmware.prepend ForemanSnapshotManagement::VmwareExtensions
 
-        begin
-          ::Foreman::Model::Vmware.prepend ForemanSnapshotManagement::VmwareExtensions
-
-          # Load Fog extensions
-          if Foreman::Model::Vmware.available?
-            ForemanSnapshotManagement.fog_vsphere_namespace::Real.prepend FogExtensions::Vsphere::Snapshots::Real
-            ForemanSnapshotManagement.fog_vsphere_namespace::Mock.prepend FogExtensions::Vsphere::Snapshots::Mock
-          end
-        rescue StandardError => e
-          Rails.logger.warn "Failed to load VMware extension #{e}"
+        # Load Fog extensions
+        if Foreman::Model::Vmware.available?
+          ForemanSnapshotManagement.fog_vsphere_namespace::Real.prepend FogExtensions::Vsphere::Snapshots::Real
+          ForemanSnapshotManagement.fog_vsphere_namespace::Mock.prepend FogExtensions::Vsphere::Snapshots::Mock
         end
       rescue StandardError => e
-        Rails.logger.warn "ForemanSnapshotManagement: skipping engine hook (#{e})"
+        Rails.logger.warn "Failed to load VMware extension #{e}"
       end
+    rescue StandardError => e
+      Rails.logger.warn "ForemanSnapshotManagement: skipping engine hook (#{e})"
     end
 
     rake_tasks do
