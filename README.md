@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/ATIX-AG/foreman_snapshot_management.svg?branch=master)](https://travis-ci.org/ATIX-AG/foreman_snapshot_management)
+[![React Testing](https://github.com/ATIX-AG/foreman_snapshot_management/actions/workflows/react.yml/badge.svg)](https://github.com/ATIX-AG/foreman_snapshot_management/actions/workflows/react.yml)
+[![Ruby Testing](https://github.com/ATIX-AG/foreman_snapshot_management/actions/workflows/ruby.yml/badge.svg)](https://github.com/ATIX-AG/foreman_snapshot_management/actions/workflows/ruby.yml)
 
 # ForemanSnapshotManagement
 
