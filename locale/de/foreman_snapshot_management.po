@@ -11,10 +11,9 @@
 # Martin Zimmermann <martin.zimmermann@gmx.com>, 2019
 # Markus Bucher <bucher@atix.de>, 2020
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_snapshot_management 1.7.0\n"
+"Project-Id-Version: foreman_snapshot_management 1.8.1\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2019-10-22 11:54+0000\n"
 "Last-Translator: Markus Bucher <bucher@atix.de>, 2020\n"
@@ -28,17 +27,14 @@ msgstr ""
 msgid "Action"
 msgstr "Aktion"
 
-msgid "Are you sure to delete this Snapshot?"
-msgstr "Wollen Sie diesen Snapshot wirklich löschen?"
-
-msgid "Are you sure to revert this Snapshot?"
-msgstr "Sind Sie sicher, dass Sie diesen Snapshot wiederherstellen wollen?"
-
-msgid "Create"
-msgstr "Erstellen"
+msgid "Action with sub plans"
+msgstr ""
 
 msgid "Create Snapshot"
 msgstr "Snapshot erstellen"
+
+msgid "Create Snapshot for %s"
+msgstr ""
 
 msgid "Create a snapshot"
 msgstr "Einen Snapshot erstellen"
@@ -46,11 +42,14 @@ msgstr "Einen Snapshot erstellen"
 msgid "Created %{snapshots} for %{num} %{hosts}"
 msgstr "%{snapshots} für %{num} %{hosts} erstellt"
 
+msgid "Delete"
+msgstr ""
+
+msgid "Delete Snapshot \"%s\"?"
+msgstr ""
+
 msgid "Delete a snapshot"
 msgstr "Snapshot löschen"
-
-msgid "Deleting..."
-msgstr "Löschen..."
 
 msgid "Description"
 msgstr "Beschreibung"
@@ -70,11 +69,23 @@ msgstr "Beim Löschen des Snapshots ist ein Fehler aufgetreten: %s"
 msgid "Error occurred while rolling back VM: %s"
 msgstr "Beim Zurücksetzen der VM ist ein Fehler aufgetreten: %s"
 
+msgid "Error occurred while updating Snapshot: %s"
+msgstr ""
+
+msgid "Failed to load snapshot list"
+msgstr ""
+
 msgid "Failed to update Snapshot: %s"
 msgstr "Das Aktualisieren des Snapshots ist fehlgeschlagen: %s"
 
 msgid "Foreman-plugin to manage snapshots in a virtual-hardware environments."
 msgstr "Ein Foremanplugin, welches Snapshots in Umgebungen mit virtueller Hardware nutzbar macht."
+
+msgid "Import Puppet classes"
+msgstr ""
+
+msgid "Import facts"
+msgstr ""
 
 msgid "Include RAM"
 msgstr "RAM einbeziehen"
@@ -84,6 +95,12 @@ msgstr "Alle Snapshots auflisten"
 
 msgid "Loading Snapshots information ..."
 msgstr "Lade Snapshot Informationen ..."
+
+msgid "N/A"
+msgstr ""
+
+msgid "Name"
+msgstr ""
 
 msgid "Name must contain at least 2 characters starting with alphabet. Valid characters are A-Z a-z 0-9 _"
 msgstr "Der Name muss aus mindestens 2 Zeichen bestehen und mit einem Buchstaben beginnen. Gültige Zeichen: A-Z a-z 0-9 _"
@@ -103,11 +120,11 @@ msgstr "Keine Hosts wurden mit dieser Kennung, Name oder Abfrage-Filter gefunden
 msgid "Revert Host to a snapshot"
 msgstr "Host auf einen Snapshot zurücksetzen"
 
-msgid "Reverting..."
-msgstr "Zurücksetzen..."
-
 msgid "Rollback"
 msgstr "Wiederherstellen"
+
+msgid "Rollback to \"%s\"?"
+msgstr ""
 
 msgid "Snapshot"
 msgid_plural "Snapshots"
@@ -117,11 +134,23 @@ msgstr[1] "Snapshots"
 msgid "Snapshot name cannot be changed"
 msgstr "Der Name des Snapshots kann nicht geändert werden"
 
+msgid "Snapshot successfully created!"
+msgstr ""
+
 msgid "Snapshots"
 msgstr "Snapshots"
 
 msgid "Something went wrong while selecting hosts - %s"
 msgstr "Fehler beim Auswählen der Hosts – %s"
+
+msgid "Successfully removed Snapshot \"%s\" from host %s"
+msgstr ""
+
+msgid "Successfully rolled back Snapshot \"%s\" on host %s"
+msgstr ""
+
+msgid "Successfully updated Snapshot \"%s\""
+msgstr ""
 
 msgid "Unable to create Proxmox Snapshot"
 msgstr "Proxmox Snapshot konnte nicht erstellt werden"
@@ -155,6 +184,9 @@ msgstr "Die VM wurde erfolgreich zurückgesetzt."
 
 msgid "Whether to include the RAM state in the snapshot"
 msgstr "Ob auch der aktuelle Hauptspeicherstand im Snapshot gespeichert werden soll"
+
+msgid "edit entry"
+msgstr ""
 
 msgid "host"
 msgid_plural "hosts"

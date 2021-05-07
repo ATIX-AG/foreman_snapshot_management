@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: foreman_snapshot_management 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-02 15:24+0000\n"
-"PO-Revision-Date: 2020-03-02 15:24+0000\n"
+"POT-Creation-Date: 2021-05-07 09:44+0000\n"
+"PO-Revision-Date: 2021-05-07 09:44+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -55,6 +55,7 @@ msgid "Error occurred while creating Snapshot: %s"
 msgstr ""
 
 #: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:48
+#: ../webpack/components/SnapshotManagement/SnapshotManagementActions.js:81
 msgid "Error occurred while removing Snapshot: %s"
 msgstr ""
 
@@ -63,6 +64,7 @@ msgid "VM successfully rolled back."
 msgstr ""
 
 #: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:60
+#: ../webpack/components/SnapshotManagement/SnapshotManagementActions.js:199
 msgid "Error occurred while rolling back VM: %s"
 msgstr ""
 
@@ -80,8 +82,8 @@ msgstr ""
 
 #: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:95
 #: ../app/models/foreman_snapshot_management/snapshot.rb:52
-#: ../app/views/foreman_snapshot_management/snapshots/_index.html.erb:5
 #: ../app/views/foreman_snapshot_management/snapshots/select_multiple_host.html.erb:8
+#: ../webpack/components/SnapshotManagement/components/SnapshotList/SnapshotList.js:156
 msgid "Snapshot"
 msgid_plural "Snapshots"
 msgstr[0] ""
@@ -107,6 +109,7 @@ msgstr ""
 
 #:
 #: ../app/helpers/concerns/foreman_snapshot_management/hosts_helper_extension.rb:6
+#: ../webpack/components/SnapshotManagement/SnapshotManagement.js:46
 msgid "Create Snapshot"
 msgstr ""
 
@@ -152,55 +155,114 @@ msgstr ""
 msgid "Unable to update VMWare Snapshot"
 msgstr ""
 
-#: ../app/views/foreman_snapshot_management/snapshots/_index.html.erb:6
-#: ../app/views/foreman_snapshot_management/snapshots/select_multiple_host.html.erb:11
-msgid "Description"
-msgstr ""
-
-#: ../app/views/foreman_snapshot_management/snapshots/_index.html.erb:8
-#: ../app/views/foreman_snapshot_management/snapshots/select_multiple_host.html.erb:14
-msgid "Include RAM"
-msgstr ""
-
-#: ../app/views/foreman_snapshot_management/snapshots/_index.html.erb:10
-msgid "Action"
-msgstr ""
-
-#: ../app/views/foreman_snapshot_management/snapshots/_index.html.erb:28
-msgid "Create"
-msgstr ""
-
-#: ../app/views/foreman_snapshot_management/snapshots/_index.html.erb:55
-msgid "Rollback"
-msgstr ""
-
-#: ../app/views/foreman_snapshot_management/snapshots/_index.html.erb:55
-msgid "Are you sure to revert this Snapshot?"
-msgstr ""
-
-#: ../app/views/foreman_snapshot_management/snapshots/_index.html.erb:55
-msgid "Reverting..."
-msgstr ""
-
-#: ../app/views/foreman_snapshot_management/snapshots/_index.html.erb:56
-msgid "Are you sure to delete this Snapshot?"
-msgstr ""
-
-#: ../app/views/foreman_snapshot_management/snapshots/_index.html.erb:56
-msgid "Deleting..."
-msgstr ""
-
 #:
 #: ../app/views/foreman_snapshot_management/snapshots/select_multiple_host.html.erb:4
 msgid "No capable hosts selected"
 msgstr ""
 
-#: ../app/views/hosts/_snapshots_tab.html.erb:5
+#:
+#: ../app/views/foreman_snapshot_management/snapshots/select_multiple_host.html.erb:11
+#: ../webpack/components/SnapshotManagement/components/SnapshotForm/SnapshotForm.js:75
+#: ../webpack/components/SnapshotManagement/components/SnapshotList/SnapshotList.js:162
+msgid "Description"
+msgstr ""
+
+#:
+#: ../app/views/foreman_snapshot_management/snapshots/select_multiple_host.html.erb:14
+#: ../webpack/components/SnapshotManagement/components/SnapshotForm/SnapshotForm.js:81
+msgid "Include RAM"
+msgstr ""
+
+#: ../app/views/hosts/_snapshots_tab.html.erb:13
 msgid "Loading Snapshots information ..."
 msgstr ""
 
-#: ../lib/foreman_snapshot_management/engine.rb:61
+#: ../lib/foreman_snapshot_management/engine.rb:64
 msgid "Snapshots"
+msgstr ""
+
+#: ../webpack/components/SnapshotManagement/SnapshotManagementActions.js:60
+msgid "Successfully removed Snapshot \"%s\" from host %s"
+msgstr ""
+
+#: ../webpack/components/SnapshotManagement/SnapshotManagementActions.js:126
+msgid "Successfully updated Snapshot \"%s\""
+msgstr ""
+
+#: ../webpack/components/SnapshotManagement/SnapshotManagementActions.js:145
+msgid "Error occurred while updating Snapshot: %s"
+msgstr ""
+
+#: ../webpack/components/SnapshotManagement/SnapshotManagementActions.js:180
+msgid "Successfully rolled back Snapshot \"%s\" on host %s"
+msgstr ""
+
+#:
+#: ../webpack/components/SnapshotManagement/components/SnapshotForm/SnapshotForm.js:52
+msgid "Snapshot successfully created!"
+msgstr ""
+
+#:
+#: ../webpack/components/SnapshotManagement/components/SnapshotForm/SnapshotForm.js:69
+msgid "Name"
+msgstr ""
+
+#:
+#: ../webpack/components/SnapshotManagement/components/SnapshotFormModal/SnapshotFormModal.js:14
+msgid "Create Snapshot for %s"
+msgstr ""
+
+#:
+#: ../webpack/components/SnapshotManagement/components/SnapshotList/SnapshotList.js:122
+msgid "N/A"
+msgstr ""
+
+#:
+#: ../webpack/components/SnapshotManagement/components/SnapshotList/SnapshotList.js:171
+msgid "Action"
+msgstr ""
+
+#:
+#: ../webpack/components/SnapshotManagement/components/SnapshotList/SnapshotList.js:203
+#: ../webpack/components/SnapshotManagement/components/SnapshotList/SnapshotList.js:205
+msgid "Failed to load snapshot list"
+msgstr ""
+
+#:
+#: ../webpack/components/SnapshotManagement/components/SnapshotList/SnapshotListHelper.js:28
+msgid "edit entry"
+msgstr ""
+
+#:
+#: ../webpack/components/SnapshotManagement/components/SnapshotList/SnapshotListHelper.js:42
+msgid "Rollback to \"%s\"?"
+msgstr ""
+
+#:
+#: ../webpack/components/SnapshotManagement/components/SnapshotList/SnapshotListHelper.js:46
+msgid "Rollback"
+msgstr ""
+
+#:
+#: ../webpack/components/SnapshotManagement/components/SnapshotList/SnapshotListHelper.js:60
+msgid "Delete Snapshot \"%s\"?"
+msgstr ""
+
+#:
+#: ../webpack/components/SnapshotManagement/components/SnapshotList/SnapshotListHelper.js:64
+msgid "Delete"
+msgstr ""
+
+#: action_names.rb:2
+msgid "Import Puppet classes"
+msgstr ""
+
+#: action_names.rb:3
+msgid "Import facts"
+msgstr ""
+
+#: action_names.rb:4
+msgid "Action with sub plans"
 msgstr ""
 
 #: gemspec.rb:4

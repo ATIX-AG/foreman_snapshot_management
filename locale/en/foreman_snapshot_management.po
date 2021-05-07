@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_snapshot_management 1.7.0\n"
+"Project-Id-Version: foreman_snapshot_management 1.8.1\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2020-03-02 10:27+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -20,16 +20,13 @@ msgstr ""
 msgid "Action"
 msgstr ""
 
-msgid "Are you sure to delete this Snapshot?"
-msgstr ""
-
-msgid "Are you sure to revert this Snapshot?"
-msgstr ""
-
-msgid "Create"
+msgid "Action with sub plans"
 msgstr ""
 
 msgid "Create Snapshot"
+msgstr ""
+
+msgid "Create Snapshot for %s"
 msgstr ""
 
 msgid "Create a snapshot"
@@ -38,10 +35,13 @@ msgstr ""
 msgid "Created %{snapshots} for %{num} %{hosts}"
 msgstr ""
 
-msgid "Delete a snapshot"
+msgid "Delete"
 msgstr ""
 
-msgid "Deleting..."
+msgid "Delete Snapshot \"%s\"?"
+msgstr ""
+
+msgid "Delete a snapshot"
 msgstr ""
 
 msgid "Description"
@@ -62,10 +62,22 @@ msgstr ""
 msgid "Error occurred while rolling back VM: %s"
 msgstr ""
 
+msgid "Error occurred while updating Snapshot: %s"
+msgstr ""
+
+msgid "Failed to load snapshot list"
+msgstr ""
+
 msgid "Failed to update Snapshot: %s"
 msgstr ""
 
 msgid "Foreman-plugin to manage snapshots in a virtual-hardware environments."
+msgstr ""
+
+msgid "Import Puppet classes"
+msgstr ""
+
+msgid "Import facts"
 msgstr ""
 
 msgid "Include RAM"
@@ -75,6 +87,12 @@ msgid "List all snapshots"
 msgstr ""
 
 msgid "Loading Snapshots information ..."
+msgstr ""
+
+msgid "N/A"
+msgstr ""
+
+msgid "Name"
 msgstr ""
 
 msgid "Name must contain at least 2 characters starting with alphabet. Valid characters are A-Z a-z 0-9 _"
@@ -95,10 +113,10 @@ msgstr ""
 msgid "Revert Host to a snapshot"
 msgstr ""
 
-msgid "Reverting..."
+msgid "Rollback"
 msgstr ""
 
-msgid "Rollback"
+msgid "Rollback to \"%s\"?"
 msgstr ""
 
 msgid "Snapshot"
@@ -109,10 +127,22 @@ msgstr[1] ""
 msgid "Snapshot name cannot be changed"
 msgstr ""
 
+msgid "Snapshot successfully created!"
+msgstr ""
+
 msgid "Snapshots"
 msgstr ""
 
 msgid "Something went wrong while selecting hosts - %s"
+msgstr ""
+
+msgid "Successfully removed Snapshot \"%s\" from host %s"
+msgstr ""
+
+msgid "Successfully rolled back Snapshot \"%s\" on host %s"
+msgstr ""
+
+msgid "Successfully updated Snapshot \"%s\""
 msgstr ""
 
 msgid "Unable to create Proxmox Snapshot"
@@ -146,6 +176,9 @@ msgid "VM successfully rolled back."
 msgstr ""
 
 msgid "Whether to include the RAM state in the snapshot"
+msgstr ""
+
+msgid "edit entry"
 msgstr ""
 
 msgid "host"
