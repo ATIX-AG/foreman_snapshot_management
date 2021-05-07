@@ -10,7 +10,10 @@ module ForemanSnapshotManagement
 
     initializer 'foreman_snapshot_management.register_plugin', before: :finisher_hook do |_app|
       Foreman::Plugin.register :foreman_snapshot_management do
-        requires_foreman '>= 1.17'
+        requires_foreman '>= 2.0.0'
+
+        # Add Global files for extending foreman-core components and routes
+        register_global_js_file 'global'
 
         apipie_documented_controllers ["#{ForemanSnapshotManagement::Engine.root}/app/controllers/api/v2/*.rb"]
 

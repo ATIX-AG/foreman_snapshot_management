@@ -1,80 +1,12 @@
-<%= form_for @new_snapshot, as: :snapshot, url: host_snapshots_path(@host), html: {class: ""} do |f| %>
-<table class="<%= table_css_classes %>">
-  <thead>
-  <tr>
-    <th class="col-md-1"><%= _('Snapshot') %></th>
-    <th class="col-md-2"><%= _('Description') %></th>
-    <% if @host.compute_resource.capable?(:snapshot_include_ram) %>
-      <th class="col-md-1"><%= _('Include RAM') %></th>
-    <% end %>
-    <th class="col-md-1"><%= _('Action') %></th>
-  </tr>
-  </thead>
-  <tbody>
-    <% if authorized_for(:auth_object => @host, :permission => :create_snapshots) %>
-      <tr>
-        <td>
-          <%= f.text_field :name, class: 'form-control' %>
-        </td>
-        <td>
-          <%= f.text_field :description, class: 'form-control' %>
-        </td>
-        <% if @host.compute_resource.capable?(:snapshot_include_ram) %>
-          <td>
-            <%= f.check_box :include_ram, class: 'form-control' %>
-          </td>
-        <% end %>
-        <td>
-          <%= f.submit _('Create'), class: 'btn btn-success', :onclick => "$(this).attr('disabled', 'disabled'); $(this).parents('form').submit();" %>
-        </td>
-      </tr>
-    <% end %>
-  <% @snapshots.each do |snapshot| %>
-      <tr>
-        <td>
-          <% if authorized_for(:auth_object => @host, :permission => :edit_snapshots) && @host.compute_resource.capable?(:editable_snapshot_name) %>
-            <%= edit_textfield snapshot, :name, title: _('Name') %>
-          <% else %>
-            <%= snapshot.name %>
-          <% end %>
-          <br /><%= snapshot.formatted_create_time() %>
-        </td>
-        <td>
-          <% if authorized_for(:auth_object => @host, :permission => :edit_snapshots) %>
-            <%= edit_textarea snapshot, :description, title: _('Description') %>
-          <% else %>
-            <%= snapshot.description %>
-          <% end %>
-        </td>
-        <% if @host.compute_resource.capable?(:snapshot_include_ram) %>
-          <td>
-          </td>
-        <% end %>
-        <td>
-          <%= action_buttons(
-            display_link_if_authorized(_('Rollback'), hash_for_revert_host_snapshot_path(host_id: @host, id: snapshot.id).merge(:auth_object => @host, :permission => :revert_snapshots), method: :put, class: 'btn btn-primary', data: {confirm: _('Are you sure to revert this Snapshot?'), 'disable-with': _('Reverting...')}),
-            display_delete_if_authorized(hash_for_host_snapshot_path(host_id: @host, id: snapshot.id).merge(:auth_object => @host, :permission => :destroy_snapshots), data: {confirm: _("Are you sure to delete this Snapshot?"), 'disable-with': _('Deleting...')}),
-          ) %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<% end %>
-
-<script type="text/javascript">
-//<![CDATA[
-  $(document).ready(function() {
-    $('.editable').editable({
-      params: {
-        authenticity_token: AUTH_TOKEN
-      },
-      error: function(response) {
-        return $.parseJSON(response.responseText).errors;
-      }
-    });
-    var hash = window.location.hash;
-    hash && $('ul.nav a[href="' + hash + '"]').tab('show');
-  });
-//]]>
-</script>
+<%= react_component('SnapshotManagement', {
+  host: @host,
+  canCreate: authorized_for(:auth_object => @host, :permission => :create_snapshots),
+  canUpdate: authorized_for(:auth_object => @host, :permission => :edit_snapshots),
+  canRevert: authorized_for(:auth_object => @host, :permission => :revert_snapshots),
+  canDelete: authorized_for(:auth_object => @host, :permission => :destroy_snapshots),
+  capabilities:
+  {
+    editableSnapshotName: @host.compute_resource.capable?(:editable_snapshot_name),
+    limitSnapshotNameFormat: @host.compute_resource.type == "ForemanFogProxmox::Proxmox"
+  }
+}) %> 
