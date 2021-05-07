@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :proxmox_resource, :class => ComputeResource do
-    sequence(:name) { |n| "compute_resource#{n}" }
+    sequence(:name) { |n| "compute_resource_proxmox#{n}" }
     organizations { [Organization.find_by(name: 'Organization 1')] }
     locations { [Location.find_by(name: 'Location 1')] }
 
