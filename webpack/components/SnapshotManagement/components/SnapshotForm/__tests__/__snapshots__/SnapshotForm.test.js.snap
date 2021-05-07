@@ -2,6 +2,7 @@
 
 exports[`SnapshotForm rendering render 1`] = `
 <ForemanForm
+  enableReinitialize={false}
   initialValues={
     Object {
       "description": "",
@@ -158,6 +159,7 @@ exports[`SnapshotForm rendering render 1`] = `
 
 exports[`SnapshotForm rendering render with limitSnapshotNameFormat capability 1`] = `
 <ForemanForm
+  enableReinitialize={false}
   initialValues={
     Object {
       "description": "",
@@ -318,6 +320,7 @@ exports[`SnapshotForm rendering render with limitSnapshotNameFormat capability 1
 
 exports[`SnapshotForm rendering render with optional Props 1`] = `
 <ForemanForm
+  enableReinitialize={false}
   initialValues={
     Object {
       "description": "Hello World",
