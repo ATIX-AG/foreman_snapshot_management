@@ -2,3 +2,5 @@ Gemfile.lock
 *.gem
 locale/*/*.edit.po
 locale/*/*.po.time_stamp
+node_modules
+package-lock.json
