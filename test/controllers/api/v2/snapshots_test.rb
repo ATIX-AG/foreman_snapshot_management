@@ -17,16 +17,16 @@ class Api::V2::SnapshotsControllerTest < ActionController::TestCase
     ComputeResource.find_by(id: cr.id)
   end
   let(:vmid) { '100' }
-  let(:proxmox_host) { FactoryBot.create(:host, :managed, :compute_resource => proxmox_compute_resource, :uuid => vmid) }
+  let(:proxmox_host) { FactoryBot.create(:host, :managed, :compute_resource => proxmox_compute_resource, :uuid => "1_#{vmid}") }
   let(:proxmox_snapshot) { 'snapshot1' }
-  let(:manager_user) {
-    roles = [Role.find_by_name('Snapshot Manager')]
+  let(:manager_user) do
+    roles = [Role.find_by(name: 'Snapshot Manager')]
     FactoryBot.create(:user, :organizations => [tax_organization], :locations => [tax_location], :roles => roles)
-  }
-  let(:view_user) {
-    roles = [Role.find_by_name('Snapshot Viewer')]
+  end
+  let(:view_user) do
+    roles = [Role.find_by(name: 'Snapshot Viewer')]
     FactoryBot.create(:user, :organizations => [tax_organization], :locations => [tax_location], :roles => roles)
-  }
+  end
   setup { ::Fog.mock! }
   teardown { ::Fog.unmock! }
 
@@ -43,7 +43,7 @@ class Api::V2::SnapshotsControllerTest < ActionController::TestCase
     end
 
     test 'should get index of Vmware Snapshots' do
-        get :index, params: { :host_id => host.to_param }
+      get :index, params: { :host_id => host.to_param }
       assert_response :success
       assert_not_nil assigns(:snapshots)
       body = ActiveSupport::JSON.decode(@response.body)
@@ -53,7 +53,7 @@ class Api::V2::SnapshotsControllerTest < ActionController::TestCase
 
     test 'should get index of Proxmox Snapshots' do
       Host::Managed.any_instance.stubs(:vm_exists?).returns(false)
-        get :index, params: { :host_id => proxmox_host.to_param }
+      get :index, params: { :host_id => proxmox_host.to_param }
       assert_response :success
       assert_not_nil assigns(:snapshots)
       body = ActiveSupport::JSON.decode(@response.body)
@@ -68,7 +68,7 @@ class Api::V2::SnapshotsControllerTest < ActionController::TestCase
       body = ActiveSupport::JSON.decode(@response.body)
       assert_not_empty body
       assert_not_empty body['results']
-      assert body['results'].count == 1
+      assert_equal body['results'].count, 1
     end
 
     test 'should search Proxmox snapshot' do
@@ -79,7 +79,7 @@ class Api::V2::SnapshotsControllerTest < ActionController::TestCase
       body = ActiveSupport::JSON.decode(@response.body)
       assert_not_empty body
       assert_not_empty body['results']
-      assert body['results'].count == 1
+      assert_equal body['results'].count, 1
     end
 
     test 'should refute search Vmware snapshot' do
@@ -170,7 +170,7 @@ class Api::V2::SnapshotsControllerTest < ActionController::TestCase
       body = ActiveSupport::JSON.decode(@response.body)
       assert_not_empty body
       assert_not_empty body['results']
-      assert body['results'].count == 1
+      assert_equal body['results'].count, 1
     end
 
     test 'should search Proxmox snapshot' do
@@ -181,7 +181,7 @@ class Api::V2::SnapshotsControllerTest < ActionController::TestCase
       body = ActiveSupport::JSON.decode(@response.body)
       assert_not_empty body
       assert_not_empty body['results']
-      assert body['results'].count == 1
+      assert_equal body['results'].count, 1
     end
 
     test 'should refute search Vmware snapshot' do

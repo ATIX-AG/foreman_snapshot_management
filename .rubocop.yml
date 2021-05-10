@@ -1,56 +1,84 @@
+
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-minitest
+
 AllCops:
-  TargetRubyVersion: 2.3
+  TargetRubyVersion: 2.5
+  TargetRailsVersion: 5.2
   Exclude:
+    - 'locale/**/*'
+    - 'node_modules/**/*'
+    - 'vendor/**/*'
     - '*.spec'
-    - 'doc/plugins/**'
 
-Rails/Date:
-  Exclude:
-    - 'foreman_snapshot_management.gemspec'
+Layout/LineLength:
+  Max: 190
 
-Rails:
-  Enabled: True
-
-Rails/FindEach:
-  Exclude:
-    - 'app/models/foreman_snapshot_management/vmware_extensions.rb'
-
-# Don't enforce documentation
-Style/Documentation:
+Metrics/AbcSize:
   Enabled: false
 
-Metrics/MethodLength:
-  Max: 40
-
-Naming/AccessorMethodName:
-  Enabled: false
-
-Style/RedundantSelf:
+Metrics/BlockLength:
   Enabled: false
 
 Metrics/ClassLength:
   Max: 500
 
+Metrics/MethodLength:
+  Max: 40
+
+Metrics/ModuleLength:
+    Max: 400
+
+Metrics/ParameterLists:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Naming/AccessorMethodName:
+  Enabled: false
+
 Naming/FileName:
   Exclude:
     - 'db/seeds.d/*'
 
-Style/WordArray:
-  Enabled: false
+Naming/MethodName:
+  Exclude:
+    - 'app/models/concerns/orchestration/*.rb'
 
-Style/BracesAroundHashParameters:
-  Enabled: false
+Rails:
+  Enabled: True
 
-Style/RescueModifier:
+Rails/Date:
+  Exclude:
+    - 'foreman_snapshot_management.gemspec'
+
+Rails/FindEach:
+  Exclude:
+    - 'app/models/foreman_snapshot_management/vmware_extensions.rb'
+
+Style/CaseEquality:
   Enabled: false
 
 Style/ClassAndModuleChildren:
   Enabled: false
 
+# Don't enforce documentation
+Style/Documentation:
+  Enabled: false
+
 Style/EachWithObject:
   Enabled: false
 
-Metrics/ParameterLists:
+Style/FormatString:
+  Enabled: false
+
+Style/FormatStringToken:
+  Enabled: false
+
+Style/GuardClause:
   Enabled: false
 
 # Support both ruby19 and hash_rockets
@@ -60,41 +88,23 @@ Style/HashSyntax:
     - ruby19
     - hash_rockets
 
-Metrics/LineLength:
-  Max: 190
-
-# Offense count: 21
-# Configuration parameters: CountComments.
-Metrics/ModuleLength:
-    Max: 400
-
-Naming/MethodName:
-  Exclude:
-    - 'app/models/concerns/orchestration/*.rb'
-
-Style/SymbolArray:
-  Enabled: false
-
-Style/FormatString:
-  Enabled: false
-
-Style/FormatStringToken:
+Style/RedundantSelf:
   Enabled: false
 
 Style/RegexpLiteral:
   Enabled: false
 
-Metrics/AbcSize:
+Style/RescueModifier:
   Enabled: false
 
-Metrics/BlockLength:
+Style/StringLiterals:
+  Exclude:
+    - 'Gemfile'
+    - '*.gemspec'
+
+Style/SymbolArray:
   Enabled: false
 
-Metrics/PerceivedComplexity:
+Style/WordArray:
   Enabled: false
 
-Style/CaseEquality:
-  Enabled: false
-
-Style/GuardClause:
-  Enabled: false

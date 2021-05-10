@@ -18,6 +18,5 @@ Gem::Specification.new do |s|
   s.files = Dir['{app,config,db,lib,locale,webpack}/**/*'] + ['LICENSE', 'package.json', 'Rakefile', 'README.md']
   s.test_files = Dir['test/**/*']
 
-  s.add_development_dependency 'rdoc', '~> 5.1'
-  s.add_development_dependency 'rubocop', '~> 0.75.0'
+  s.required_ruby_version = '>= 2.5'
 end

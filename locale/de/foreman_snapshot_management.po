@@ -5,18 +5,19 @@
 #
 # Translators:
 # Lukáš Zapletal, 2019
-# Ettore Atalan <atalanttore@googlemail.com>, 2019
 # Wiederoder <stefanwiederoder@googlemail.com>, 2019
-# Bryan Kearney <bryan.kearney@gmail.com>, 2019
 # Martin Zimmermann <martin.zimmermann@gmx.com>, 2019
-# Markus Bucher <bucher@atix.de>, 2020
+# Ettore Atalan <atalanttore@googlemail.com>, 2021
+# Bryan Kearney <bryan.kearney@gmail.com>, 2021
+# Markus Bucher <bucher@atix.de>, 2021
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: foreman_snapshot_management 1.8.1\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2019-10-22 11:54+0000\n"
-"Last-Translator: Markus Bucher <bucher@atix.de>, 2020\n"
+"Last-Translator: Markus Bucher <bucher@atix.de>, 2021\n"
 "Language-Team: German (https://www.transifex.com/foreman/teams/114/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,13 +29,13 @@ msgid "Action"
 msgstr "Aktion"
 
 msgid "Action with sub plans"
-msgstr ""
+msgstr "Aktion mit Unterplänen"
 
 msgid "Create Snapshot"
 msgstr "Snapshot erstellen"
 
 msgid "Create Snapshot for %s"
-msgstr ""
+msgstr "Snapshot anlegen für %s"
 
 msgid "Create a snapshot"
 msgstr "Einen Snapshot erstellen"
@@ -43,10 +44,10 @@ msgid "Created %{snapshots} for %{num} %{hosts}"
 msgstr "%{snapshots} für %{num} %{hosts} erstellt"
 
 msgid "Delete"
-msgstr ""
+msgstr "Löschen"
 
 msgid "Delete Snapshot \"%s\"?"
-msgstr ""
+msgstr "\"%s\" wirklich löschen?"
 
 msgid "Delete a snapshot"
 msgstr "Snapshot löschen"
@@ -70,10 +71,10 @@ msgid "Error occurred while rolling back VM: %s"
 msgstr "Beim Zurücksetzen der VM ist ein Fehler aufgetreten: %s"
 
 msgid "Error occurred while updating Snapshot: %s"
-msgstr ""
+msgstr "Fehler beim Aktualisieren des Snapshots: %s"
 
 msgid "Failed to load snapshot list"
-msgstr ""
+msgstr "Fehler beim Laden der Snapshotliste"
 
 msgid "Failed to update Snapshot: %s"
 msgstr "Das Aktualisieren des Snapshots ist fehlgeschlagen: %s"
@@ -82,10 +83,10 @@ msgid "Foreman-plugin to manage snapshots in a virtual-hardware environments."
 msgstr "Ein Foremanplugin, welches Snapshots in Umgebungen mit virtueller Hardware nutzbar macht."
 
 msgid "Import Puppet classes"
-msgstr ""
+msgstr "Puppet-Klassen importieren"
 
 msgid "Import facts"
-msgstr ""
+msgstr "Fakten importieren"
 
 msgid "Include RAM"
 msgstr "RAM einbeziehen"
@@ -97,10 +98,10 @@ msgid "Loading Snapshots information ..."
 msgstr "Lade Snapshot Informationen ..."
 
 msgid "N/A"
-msgstr ""
+msgstr "N/A"
 
 msgid "Name"
-msgstr ""
+msgstr "Name"
 
 msgid "Name must contain at least 2 characters starting with alphabet. Valid characters are A-Z a-z 0-9 _"
 msgstr "Der Name muss aus mindestens 2 Zeichen bestehen und mit einem Buchstaben beginnen. Gültige Zeichen: A-Z a-z 0-9 _"
@@ -124,7 +125,7 @@ msgid "Rollback"
 msgstr "Wiederherstellen"
 
 msgid "Rollback to \"%s\"?"
-msgstr ""
+msgstr "\"%s\" wirklich wiederherstellen?"
 
 msgid "Snapshot"
 msgid_plural "Snapshots"
@@ -135,7 +136,7 @@ msgid "Snapshot name cannot be changed"
 msgstr "Der Name des Snapshots kann nicht geändert werden"
 
 msgid "Snapshot successfully created!"
-msgstr ""
+msgstr "Snapshot erfolgreich erzeugt!"
 
 msgid "Snapshots"
 msgstr "Snapshots"
@@ -144,13 +145,13 @@ msgid "Something went wrong while selecting hosts - %s"
 msgstr "Fehler beim Auswählen der Hosts – %s"
 
 msgid "Successfully removed Snapshot \"%s\" from host %s"
-msgstr ""
+msgstr "Snapshot \"%s\" erfolgreich von Host %s entfernt."
 
 msgid "Successfully rolled back Snapshot \"%s\" on host %s"
-msgstr ""
+msgstr "Snapshot \"%s\" erfolgreich auf Host %s zurückgesetzt."
 
 msgid "Successfully updated Snapshot \"%s\""
-msgstr ""
+msgstr "Snapshot \"%s\" erfolgreich aktualisiert."
 
 msgid "Unable to create Proxmox Snapshot"
 msgstr "Proxmox Snapshot konnte nicht erstellt werden"
@@ -186,7 +187,7 @@ msgid "Whether to include the RAM state in the snapshot"
 msgstr "Ob auch der aktuelle Hauptspeicherstand im Snapshot gespeichert werden soll"
 
 msgid "edit entry"
-msgstr ""
+msgstr "Eintrag bearbeiten"
 
 msgid "host"
 msgid_plural "hosts"

@@ -28,6 +28,10 @@ module ForemanSnapshotManagement
                  )
     end
 
+    def self.any?
+      true
+    end
+
     def self.new_for_host(host)
       host.compute_resource.new_snapshot(host)
     end
