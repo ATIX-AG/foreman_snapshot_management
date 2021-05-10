@@ -19,7 +19,7 @@ module ForemanSnapshotManagement
       FactoryBot.create(:proxmox_cr)
       ComputeResource.find_by(type: 'ForemanFogProxmox::Proxmox')
     end
-    let(:vmid) { '100' }
+    let(:vmid) { '1_100' }
     let(:proxmox_host) { FactoryBot.create(:host, :managed, :compute_resource => proxmox_compute_resource, :uuid => vmid) }
     let(:proxmox_snapshot) { 'snapshot1' }
     setup { ::Fog.mock! }

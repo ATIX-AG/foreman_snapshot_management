@@ -17,7 +17,7 @@ class Api::V2::SnapshotsControllerTest < ActionController::TestCase
     ComputeResource.find_by(id: cr.id)
   end
   let(:vmid) { '100' }
-  let(:proxmox_host) { FactoryBot.create(:host, :managed, :compute_resource => proxmox_compute_resource, :uuid => vmid) }
+  let(:proxmox_host) { FactoryBot.create(:host, :managed, :compute_resource => proxmox_compute_resource, :uuid => "1_#{vmid}") }
   let(:proxmox_snapshot) { 'snapshot1' }
   let(:manager_user) do
     roles = [Role.find_by(name: 'Snapshot Manager')]
