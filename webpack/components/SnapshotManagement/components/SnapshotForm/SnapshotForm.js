@@ -50,9 +50,10 @@ const SnapshotForm = ({
       url: SNAPSHOT_CREATE_URL.replace(':hostId', hostId),
       values: submitValues,
       message: __('Snapshot successfully created!'),
+      successCallback: props.setModalClosed,
+      actions,
     });
     actions.setSubmitting(false);
-    props.setModalClosed();
   };
 
   return (
