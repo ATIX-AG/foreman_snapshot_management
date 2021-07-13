@@ -6,7 +6,7 @@ module Foreman::Controller::Parameters::Snapshot
   class_methods do
     def snapshot_params_filter
       Foreman::ParameterFilter.new(::ForemanSnapshotManagement::Snapshot).tap do |filter|
-        filter.permit :name, :description
+        filter.permit :name, :description, :include_ram, :host_id
       end
     end
   end
