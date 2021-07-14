@@ -92,9 +92,18 @@ module ForemanSnapshotManagement
           raw_snapshot: raw_snapshot,
           name: raw_snapshot.name,
           description: raw_snapshot.description,
+          include_ram: includes_ram?(raw_snapshot.power_state),
           parent: opts[:parent],
           create_time: raw_snapshot.create_time
         )
+      end
+    end
+
+    def includes_ram?(state)
+      case state
+      when 'poweredOn' then true
+      when 'poweredOff' then false
+      else nil
       end
     end
 

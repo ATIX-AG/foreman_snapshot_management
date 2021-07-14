@@ -75,8 +75,6 @@ module ForemanSnapshotManagement
     end
 
     def include_ram=(value)
-      raise Exception('Cannot modify include_ram on existing snapshots.') if persisted?
-
       @include_ram = value
     end
 
