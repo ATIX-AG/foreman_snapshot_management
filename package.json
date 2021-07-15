@@ -1,6 +1,6 @@
 {
   "name": "foreman_snapshot_management",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Foreman-plugin to manage snapshots in a virtual-hardware environments.",
   "main": "index.js",
   "scripts": {
