@@ -38,7 +38,7 @@ const SnapshotForm = ({
 
   const handleSubmit = async (values, actions) => {
     const submitValues = {
-      includeRam: values.includeRam || false,
+      include_ram: values.includeRam || false,
       snapshot: {
         name: values.name,
         description: values.description || '',
