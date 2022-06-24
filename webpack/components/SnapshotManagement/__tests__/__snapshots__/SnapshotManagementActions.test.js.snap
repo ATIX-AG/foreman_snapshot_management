@@ -62,13 +62,13 @@ Array [
     Object {
       "payload": Object {
         "key": "FOREMAN_SNAPSHOT_MANAGEMENT_SNAPSHOT_DELETE_SUCCESS",
-        "message": Object {
+        "toast": Object {
           "key": "FOREMAN_SNAPSHOT_MANAGEMENT_SNAPSHOT_DELETE_SUCCESS",
           "message": "Successfully removed Snapshot \\"Savegame\\" from host deep.thought",
           "type": "success",
         },
       },
-      "type": "TOASTS_ADD",
+      "type": "toasts/addToast",
     },
   ],
   Array [
@@ -108,13 +108,13 @@ Array [
     Object {
       "payload": Object {
         "key": "FOREMAN_SNAPSHOT_MANAGEMENT_SNAPSHOT_DELETE_FAILURE",
-        "message": Object {
+        "toast": Object {
           "key": "FOREMAN_SNAPSHOT_MANAGEMENT_SNAPSHOT_DELETE_FAILURE",
           "message": "Error occurred while removing Snapshot: Error: some-error",
           "type": "error",
         },
       },
-      "type": "TOASTS_ADD",
+      "type": "toasts/addToast",
     },
   ],
   Array [
@@ -151,13 +151,13 @@ Array [
     Object {
       "payload": Object {
         "key": "FOREMAN_SNAPSHOT_MANAGEMENT_SNAPSHOT_ROLLBACK_FAILURE",
-        "message": Object {
+        "toast": Object {
           "key": "FOREMAN_SNAPSHOT_MANAGEMENT_SNAPSHOT_ROLLBACK_FAILURE",
           "message": "Error occurred while rolling back VM: Error: some-error",
           "type": "error",
         },
       },
-      "type": "TOASTS_ADD",
+      "type": "toasts/addToast",
     },
   ],
   Array [
@@ -194,13 +194,13 @@ Array [
     Object {
       "payload": Object {
         "key": "FOREMAN_SNAPSHOT_MANAGEMENT_SNAPSHOT_ROLLBACK_SUCCESS",
-        "message": Object {
+        "toast": Object {
           "key": "FOREMAN_SNAPSHOT_MANAGEMENT_SNAPSHOT_ROLLBACK_SUCCESS",
           "message": "Successfully rolled back Snapshot \\"Savegame\\" on host deep.thought",
           "type": "success",
         },
       },
-      "type": "TOASTS_ADD",
+      "type": "toasts/addToast",
     },
   ],
   Array [
@@ -241,13 +241,13 @@ Array [
     Object {
       "payload": Object {
         "key": "FOREMAN_SNAPSHOT_MANAGEMENT_SNAPSHOT_UPDATE_FAILURE",
-        "message": Object {
+        "toast": Object {
           "key": "FOREMAN_SNAPSHOT_MANAGEMENT_SNAPSHOT_UPDATE_FAILURE",
           "message": "Error occurred while updating Snapshot: Error: some-error",
           "type": "error",
         },
       },
-      "type": "TOASTS_ADD",
+      "type": "toasts/addToast",
     },
   ],
   Array [
@@ -288,13 +288,13 @@ Array [
     Object {
       "payload": Object {
         "key": "FOREMAN_SNAPSHOT_MANAGEMENT_SNAPSHOT_UPDATE_SUCCESS",
-        "message": Object {
+        "toast": Object {
           "key": "FOREMAN_SNAPSHOT_MANAGEMENT_SNAPSHOT_UPDATE_SUCCESS",
           "message": "Successfully updated Snapshot \\"Savegame\\"",
           "type": "success",
         },
       },
-      "type": "TOASTS_ADD",
+      "type": "toasts/addToast",
     },
   ],
   Array [
