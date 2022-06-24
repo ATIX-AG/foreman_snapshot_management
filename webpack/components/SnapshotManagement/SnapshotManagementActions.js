@@ -1,6 +1,6 @@
 import { API, actionTypeGenerator } from 'foremanReact/redux/API';
 import { sprintf, translate as __ } from 'foremanReact/common/I18n';
-import { addToast } from 'foremanReact/redux/actions/toasts';
+import { addToast } from 'foremanReact/components/ToastsList';
 
 import {
   SNAPSHOT_LIST,
