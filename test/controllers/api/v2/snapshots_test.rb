@@ -12,13 +12,17 @@ class Api::V2::SnapshotsControllerTest < ActionController::TestCase
   let(:uuid) { '5032c8a5-9c5e-ba7a-3804-832a03e16381' }
   let(:host) { FactoryBot.create(:host, :managed, :compute_resource => compute_resource, :uuid => uuid) }
   let(:snapshot_id) { 'snapshot-0101' }
-  let(:proxmox_compute_resource) do
-    cr = FactoryBot.create(:proxmox_cr)
-    ComputeResource.find_by(id: cr.id)
+
+  if defined?(TEST_PROXMOX)
+    let(:vmid) { '100' }
+    let(:proxmox_compute_resource) do
+      cr = FactoryBot.create(:proxmox_cr)
+      ComputeResource.find_by(id: cr.id)
+    end
+    let(:proxmox_host) { FactoryBot.create(:host, :managed, :compute_resource => proxmox_compute_resource, :uuid => "1_#{vmid}") }
+    let(:proxmox_snapshot) { 'snapshot1' }
   end
-  let(:vmid) { '100' }
-  let(:proxmox_host) { FactoryBot.create(:host, :managed, :compute_resource => proxmox_compute_resource, :uuid => "1_#{vmid}") }
-  let(:proxmox_snapshot) { 'snapshot1' }
+
   let(:manager_user) do
     roles = [Role.find_by(name: 'Snapshot Manager')]
     FactoryBot.create(:user, :organizations => [tax_organization], :locations => [tax_location], :roles => roles)
@@ -34,7 +38,7 @@ class Api::V2::SnapshotsControllerTest < ActionController::TestCase
     setup do
       # Make sure that test-hosts are created here (by the admin-user)
       host
-      proxmox_host
+      proxmox_host if defined?(TEST_PROXMOX)
       @orig_user = User.current
       User.current = view_user
     end
@@ -51,14 +55,16 @@ class Api::V2::SnapshotsControllerTest < ActionController::TestCase
       assert_not_empty body['results']
     end
 
-    test 'should get index of Proxmox Snapshots' do
-      Host::Managed.any_instance.stubs(:vm_exists?).returns(false)
-      get :index, params: { :host_id => proxmox_host.to_param }
-      assert_response :success
-      assert_not_nil assigns(:snapshots)
-      body = ActiveSupport::JSON.decode(@response.body)
-      assert_not_empty body
-      assert_not_empty body['results']
+    if defined?(TEST_PROXMOX)
+      test 'should get index of Proxmox Snapshots' do
+        Host::Managed.any_instance.stubs(:vm_exists?).returns(false)
+        get :index, params: { :host_id => proxmox_host.to_param }
+        assert_response :success
+        assert_not_nil assigns(:snapshots)
+        body = ActiveSupport::JSON.decode(@response.body)
+        assert_not_empty body
+        assert_not_empty body['results']
+      end
     end
 
     test 'should search VMware snapshot' do
@@ -71,15 +77,17 @@ class Api::V2::SnapshotsControllerTest < ActionController::TestCase
       assert_equal body['results'].count, 1
     end
 
-    test 'should search Proxmox snapshot' do
-      Host::Managed.any_instance.stubs(:vm_exists?).returns(false)
-      get :index, params: { :host_id => proxmox_host.to_param, :search => 'name= snapshot1' }
-      assert_response :success
-      assert_not_nil assigns(:snapshots)
-      body = ActiveSupport::JSON.decode(@response.body)
-      assert_not_empty body
-      assert_not_empty body['results']
-      assert_equal body['results'].count, 1
+    if defined?(TEST_PROXMOX)
+      test 'should search Proxmox snapshot' do
+        Host::Managed.any_instance.stubs(:vm_exists?).returns(false)
+        get :index, params: { :host_id => proxmox_host.to_param, :search => 'name= snapshot1' }
+        assert_response :success
+        assert_not_nil assigns(:snapshots)
+        body = ActiveSupport::JSON.decode(@response.body)
+        assert_not_empty body
+        assert_not_empty body['results']
+        assert_equal body['results'].count, 1
+      end
     end
 
     test 'should refute search Vmware snapshot' do
@@ -95,13 +103,15 @@ class Api::V2::SnapshotsControllerTest < ActionController::TestCase
       assert_not_empty body
     end
 
-    test 'should show Proxmox snapshot' do
-      Host::Managed.any_instance.stubs(:vm_exists?).returns(false)
-      get :show, params: { :host_id => proxmox_host.to_param, :id => proxmox_snapshot }
-      assert_not_nil assigns(:snapshot)
-      assert_response :success
-      body = ActiveSupport::JSON.decode(@response.body)
-      assert_not_empty body
+    if defined?(TEST_PROXMOX)
+      test 'should show Proxmox snapshot' do
+        Host::Managed.any_instance.stubs(:vm_exists?).returns(false)
+        get :show, params: { :host_id => proxmox_host.to_param, :id => proxmox_snapshot }
+        assert_not_nil assigns(:snapshot)
+        assert_response :success
+        body = ActiveSupport::JSON.decode(@response.body)
+        assert_not_empty body
+      end
     end
 
     test 'should 404 for unknown Vmware snapshot' do
@@ -125,10 +135,12 @@ class Api::V2::SnapshotsControllerTest < ActionController::TestCase
       assert_response :forbidden
     end
 
-    test 'should refute revert Proxmox snapshot' do
-      Host::Managed.any_instance.stubs(:vm_exists?).returns(false)
-      put :revert, params: { :host_id => proxmox_host.to_param, :id => proxmox_snapshot.to_param }
-      assert_response :forbidden
+    if defined?(TEST_PROXMOX)
+      test 'should refute revert Proxmox snapshot' do
+        Host::Managed.any_instance.stubs(:vm_exists?).returns(false)
+        put :revert, params: { :host_id => proxmox_host.to_param, :id => proxmox_snapshot.to_param }
+        assert_response :forbidden
+      end
     end
   end
 
@@ -136,7 +148,7 @@ class Api::V2::SnapshotsControllerTest < ActionController::TestCase
     setup do
       # Make sure that test-hosts are created here (by the admin-user)
       host
-      proxmox_host
+      proxmox_host if defined?(TEST_PROXMOX)
       @orig_user = User.current
       User.current = manager_user
     end
@@ -153,14 +165,16 @@ class Api::V2::SnapshotsControllerTest < ActionController::TestCase
       assert_not_empty body['results']
     end
 
-    test 'should get index of Proxmox Snapshots' do
-      Host::Managed.any_instance.stubs(:vm_exists?).returns(false)
-      get :index, params: { :host_id => proxmox_host.to_param }
-      assert_response :success
-      assert_not_nil assigns(:snapshots)
-      body = ActiveSupport::JSON.decode(@response.body)
-      assert_not_empty body
-      assert_not_empty body['results']
+    if defined?(TEST_PROXMOX)
+      test 'should get index of Proxmox Snapshots' do
+        Host::Managed.any_instance.stubs(:vm_exists?).returns(false)
+        get :index, params: { :host_id => proxmox_host.to_param }
+        assert_response :success
+        assert_not_nil assigns(:snapshots)
+        body = ActiveSupport::JSON.decode(@response.body)
+        assert_not_empty body
+        assert_not_empty body['results']
+      end
     end
 
     test 'should search VMware snapshot' do
@@ -173,15 +187,17 @@ class Api::V2::SnapshotsControllerTest < ActionController::TestCase
       assert_equal body['results'].count, 1
     end
 
-    test 'should search Proxmox snapshot' do
-      Host::Managed.any_instance.stubs(:vm_exists?).returns(false)
-      get :index, params: { :host_id => proxmox_host.to_param, :search => 'name= snapshot1' }
-      assert_response :success
-      assert_not_nil assigns(:snapshots)
-      body = ActiveSupport::JSON.decode(@response.body)
-      assert_not_empty body
-      assert_not_empty body['results']
-      assert_equal body['results'].count, 1
+    if defined?(TEST_PROXMOX)
+      test 'should search Proxmox snapshot' do
+        Host::Managed.any_instance.stubs(:vm_exists?).returns(false)
+        get :index, params: { :host_id => proxmox_host.to_param, :search => 'name= snapshot1' }
+        assert_response :success
+        assert_not_nil assigns(:snapshots)
+        body = ActiveSupport::JSON.decode(@response.body)
+        assert_not_empty body
+        assert_not_empty body['results']
+        assert_equal body['results'].count, 1
+      end
     end
 
     test 'should refute search Vmware snapshot' do
@@ -197,13 +213,15 @@ class Api::V2::SnapshotsControllerTest < ActionController::TestCase
       assert_not_empty body
     end
 
-    test 'should show Proxmox snapshot' do
-      Host::Managed.any_instance.stubs(:vm_exists?).returns(false)
-      get :show, params: { :host_id => proxmox_host.to_param, :id => proxmox_snapshot }
-      assert_not_nil assigns(:snapshot)
-      assert_response :success
-      body = ActiveSupport::JSON.decode(@response.body)
-      assert_not_empty body
+    if defined?(TEST_PROXMOX)
+      test 'should show Proxmox snapshot' do
+        Host::Managed.any_instance.stubs(:vm_exists?).returns(false)
+        get :show, params: { :host_id => proxmox_host.to_param, :id => proxmox_snapshot }
+        assert_not_nil assigns(:snapshot)
+        assert_response :success
+        body = ActiveSupport::JSON.decode(@response.body)
+        assert_not_empty body
+      end
     end
 
     test 'should 404 for unknown Vmware snapshot' do
@@ -217,11 +235,13 @@ class Api::V2::SnapshotsControllerTest < ActionController::TestCase
       assert_not_nil assigns(:snapshot)
     end
 
-    test 'should create Proxmox snapshot' do
-      Host::Managed.any_instance.stubs(:vm_exists?).returns(false)
-      post :create, params: { :host_id => proxmox_host.to_param, :name => 'test' }
-      assert_response :created
-      assert_not_nil assigns(:snapshot)
+    if defined?(TEST_PROXMOX)
+      test 'should create Proxmox snapshot' do
+        Host::Managed.any_instance.stubs(:vm_exists?).returns(false)
+        post :create, params: { :host_id => proxmox_host.to_param, :name => 'test' }
+        assert_response :created
+        assert_not_nil assigns(:snapshot)
+      end
     end
 
     test 'should update Vmware snapshot' do
@@ -230,18 +250,20 @@ class Api::V2::SnapshotsControllerTest < ActionController::TestCase
       assert_response :success
     end
 
-    test 'should update Proxmox snapshot' do
-      Host::Managed.any_instance.stubs(:vm_exists?).returns(false)
-      description = 'snapshot1 updated'
-      put :update, params: { :host_id => proxmox_host.to_param, :id => proxmox_snapshot.to_param, :description => description.to_param }
-      assert_response :success
-    end
+    if defined?(TEST_PROXMOX)
+      test 'should update Proxmox snapshot' do
+        Host::Managed.any_instance.stubs(:vm_exists?).returns(false)
+        description = 'snapshot1 updated'
+        put :update, params: { :host_id => proxmox_host.to_param, :id => proxmox_snapshot.to_param, :description => description.to_param }
+        assert_response :success
+      end
 
-    test 'should refute update Proxmox snapshot name' do
-      Host::Managed.any_instance.stubs(:vm_exists?).returns(false)
-      name = 'test'
-      put :update, params: { :host_id => proxmox_host.to_param, :id => proxmox_snapshot.to_param, :name => name.to_param }
-      assert_response :unprocessable_entity
+      test 'should refute update Proxmox snapshot name' do
+        Host::Managed.any_instance.stubs(:vm_exists?).returns(false)
+        name = 'test'
+        put :update, params: { :host_id => proxmox_host.to_param, :id => proxmox_snapshot.to_param, :name => name.to_param }
+        assert_response :unprocessable_entity
+      end
     end
 
     test 'should destroy Vmware snapshot' do
@@ -249,24 +271,26 @@ class Api::V2::SnapshotsControllerTest < ActionController::TestCase
       assert_response :success
     end
 
-    test 'should destroy Proxmox snapshot' do
-      Host::Managed.any_instance.stubs(:vm_exists?).returns(false)
-      delete :destroy, params: { :host_id => proxmox_host.to_param, :id => proxmox_snapshot.to_param }
-      assert_response :success
-      body = ActiveSupport::JSON.decode(@response.body)
-      assert_not_nil body['name']
-      assert_nil body['id']
-    end
-
     test 'should revert Vmware snapshot' do
       put :revert, params: { :host_id => host.to_param, :id => snapshot_id.to_param }
       assert_response :success
     end
 
-    test 'should revert Proxmox snapshot' do
-      Host::Managed.any_instance.stubs(:vm_exists?).returns(false)
-      put :revert, params: { :host_id => proxmox_host.to_param, :id => proxmox_snapshot.to_param }
-      assert_response :success
+    if defined?(TEST_PROXMOX)
+      test 'should destroy Proxmox snapshot' do
+        Host::Managed.any_instance.stubs(:vm_exists?).returns(false)
+        delete :destroy, params: { :host_id => proxmox_host.to_param, :id => proxmox_snapshot.to_param }
+        assert_response :success
+        body = ActiveSupport::JSON.decode(@response.body)
+        assert_not_nil body['name']
+        assert_nil body['id']
+      end
+
+      test 'should revert Proxmox snapshot' do
+        Host::Managed.any_instance.stubs(:vm_exists?).returns(false)
+        put :revert, params: { :host_id => proxmox_host.to_param, :id => proxmox_snapshot.to_param }
+        assert_response :success
+      end
     end
   end
 end
