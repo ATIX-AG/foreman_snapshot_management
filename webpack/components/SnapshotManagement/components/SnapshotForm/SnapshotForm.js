@@ -18,6 +18,7 @@ const SnapshotForm = ({
   capabilities,
   ...props
 }) => {
+  const { setModalClosed } = props;
   let nameValidation = Yup.string().max(80, 'Too Long!');
   if (capabilities.limitSnapshotNameFormat)
     nameValidation = nameValidation
@@ -36,7 +37,7 @@ const SnapshotForm = ({
     includeRam: Yup.bool(),
   });
 
-  const handleSubmit = async (values, actions) => {
+  const handleSubmit = (values, actions) => {
     const submitValues = {
       include_ram: values.includeRam || false,
       snapshot: {
@@ -45,22 +46,22 @@ const SnapshotForm = ({
       },
     };
 
-    await submitForm({
+    submitForm({
       item: 'Snapshot',
       url: SNAPSHOT_CREATE_URL.replace(':hostId', hostId),
       values: submitValues,
       message: __('Snapshot successfully created!'),
+      successCallback: setModalClosed,
+      actions,
     });
-    actions.setSubmitting(false);
-    props.setModalClosed();
   };
 
   return (
     <ForemanForm
-      onSubmit={(values, actions) => handleSubmit(values, actions)}
+      onSubmit={handleSubmit}
       initialValues={initialValues}
       validationSchema={validationSchema}
-      onCancel={() => props.setModalClosed()}
+      onCancel={setModalClosed}
     >
       <TextField
         name="name"
