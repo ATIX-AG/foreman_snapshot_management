@@ -15,13 +15,17 @@ module ForemanSnapshotManagement
     let(:host) { FactoryBot.create(:host, :managed, :compute_resource => compute_resource, :uuid => uuid) }
     let(:host2) { FactoryBot.create(:host, :managed, :compute_resource => compute_resource, :uuid => uuid2) }
     let(:snapshot_id) { 'snapshot-0101' }
-    let(:proxmox_compute_resource) do
-      FactoryBot.create(:proxmox_cr)
-      ComputeResource.find_by(type: 'ForemanFogProxmox::Proxmox')
+
+    if defined?(TEST_PROXMOX)
+      let(:vmid) { '1_100' }
+      let(:proxmox_compute_resource) do
+        FactoryBot.create(:proxmox_cr)
+        ComputeResource.find_by(type: 'ForemanFogProxmox::Proxmox')
+      end
+      let(:proxmox_host) { FactoryBot.create(:host, :managed, :compute_resource => proxmox_compute_resource, :uuid => vmid) }
+      let(:proxmox_snapshot) { 'snapshot1' }
     end
-    let(:vmid) { '1_100' }
-    let(:proxmox_host) { FactoryBot.create(:host, :managed, :compute_resource => proxmox_compute_resource, :uuid => vmid) }
-    let(:proxmox_snapshot) { 'snapshot1' }
+
     setup { ::Fog.mock! }
     teardown { ::Fog.unmock! }
 
@@ -33,12 +37,14 @@ module ForemanSnapshotManagement
         assert_template 'foreman_snapshot_management/snapshots/_index'
       end
 
-      test 'should get Proxmox index' do
-        Host::Managed.any_instance.stubs(:vm_exists?).returns(false)
-        get :index, params: { :host_id => proxmox_host.to_param }, session: set_session_user
-        assert_response :success
-        assert_not_nil assigns(:snapshots)
-        assert_template 'foreman_snapshot_management/snapshots/_index'
+      if defined?(TEST_PROXMOX)
+        test 'should get Proxmox index' do
+          Host::Managed.any_instance.stubs(:vm_exists?).returns(false)
+          get :index, params: { :host_id => proxmox_host.to_param }, session: set_session_user
+          assert_response :success
+          assert_not_nil assigns(:snapshots)
+          assert_template 'foreman_snapshot_management/snapshots/_index'
+        end
       end
     end
 
@@ -49,11 +55,13 @@ module ForemanSnapshotManagement
         assert_includes flash[:notice] || flash[:success], 'Successfully created Snapshot.'
       end
 
-      test 'create valid proxmox snapshot' do
-        Host::Managed.any_instance.stubs(:vm_exists?).returns(false)
-        post :create, params: { :host_id => proxmox_host.to_param, :snapshot => { :name => 'test' } }, session: set_session_user
-        assert_redirected_to host_url(proxmox_host, :anchor => 'snapshots')
-        assert_includes flash[:notice] || flash[:success], 'Successfully created Snapshot.'
+      if defined?(TEST_PROXMOX)
+        test 'create valid proxmox snapshot' do
+          Host::Managed.any_instance.stubs(:vm_exists?).returns(false)
+          post :create, params: { :host_id => proxmox_host.to_param, :snapshot => { :name => 'test' } }, session: set_session_user
+          assert_redirected_to host_url(proxmox_host, :anchor => 'snapshots')
+          assert_includes flash[:notice] || flash[:success], 'Successfully created Snapshot.'
+        end
       end
 
       test 'create valid multiple' do
@@ -84,11 +92,13 @@ module ForemanSnapshotManagement
         assert_includes flash[:notice] || flash[:success], 'Successfully deleted Snapshot.'
       end
 
-      test 'destroy successful' do
-        Host::Managed.any_instance.stubs(:vm_exists?).returns(false)
-        delete :destroy, params: { :host_id => proxmox_host.to_param, :id => proxmox_snapshot }, session: set_session_user
-        assert_redirected_to host_url(proxmox_host, :anchor => 'snapshots')
-        assert_includes flash[:notice] || flash[:success], 'Successfully deleted Snapshot.'
+      if defined?(TEST_PROXMOX)
+        test 'destroy successful' do
+          Host::Managed.any_instance.stubs(:vm_exists?).returns(false)
+          delete :destroy, params: { :host_id => proxmox_host.to_param, :id => proxmox_snapshot }, session: set_session_user
+          assert_redirected_to host_url(proxmox_host, :anchor => 'snapshots')
+          assert_includes flash[:notice] || flash[:success], 'Successfully deleted Snapshot.'
+        end
       end
 
       test 'destroy with error' do
@@ -106,11 +116,13 @@ module ForemanSnapshotManagement
         assert_includes flash[:notice] || flash[:success], 'VM successfully rolled back.'
       end
 
-      test 'revert successful proxmox snapshot' do
-        Host::Managed.any_instance.stubs(:vm_exists?).returns(false)
-        put :revert, params: { :host_id => proxmox_host.to_param, :id => proxmox_snapshot }, session: set_session_user
-        assert_redirected_to host_url(proxmox_host, :anchor => 'snapshots')
-        assert_includes flash[:notice] || flash[:success], 'VM successfully rolled back.'
+      if defined?(TEST_PROXMOX)
+        test 'revert successful proxmox snapshot' do
+          Host::Managed.any_instance.stubs(:vm_exists?).returns(false)
+          put :revert, params: { :host_id => proxmox_host.to_param, :id => proxmox_snapshot }, session: set_session_user
+          assert_redirected_to host_url(proxmox_host, :anchor => 'snapshots')
+          assert_includes flash[:notice] || flash[:success], 'VM successfully rolled back.'
+        end
       end
 
       test 'revert with error' do
@@ -130,13 +142,15 @@ module ForemanSnapshotManagement
         assert_equal(data, body)
       end
 
-      test 'update successful proxmox' do
-        Host::Managed.any_instance.stubs(:vm_exists?).returns(false)
-        data = { 'name' => 'snapshot1', 'description' => 'updated snapshot1' }
-        put :update, params: { :host_id => proxmox_host.to_param, :id => proxmox_snapshot, :snapshot => data }, session: set_session_user
-        assert_response :success
-        body = ActiveSupport::JSON.decode(@response.body)
-        assert_equal(data, body)
+      if defined?(TEST_PROXMOX)
+        test 'update successful proxmox' do
+          Host::Managed.any_instance.stubs(:vm_exists?).returns(false)
+          data = { 'name' => 'snapshot1', 'description' => 'updated snapshot1' }
+          put :update, params: { :host_id => proxmox_host.to_param, :id => proxmox_snapshot, :snapshot => data }, session: set_session_user
+          assert_response :success
+          body = ActiveSupport::JSON.decode(@response.body)
+          assert_equal(data, body)
+        end
       end
 
       test 'update with error VMware snapshot' do
@@ -145,11 +159,13 @@ module ForemanSnapshotManagement
         assert_response :unprocessable_entity
       end
 
-      test 'update with error proxmox snapshot' do
-        Host::Managed.any_instance.stubs(:vm_exists?).returns(false)
-        ForemanSnapshotManagement::Snapshot.any_instance.stubs(:save).returns(false)
-        put :update, params: { :host_id => proxmox_host.to_param, :id => proxmox_snapshot, :snapshot => { :name => 'snapshot1', :description => 'fail' } }, session: set_session_user
-        assert_response :unprocessable_entity
+      if defined?(TEST_PROXMOX)
+        test 'update with error proxmox snapshot' do
+          Host::Managed.any_instance.stubs(:vm_exists?).returns(false)
+          ForemanSnapshotManagement::Snapshot.any_instance.stubs(:save).returns(false)
+          put :update, params: { :host_id => proxmox_host.to_param, :id => proxmox_snapshot, :snapshot => { :name => 'snapshot1', :description => 'fail' } }, session: set_session_user
+          assert_response :unprocessable_entity
+        end
       end
     end
   end
