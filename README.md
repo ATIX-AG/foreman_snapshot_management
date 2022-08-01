@@ -150,7 +150,7 @@ curl -s -u "$AUTH" \
 }
 ```
 
-### Delete a snashot
+### Delete a snapshot
 
 ```bash
 curl -s -u "$AUTH" \
