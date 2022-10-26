@@ -50,5 +50,10 @@ jobs:
       - name: Lint Javascript
         run: npm run lint
       - name: Test
+        if: ${{ matrix.foreman-core-branch == 'develop' }}
         run: npm run test
+        # skip SnapshotManagementCard-test, because the snapshot may differ depending on foreman-version
+      - name: Test release
+        if: ${{ matrix.foreman-core-branch != 'develop' }}
+        run: npm run test:compat
 ...

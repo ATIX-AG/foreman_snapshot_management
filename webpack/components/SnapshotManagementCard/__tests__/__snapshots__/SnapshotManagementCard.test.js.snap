@@ -1,0 +1,132 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SnapshotManagementCard renders with Props 1`] = `
+<CardTemplate
+  expandable={false}
+  header="Snapshots"
+  masonryLayout={false}
+  overrideDropdownProps={Object {}}
+  overrideGridProps={
+    Object {
+      "lg": 8,
+      "md": 12,
+      "xl": 8,
+      "xl2": 6,
+    }
+  }
+>
+  <Connect(SnapshotManagement)
+    canCreate={true}
+    canDelete={false}
+    canRevert={true}
+    canUpdate={false}
+    capabilities={
+      Object {
+        "editableSnapshotName": false,
+        "limitSnapshotNameFormat": false,
+        "quiesceOption": false,
+      }
+    }
+    host={
+      Object {
+        "id": 42,
+        "name": "deep.thought",
+      }
+    }
+    key="SnapshotManagement"
+  />
+</CardTemplate>
+`;
+
+exports[`SnapshotManagementCard renders with Proxmox capabilities 1`] = `
+<CardTemplate
+  expandable={false}
+  header="Snapshots"
+  masonryLayout={false}
+  overrideDropdownProps={Object {}}
+  overrideGridProps={
+    Object {
+      "lg": 8,
+      "md": 12,
+      "xl": 8,
+      "xl2": 6,
+    }
+  }
+>
+  <Connect(SnapshotManagement)
+    canCreate={true}
+    canDelete={false}
+    canRevert={true}
+    canUpdate={false}
+    capabilities={
+      Object {
+        "editableSnapshotName": false,
+        "limitSnapshotNameFormat": true,
+        "quiesceOption": false,
+      }
+    }
+    host={
+      Object {
+        "id": 42,
+        "name": "deep.thought",
+      }
+    }
+    key="SnapshotManagement"
+  />
+</CardTemplate>
+`;
+
+exports[`SnapshotManagementCard renders with VMWare capabilities 1`] = `
+<CardTemplate
+  expandable={false}
+  header="Snapshots"
+  masonryLayout={false}
+  overrideDropdownProps={Object {}}
+  overrideGridProps={
+    Object {
+      "lg": 8,
+      "md": 12,
+      "xl": 8,
+      "xl2": 6,
+    }
+  }
+>
+  <Connect(SnapshotManagement)
+    canCreate={true}
+    canDelete={false}
+    canRevert={true}
+    canUpdate={false}
+    capabilities={
+      Object {
+        "editableSnapshotName": true,
+        "limitSnapshotNameFormat": false,
+        "quiesceOption": true,
+      }
+    }
+    host={
+      Object {
+        "id": 42,
+        "name": "deep.thought",
+      }
+    }
+    key="SnapshotManagement"
+  />
+</CardTemplate>
+`;
+
+exports[`SnapshotManagementCard renders without optional Props 1`] = `
+<CardTemplate
+  expandable={false}
+  header="Snapshots"
+  masonryLayout={false}
+  overrideDropdownProps={Object {}}
+  overrideGridProps={
+    Object {
+      "lg": 8,
+      "md": 12,
+      "xl": 8,
+      "xl2": 6,
+    }
+  }
+/>
+`;

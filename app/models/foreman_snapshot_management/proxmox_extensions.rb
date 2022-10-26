@@ -4,7 +4,7 @@ module ForemanSnapshotManagement
   module ProxmoxExtensions
     # Extend Proxmox's capabilities with snapshots.
     def capabilities
-      super + [:snapshots]
+      super + [:snapshots, :limit_snapshot_name_format]
     end
 
     # Create a Snapshot.
