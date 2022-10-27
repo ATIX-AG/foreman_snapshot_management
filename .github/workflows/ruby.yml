@@ -44,7 +44,7 @@ jobs:
       fail-fast: false
       matrix:
         ruby-version: ['2.7']
-        foreman-core-branch: ['develop', '3.2-stable', '3.1-stable']
+        foreman-core-branch: ['develop', '3.4-stable', '3.3-stable']
         proxmox: ['~>0.13.3']
 
     # Steps represent a sequence of tasks that will be executed as part of the job
