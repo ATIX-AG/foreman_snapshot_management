@@ -1,13 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import * as Yup from 'yup';
 
 import { translate as __ } from 'foremanReact/common/I18n';
-// import CheckBox from 'foremanReact/components/common/forms/Checkbox';
-// import TextInput from 'foremanReact/components/common/forms/TextInput';
 import ForemanForm from 'foremanReact/components/common/forms/ForemanForm';
 import TextField from 'foremanReact/components/common/forms/TextField';
-
+import { FieldLevelHelp } from 'patternfly-react';
 import { SNAPSHOT_CREATE_URL } from './SnapshotFormConstants';
 import './snapshotForm.scss';
 
@@ -35,17 +33,37 @@ const SnapshotForm = ({
     name: nameValidation.required('is required'),
     description: Yup.string(),
     includeRam: Yup.bool(),
+    useQuiesce: Yup.bool(),
+    snapshotMode: Yup.string(),
   });
 
+  const [snapshotMode, setSnapshotMode] = useState();
+
+  const options = [
+    { name: '', value: '' },
+    { name: 'Memory', value: __('Memory') },
+  ];
+  if (capabilities.quiesceOption) {
+    options.push({ name: 'Quiesce', value: __('Quiesce') });
+  }
+
   const handleSubmit = (values, actions) => {
+    if (snapshotMode === 'Quiesce') {
+      values.useQuiesce = true;
+      values.includeRam = false;
+    } else if (snapshotMode === 'Memory') {
+      values.includeRam = true;
+      values.useQuiesce = false;
+    }
+
     const submitValues = {
       include_ram: values.includeRam || false,
+      quiesce: values.useQuiesce || false,
       snapshot: {
         name: values.name,
         description: values.description || '',
       },
     };
-
     submitForm({
       item: 'Snapshot',
       url: SNAPSHOT_CREATE_URL.replace(':hostId', hostId),
@@ -76,12 +94,31 @@ const SnapshotForm = ({
         label={__('Description')}
         inputClassName="col-md-8"
       />
-      <TextField
-        type="checkbox"
-        name="includeRam"
-        label={__('Include RAM')}
-        inputClassName="col-md-8"
-      />
+      <div className="form-group">
+        <label className="col-md-2 control-label">
+          {__('Snapshot Mode')}
+          <FieldLevelHelp
+            buttonClass="field-help"
+            placement="top"
+            content={__(
+              "Select Snapshot Mode between mutually exclusive options, 'Memory' (includes RAM) and 'Quiesce'."
+            )}
+          />
+        </label>
+        <div className="col-md-8">
+          <select
+            className="common-select form-control"
+            value={snapshotMode}
+            onChange={e => setSnapshotMode(e.target.value)}
+          >
+            {options.map(item => (
+              <option key={item.value} value={item.value}>
+                {item.name}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
     </ForemanForm>
   );
 };
@@ -94,11 +131,13 @@ SnapshotForm.propTypes = {
     name: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     includeRam: PropTypes.bool.isRequired,
+    useQuiesce: PropTypes.bool,
   }),
   submitForm: PropTypes.func.isRequired,
   setModalClosed: PropTypes.func,
   capabilities: PropTypes.shape({
     limitSnapshotNameFormat: PropTypes.bool,
+    quiesceOption: PropTypes.bool,
   }),
 };
 
@@ -109,10 +148,13 @@ SnapshotForm.defaultProps = {
     name: '',
     description: '',
     includeRam: false,
+    useQuiesce: false,
+    snapshotMode: '',
   },
   setModalClosed: () => {},
   capabilities: {
     limitSnapshotNameFormat: false,
+    quiesceOption: false,
   },
 };
 

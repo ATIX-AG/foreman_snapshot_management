@@ -7,6 +7,7 @@
   capabilities:
   {
     editableSnapshotName: @host.compute_resource.capable?(:editable_snapshot_name),
+    quiesceOption: @host.compute_resource.type == "Foreman::Model::Vmware",
     limitSnapshotNameFormat: @host.compute_resource.type == "ForemanFogProxmox::Proxmox"
   }
 }) %> 
