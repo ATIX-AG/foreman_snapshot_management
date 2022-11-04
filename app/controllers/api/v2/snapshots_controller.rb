@@ -46,10 +46,11 @@ module Api
       api :POST, '/hosts/:host_id/snapshots', N_('Create a snapshot')
       param :host_id, :identifier_dottable, :required => true
       param :include_ram, :bool, :default_value => false, :desc => N_('Whether to include the RAM state in the snapshot')
+      param :quiesce, :bool, :default_value => false, :desc => N_('Whether to include the Quiesce state in the snapshot')
       param_group :snapshot, :as => :create
 
       def create
-        @snapshot = resource_class.new(snapshot_params.to_h.merge(host: @host).merge(include_ram: Foreman::Cast.to_bool(params[:include_ram])))
+        @snapshot = resource_class.new(snapshot_params.to_h.merge(host: @host).merge(include_ram: Foreman::Cast.to_bool(params[:include_ram]), quiesce: Foreman::Cast.to_bool(params[:quiesce])))
         process_response @snapshot.create
       end
 

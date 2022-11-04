@@ -14,8 +14,8 @@ module ForemanSnapshotManagement
     define_model_callbacks :create, :save, :destroy, :revert
     attr_accessor :id, :raw_snapshot, :parent
     attr_writer :create_time
-    attr_reader :name, :description, :include_ram, :host_id
-    define_attribute_methods :name, :description, :include_ram
+    attr_reader :name, :description, :include_ram, :host_id, :quiesce
+    define_attribute_methods :name, :description, :include_ram, :quiesce
 
     def self.model_name
       Struct.new(:name, :klass, :singular, :plural, :element,
@@ -80,6 +80,10 @@ module ForemanSnapshotManagement
       @include_ram = value
     end
 
+    def quiesce=(value)
+      @quiesce = value
+    end
+
     # host accessors
     def host
       @host ||= Host.find(@host_id)
@@ -122,7 +126,7 @@ module ForemanSnapshotManagement
         handle_snapshot_errors do
           host.audit_comment = "Create snapshot #{name}"
           host.save!
-          host.compute_resource.create_snapshot(host, name, description, include_ram)
+          host.compute_resource.create_snapshot(host, name, description, include_ram, quiesce)
           changes_applied
         end
       end

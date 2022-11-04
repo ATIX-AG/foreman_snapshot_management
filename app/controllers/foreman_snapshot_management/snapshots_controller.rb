@@ -28,7 +28,7 @@ module ForemanSnapshotManagement
     #
     # This method creates a Snapshot with a given name and optional description.
     def create
-      @snapshot = Snapshot.new(snapshot_params.merge(host: @host).merge(include_ram: params[:snapshot][:include_ram]))
+      @snapshot = Snapshot.new(snapshot_params.merge(host: @host).merge(include_ram: params[:snapshot][:include_ram], quiesce: params[:snapshot][:quiesce]))
 
       if @snapshot.create
         process_success
@@ -109,7 +109,7 @@ module ForemanSnapshotManagement
     private
 
     def snapshot_params
-      params.require(:snapshot).permit(:name, :description, :include_ram)
+      params.require(:snapshot).permit(:name, :description, :include_ram, :quiesce)
     end
 
     # Find Host

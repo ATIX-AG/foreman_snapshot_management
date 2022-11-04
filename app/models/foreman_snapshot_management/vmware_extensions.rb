@@ -4,14 +4,27 @@ module ForemanSnapshotManagement
   module VmwareExtensions
     # Extend VMWare's capabilities with snapshots.
     def capabilities
-      super + [:snapshots, :snapshot_include_ram, :editable_snapshot_name]
+      super + [:snapshots, :snapshot_include_ram, :snapshot_include_quiesce, :editable_snapshot_name]
     end
 
     # Create a Snapshot.
     #
     # This method creates a Snapshot with a given name and optional description.
-    def create_snapshot(host, name, description, include_ram = false)
-      task = client.vm_take_snapshot('instance_uuid' => host.uuid, 'name' => name, 'description' => description, 'memory' => include_ram)
+    def create_snapshot(host, name, description, include_ram = false, quiesce = false)
+      server = find_vm_by_uuid(host.uuid)
+      if quiesce and (server.power_state != 'poweredOn' || server.tools_state != 'toolsOk')
+        raise N_('Unable to create VMWare Snapshot with Quiesce. Check Power and VMWare Tools status.')
+      end
+      if quiesce and include_ram
+        raise N_('Unable to create VMWare Snapshot. Cannot set both Memory and Quiesce options.')
+      end
+      task = client.vm_take_snapshot(
+        'instance_uuid' => host.uuid,
+        'name' => name,
+        'description' => description,
+        'quiesce' => quiesce,
+        'memory' => include_ram
+      )
       task_successful?(task)
     rescue RbVmomi::Fault => e
       Foreman::Logging.exception('Error creating VMWare Snapshot', e)
