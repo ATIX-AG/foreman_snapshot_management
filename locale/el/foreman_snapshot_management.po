@@ -1,63 +1,65 @@
-# English translations for foreman_snapshot_management package.
-# Copyright (C) 2020 THE PACKAGE'S COPYRIGHT HOLDER
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the foreman_snapshot_management package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+# Translators:
+# Efstathios Iosifidis <iefstathios@gmail.com>, 2021
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_snapshot_management 1.8.1\n"
+"Project-Id-Version: foreman_snapshot_management 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2020-03-02 10:27+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: English\n"
-"Language: en\n"
+"PO-Revision-Date: 2019-10-22 11:54+0000\n"
+"Last-Translator: Efstathios Iosifidis <iefstathios@gmail.com>, 2021\n"
+"Language-Team: Greek (https://www.transifex.com/foreman/teams/114/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"\n"
+"Language: el\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "Action"
-msgstr ""
+msgstr "Ενέργεια"
 
 msgid "Create Snapshot"
-msgstr ""
+msgstr "Διμουργία στιγμιότυπου"
 
 msgid "Create Snapshot for %s"
 msgstr ""
 
 msgid "Create a snapshot"
-msgstr ""
+msgstr "Δημιουργία στιγμιότυπου"
 
 msgid "Created %{snapshots} for %{num} %{hosts}"
-msgstr ""
+msgstr "Δημιουργήθηκαν %{snapshots} για %{num} %{hosts}"
 
 msgid "Delete"
-msgstr ""
+msgstr "Διαγραφή"
 
 msgid "Delete Snapshot \"%s\"?"
 msgstr ""
 
 msgid "Delete a snapshot"
-msgstr ""
+msgstr "Διαγραφή στιγμιότυπου"
 
 msgid "Description"
-msgstr ""
+msgstr "Περιγραφή"
 
 msgid "Description of this snapshot"
-msgstr ""
+msgstr "Περιγραφή αυτού του στιγμιότυπου"
 
 msgid "Error occurred while creating Snapshot for:%s"
-msgstr ""
+msgstr "Σφάλμα κατά την δημιουργία στιγμιότυπου για: %s"
 
 msgid "Error occurred while creating Snapshot: %s"
-msgstr ""
+msgstr "Σφάλμα κατά την δημιουργία στιγμιότυπου: %s"
 
 msgid "Error occurred while removing Snapshot: %s"
-msgstr ""
+msgstr "Σφάλμα κατά την αφαίρεση στιγμιότυπου: %s"
 
 msgid "Error occurred while rolling back VM: %s"
-msgstr ""
+msgstr "Σφάλμα κατά την επαναφορά στιγμιότυπου: %s"
 
 msgid "Error occurred while updating Snapshot: %s"
 msgstr ""
@@ -66,31 +68,31 @@ msgid "Failed to load snapshot list"
 msgstr ""
 
 msgid "Failed to update Snapshot: %s"
-msgstr ""
+msgstr "Αποτυχημένη ενημέρωση στιγμιότυπου: %s"
 
 msgid "Foreman-plugin to manage snapshots in a virtual-hardware environments."
 msgstr ""
 
 msgid "Include RAM"
-msgstr ""
+msgstr "Συμπερίληψη RAM"
 
 msgid "List all snapshots"
-msgstr ""
+msgstr "Λίστα όλων των στιγμιοτύπων"
 
 msgid "Loading Snapshots information ..."
-msgstr ""
+msgstr "Γίνεται φόρτωση πληροφοριών στιγμιοτύπων ..."
 
 msgid "N/A"
-msgstr ""
+msgstr "Δ/Υ"
 
 msgid "Name"
-msgstr ""
+msgstr "Όνομα"
 
 msgid "Name must contain at least 2 characters starting with alphabet. Valid characters are A-Z a-z 0-9 _"
 msgstr ""
 
 msgid "Name of this snapshot"
-msgstr ""
+msgstr "Όνομα αυτού του στιγμιότυπου"
 
 msgid "No capable hosts found."
 msgstr ""
@@ -105,15 +107,15 @@ msgid "Revert Host to a snapshot"
 msgstr ""
 
 msgid "Rollback"
-msgstr ""
+msgstr "Επαναφορά"
 
 msgid "Rollback to \"%s\"?"
 msgstr ""
 
 msgid "Snapshot"
 msgid_plural "Snapshots"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Στιγμιότυπο"
+msgstr[1] "Στιγμιότυπα"
 
 msgid "Snapshot name cannot be changed"
 msgstr ""
@@ -122,7 +124,7 @@ msgid "Snapshot successfully created!"
 msgstr ""
 
 msgid "Snapshots"
-msgstr ""
+msgstr "Στιγμιότυπα"
 
 msgid "Something went wrong while selecting hosts - %s"
 msgstr ""
@@ -140,7 +142,7 @@ msgid "Unable to create Proxmox Snapshot"
 msgstr ""
 
 msgid "Unable to create VMWare Snapshot"
-msgstr ""
+msgstr "Αδυναμία δημιουργίας στιγμιότυπου VMWare"
 
 msgid "Unable to create VMWare Snapshot with Quiesce. Check Power and VMWare Tools status."
 msgstr ""
@@ -152,31 +154,31 @@ msgid "Unable to remove Proxmox Snapshot"
 msgstr ""
 
 msgid "Unable to remove VMWare Snapshot"
-msgstr ""
+msgstr "Αδυναμία αφαίρεσης στιγμιότυπου VMWare"
 
 msgid "Unable to revert Proxmox Snapshot"
 msgstr ""
 
 msgid "Unable to revert VMWare Snapshot"
-msgstr ""
+msgstr "Αδυναμία αντιστροφής στιγμιότυπου VMWare"
 
 msgid "Unable to update Proxmox Snapshot"
 msgstr ""
 
 msgid "Unable to update VMWare Snapshot"
-msgstr ""
+msgstr "Αδυναμία ενημέρωσης στιγμιότυπου VMWare"
 
 msgid "Update a snapshot"
-msgstr ""
+msgstr "Ενημέρωση στιγμιότυπου"
 
 msgid "VM successfully rolled back."
-msgstr ""
+msgstr "Επιτυχημένη επαναφορά VM."
 
 msgid "Whether to include the Quiesce state in the snapshot"
 msgstr ""
 
 msgid "Whether to include the RAM state in the snapshot"
-msgstr ""
+msgstr "Εάν θα συμπεριληφθεί η κατάσταση RAM στο στιγμιότυπο"
 
 msgid "edit entry"
 msgstr ""

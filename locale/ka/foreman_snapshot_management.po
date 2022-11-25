@@ -1,0 +1,189 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the foreman_snapshot_management package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+# Translators:
+# NorwayFun <temuri.doghonadze@gmail.com>, 2022
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: foreman_snapshot_management 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2019-10-22 11:54+0000\n"
+"Last-Translator: NorwayFun <temuri.doghonadze@gmail.com>, 2022\n"
+"Language-Team: Georgian (https://www.transifex.com/foreman/teams/114/ka/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ka\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+msgid "Action"
+msgstr "მოქმედება"
+
+msgid "Create Snapshot"
+msgstr "სწრაფი ასლის შექმნა"
+
+msgid "Create Snapshot for %s"
+msgstr "%s-ის სწრაფი ასლის შექმნა"
+
+msgid "Create a snapshot"
+msgstr "სწრაფი ასლის შექმნა"
+
+msgid "Created %{snapshots} for %{num} %{hosts}"
+msgstr "შექმნილია %{snapshots} %{num} %{hosts}-სთვის"
+
+msgid "Delete"
+msgstr "წაშლა"
+
+msgid "Delete Snapshot \"%s\"?"
+msgstr "წავშალო სწრაფი ასლი \"%s\"?"
+
+msgid "Delete a snapshot"
+msgstr "სწრაფი ასლის წაშლა"
+
+msgid "Description"
+msgstr "აღწერა"
+
+msgid "Description of this snapshot"
+msgstr "სწრაფი ასლის აღწერა"
+
+msgid "Error occurred while creating Snapshot for:%s"
+msgstr "სწრაფი ასლის შექმნის შეცდომა: %s"
+
+msgid "Error occurred while creating Snapshot: %s"
+msgstr "სწრაფი ასლის შექმნის შეცდომა: %s"
+
+msgid "Error occurred while removing Snapshot: %s"
+msgstr "სწრაფი ასლის წაშლის შეცდომა: %s"
+
+msgid "Error occurred while rolling back VM: %s"
+msgstr "შეცდომა ვმ-ს დაბრუნებისას: %s"
+
+msgid "Error occurred while updating Snapshot: %s"
+msgstr "შეცდომა სწრაფი ასლის განახლებისას: %s"
+
+msgid "Failed to load snapshot list"
+msgstr "სწრაფი ასლების სიის ჩატვირთვის შეცდომა"
+
+msgid "Failed to update Snapshot: %s"
+msgstr "სწრაფი ასლის განახლების შეცდომა"
+
+msgid "Foreman-plugin to manage snapshots in a virtual-hardware environments."
+msgstr "Foreman-ის დამატება ვირტუალურ გარემოში სწრაფი ასლების სამართავად."
+
+msgid "Include RAM"
+msgstr "RAM-ის ჩათვლით"
+
+msgid "List all snapshots"
+msgstr "სწრაფი ასლების სია"
+
+msgid "Loading Snapshots information ..."
+msgstr "სწრაფი ასლების ინფორმაციის ჩატვირთვა ..."
+
+msgid "N/A"
+msgstr "არარსებული"
+
+msgid "Name"
+msgstr "სახელი"
+
+msgid "Name must contain at least 2 characters starting with alphabet. Valid characters are A-Z a-z 0-9 _"
+msgstr "სახელი უნდა შეიცავდეს მინიმუმ 2 სიმბოლოს დაწყებული ასოებით. მისაღები სიმბოლოებია A-Z a-z 0-9 _"
+
+msgid "Name of this snapshot"
+msgstr "სწრაფი ასლის სახელი"
+
+msgid "No capable hosts found."
+msgstr "შესაძლებლობის მქონე ჰოსტები ნაპოვნი არაა."
+
+msgid "No capable hosts selected"
+msgstr "შესაძლებლობის მქონე ჰოსტები მონიშნული არაა"
+
+msgid "No hosts were found with that id, name or query filter"
+msgstr "მითითებული ID-ით, სახელით ან საძებნი სტრიქონით ჰოსტები ნაპოვნი არაა"
+
+msgid "Revert Host to a snapshot"
+msgstr "ჰოსტის სწრაფ ასლზე დაბრუნება"
+
+msgid "Rollback"
+msgstr "უკან დაბრუნება"
+
+msgid "Rollback to \"%s\"?"
+msgstr "დავაბრუნო \"%s\"-ზე?"
+
+msgid "Snapshot"
+msgid_plural "Snapshots"
+msgstr[0] "სწრაფი ასლი"
+msgstr[1] "სწრაფი ასლები"
+
+msgid "Snapshot name cannot be changed"
+msgstr "სწრაფი ასლის სახელის შეცვლა შეუძლებელია"
+
+msgid "Snapshot successfully created!"
+msgstr "სწრაფი ასლი წარმატებით შეიქმნა!"
+
+msgid "Snapshots"
+msgstr "სწრაფი ასლები"
+
+msgid "Something went wrong while selecting hosts - %s"
+msgstr "შეცდომა ჰოსტების მონიშვნისას - %s"
+
+msgid "Successfully removed Snapshot \"%s\" from host %s"
+msgstr "სწრაფი ასლის (%s) წაშლა ჰოსტიდან %s წარმატებით დასრულდა"
+
+msgid "Successfully rolled back Snapshot \"%s\" on host %s"
+msgstr "ჰოსტი %s წარმატებით დაბრუნდა სწრაფ ასლზე \"%s\""
+
+msgid "Successfully updated Snapshot \"%s\""
+msgstr "სწრაფი ასლი (%s) წარმატებით განახლდა"
+
+msgid "Unable to create Proxmox Snapshot"
+msgstr "Proxmox-ის სწრაფი ასლის შექმნა შეუძლებელია"
+
+msgid "Unable to create VMWare Snapshot"
+msgstr "VMWare-ის სწრაფი ასლის შექმნა შეუძლებელია"
+
+msgid "Unable to create VMWare Snapshot with Quiesce. Check Power and VMWare Tools status."
+msgstr ""
+
+msgid "Unable to create VMWare Snapshot. Cannot set both Memory and Quiesce options."
+msgstr ""
+
+msgid "Unable to remove Proxmox Snapshot"
+msgstr "Proxmox-ის სწრაფი ასლის წაშლა შეუძლებელია"
+
+msgid "Unable to remove VMWare Snapshot"
+msgstr "VMWare-ის სწრაფი ასლის წაშლა შეუძლებელია"
+
+msgid "Unable to revert Proxmox Snapshot"
+msgstr "Proxmox-ის სწრაფი ასლის დაბრუნება შეუძლებელია"
+
+msgid "Unable to revert VMWare Snapshot"
+msgstr "VMWare-ის სწრაფი ასლის დაბრუნება შეუძლებელია"
+
+msgid "Unable to update Proxmox Snapshot"
+msgstr "Proxmox-ის სწრაფი ასლის განახლება შეუძლებელია"
+
+msgid "Unable to update VMWare Snapshot"
+msgstr "VMWare-ის სწრაფი ასლის განახლება შეუძლებელია"
+
+msgid "Update a snapshot"
+msgstr "სწრაფი ასლის განახლება"
+
+msgid "VM successfully rolled back."
+msgstr "ვმ-ი წარმატებით დაბრუნდა."
+
+msgid "Whether to include the Quiesce state in the snapshot"
+msgstr ""
+
+msgid "Whether to include the RAM state in the snapshot"
+msgstr "სწრაფ ასლში ოპერატიული მეხსიერების მდგომარეობის შენახვა"
+
+msgid "edit entry"
+msgstr "ჩანაწერის ჩასწორება"
+
+msgid "host"
+msgid_plural "hosts"
+msgstr[0] "ჰოსტი"
+msgstr[1] "ჰოსტი"

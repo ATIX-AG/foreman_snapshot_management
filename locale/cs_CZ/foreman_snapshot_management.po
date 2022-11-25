@@ -1,48 +1,53 @@
-# English translations for foreman_snapshot_management package.
-# Copyright (C) 2020 THE PACKAGE'S COPYRIGHT HOLDER
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the foreman_snapshot_management package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+# Translators:
+# Lukáš Zapletal, 2021
+# Pavel Borecki <pavel.borecki@gmail.com>, 2021
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_snapshot_management 1.8.1\n"
+"Project-Id-Version: foreman_snapshot_management 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2020-03-02 10:27+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: English\n"
-"Language: en\n"
+"PO-Revision-Date: 2019-10-22 11:54+0000\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2021\n"
+"Language-Team: Czech (Czech Republic) (https://www.transifex.com/foreman/teams"
+"/114/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"\n"
+"Language: cs_CZ\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= "
+"4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 msgid "Action"
-msgstr ""
+msgstr "Akce"
 
 msgid "Create Snapshot"
-msgstr ""
+msgstr "Pořídit zachycený stav"
 
 msgid "Create Snapshot for %s"
 msgstr ""
 
 msgid "Create a snapshot"
-msgstr ""
+msgstr "Pořídit zachycený stav"
 
 msgid "Created %{snapshots} for %{num} %{hosts}"
-msgstr ""
+msgstr "Vytvořeno %{snapshots} pro %{num} %{hosts}"
 
 msgid "Delete"
-msgstr ""
+msgstr "Smazat"
 
 msgid "Delete Snapshot \"%s\"?"
 msgstr ""
 
 msgid "Delete a snapshot"
-msgstr ""
+msgstr "Smazat zachycený stav"
 
 msgid "Description"
-msgstr ""
+msgstr "Popis"
 
 msgid "Description of this snapshot"
 msgstr ""
@@ -51,10 +56,10 @@ msgid "Error occurred while creating Snapshot for:%s"
 msgstr ""
 
 msgid "Error occurred while creating Snapshot: %s"
-msgstr ""
+msgstr "Při pořizování zachyceného stavu došlo k chybě: %s"
 
 msgid "Error occurred while removing Snapshot: %s"
-msgstr ""
+msgstr "Při odebírání zachyceného stavu došlo k chybě: %s"
 
 msgid "Error occurred while rolling back VM: %s"
 msgstr ""
@@ -66,43 +71,43 @@ msgid "Failed to load snapshot list"
 msgstr ""
 
 msgid "Failed to update Snapshot: %s"
-msgstr ""
+msgstr "Zachycený stav se nepodařilo aktualizovat: %s"
 
 msgid "Foreman-plugin to manage snapshots in a virtual-hardware environments."
-msgstr ""
+msgstr "Zásuvný modul do Foreman pro správu zachycených stavů v prostředí virtuálního hardware."
 
 msgid "Include RAM"
-msgstr ""
+msgstr "Včetně oper. paměti"
 
 msgid "List all snapshots"
-msgstr ""
+msgstr "Vypsat všechny zachycené stavy"
 
 msgid "Loading Snapshots information ..."
-msgstr ""
+msgstr "Načítání informací o zachycených stavech…"
 
 msgid "N/A"
-msgstr ""
+msgstr "Není"
 
 msgid "Name"
-msgstr ""
+msgstr "Název"
 
 msgid "Name must contain at least 2 characters starting with alphabet. Valid characters are A-Z a-z 0-9 _"
 msgstr ""
 
 msgid "Name of this snapshot"
-msgstr ""
+msgstr "Název tohoto zachyceného stavu"
 
 msgid "No capable hosts found."
-msgstr ""
+msgstr "Nenalezeny žádné schopné stroje."
 
 msgid "No capable hosts selected"
 msgstr ""
 
 msgid "No hosts were found with that id, name or query filter"
-msgstr ""
+msgstr "Pro takový identifikátor, název nebo dotazovací filtr nebyly nalezeni žádní hostitelé"
 
 msgid "Revert Host to a snapshot"
-msgstr ""
+msgstr "Vrátit stroj do podoby ze zachyceného stavu"
 
 msgid "Rollback"
 msgstr ""
@@ -112,20 +117,22 @@ msgstr ""
 
 msgid "Snapshot"
 msgid_plural "Snapshots"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Zachycený stav"
+msgstr[1] "Zachycené stavy"
+msgstr[2] "Zachycených stavů"
+msgstr[3] "Zachycené stavy"
 
 msgid "Snapshot name cannot be changed"
-msgstr ""
+msgstr "Název zachyceného stavu není možné změnit"
 
 msgid "Snapshot successfully created!"
 msgstr ""
 
 msgid "Snapshots"
-msgstr ""
+msgstr "Zachycené stavy"
 
 msgid "Something went wrong while selecting hosts - %s"
-msgstr ""
+msgstr "Při vybírání strojů se něco pokazilo – %s"
 
 msgid "Successfully removed Snapshot \"%s\" from host %s"
 msgstr ""
@@ -137,10 +144,10 @@ msgid "Successfully updated Snapshot \"%s\""
 msgstr ""
 
 msgid "Unable to create Proxmox Snapshot"
-msgstr ""
+msgstr "Nedaří se pořídit Proxmox zachycený stav"
 
 msgid "Unable to create VMWare Snapshot"
-msgstr ""
+msgstr "Nedaří se pořídit VMWare zachycený stav"
 
 msgid "Unable to create VMWare Snapshot with Quiesce. Check Power and VMWare Tools status."
 msgstr ""
@@ -149,25 +156,25 @@ msgid "Unable to create VMWare Snapshot. Cannot set both Memory and Quiesce opti
 msgstr ""
 
 msgid "Unable to remove Proxmox Snapshot"
-msgstr ""
+msgstr "Nedaří se odebrat Proxmox zachycený stav"
 
 msgid "Unable to remove VMWare Snapshot"
-msgstr ""
+msgstr "VMWare zachycený stav se nedaří odebrat"
 
 msgid "Unable to revert Proxmox Snapshot"
-msgstr ""
+msgstr "Nedaří se vrátit do podoby v Proxmox zachyceném stavu"
 
 msgid "Unable to revert VMWare Snapshot"
 msgstr ""
 
 msgid "Unable to update Proxmox Snapshot"
-msgstr ""
+msgstr "Nedaří se aktualizovat Proxmox zachycený stav"
 
 msgid "Unable to update VMWare Snapshot"
-msgstr ""
+msgstr "VMWare zachycený stav se nedaří zaktualizovat"
 
 msgid "Update a snapshot"
-msgstr ""
+msgstr "Aktualizovat zachycený stav"
 
 msgid "VM successfully rolled back."
 msgstr ""
@@ -176,7 +183,7 @@ msgid "Whether to include the Quiesce state in the snapshot"
 msgstr ""
 
 msgid "Whether to include the RAM state in the snapshot"
-msgstr ""
+msgstr "Zda v zachyceném stavu uložit i obsah operační paměti"
 
 msgid "edit entry"
 msgstr ""
