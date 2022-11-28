@@ -50,7 +50,9 @@ module Api
       param_group :snapshot, :as => :create
 
       def create
-        @snapshot = resource_class.new(snapshot_params.to_h.merge(host: @host).merge(include_ram: Foreman::Cast.to_bool(params[:include_ram]), quiesce: Foreman::Cast.to_bool(params[:quiesce])))
+        @snapshot = resource_class.new(snapshot_params.to_h.merge(host: @host).merge(
+                                         include_ram: Foreman::Cast.to_bool(params[:include_ram]), quiesce: Foreman::Cast.to_bool(params[:quiesce])
+                                       ))
         process_response @snapshot.create
       end
 

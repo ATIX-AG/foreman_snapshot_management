@@ -65,7 +65,8 @@ module ForemanSnapshotManagement
       end
 
       test 'create valid multiple' do
-        post :create_multiple_host, params: { :host_ids => [host.id, host2.id], :snapshot => { :name => 'test' } }, session: set_session_user
+        post :create_multiple_host, params: { :host_ids => [host.id, host2.id], :snapshot => { :name => 'test', :quiesce => 'false', :include_ram => 'true' } }, session: set_session_user
+        puts @response
         assert_redirected_to hosts_url
         assert_includes flash[:notice] || flash[:success], 'Created Snapshots for 2 hosts'
       end
