@@ -11,7 +11,7 @@ module ForemanSnapshotManagement
       ComputeResource.find_by(id: cr.id)
     end
     let(:uuid) { '5032c8a5-9c5e-ba7a-3804-832a03e16381' }
-    let(:uuid2) { 'a7169e20-74d3-4367-afc2-d355716e7555' }
+    let(:uuid2) { '502916a3-b42e-17c7-43ce-b3206e9524dc' }
     let(:host) { FactoryBot.create(:host, :managed, :compute_resource => compute_resource, :uuid => uuid) }
     let(:host2) { FactoryBot.create(:host, :managed, :compute_resource => compute_resource, :uuid => uuid2) }
     let(:snapshot_id) { 'snapshot-0101' }
@@ -64,8 +64,23 @@ module ForemanSnapshotManagement
         end
       end
 
-      test 'create valid multiple' do
+      test 'create valid multiple with memory' do
+        post :create_multiple_host, params: { :host_ids => [host.id, host2.id], :snapshot => { :name => 'test', :snapshot_mode => 'memory' } }, session: set_session_user
+        puts @response
+        assert_redirected_to hosts_url
+        assert_includes flash[:notice] || flash[:success], 'Created Snapshots for 2 hosts'
+      end
+
+      test 'create valid multiple with quiesce' do
+        post :create_multiple_host, params: { :host_ids => [host.id], :snapshot => { :name => 'test', :snapshot_mode => 'quiesce' } }, session: set_session_user
+        puts @response
+        assert_redirected_to hosts_url
+        assert_includes flash[:notice] || flash[:success], 'Created Snapshot for 1 host'
+      end
+
+      test 'create valid multiple without specific mode' do
         post :create_multiple_host, params: { :host_ids => [host.id, host2.id], :snapshot => { :name => 'test' } }, session: set_session_user
+        puts @response
         assert_redirected_to hosts_url
         assert_includes flash[:notice] || flash[:success], 'Created Snapshots for 2 hosts'
       end

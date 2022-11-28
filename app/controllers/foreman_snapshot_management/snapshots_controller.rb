@@ -79,6 +79,7 @@ module ForemanSnapshotManagement
 
     def create_multiple_host
       data = snapshot_params
+      snapshot_mode_assignment(params[:snapshot][:snapshot_mode], data)
       snapshots_created = 0
       errors = []
       @hosts.each do |h|
@@ -104,6 +105,19 @@ module ForemanSnapshotManagement
         end
       end
       redirect_back_or_to hosts_path
+    end
+
+    def snapshot_mode_assignment(snapshot_mode, data)
+      if snapshot_mode == 'memory'
+        data[:include_ram] = true
+        data[:quiesce] = false
+      elsif snapshot_mode == 'quiesce'
+        data[:include_ram] = false
+        data[:quiesce] = true
+      else
+        data[:include_ram] = false
+        data[:quiesce] = false
+      end
     end
 
     private

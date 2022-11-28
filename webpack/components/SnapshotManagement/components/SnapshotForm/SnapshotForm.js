@@ -5,7 +5,6 @@ import * as Yup from 'yup';
 import { translate as __ } from 'foremanReact/common/I18n';
 import ForemanForm from 'foremanReact/components/common/forms/ForemanForm';
 import TextField from 'foremanReact/components/common/forms/TextField';
-import Select from 'foremanReact/components/common/forms/Select';
 import { FieldLevelHelp } from 'patternfly-react';
 import { SNAPSHOT_CREATE_URL } from './SnapshotFormConstants';
 import './snapshotForm.scss';
@@ -40,16 +39,22 @@ const SnapshotForm = ({
 
   const [snapshotMode, setSnapshotMode] = useState();
 
-  const options = {'Memory': __('Memory')};
+  const options = [
+    { name: '', value: '' },
+    { name: 'Memory', value: __('Memory') },
+  ];
   if (capabilities.quiesceOption) {
-    options.Quiesce = __('Quiesce');
+    options.push({ name: 'Quiesce', value: __('Quiesce') });
   }
 
   const handleSubmit = (values, actions) => {
     if (snapshotMode === 'Quiesce') {
-      values.useQuiesce = true, values.includeRam = false; }
-    else if (snapshotMode === 'Memory') {
-      values.includeRam = true, values.useQuiesce = false; }
+      values.useQuiesce = true;
+      values.includeRam = false;
+    } else if (snapshotMode === 'Memory') {
+      values.includeRam = true;
+      values.useQuiesce = false;
+    }
 
     const submitValues = {
       include_ram: values.includeRam || false,
@@ -89,24 +94,31 @@ const SnapshotForm = ({
         label={__('Description')}
         inputClassName="col-md-8"
       />
-      <Select
-        label={
-          <span>
-            {__('Snapshot Mode')}
-            <FieldLevelHelp
-              buttonClass="field-help"
-              placement="top"
-              content={
-                       __("Select Snapshot Mode between mutually exclusive options, 'Memory' (includes RAM) and 'Quiesce'.")
-                      }
-            />
-          </span>}
-        value={snapshotMode}
-        disabled={false}
-        options={options}
-        onChange={e => setSnapshotMode(e.target.value)}
-        useSelect2={false}
-      />
+      <div className="form-group">
+        <label className="col-md-2 control-label">
+          {__('Snapshot Mode')}
+          <FieldLevelHelp
+            buttonClass="field-help"
+            placement="top"
+            content={__(
+              "Select Snapshot Mode between mutually exclusive options, 'Memory' (includes RAM) and 'Quiesce'."
+            )}
+          />
+        </label>
+        <div className="col-md-8">
+          <select
+            className="common-select form-control"
+            value={snapshotMode}
+            onChange={e => setSnapshotMode(e.target.value)}
+          >
+            {options.map(item => (
+              <option key={item.value} value={item.value}>
+                {item.name}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
     </ForemanForm>
   );
 };
