@@ -11,7 +11,6 @@
 # Bryan Kearney <bryan.kearney@gmail.com>, 2021
 # Markus Bucher <bucher@atix.de>, 2021
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: foreman_snapshot_management 1.8.1\n"
@@ -27,9 +26,6 @@ msgstr ""
 
 msgid "Action"
 msgstr "Aktion"
-
-msgid "Action with sub plans"
-msgstr "Aktion mit Unterplänen"
 
 msgid "Create Snapshot"
 msgstr "Snapshot erstellen"
@@ -81,12 +77,6 @@ msgstr "Das Aktualisieren des Snapshots ist fehlgeschlagen: %s"
 
 msgid "Foreman-plugin to manage snapshots in a virtual-hardware environments."
 msgstr "Ein Foremanplugin, welches Snapshots in Umgebungen mit virtueller Hardware nutzbar macht."
-
-msgid "Import Puppet classes"
-msgstr "Puppet-Klassen importieren"
-
-msgid "Import facts"
-msgstr "Fakten importieren"
 
 msgid "Include RAM"
 msgstr "RAM einbeziehen"
@@ -159,6 +149,12 @@ msgstr "Proxmox Snapshot konnte nicht erstellt werden"
 msgid "Unable to create VMWare Snapshot"
 msgstr "VMWare Snapshot konnte nicht erstellt werden"
 
+msgid "Unable to create VMWare Snapshot with Quiesce. Check Power and VMWare Tools status."
+msgstr ""
+
+msgid "Unable to create VMWare Snapshot. Cannot set both Memory and Quiesce options."
+msgstr ""
+
 msgid "Unable to remove Proxmox Snapshot"
 msgstr "Proxmox Snapshot konnte nicht gelöscht werden"
 
@@ -182,6 +178,9 @@ msgstr "Snapshot aktualisieren"
 
 msgid "VM successfully rolled back."
 msgstr "Die VM wurde erfolgreich zurückgesetzt."
+
+msgid "Whether to include the Quiesce state in the snapshot"
+msgstr ""
 
 msgid "Whether to include the RAM state in the snapshot"
 msgstr "Ob auch der aktuelle Hauptspeicherstand im Snapshot gespeichert werden soll"
