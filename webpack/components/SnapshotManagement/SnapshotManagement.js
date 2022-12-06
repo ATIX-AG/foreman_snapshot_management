@@ -67,6 +67,7 @@ SnapshotManagement.propTypes = {
   capabilities: PropTypes.shape({
     editSnapshotName: PropTypes.bool,
     limitSnapshotNameFormat: PropTypes.bool,
+    quiesceOption: PropTypes.bool,
   }),
 };
 
@@ -78,6 +79,7 @@ SnapshotManagement.defaultProps = {
   capabilities: {
     editSnapshotName: true,
     limitSnapshotNameFormat: false,
+    quiesceOption: false,
   },
 };
 
