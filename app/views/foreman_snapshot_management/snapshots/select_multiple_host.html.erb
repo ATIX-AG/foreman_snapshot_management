@@ -10,8 +10,10 @@
     <%= textarea_f f, :description,
       { :label => _("Description")}
     %>
-    <%= checkbox_f f, :include_ram,
-      { :label => _("Include RAM")}
-    %>
+    <%= selectable_f f, :snapshot_mode, {'Quiesce' => 'quiesce', 'Include RAM' => 'memory'},
+        {:include_blank => true}, {
+        :label => _("Snapshot Mode"),
+        :label_help => _("Select Snapshot Mode between mutually exclusive options, 'Memory' (includes RAM) and 'Quiesce'."),
+        :onchange => "tfm.hosts.table.toggleMultipleOkButton(this)"} %>
   <% end %>
 <% end %>

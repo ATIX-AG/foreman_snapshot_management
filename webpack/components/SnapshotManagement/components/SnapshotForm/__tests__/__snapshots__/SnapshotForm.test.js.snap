@@ -8,6 +8,8 @@ exports[`SnapshotForm rendering render 1`] = `
       "description": "",
       "includeRam": false,
       "name": "",
+      "snapshotMode": "",
+      "useQuiesce": false,
     }
   }
   onCancel={[Function]}
@@ -25,6 +27,8 @@ exports[`SnapshotForm rendering render 1`] = `
       "_exclusive": Object {},
       "_mutate": undefined,
       "_nodes": Array [
+        "snapshotMode",
+        "useQuiesce",
         "includeRam",
         "description",
         "name",
@@ -121,6 +125,56 @@ exports[`SnapshotForm rendering render 1`] = `
           ],
           "type": "string",
         },
+        "snapshotMode": StringSchema {
+          "_blacklist": RefSet {
+            "list": Array [],
+            "refs": Array [],
+          },
+          "_conditions": Array [],
+          "_deps": Array [],
+          "_exclusive": Object {},
+          "_mutate": undefined,
+          "_options": Object {
+            "abortEarly": true,
+            "recursive": true,
+          },
+          "_type": "string",
+          "_typeError": [Function],
+          "_whitelist": RefSet {
+            "list": Array [],
+            "refs": Array [],
+          },
+          "tests": Array [],
+          "transforms": Array [
+            [Function],
+          ],
+          "type": "string",
+        },
+        "useQuiesce": BooleanSchema {
+          "_blacklist": RefSet {
+            "list": Array [],
+            "refs": Array [],
+          },
+          "_conditions": Array [],
+          "_deps": Array [],
+          "_exclusive": Object {},
+          "_mutate": undefined,
+          "_options": Object {
+            "abortEarly": true,
+            "recursive": true,
+          },
+          "_type": "boolean",
+          "_typeError": [Function],
+          "_whitelist": RefSet {
+            "list": Array [],
+            "refs": Array [],
+          },
+          "tests": Array [],
+          "transforms": Array [
+            [Function],
+          ],
+          "type": "boolean",
+        },
       },
       "tests": Array [],
       "transforms": Array [
@@ -146,14 +200,40 @@ exports[`SnapshotForm rendering render 1`] = `
     required={false}
     type="textarea"
   />
-  <TextField
-    className=""
-    inputClassName="col-md-8"
-    label="Include RAM"
-    name="includeRam"
-    required={false}
-    type="checkbox"
-  />
+  <div
+    className="form-group"
+  >
+    <label
+      className="col-md-2 control-label"
+    >
+      Snapshot Mode
+      <FieldLevelHelp
+        buttonClass="field-help"
+        content="Select Snapshot Mode between mutually exclusive options, 'Memory' (includes RAM) and 'Quiesce'."
+        placement="top"
+        rootClose={true}
+      />
+    </label>
+    <div
+      className="col-md-8"
+    >
+      <select
+        className="common-select form-control"
+        onChange={[Function]}
+      >
+        <option
+          key=""
+          value=""
+        />
+        <option
+          key="Memory"
+          value="Memory"
+        >
+          Memory
+        </option>
+      </select>
+    </div>
+  </div>
 </ForemanForm>
 `;
 
@@ -165,6 +245,8 @@ exports[`SnapshotForm rendering render with limitSnapshotNameFormat capability 1
       "description": "",
       "includeRam": false,
       "name": "",
+      "snapshotMode": "",
+      "useQuiesce": false,
     }
   }
   onCancel={[Function]}
@@ -182,6 +264,8 @@ exports[`SnapshotForm rendering render with limitSnapshotNameFormat capability 1
       "_exclusive": Object {},
       "_mutate": undefined,
       "_nodes": Array [
+        "snapshotMode",
+        "useQuiesce",
         "includeRam",
         "description",
         "name",
@@ -282,6 +366,56 @@ exports[`SnapshotForm rendering render with limitSnapshotNameFormat capability 1
           ],
           "type": "string",
         },
+        "snapshotMode": StringSchema {
+          "_blacklist": RefSet {
+            "list": Array [],
+            "refs": Array [],
+          },
+          "_conditions": Array [],
+          "_deps": Array [],
+          "_exclusive": Object {},
+          "_mutate": undefined,
+          "_options": Object {
+            "abortEarly": true,
+            "recursive": true,
+          },
+          "_type": "string",
+          "_typeError": [Function],
+          "_whitelist": RefSet {
+            "list": Array [],
+            "refs": Array [],
+          },
+          "tests": Array [],
+          "transforms": Array [
+            [Function],
+          ],
+          "type": "string",
+        },
+        "useQuiesce": BooleanSchema {
+          "_blacklist": RefSet {
+            "list": Array [],
+            "refs": Array [],
+          },
+          "_conditions": Array [],
+          "_deps": Array [],
+          "_exclusive": Object {},
+          "_mutate": undefined,
+          "_options": Object {
+            "abortEarly": true,
+            "recursive": true,
+          },
+          "_type": "boolean",
+          "_typeError": [Function],
+          "_whitelist": RefSet {
+            "list": Array [],
+            "refs": Array [],
+          },
+          "tests": Array [],
+          "transforms": Array [
+            [Function],
+          ],
+          "type": "boolean",
+        },
       },
       "tests": Array [],
       "transforms": Array [
@@ -307,14 +441,40 @@ exports[`SnapshotForm rendering render with limitSnapshotNameFormat capability 1
     required={false}
     type="textarea"
   />
-  <TextField
-    className=""
-    inputClassName="col-md-8"
-    label="Include RAM"
-    name="includeRam"
-    required={false}
-    type="checkbox"
-  />
+  <div
+    className="form-group"
+  >
+    <label
+      className="col-md-2 control-label"
+    >
+      Snapshot Mode
+      <FieldLevelHelp
+        buttonClass="field-help"
+        content="Select Snapshot Mode between mutually exclusive options, 'Memory' (includes RAM) and 'Quiesce'."
+        placement="top"
+        rootClose={true}
+      />
+    </label>
+    <div
+      className="col-md-8"
+    >
+      <select
+        className="common-select form-control"
+        onChange={[Function]}
+      >
+        <option
+          key=""
+          value=""
+        />
+        <option
+          key="Memory"
+          value="Memory"
+        >
+          Memory
+        </option>
+      </select>
+    </div>
+  </div>
 </ForemanForm>
 `;
 
@@ -343,6 +503,8 @@ exports[`SnapshotForm rendering render with optional Props 1`] = `
       "_exclusive": Object {},
       "_mutate": undefined,
       "_nodes": Array [
+        "snapshotMode",
+        "useQuiesce",
         "includeRam",
         "description",
         "name",
@@ -439,6 +601,56 @@ exports[`SnapshotForm rendering render with optional Props 1`] = `
           ],
           "type": "string",
         },
+        "snapshotMode": StringSchema {
+          "_blacklist": RefSet {
+            "list": Array [],
+            "refs": Array [],
+          },
+          "_conditions": Array [],
+          "_deps": Array [],
+          "_exclusive": Object {},
+          "_mutate": undefined,
+          "_options": Object {
+            "abortEarly": true,
+            "recursive": true,
+          },
+          "_type": "string",
+          "_typeError": [Function],
+          "_whitelist": RefSet {
+            "list": Array [],
+            "refs": Array [],
+          },
+          "tests": Array [],
+          "transforms": Array [
+            [Function],
+          ],
+          "type": "string",
+        },
+        "useQuiesce": BooleanSchema {
+          "_blacklist": RefSet {
+            "list": Array [],
+            "refs": Array [],
+          },
+          "_conditions": Array [],
+          "_deps": Array [],
+          "_exclusive": Object {},
+          "_mutate": undefined,
+          "_options": Object {
+            "abortEarly": true,
+            "recursive": true,
+          },
+          "_type": "boolean",
+          "_typeError": [Function],
+          "_whitelist": RefSet {
+            "list": Array [],
+            "refs": Array [],
+          },
+          "tests": Array [],
+          "transforms": Array [
+            [Function],
+          ],
+          "type": "boolean",
+        },
       },
       "tests": Array [],
       "transforms": Array [
@@ -464,13 +676,39 @@ exports[`SnapshotForm rendering render with optional Props 1`] = `
     required={false}
     type="textarea"
   />
-  <TextField
-    className=""
-    inputClassName="col-md-8"
-    label="Include RAM"
-    name="includeRam"
-    required={false}
-    type="checkbox"
-  />
+  <div
+    className="form-group"
+  >
+    <label
+      className="col-md-2 control-label"
+    >
+      Snapshot Mode
+      <FieldLevelHelp
+        buttonClass="field-help"
+        content="Select Snapshot Mode between mutually exclusive options, 'Memory' (includes RAM) and 'Quiesce'."
+        placement="top"
+        rootClose={true}
+      />
+    </label>
+    <div
+      className="col-md-8"
+    >
+      <select
+        className="common-select form-control"
+        onChange={[Function]}
+      >
+        <option
+          key=""
+          value=""
+        />
+        <option
+          key="Memory"
+          value="Memory"
+        >
+          Memory
+        </option>
+      </select>
+    </div>
+  </div>
 </ForemanForm>
 `;

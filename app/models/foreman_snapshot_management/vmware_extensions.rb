@@ -12,12 +12,9 @@ module ForemanSnapshotManagement
     # This method creates a Snapshot with a given name and optional description.
     def create_snapshot(host, name, description, include_ram = false, quiesce = false)
       server = find_vm_by_uuid(host.uuid)
-      if quiesce and (server.power_state != 'poweredOn' || server.tools_state != 'toolsOk')
-        raise N_('Unable to create VMWare Snapshot with Quiesce. Check Power and VMWare Tools status.')
-      end
-      if quiesce and include_ram
-        raise N_('Unable to create VMWare Snapshot. Cannot set both Memory and Quiesce options.')
-      end
+      raise N_('Unable to create VMWare Snapshot with Quiesce. Check Power and VMWare Tools status.') if quiesce && (server.power_state != 'poweredOn' || server.tools_state != 'toolsOk')
+      raise N_('Unable to create VMWare Snapshot. Cannot set both Memory and Quiesce options.') if quiesce && include_ram
+
       task = client.vm_take_snapshot(
         'instance_uuid' => host.uuid,
         'name' => name,

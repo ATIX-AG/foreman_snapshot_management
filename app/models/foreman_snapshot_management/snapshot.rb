@@ -12,10 +12,10 @@ module ForemanSnapshotManagement
     include ActiveModel::ForbiddenAttributesProtection
 
     define_model_callbacks :create, :save, :destroy, :revert
-    attr_accessor :id, :raw_snapshot, :parent
-    attr_writer :create_time
+    attr_accessor :id, :raw_snapshot, :parent, :snapshot_mode
+    attr_writer :create_time, :quiesce
     attr_reader :name, :description, :include_ram, :host_id, :quiesce
-    define_attribute_methods :name, :description, :include_ram, :quiesce
+    define_attribute_methods :name, :description, :include_ram
 
     def self.model_name
       Struct.new(:name, :klass, :singular, :plural, :element,
@@ -78,10 +78,6 @@ module ForemanSnapshotManagement
       raise Exception('Cannot modify include_ram on existing snapshots.') if persisted?
 
       @include_ram = value
-    end
-
-    def quiesce=(value)
-      @quiesce = value
     end
 
     # host accessors
