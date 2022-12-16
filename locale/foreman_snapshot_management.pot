@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: foreman_snapshot_management 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-25 15:35+0100\n"
-"PO-Revision-Date: 2022-11-25 15:35+0100\n"
+"POT-Creation-Date: 2022-12-13 19:55+0100\n"
+"PO-Revision-Date: 2022-12-13 19:55+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -42,15 +42,15 @@ msgstr ""
 msgid "Whether to include the Quiesce state in the snapshot"
 msgstr ""
 
-#: ../app/controllers/api/v2/snapshots_controller.rb:57
+#: ../app/controllers/api/v2/snapshots_controller.rb:59
 msgid "Update a snapshot"
 msgstr ""
 
-#: ../app/controllers/api/v2/snapshots_controller.rb:66
+#: ../app/controllers/api/v2/snapshots_controller.rb:68
 msgid "Delete a snapshot"
 msgstr ""
 
-#: ../app/controllers/api/v2/snapshots_controller.rb:74
+#: ../app/controllers/api/v2/snapshots_controller.rb:76
 msgid "Revert Host to a snapshot"
 msgstr ""
 
@@ -76,15 +76,15 @@ msgstr ""
 msgid "Failed to update Snapshot: %s"
 msgstr ""
 
-#: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:92
+#: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:93
 msgid "Error occurred while creating Snapshot for:%s"
 msgstr ""
 
-#: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:94
+#: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:95
 msgid "Created %{snapshots} for %{num} %{hosts}"
 msgstr ""
 
-#: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:95
+#: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:96
 #: ../app/models/foreman_snapshot_management/snapshot.rb:56
 #: ../app/views/foreman_snapshot_management/snapshots/select_multiple_host.html.erb:8
 #: ../webpack/components/SnapshotManagement/components/SnapshotList/SnapshotList.js:156
@@ -93,21 +93,21 @@ msgid_plural "Snapshots"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:97
+#: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:98
 msgid "host"
 msgid_plural "hosts"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:140
+#: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:154
 msgid "No hosts were found with that id, name or query filter"
 msgstr ""
 
-#: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:147
+#: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:161
 msgid "Something went wrong while selecting hosts - %s"
 msgstr ""
 
-#: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:166
+#: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:180
 msgid "No capable hosts found."
 msgstr ""
 
@@ -118,7 +118,7 @@ msgid "Create Snapshot"
 msgstr ""
 
 #: ../app/models/foreman_snapshot_management/proxmox_extensions.rb:15
-#: ../webpack/components/SnapshotManagement/components/SnapshotForm/SnapshotForm.js:28
+#: ../webpack/components/SnapshotManagement/components/SnapshotForm/SnapshotForm.js:26
 msgid ""
 "Name must contain at least 2 characters starting with alphabet. Valid characte"
 "rs are A-Z a-z 0-9 _"
@@ -144,29 +144,29 @@ msgstr ""
 msgid "Unable to update Proxmox Snapshot"
 msgstr ""
 
-#: ../app/models/foreman_snapshot_management/vmware_extensions.rb:16
+#: ../app/models/foreman_snapshot_management/vmware_extensions.rb:15
 msgid ""
 "Unable to create VMWare Snapshot with Quiesce. Check Power and VMWare Tools st"
 "atus."
 msgstr ""
 
-#: ../app/models/foreman_snapshot_management/vmware_extensions.rb:19
+#: ../app/models/foreman_snapshot_management/vmware_extensions.rb:16
 msgid "Unable to create VMWare Snapshot. Cannot set both Memory and Quiesce options."
 msgstr ""
 
-#: ../app/models/foreman_snapshot_management/vmware_extensions.rb:31
+#: ../app/models/foreman_snapshot_management/vmware_extensions.rb:28
 msgid "Unable to create VMWare Snapshot"
 msgstr ""
 
-#: ../app/models/foreman_snapshot_management/vmware_extensions.rb:42
+#: ../app/models/foreman_snapshot_management/vmware_extensions.rb:39
 msgid "Unable to remove VMWare Snapshot"
 msgstr ""
 
-#: ../app/models/foreman_snapshot_management/vmware_extensions.rb:53
+#: ../app/models/foreman_snapshot_management/vmware_extensions.rb:50
 msgid "Unable to revert VMWare Snapshot"
 msgstr ""
 
-#: ../app/models/foreman_snapshot_management/vmware_extensions.rb:64
+#: ../app/models/foreman_snapshot_management/vmware_extensions.rb:61
 msgid "Unable to update VMWare Snapshot"
 msgstr ""
 
@@ -177,15 +177,23 @@ msgstr ""
 
 #:
 #: ../app/views/foreman_snapshot_management/snapshots/select_multiple_host.html.erb:11
-#: ../webpack/components/SnapshotManagement/components/SnapshotForm/SnapshotForm.js:76
+#: ../webpack/components/SnapshotManagement/components/SnapshotForm/SnapshotForm.js:94
 #: ../webpack/components/SnapshotManagement/components/SnapshotList/SnapshotList.js:162
 msgid "Description"
 msgstr ""
 
 #:
-#: ../app/views/foreman_snapshot_management/snapshots/select_multiple_host.html.erb:14
-#: ../webpack/components/SnapshotManagement/components/SnapshotForm/SnapshotForm.js:82
-msgid "Include RAM"
+#: ../app/views/foreman_snapshot_management/snapshots/select_multiple_host.html.erb:15
+#: ../webpack/components/SnapshotManagement/components/SnapshotForm/SnapshotForm.js:99
+msgid "Snapshot Mode"
+msgstr ""
+
+#:
+#: ../app/views/foreman_snapshot_management/snapshots/select_multiple_host.html.erb:16
+#: ../webpack/components/SnapshotManagement/components/SnapshotForm/SnapshotForm.js:103
+msgid ""
+"Select Snapshot Mode between mutually exclusive options, 'Memory' (includes RA"
+"M) and 'Quiesce'."
 msgstr ""
 
 #: ../app/views/hosts/_snapshots_tab.html.erb:13
@@ -213,12 +221,22 @@ msgid "Successfully rolled back Snapshot \"%s\" on host %s"
 msgstr ""
 
 #:
-#: ../webpack/components/SnapshotManagement/components/SnapshotForm/SnapshotForm.js:53
+#: ../webpack/components/SnapshotManagement/components/SnapshotForm/SnapshotForm.js:44
+msgid "Memory"
+msgstr ""
+
+#:
+#: ../webpack/components/SnapshotManagement/components/SnapshotForm/SnapshotForm.js:47
+msgid "Quiesce"
+msgstr ""
+
+#:
+#: ../webpack/components/SnapshotManagement/components/SnapshotForm/SnapshotForm.js:71
 msgid "Snapshot successfully created!"
 msgstr ""
 
 #:
-#: ../webpack/components/SnapshotManagement/components/SnapshotForm/SnapshotForm.js:70
+#: ../webpack/components/SnapshotManagement/components/SnapshotForm/SnapshotForm.js:88
 msgid "Name"
 msgstr ""
 

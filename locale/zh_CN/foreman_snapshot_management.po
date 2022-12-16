@@ -4,8 +4,9 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# Lukáš Zapletal, 2021
-# Pavel Borecki <pavel.borecki@gmail.com>, 2021
+# 0868a4d1af5275b3f70b0a6dac4c99a4, 2019
+# Bryan Kearney <bryan.kearney@gmail.com>, 2019
+# Amit Upadhye <aupadhye@redhat.com>, 2022
 #
 #, fuzzy
 msgid ""
@@ -13,183 +14,178 @@ msgstr ""
 "Project-Id-Version: foreman_snapshot_management 2.0.2\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2019-10-22 11:54+0000\n"
-"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2021\n"
-"Language-Team: Czech (Czech Republic) (https://www.transifex.com/foreman/teams"
-"/114/cs_CZ/)\n"
+"Last-Translator: Amit Upadhye <aupadhye@redhat.com>, 2022\n"
+"Language-Team: Chinese (China) (https://www.transifex.com/foreman/teams/114/zh"
+"_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: cs_CZ\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= "
-"4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "Action"
-msgstr "Akce"
+msgstr "操作"
 
 msgid "Create Snapshot"
-msgstr "Pořídit zachycený stav"
+msgstr "创建快照"
 
 msgid "Create Snapshot for %s"
-msgstr ""
+msgstr "为 %s 创建快照"
 
 msgid "Create a snapshot"
-msgstr "Pořídit zachycený stav"
+msgstr "创建快照"
 
 msgid "Created %{snapshots} for %{num} %{hosts}"
-msgstr "Vytvořeno %{snapshots} pro %{num} %{hosts}"
+msgstr "为 %{num} %{hosts} 创建的 %{snapshots}"
 
 msgid "Delete"
-msgstr "Smazat"
+msgstr "刪除"
 
 msgid "Delete Snapshot \"%s\"?"
-msgstr ""
+msgstr "删除快照 \"%s\"?"
 
 msgid "Delete a snapshot"
-msgstr "Smazat zachycený stav"
+msgstr "删除快照"
 
 msgid "Description"
-msgstr "Popis"
+msgstr "描述"
 
 msgid "Description of this snapshot"
-msgstr ""
+msgstr "此快照的描述"
 
 msgid "Error occurred while creating Snapshot for:%s"
-msgstr ""
+msgstr "创建产品时发生错误：%s"
 
 msgid "Error occurred while creating Snapshot: %s"
-msgstr "Při pořizování zachyceného stavu došlo k chybě: %s"
+msgstr "创建快照时出现错误：%s"
 
 msgid "Error occurred while removing Snapshot: %s"
-msgstr "Při odebírání zachyceného stavu došlo k chybě: %s"
+msgstr "删除快照时发生错误：%s"
 
 msgid "Error occurred while rolling back VM: %s"
-msgstr ""
+msgstr "回滚虚拟机时出现错误：%s"
 
 msgid "Error occurred while updating Snapshot: %s"
-msgstr ""
+msgstr "更新快照时发生错误：%s"
 
 msgid "Failed to load snapshot list"
-msgstr ""
+msgstr "加载快照列表失败"
 
 msgid "Failed to update Snapshot: %s"
-msgstr "Zachycený stav se nepodařilo aktualizovat: %s"
+msgstr "更新快照失败：%s"
 
 msgid "Foreman-plugin to manage snapshots in a virtual-hardware environments."
-msgstr "Zásuvný modul do Foreman pro správu zachycených stavů v prostředí virtuálního hardware."
+msgstr "Foreman-plugin，用于在虚拟硬件环境中管理快照。"
 
 msgid "Include RAM"
-msgstr "Včetně oper. paměti"
+msgstr "包括 RAM"
 
 msgid "List all snapshots"
-msgstr "Vypsat všechny zachycené stavy"
+msgstr "列出所有快照"
 
 msgid "Loading Snapshots information ..."
-msgstr "Načítání informací o zachycených stavech…"
+msgstr "加载快照信息..."
 
 msgid "N/A"
-msgstr "Není"
+msgstr "不适用"
 
 msgid "Name"
-msgstr "Název"
+msgstr "名称"
 
 msgid "Name must contain at least 2 characters starting with alphabet. Valid characters are A-Z a-z 0-9 _"
-msgstr ""
+msgstr "名称必须至少包含以字面开头的 2 个字符。有效字符为 A-Z a-z 0-9 _"
 
 msgid "Name of this snapshot"
-msgstr "Název tohoto zachyceného stavu"
+msgstr "此快照的名称"
 
 msgid "No capable hosts found."
-msgstr "Nenalezeny žádné schopné stroje."
+msgstr "未找到可用的主机。"
 
 msgid "No capable hosts selected"
-msgstr ""
+msgstr "没有选择可用的主机"
 
 msgid "No hosts were found with that id, name or query filter"
-msgstr "Pro takový identifikátor, název nebo dotazovací filtr nebyly nalezeni žádní hostitelé"
+msgstr "未找到符合此 id、名称或者查询过滤器的主机"
 
 msgid "Revert Host to a snapshot"
-msgstr "Vrátit stroj do podoby ze zachyceného stavu"
+msgstr "将主机恢复到快照"
 
 msgid "Rollback"
-msgstr ""
+msgstr "回滚rollback"
 
 msgid "Rollback to \"%s\"?"
-msgstr ""
+msgstr "回滚到 \"%s\"?"
 
 msgid "Snapshot"
 msgid_plural "Snapshots"
-msgstr[0] "Zachycený stav"
-msgstr[1] "Zachycené stavy"
-msgstr[2] "Zachycených stavů"
-msgstr[3] "Zachycené stavy"
+msgstr[0] "快照"
 
 msgid "Snapshot name cannot be changed"
-msgstr "Název zachyceného stavu není možné změnit"
+msgstr "无法更改快照名称"
 
 msgid "Snapshot successfully created!"
-msgstr ""
+msgstr "成功创建快照！"
 
 msgid "Snapshots"
-msgstr "Zachycené stavy"
+msgstr "快照"
 
 msgid "Something went wrong while selecting hosts - %s"
-msgstr "Při vybírání strojů se něco pokazilo – %s"
+msgstr "选择主机时出错 - %s"
 
 msgid "Successfully removed Snapshot \"%s\" from host %s"
-msgstr ""
+msgstr "成功从主机 %s 中删除快照 \"%s\""
 
 msgid "Successfully rolled back Snapshot \"%s\" on host %s"
-msgstr ""
+msgstr "在主机 %s 上成功回滚快照 \"%s\""
 
 msgid "Successfully updated Snapshot \"%s\""
-msgstr ""
+msgstr "成功更新快照 \"%s\""
 
 msgid "Unable to create Proxmox Snapshot"
-msgstr "Nedaří se pořídit Proxmox zachycený stav"
+msgstr "无法创建 Proxmox 快照"
 
 msgid "Unable to create VMWare Snapshot"
-msgstr "Nedaří se pořídit VMWare zachycený stav"
+msgstr "无法创建 VMWare 快照"
 
 msgid "Unable to create VMWare Snapshot with Quiesce. Check Power and VMWare Tools status."
-msgstr ""
+msgstr "无法使用 Quiesce 创建 VMWare 快照。检查 Power 和 VMWare 工具状态。"
 
 msgid "Unable to create VMWare Snapshot. Cannot set both Memory and Quiesce options."
-msgstr ""
+msgstr "无法创建 VMWare 快照。无法同时设置 Memory 和 Quiesce 选项。"
 
 msgid "Unable to remove Proxmox Snapshot"
-msgstr "Nedaří se odebrat Proxmox zachycený stav"
+msgstr "无法删除 Proxmox 快照"
 
 msgid "Unable to remove VMWare Snapshot"
-msgstr "VMWare zachycený stav se nedaří odebrat"
+msgstr "无法删除 VMWare 快照"
 
 msgid "Unable to revert Proxmox Snapshot"
-msgstr "Nedaří se vrátit do podoby v Proxmox zachyceném stavu"
+msgstr "无法恢复 Proxmox 快照"
 
 msgid "Unable to revert VMWare Snapshot"
-msgstr ""
+msgstr "无法恢复 VMWare 快照"
 
 msgid "Unable to update Proxmox Snapshot"
-msgstr "Nedaří se aktualizovat Proxmox zachycený stav"
+msgstr "无法更新 Proxmox 快照"
 
 msgid "Unable to update VMWare Snapshot"
-msgstr "VMWare zachycený stav se nedaří zaktualizovat"
+msgstr "无法更新 VMWare 快照"
 
 msgid "Update a snapshot"
-msgstr "Aktualizovat zachycený stav"
+msgstr "更新快照"
 
 msgid "VM successfully rolled back."
-msgstr ""
+msgstr "虚拟机成功回滚。"
 
 msgid "Whether to include the Quiesce state in the snapshot"
-msgstr ""
+msgstr "是否在快照中包含 Quiesce 状态"
 
 msgid "Whether to include the RAM state in the snapshot"
-msgstr "Zda v zachyceném stavu uložit i obsah operační paměti"
+msgstr "是否在快照中包含 RAM 状态"
 
 msgid "edit entry"
-msgstr ""
+msgstr "编辑条目"
 
 msgid "host"
 msgid_plural "hosts"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "主机"

@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_snapshot_management 1.8.1\n"
+"Project-Id-Version: foreman_snapshot_management 2.0.2\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2020-03-02 10:27+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -71,13 +71,13 @@ msgstr ""
 msgid "Foreman-plugin to manage snapshots in a virtual-hardware environments."
 msgstr ""
 
-msgid "Include RAM"
-msgstr ""
-
 msgid "List all snapshots"
 msgstr ""
 
 msgid "Loading Snapshots information ..."
+msgstr ""
+
+msgid "Memory"
 msgstr ""
 
 msgid "N/A"
@@ -101,6 +101,9 @@ msgstr ""
 msgid "No hosts were found with that id, name or query filter"
 msgstr ""
 
+msgid "Quiesce"
+msgstr ""
+
 msgid "Revert Host to a snapshot"
 msgstr ""
 
@@ -110,10 +113,16 @@ msgstr ""
 msgid "Rollback to \"%s\"?"
 msgstr ""
 
+msgid "Select Snapshot Mode between mutually exclusive options, 'Memory' (includes RAM) and 'Quiesce'."
+msgstr ""
+
 msgid "Snapshot"
 msgid_plural "Snapshots"
 msgstr[0] ""
 msgstr[1] ""
+
+msgid "Snapshot Mode"
+msgstr ""
 
 msgid "Snapshot name cannot be changed"
 msgstr ""
