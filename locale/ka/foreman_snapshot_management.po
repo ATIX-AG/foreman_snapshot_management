@@ -4,14 +4,15 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# NorwayFun <temuri.doghonadze@gmail.com>, 2022
+# Temuri Doghonadze <temuri.doghonadze@gmail.com>, 2022
 #
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_snapshot_management 1.0.0\n"
+"Project-Id-Version: foreman_snapshot_management 2.0.2\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2019-10-22 11:54+0000\n"
-"Last-Translator: NorwayFun <temuri.doghonadze@gmail.com>, 2022\n"
+"Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>, 2022\n"
 "Language-Team: Georgian (https://www.transifex.com/foreman/teams/114/ka/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -145,10 +146,10 @@ msgid "Unable to create VMWare Snapshot"
 msgstr "VMWare-ის სწრაფი ასლის შექმნა შეუძლებელია"
 
 msgid "Unable to create VMWare Snapshot with Quiesce. Check Power and VMWare Tools status."
-msgstr ""
+msgstr "Quiesce-ით VMWare-ის სწრაფი ასლის შექმნა შეუძლებელია. შეამოწმეთ მისი კვება და VMWare Tools-ის მდგომარეობა."
 
 msgid "Unable to create VMWare Snapshot. Cannot set both Memory and Quiesce options."
-msgstr ""
+msgstr "VMWare-ის სწრაფი ასლის შექმნის შეცდომა. Quiesce -ის და მეხსიერების პარამეტრების ერთდროული დაყენება შეუძლებელია."
 
 msgid "Unable to remove Proxmox Snapshot"
 msgstr "Proxmox-ის სწრაფი ასლის წაშლა შეუძლებელია"
@@ -175,7 +176,7 @@ msgid "VM successfully rolled back."
 msgstr "ვმ-ი წარმატებით დაბრუნდა."
 
 msgid "Whether to include the Quiesce state in the snapshot"
-msgstr ""
+msgstr "იქნება თუ არა ჩასმული სწრაფ ასლში Quiesce -ის მდგომარეობა"
 
 msgid "Whether to include the RAM state in the snapshot"
 msgstr "სწრაფ ასლში ოპერატიული მეხსიერების მდგომარეობის შენახვა"

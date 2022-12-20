@@ -1,0 +1,196 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the foreman_snapshot_management package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+# Translators:
+# 21966816214bc546c1fc8a185e75ca1c, 2019
+# Claer <transiblu@claer.hammock.fr>, 2019
+# Bryan Kearney <bryan.kearney@gmail.com>, 2021
+# Amit Upadhye <aupadhye@redhat.com>, 2022
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: foreman_snapshot_management 2.0.2\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2019-10-22 11:54+0000\n"
+"Last-Translator: Amit Upadhye <aupadhye@redhat.com>, 2022\n"
+"Language-Team: French (https://www.transifex.com/foreman/teams/114/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 100000"
+"0 == 0 ? 1 : 2;\n"
+
+msgid "Action"
+msgstr "Action"
+
+msgid "Create Snapshot"
+msgstr "Créer un instantané"
+
+msgid "Create Snapshot for %s"
+msgstr "Créer un instantané pour %s"
+
+msgid "Create a snapshot"
+msgstr "Créer un instantané"
+
+msgid "Created %{snapshots} for %{num} %{hosts}"
+msgstr "Créé %{snapshots} pour %{num} %{hosts}"
+
+msgid "Delete"
+msgstr "Supprimer"
+
+msgid "Delete Snapshot \"%s\"?"
+msgstr "Supprimer l'instantané \"%s\" ?"
+
+msgid "Delete a snapshot"
+msgstr "Supprimer un instantané"
+
+msgid "Description"
+msgstr "Description"
+
+msgid "Description of this snapshot"
+msgstr "Description de cet instantané"
+
+msgid "Error occurred while creating Snapshot for:%s"
+msgstr "Une erreur s'est produite lors de la création de l’instantané : %s"
+
+msgid "Error occurred while creating Snapshot: %s"
+msgstr "Une erreur s'est produite lors de la création de l’instantané : %s"
+
+msgid "Error occurred while removing Snapshot: %s"
+msgstr "Une erreur s'est produite lors de la suppression de l’instantané : %s"
+
+msgid "Error occurred while rolling back VM: %s"
+msgstr "Une erreur s'est produite lors de la reprise de la VM : %s"
+
+msgid "Error occurred while updating Snapshot: %s"
+msgstr "Une erreur s'est produite lors de la mise à jour de l’instantané : %s"
+
+msgid "Failed to load snapshot list"
+msgstr "Échec du chargement de la liste des instantanés"
+
+msgid "Failed to update Snapshot: %s"
+msgstr "Échec de la mise à jour de l’instantané : %s"
+
+msgid "Foreman-plugin to manage snapshots in a virtual-hardware environments."
+msgstr "Plugin Foreman pour gérer les instantanés dans un environnement de matériel virtuel."
+
+msgid "Include RAM"
+msgstr "Inclure la RAM"
+
+msgid "List all snapshots"
+msgstr "Liste de tous les instantanés"
+
+msgid "Loading Snapshots information ..."
+msgstr "Chargement des informations sur les instantanés ..."
+
+msgid "N/A"
+msgstr "Sans objet"
+
+msgid "Name"
+msgstr "Nom"
+
+msgid "Name must contain at least 2 characters starting with alphabet. Valid characters are A-Z a-z 0-9 _"
+msgstr "Le nom doit contenir au moins 2 caractères commençant par l'alphabet. Les caractères valides sont A-Z a-z 0-9 _"
+
+msgid "Name of this snapshot"
+msgstr "Nom de cet instantané"
+
+msgid "No capable hosts found."
+msgstr "Aucun hôte capable n'a été trouvé."
+
+msgid "No capable hosts selected"
+msgstr "Aucun hôte capable sélectionné"
+
+msgid "No hosts were found with that id, name or query filter"
+msgstr "Aucun hôte trouvé avec cet ID, ce nom ou filtre de requête"
+
+msgid "Revert Host to a snapshot"
+msgstr "Revenir à un instantané de l'hôte"
+
+msgid "Rollback"
+msgstr "Rollback"
+
+msgid "Rollback to \"%s\"?"
+msgstr "Retour à \"%s\" ?"
+
+msgid "Snapshot"
+msgid_plural "Snapshots"
+msgstr[0] "Instantané"
+msgstr[1] "Instantanés"
+msgstr[2] "Instantanés"
+
+msgid "Snapshot name cannot be changed"
+msgstr "Le nom de l’instantané ne peut pas être modifié"
+
+msgid "Snapshot successfully created!"
+msgstr "L’instantané a été créé avec succès."
+
+msgid "Snapshots"
+msgstr "Instantanés"
+
+msgid "Something went wrong while selecting hosts - %s"
+msgstr "Une erreur s'est produite lors de la sélection des hôtes - %s"
+
+msgid "Successfully removed Snapshot \"%s\" from host %s"
+msgstr "L’instantané \"%s\" a été supprimé de l'hôte. %s"
+
+msgid "Successfully rolled back Snapshot \"%s\" on host %s"
+msgstr "L’instantané \"%s\" sur l'hôte %s a été retiré avec succès. "
+
+msgid "Successfully updated Snapshot \"%s\""
+msgstr "La mise à jour de l’instantané \"%s\" a réussi."
+
+msgid "Unable to create Proxmox Snapshot"
+msgstr "Impossible de créer un instantané de Proxmox"
+
+msgid "Unable to create VMWare Snapshot"
+msgstr "Impossible de créer un instantané VMWare"
+
+msgid "Unable to create VMWare Snapshot with Quiesce. Check Power and VMWare Tools status."
+msgstr "Impossible de créer un instantané VMWare avec Quiesce. Vérifiez l'état de l'alimentation et des outils VMWare."
+
+msgid "Unable to create VMWare Snapshot. Cannot set both Memory and Quiesce options."
+msgstr "Impossible de créer un instantané VMWare. Impossible de définir les options Mémoire et Quiesce."
+
+msgid "Unable to remove Proxmox Snapshot"
+msgstr "Impossible de supprimer l’instantané de Proxmox"
+
+msgid "Unable to remove VMWare Snapshot"
+msgstr "Impossible de supprimer l’instantané VMWare"
+
+msgid "Unable to revert Proxmox Snapshot"
+msgstr "Impossible de rétablir l’instantané de Proxmox"
+
+msgid "Unable to revert VMWare Snapshot"
+msgstr "Impossible de rétablir l’instantané VMWare"
+
+msgid "Unable to update Proxmox Snapshot"
+msgstr "Impossible de mettre à jour l’instantané de Proxmox"
+
+msgid "Unable to update VMWare Snapshot"
+msgstr "Impossible de mettre à jour l’instantané VMWare"
+
+msgid "Update a snapshot"
+msgstr "Mise à jour d'un instantané"
+
+msgid "VM successfully rolled back."
+msgstr "La VM a été reprise avec succès."
+
+msgid "Whether to include the Quiesce state in the snapshot"
+msgstr "Si l'état de repos doit être inclus dans l'instantané."
+
+msgid "Whether to include the RAM state in the snapshot"
+msgstr "Inclure ou non l'état de la RAM dans l'instantané"
+
+msgid "edit entry"
+msgstr "Modifier la saisie"
+
+msgid "host"
+msgid_plural "hosts"
+msgstr[0] "hôte"
+msgstr[1] "hôtes"
+msgstr[2] "hôtes"
