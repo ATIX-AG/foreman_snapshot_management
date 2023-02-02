@@ -4,17 +4,17 @@ module ForemanSnapshotManagement
   module ProxmoxExtensions
     # Extend Proxmox's capabilities with snapshots.
     def capabilities
-      super + [:snapshots, :limit_snapshot_name_format]
+      super + [:snapshots, :limit_snapshot_name_format, :snapshot_include_ram]
     end
 
     # Create a Snapshot.
     #
     # This method creates a Snapshot with a given name and optional description.
-    def create_snapshot(host, name, description, _include_ram = false)
+    def create_snapshot(host, name, description, include_ram = false, _quiesce = false)
       server = find_vm_by_uuid host.uuid
       raise _('Name must contain at least 2 characters starting with alphabet. Valid characters are A-Z a-z 0-9 _') unless /^[A-Za-z][\w]{1,}$/.match?(name)
 
-      snapshot = server.snapshots.create(name: name)
+      snapshot = server.snapshots.create(name: name, vmstate: include_ram)
       snapshot.description = description
       snapshot.update
     rescue StandardError => e
