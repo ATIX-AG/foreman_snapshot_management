@@ -14,6 +14,7 @@ module ForemanSnapshotManagement
       server = find_vm_by_uuid host.uuid
       raise _('Name must contain at least 2 characters starting with alphabet. Valid characters are A-Z a-z 0-9 _') unless /^[A-Za-z][\w]{1,}$/.match?(name)
 
+      include_ram = include_ram ? 1 : 0
       snapshot = server.snapshots.create(name: name, vmstate: include_ram)
       snapshot.description = description
       snapshot.update
