@@ -5,6 +5,7 @@ import SnapshotManagementCard from '../SnapshotManagementCard';
 const hostDetails = {
   id: 42,
   name: 'deep.thought',
+  uuid: '829aa26a-928f-11ee-b9d1-0242ac120002',
   permissions: {
     create_snapshots: true,
     edit_snapshots: false,
