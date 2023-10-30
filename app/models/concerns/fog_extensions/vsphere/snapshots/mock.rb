@@ -15,7 +15,7 @@ module FogExtensions
           raise ArgumentError, 'removeChildren is a required parameter' unless options.key? 'removeChildren'
 
           {
-            'task_state' => 'success'
+            'task_state' => 'success',
           }
         end
 
@@ -25,7 +25,7 @@ module FogExtensions
           raise ArgumentError, 'description is a required parameter' unless options.key? 'description'
 
           {
-            'task_state' => 'success'
+            'task_state' => 'success',
           }
         end
       end

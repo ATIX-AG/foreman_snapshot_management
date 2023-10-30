@@ -1,17 +1,9 @@
 
-require:
-  - rubocop-performance
-  - rubocop-rails
-  - rubocop-minitest
-
-AllCops:
-  TargetRubyVersion: 2.5
-  TargetRailsVersion: 5.2
-  Exclude:
-    - 'locale/**/*'
-    - 'node_modules/**/*'
-    - 'vendor/**/*'
-    - '*.spec'
+inherit_gem:
+  theforeman-rubocop:
+    #- lenient.yml
+    #- default.yml
+    - strict.yml
 
 Layout/LineLength:
   Max: 190
@@ -20,7 +12,9 @@ Metrics/AbcSize:
   Enabled: false
 
 Metrics/BlockLength:
-  Enabled: false
+  Max: 50
+  Exclude:
+    - 'test/**/*.rb'
 
 Metrics/ClassLength:
   Max: 500
@@ -31,25 +25,8 @@ Metrics/MethodLength:
 Metrics/ModuleLength:
     Max: 400
 
-Metrics/ParameterLists:
-  Enabled: false
-
 Metrics/PerceivedComplexity:
-  Enabled: false
-
-Naming/AccessorMethodName:
-  Enabled: false
-
-Naming/FileName:
-  Exclude:
-    - 'db/seeds.d/*'
-
-Naming/MethodName:
-  Exclude:
-    - 'app/models/concerns/orchestration/*.rb'
-
-Rails:
-  Enabled: True
+  Max: 10
 
 Rails/Date:
   Exclude:
@@ -69,32 +46,27 @@ Style/ClassAndModuleChildren:
 Style/Documentation:
   Enabled: false
 
-Style/EachWithObject:
-  Enabled: false
-
 Style/FormatString:
-  Enabled: false
+  EnforcedStyle: percent
 
 Style/FormatStringToken:
-  Enabled: false
+  EnforcedStyle: template
 
 Style/GuardClause:
   Enabled: false
 
 # Support both ruby19 and hash_rockets
 Style/HashSyntax:
+  EnforcedStyle: no_mixed_keys
+
+Style/OptionalBooleanParameter:
   Enabled: false
-  SupportedStyles:
-    - ruby19
-    - hash_rockets
 
 Style/RedundantSelf:
   Enabled: false
 
 Style/RegexpLiteral:
-  Enabled: false
-
-Style/RescueModifier:
+  EnforcedStyle: slashes
   Enabled: false
 
 Style/StringLiterals:

@@ -12,20 +12,21 @@ module ForemanSnapshotManagement
     include ActiveModel::ForbiddenAttributesProtection
 
     define_model_callbacks :create, :save, :destroy, :revert
-    attr_accessor :id, :raw_snapshot, :parent, :snapshot_mode
-    attr_writer :create_time, :quiesce
-    attr_reader :name, :description, :include_ram, :host_id, :quiesce
+    attr_accessor :id, :raw_snapshot, :parent, :snapshot_mode, :quiesce
+    attr_writer :create_time
+    attr_reader :name, :description, :include_ram, :host_id
+
     define_attribute_methods :name, :description, :include_ram
 
     def self.model_name
       Struct.new(:name, :klass, :singular, :plural, :element,
-                 :human, :collection, :param_key, :i18n_key, :route_key, :singular_route_key).new(
-                   'ForemanSnapshotManagement::Snapshot', ForemanSnapshotManagement::Snapshot,
-                   'foreman_snapshot_management_snapshot', 'foreman_snapshot_management_snapshots',
-                   'snapshot', 'Snapshot', 'foreman_snapshot_management/snapshots',
-                   'snapshot', :'foreman_snapshot_management/snapshot', 'foreman_snapshot_management_snapshots',
-                   'foreman_snapshot_management_snapshot'
-                 )
+        :human, :collection, :param_key, :i18n_key, :route_key, :singular_route_key).new(
+          'ForemanSnapshotManagement::Snapshot', ForemanSnapshotManagement::Snapshot,
+          'foreman_snapshot_management_snapshot', 'foreman_snapshot_management_snapshots',
+          'snapshot', 'Snapshot', 'foreman_snapshot_management/snapshots',
+          'snapshot', :'foreman_snapshot_management/snapshot', 'foreman_snapshot_management_snapshots',
+          'foreman_snapshot_management_snapshot'
+        )
     end
 
     def self.any?

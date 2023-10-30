@@ -21,49 +21,49 @@ module ForemanSnapshotManagement
         security_block :foreman_snapshot_management do
           permission :view_snapshots, {
             :'foreman_snapshot_management/snapshots' => [:index],
-            :'api/v2/snapshots' => [:index, :show]
+            :'api/v2/snapshots' => [:index, :show],
           }, :resource_type => 'Host'
 
           permission :create_snapshots, {
             :'foreman_snapshot_management/snapshots' => [:create, :select_multiple_host, :create_multiple_host],
-            :'api/v2/snapshots' => [:create]
+            :'api/v2/snapshots' => [:create],
           }, :resource_type => 'Host'
 
           permission :edit_snapshots, {
             :'foreman_snapshot_management/snapshots' => [:update],
-            :'api/v2/snapshots' => [:update]
+            :'api/v2/snapshots' => [:update],
           }, :resource_type => 'Host'
 
           permission :destroy_snapshots, {
             :'foreman_snapshot_management/snapshots' => [:destroy],
-            :'api/v2/snapshots' => [:destroy]
+            :'api/v2/snapshots' => [:destroy],
           }, :resource_type => 'Host'
 
           permission :revert_snapshots, {
             :'foreman_snapshot_management/snapshots' => [:revert],
-            :'api/v2/snapshots' => [:revert]
+            :'api/v2/snapshots' => [:revert],
           }, :resource_type => 'Host'
         end
 
         # Adds roles if they do not exist
         role 'Snapshot Viewer',
-             [:view_snapshots],
-             'Role granting permission only to view snapshots for hosts'
+          [:view_snapshots],
+          'Role granting permission only to view snapshots for hosts'
         role 'Snapshot Manager',
-             [
-               :view_snapshots,
-               :create_snapshots,
-               :edit_snapshots,
-               :destroy_snapshots,
-               :revert_snapshots
-             ],
-             'Role granting permission to manage snapshots for hosts'
+          [
+            :view_snapshots,
+            :create_snapshots,
+            :edit_snapshots,
+            :destroy_snapshots,
+            :revert_snapshots,
+          ],
+          'Role granting permission to manage snapshots for hosts'
 
         extend_page('hosts/show') do |context|
           context.add_pagelet :main_tabs,
-                              :name => N_('Snapshots'),
-                              :partial => 'hosts/snapshots_tab',
-                              :onlyif => proc { |host| host&.compute_resource&.capable?(:snapshots) }
+            :name => N_('Snapshots'),
+            :partial => 'hosts/snapshots_tab',
+            :onlyif => proc { |host| host&.compute_resource&.capable?(:snapshots) }
         end
       end
     end

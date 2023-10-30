@@ -17,7 +17,7 @@ module FogExtensions
           task.wait_for_completion
 
           {
-            'task_state' => task.info.state
+            'task_state' => task.info.state,
           }
         end
 

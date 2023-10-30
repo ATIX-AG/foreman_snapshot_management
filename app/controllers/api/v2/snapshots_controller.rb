@@ -16,7 +16,7 @@ module Api
       meta :search => [{ :name => 'name', :type => 'string' }]
       def index
         if params[:search]
-          search = params[:search].match(/^\s*name\s*=\s*(\w+)\s*$/) || params[:search].match(/^\s*name\s*=\s*\"([^"]+)\"\s*$/)
+          search = params[:search].match(/^\s*name\s*=\s*(\w+)\s*$/) || params[:search].match(/^\s*name\s*=\s*"([^"]+)"\s*$/)
           raise "Field '#{params[:search]}' not recognized for searching!" unless search
 
           snapshot = resource_class.find_for_host_by_name(@host, search[1])
@@ -34,7 +34,8 @@ module Api
       param :host_id, :identifier_dottable, :required => true
       param :id, :identifier_dottable, :required => true
 
-      def show; end
+      def show
+      end
 
       def_param_group :snapshot do
         param :snapshot, Hash, :required => true, :action_aware => true do
@@ -51,8 +52,8 @@ module Api
 
       def create
         @snapshot = resource_class.new(snapshot_params.to_h.merge(host: @host).merge(
-                                         include_ram: Foreman::Cast.to_bool(params[:include_ram]), quiesce: Foreman::Cast.to_bool(params[:quiesce])
-                                       ))
+          include_ram: Foreman::Cast.to_bool(params[:include_ram]), quiesce: Foreman::Cast.to_bool(params[:quiesce])
+        ))
         process_response @snapshot.create
       end
 

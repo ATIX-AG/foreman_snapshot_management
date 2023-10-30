@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     end
   end
 
-  constraints(host_id: %r{[^\/]+}) do
+  constraints(host_id: %r{[^/]+}) do
     resources :hosts, only: [] do
       resources :snapshots, module: 'foreman_snapshot_management', only: [:index, :create, :destroy, :update] do
         member do

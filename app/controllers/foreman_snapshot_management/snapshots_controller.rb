@@ -75,7 +75,8 @@ module ForemanSnapshotManagement
     end
 
     define_action_permission ['select_multiple_host', 'create_multiple_host'], :create
-    def select_multiple_host; end
+    def select_multiple_host
+    end
 
     def create_multiple_host
       data = snapshot_params
@@ -95,7 +96,7 @@ module ForemanSnapshotManagement
         msg = _('Created %{snapshots} for %{num} %{hosts}') % {
           snapshots: n_('Snapshot', 'Snapshots', snapshots_created),
           num: snapshots_created,
-          hosts: n_('host', 'hosts', snapshots_created)
+          hosts: n_('host', 'hosts', snapshots_created),
         }
         # for backwards compatibility
         if respond_to? :success
@@ -108,10 +109,11 @@ module ForemanSnapshotManagement
     end
 
     def snapshot_mode_assignment(snapshot_mode, data)
-      if snapshot_mode == 'memory'
+      case snapshot_mode
+      when 'memory'
         data[:include_ram] = true
         data[:quiesce] = false
-      elsif snapshot_mode == 'quiesce'
+      when 'quiesce'
         data[:include_ram] = false
         data[:quiesce] = true
       else
