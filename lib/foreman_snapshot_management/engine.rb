@@ -10,7 +10,8 @@ module ForemanSnapshotManagement
 
     initializer 'foreman_snapshot_management.register_plugin', before: :finisher_hook do |_app|
       Foreman::Plugin.register :foreman_snapshot_management do
-        requires_foreman '>= 2.0.0'
+        requires_foreman '>= 3.7'
+        register_gettext
 
         # Add Global files for extending foreman-core components and routes
         register_global_js_file 'global'
@@ -117,12 +118,6 @@ module ForemanSnapshotManagement
       Rake::Task['db:seed'].enhance do
         ForemanSnapshotManagement::Engine.load_seed
       end
-    end
-
-    initializer 'foreman_snapshot_management.register_gettext', after: :load_config_initializers do |_app|
-      locale_dir = File.join(File.expand_path('../..', __dir__), 'locale')
-      locale_domain = 'foreman_snapshot_management'
-      Foreman::Gettext::Support.add_text_domain locale_domain, locale_dir
     end
   end
 
