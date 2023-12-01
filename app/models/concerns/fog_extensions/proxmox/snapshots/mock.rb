@@ -15,7 +15,7 @@ module FogExtensions
             'exitstatus' => 'OK',
             'status' => 'stopped',
             'id' => '100',
-            'pid' => 15_891
+            'pid' => 15_891,
           }
         end
       end

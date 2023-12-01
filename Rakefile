@@ -18,7 +18,7 @@ begin
   require 'rubocop/rake_task'
   RuboCop::RakeTask.new
 rescue StandardError => _e
-  puts 'Rubocop not loaded.'
+  # 'Rubocop not loaded.'
 end
 
 RDoc::Task.new(:rdoc) do |rdoc|

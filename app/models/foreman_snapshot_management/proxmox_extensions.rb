@@ -12,7 +12,7 @@ module ForemanSnapshotManagement
     # This method creates a Snapshot with a given name and optional description.
     def create_snapshot(host, name, description, include_ram = false, _quiesce = false)
       server = find_vm_by_uuid host.uuid
-      raise _('Name must contain at least 2 characters starting with alphabet. Valid characters are A-Z a-z 0-9 _') unless /^[A-Za-z][\w]{1,}$/.match?(name)
+      raise _('Name must contain at least 2 characters starting with alphabet. Valid characters are A-Z a-z 0-9 _') unless /^[A-Za-z]\w{1,}$/.match?(name)
 
       include_ram = include_ram ? 1 : 0
       snapshot = server.snapshots.create(name: name, vmstate: include_ram)
