@@ -18,7 +18,7 @@ const SnapshotManagementCard = ({ hostDetails, ...props }) => {
       hostDetails?.capabilities?.includes('snapshot_include_quiesce') || false,
   };
 
-  if (hostDetails?.id && hostDetails?.permissions)
+  if (hostDetails?.uuid && hostDetails?.id && hostDetails?.permissions) {
     children.push(
       <SnapshotManagement
         key="SnapshotManagement"
@@ -30,14 +30,16 @@ const SnapshotManagementCard = ({ hostDetails, ...props }) => {
         capabilities={capabilities}
       />
     );
-  return (
-    <CardTemplate
-      overrideGridProps={{ xl2: 6, xl: 8, lg: 8, md: 12 }}
-      header={__('Snapshots')}
-    >
-      {children}
-    </CardTemplate>
-  );
+    return (
+      <CardTemplate
+        overrideGridProps={{ xl2: 6, xl: 8, lg: 8, md: 12 }}
+        header={__('Snapshots')}
+      >
+        {children}
+      </CardTemplate>
+    );
+  }
+  return null;
 };
 
 export default SnapshotManagementCard;
@@ -46,6 +48,7 @@ SnapshotManagementCard.propTypes = {
   hostDetails: PropTypes.shape({
     name: PropTypes.string,
     id: PropTypes.number,
+    uuid: PropTypes.string,
     capabilities: PropTypes.array,
     permissions: PropTypes.shape({
       create_snapshots: PropTypes.bool,

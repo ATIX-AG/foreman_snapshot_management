@@ -114,19 +114,4 @@ exports[`SnapshotManagementCard renders with VMWare capabilities 1`] = `
 </CardTemplate>
 `;
 
-exports[`SnapshotManagementCard renders without optional Props 1`] = `
-<CardTemplate
-  expandable={false}
-  header="Snapshots"
-  masonryLayout={false}
-  overrideDropdownProps={Object {}}
-  overrideGridProps={
-    Object {
-      "lg": 8,
-      "md": 12,
-      "xl": 8,
-      "xl2": 6,
-    }
-  }
-/>
-`;
+exports[`SnapshotManagementCard renders without optional Props 1`] = `""`;
