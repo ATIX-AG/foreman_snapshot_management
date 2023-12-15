@@ -6,7 +6,6 @@ module ForemanSnapshotManagement
 
     config.autoload_paths += Dir["#{config.root}/app/models/concerns"]
     config.autoload_paths += Dir["#{config.root}/app/controllers/concerns"]
-    config.autoload_paths += Dir["#{config.root}/app/helpers/concerns"]
 
     initializer 'foreman_snapshot_management.register_plugin', before: :finisher_hook do |_app|
       Foreman::Plugin.register :foreman_snapshot_management do
@@ -65,6 +64,10 @@ module ForemanSnapshotManagement
             :partial => 'hosts/snapshots_tab',
             :onlyif => proc { |host| host&.uuid.present? && host&.compute_resource&.capable?(:snapshots) }
         end
+
+        describe_host do
+          multiple_actions_provider :snapshot_multiple_actions
+        end
       end
     end
 
@@ -86,9 +89,6 @@ module ForemanSnapshotManagement
 
     # Include concerns in this config.to_prepare block
     config.to_prepare do
-      # Load Foreman extensions
-      ::HostsHelper.prepend ForemanSnapshotManagement::HostsHelperExtension
-
       begin
         ::ForemanFogProxmox::Proxmox.prepend ForemanSnapshotManagement::ProxmoxExtensions
 
