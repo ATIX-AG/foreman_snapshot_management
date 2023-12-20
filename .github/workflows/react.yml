@@ -23,8 +23,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [12]
-        foreman-core-branch: ['develop', '3.4-stable', '3.3-stable']
+        node-version: [14]
+        foreman-core-branch: ['develop', '3.9-stable', '3.8-stable']
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
