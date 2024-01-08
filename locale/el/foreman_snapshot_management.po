@@ -6,7 +6,6 @@
 # Translators:
 # Efstathios Iosifidis <iefstathios@gmail.com>, 2021
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: foreman_snapshot_management 2.0.2\n"
@@ -74,14 +73,14 @@ msgstr "Αποτυχημένη ενημέρωση στιγμιότυπου: %s"
 msgid "Foreman-plugin to manage snapshots in a virtual-hardware environments."
 msgstr ""
 
-msgid "Include RAM"
-msgstr "Συμπερίληψη RAM"
-
 msgid "List all snapshots"
 msgstr "Λίστα όλων των στιγμιοτύπων"
 
 msgid "Loading Snapshots information ..."
 msgstr "Γίνεται φόρτωση πληροφοριών στιγμιοτύπων ..."
+
+msgid "Memory"
+msgstr ""
 
 msgid "N/A"
 msgstr "Δ/Υ"
@@ -104,6 +103,9 @@ msgstr ""
 msgid "No hosts were found with that id, name or query filter"
 msgstr ""
 
+msgid "Quiesce"
+msgstr ""
+
 msgid "Revert Host to a snapshot"
 msgstr ""
 
@@ -113,10 +115,16 @@ msgstr "Επαναφορά"
 msgid "Rollback to \"%s\"?"
 msgstr ""
 
+msgid "Select Snapshot Mode between mutually exclusive options, 'Memory' (includes RAM) and 'Quiesce'."
+msgstr ""
+
 msgid "Snapshot"
 msgid_plural "Snapshots"
 msgstr[0] "Στιγμιότυπο"
 msgstr[1] "Στιγμιότυπα"
+
+msgid "Snapshot Mode"
+msgstr ""
 
 msgid "Snapshot name cannot be changed"
 msgstr ""
