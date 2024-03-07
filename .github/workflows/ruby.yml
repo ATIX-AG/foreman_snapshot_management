@@ -1,89 +1,32 @@
 ---
-name: Ruby Testing
-
-# Controls when the action will run.
+name: Ruby Tests
 on:
-  pull_request:
   push:
     branches:
-      - master
+      - main
+  pull_request:
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-env:
-  BUNDLE_WITHOUT: journald:development:console:libvirt
-  RAILS_ENV: test
-  DATABASE_URL: postgresql://postgres:@localhost/test
-  DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL: true
+concurrency:
+  group: ${{ github.ref_name }}-${{ github.workflow }}
+  cancel-in-progress: true
 
 jobs:
   rubocop:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 2.7
-          bundler-cache: true
-      - name: Run rubocop
-        run: bundle exec rubocop
+    uses: theforeman/actions/.github/workflows/rubocop.yml@v0
 
-  ruby-test:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-    needs: rubocop
-    services:
-      postgres:
-        image: postgres:12.1
-        ports: ['5432:5432']
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
-
+  test:
+    name: Ruby
     strategy:
       fail-fast: false
       matrix:
-        ruby-version: ['2.7']
-        foreman-core-branch: ['develop', '3.9-stable', '3.8-stable']
-        proxmox: ['~>0.13.3']
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      - name: Install build packages
-        run: |
-          sudo apt-get update
-          sudo apt-get install build-essential libcurl4-openssl-dev zlib1g-dev libpq-dev
-
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-        with:
-          repository: theforeman/foreman
-          ref: ${{ matrix.foreman-core-branch }}
-
-      - uses: actions/checkout@v2
-        with:
-          path: foreman_snapshot_management
-
-      - name: Setup Bundler
-        run: |
-          echo "gem 'foreman_fog_proxmox', '${{ matrix.proxmox }}'" > bundler.d/proxmox.rb
-          echo "gem 'foreman_snapshot_management', path: './foreman_snapshot_management'" > bundler.d/foreman_snapshot_mgmt.local.rb
-
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: ${{ matrix.ruby-version }}
-          bundler-cache: true
-
-      - name: Prepare test env
-        if: github.event_name != 'push'
-        run: |
-          bundle exec rake db:create
-          bundle exec rake db:migrate
-          bundle exec rake db:test:prepare
-
-      - name: Run plugin tests
-        if: github.event_name != 'push'
-        run: |
-          bundle exec rake test:foreman_snapshot_management
-...
+        foreman:
+          - develop
+          - 3.10-stable
+          - 3.9-stable
+          - 3.8-stable
+    needs: rubocop
+    uses: theforeman/actions/.github/workflows/foreman_plugin.yml@v0
+    with:
+      plugin: foreman_snapshot_management
+      matrix_exclude: '[{"ruby": "3.0", "node": "14"}]'
+      foreman_version: ${{ matrix.foreman }}
