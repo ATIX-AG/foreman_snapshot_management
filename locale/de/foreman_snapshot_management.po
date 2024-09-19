@@ -5,19 +5,20 @@
 #
 # Translators:
 # Lukáš Zapletal, 2019
-# Wiederoder <stefanwiederoder@googlemail.com>, 2019
 # Martin Zimmermann <martin.zimmermann@gmx.com>, 2019
 # Ettore Atalan <atalanttore@googlemail.com>, 2021
 # Bryan Kearney <bryan.kearney@gmail.com>, 2021
 # Markus Bucher <bucher@atix.de>, 2021
+# Wiederoder <stefanwiederoder@googlemail.com>, 2022
 #
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_snapshot_management 2.0.2\n"
+"Project-Id-Version: foreman_snapshot_management 3.0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2019-10-22 11:54+0000\n"
-"Last-Translator: Markus Bucher <bucher@atix.de>, 2021\n"
-"Language-Team: German (https://www.transifex.com/foreman/teams/114/de/)\n"
+"Last-Translator: Wiederoder <stefanwiederoder@googlemail.com>, 2022\n"
+"Language-Team: German (https://app.transifex.com/foreman/teams/114/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -85,7 +86,7 @@ msgid "Loading Snapshots information ..."
 msgstr "Lade Snapshot Informationen ..."
 
 msgid "Memory"
-msgstr ""
+msgstr "Speicher"
 
 msgid "N/A"
 msgstr "N/A"

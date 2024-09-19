@@ -3,11 +3,11 @@
   "locale_data": {
     "foreman_snapshot_management": {
       "": {
-        "Project-Id-Version": "foreman_snapshot_management 2.0.2",
+        "Project-Id-Version": "foreman_snapshot_management 3.0.1",
         "Report-Msgid-Bugs-To": "",
         "PO-Revision-Date": "2019-10-22 11:54+0000",
-        "Last-Translator": "Pavel Borecki <pavel.borecki@gmail.com>, 2021",
-        "Language-Team": "Czech (Czech Republic) (https://www.transifex.com/foreman/teams/114/cs_CZ/)",
+        "Last-Translator": "Pavel Borecki <pavel.borecki@gmail.com>, 2022",
+        "Language-Team": "Czech (Czech Republic) (https://app.transifex.com/foreman/teams/114/cs_CZ/)",
         "MIME-Version": "1.0",
         "Content-Type": "text/plain; charset=UTF-8",
         "Content-Transfer-Encoding": "8bit",
@@ -17,32 +17,38 @@
         "domain": "foreman_snapshot_management",
         "plural_forms": "nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;"
       },
-      "List all snapshots": [
-        "Vypsat všechny zachycené stavy"
+      "Action": [
+        "Akce"
       ],
-      "Name of this snapshot": [
-        "Název tohoto zachyceného stavu"
+      "Create Snapshot": [
+        "Pořídit zachycený stav"
       ],
-      "Description of this snapshot": [
+      "Create Snapshot for %s": [
         ""
       ],
       "Create a snapshot": [
         "Pořídit zachycený stav"
       ],
-      "Whether to include the RAM state in the snapshot": [
-        "Zda v zachyceném stavu uložit i obsah operační paměti"
+      "Created %{snapshots} for %{num} %{hosts}": [
+        "Vytvořeno %{snapshots} pro %{num} %{hosts}"
       ],
-      "Whether to include the Quiesce state in the snapshot": [
+      "Delete": [
+        "Smazat"
+      ],
+      "Delete Snapshot \\\"%s\\\"?": [
         ""
-      ],
-      "Update a snapshot": [
-        "Aktualizovat zachycený stav"
       ],
       "Delete a snapshot": [
         "Smazat zachycený stav"
       ],
-      "Revert Host to a snapshot": [
-        "Vrátit stroj do podoby ze zachyceného stavu"
+      "Description": [
+        "Popis"
+      ],
+      "Description of this snapshot": [
+        ""
+      ],
+      "Error occurred while creating Snapshot for:%s": [
+        ""
       ],
       "Error occurred while creating Snapshot: %s": [
         "Při pořizování zachyceného stavu došlo k chybě: %s"
@@ -50,20 +56,65 @@
       "Error occurred while removing Snapshot: %s": [
         "Při odebírání zachyceného stavu došlo k chybě: %s"
       ],
-      "VM successfully rolled back.": [
+      "Error occurred while rolling back VM: %s": [
         ""
       ],
-      "Error occurred while rolling back VM: %s": [
+      "Error occurred while updating Snapshot: %s": [
+        ""
+      ],
+      "Failed to load snapshot list": [
         ""
       ],
       "Failed to update Snapshot: %s": [
         "Zachycený stav se nepodařilo aktualizovat: %s"
       ],
-      "Error occurred while creating Snapshot for:%s": [
+      "Foreman-plugin to manage snapshots in a virtual-hardware environments.": [
+        "Zásuvný modul do Foreman pro správu zachycených stavů v prostředí virtuálního hardware."
+      ],
+      "List all snapshots": [
+        "Vypsat všechny zachycené stavy"
+      ],
+      "Loading Snapshots information ...": [
+        "Načítání informací o zachycených stavech…"
+      ],
+      "Memory": [
+        "Operační paměť"
+      ],
+      "N/A": [
+        "Není"
+      ],
+      "Name": [
+        "Název"
+      ],
+      "Name must contain at least 2 characters starting with alphabet. Valid characters are A-Z a-z 0-9 _": [
         ""
       ],
-      "Created %{snapshots} for %{num} %{hosts}": [
-        "Vytvořeno %{snapshots} pro %{num} %{hosts}"
+      "Name of this snapshot": [
+        "Název tohoto zachyceného stavu"
+      ],
+      "No capable hosts found.": [
+        "Nenalezeny žádné schopné stroje."
+      ],
+      "No capable hosts selected": [
+        ""
+      ],
+      "No hosts were found with that id, name or query filter": [
+        "Pro takový identifikátor, název nebo dotazovací filtr nebyly nalezeni žádní hostitelé"
+      ],
+      "Quiesce": [
+        ""
+      ],
+      "Revert Host to a snapshot": [
+        "Vrátit stroj do podoby ze zachyceného stavu"
+      ],
+      "Rollback": [
+        ""
+      ],
+      "Rollback to \\\"%s\\\"?": [
+        ""
+      ],
+      "Select Snapshot Mode between mutually exclusive options, 'Memory' (includes RAM) and 'Quiesce'.": [
+        ""
       ],
       "Snapshot": [
         "Zachycený stav",
@@ -71,39 +122,35 @@
         "Zachycených stavů",
         "Zachycené stavy"
       ],
-      "host": [
-        "",
+      "Snapshot Mode": [
         ""
       ],
-      "No hosts were found with that id, name or query filter": [
-        "Pro takový identifikátor, název nebo dotazovací filtr nebyly nalezeni žádní hostitelé"
+      "Snapshot name cannot be changed": [
+        "Název zachyceného stavu není možné změnit"
+      ],
+      "Snapshot successfully created!": [
+        ""
+      ],
+      "Snapshots": [
+        "Zachycené stavy"
       ],
       "Something went wrong while selecting hosts - %s": [
         "Při vybírání strojů se něco pokazilo – %s"
       ],
-      "No capable hosts found.": [
-        "Nenalezeny žádné schopné stroje."
+      "Successfully removed Snapshot \\\"%s\\\" from host %s": [
+        ""
       ],
-      "Create Snapshot": [
-        "Pořídit zachycený stav"
+      "Successfully rolled back Snapshot \\\"%s\\\" on host %s": [
+        ""
       ],
-      "Name must contain at least 2 characters starting with alphabet. Valid characters are A-Z a-z 0-9 _": [
+      "Successfully updated Snapshot \\\"%s\\\"": [
         ""
       ],
       "Unable to create Proxmox Snapshot": [
         "Nedaří se pořídit Proxmox zachycený stav"
       ],
-      "Unable to remove Proxmox Snapshot": [
-        "Nedaří se odebrat Proxmox zachycený stav"
-      ],
-      "Unable to revert Proxmox Snapshot": [
-        "Nedaří se vrátit do podoby v Proxmox zachyceném stavu"
-      ],
-      "Snapshot name cannot be changed": [
-        "Název zachyceného stavu není možné změnit"
-      ],
-      "Unable to update Proxmox Snapshot": [
-        "Nedaří se aktualizovat Proxmox zachycený stav"
+      "Unable to create VMWare Snapshot": [
+        "Nedaří se pořídit VMWare zachycený stav"
       ],
       "Unable to create VMWare Snapshot with Quiesce. Check Power and VMWare Tools status.": [
         ""
@@ -111,92 +158,42 @@
       "Unable to create VMWare Snapshot. Cannot set both Memory and Quiesce options.": [
         ""
       ],
-      "Unable to create VMWare Snapshot": [
-        "Nedaří se pořídit VMWare zachycený stav"
+      "Unable to remove Proxmox Snapshot": [
+        "Nedaří se odebrat Proxmox zachycený stav"
       ],
       "Unable to remove VMWare Snapshot": [
         "VMWare zachycený stav se nedaří odebrat"
       ],
+      "Unable to revert Proxmox Snapshot": [
+        "Nedaří se vrátit do podoby v Proxmox zachyceném stavu"
+      ],
       "Unable to revert VMWare Snapshot": [
         ""
+      ],
+      "Unable to update Proxmox Snapshot": [
+        "Nedaří se aktualizovat Proxmox zachycený stav"
       ],
       "Unable to update VMWare Snapshot": [
         "VMWare zachycený stav se nedaří zaktualizovat"
       ],
-      "No capable hosts selected": [
+      "Update a snapshot": [
+        "Aktualizovat zachycený stav"
+      ],
+      "VM successfully rolled back.": [
         ""
       ],
-      "Description": [
-        "Popis"
-      ],
-      "Snapshot Mode": [
+      "Whether to include the Quiesce state in the snapshot": [
         ""
       ],
-      "Select Snapshot Mode between mutually exclusive options, 'Memory' (includes RAM) and 'Quiesce'.": [
-        ""
-      ],
-      "Loading Snapshots information ...": [
-        "Načítání informací o zachycených stavech…"
-      ],
-      "Snapshots": [
-        "Zachycené stavy"
-      ],
-      "Successfully removed Snapshot \\\"%s\\\" from host %s": [
-        ""
-      ],
-      "Successfully updated Snapshot \\\"%s\\\"": [
-        ""
-      ],
-      "Error occurred while updating Snapshot: %s": [
-        ""
-      ],
-      "Successfully rolled back Snapshot \\\"%s\\\" on host %s": [
-        ""
-      ],
-      "Memory": [
-        ""
-      ],
-      "Quiesce": [
-        ""
-      ],
-      "Snapshot successfully created!": [
-        ""
-      ],
-      "Name": [
-        "Název"
-      ],
-      "Create Snapshot for %s": [
-        ""
-      ],
-      "N/A": [
-        "Není"
-      ],
-      "Action": [
-        "Akce"
-      ],
-      "Failed to load snapshot list": [
-        ""
+      "Whether to include the RAM state in the snapshot": [
+        "Zda v zachyceném stavu uložit i obsah operační paměti"
       ],
       "edit entry": [
         ""
       ],
-      "Rollback to \\\"%s\\\"?": [
+      "host": [
+        "",
         ""
-      ],
-      "Rollback": [
-        ""
-      ],
-      "Delete Snapshot \\\"%s\\\"?": [
-        ""
-      ],
-      "Delete": [
-        "Smazat"
-      ],
-      "Foreman-plugin to manage snapshots in a virtual-hardware environments.": [
-        "Zásuvný modul do Foreman pro správu zachycených stavů v prostředí virtuálního hardware."
-      ],
-      "Include RAM": [
-        "Včetně oper. paměti"
       ]
     }
   }
