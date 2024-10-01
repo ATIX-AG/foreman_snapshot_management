@@ -6,13 +6,14 @@
 # Translators:
 # Temuri Doghonadze <temuri.doghonadze@gmail.com>, 2022
 #
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_snapshot_management 2.0.2\n"
+"Project-Id-Version: foreman_snapshot_management 3.0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2019-10-22 11:54+0000\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>, 2022\n"
-"Language-Team: Georgian (https://www.transifex.com/foreman/teams/114/ka/)\n"
+"Language-Team: Georgian (https://app.transifex.com/foreman/teams/114/ka/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -80,7 +81,7 @@ msgid "Loading Snapshots information ..."
 msgstr "სწრაფი ასლების ინფორმაციის ჩატვირთვა ..."
 
 msgid "Memory"
-msgstr ""
+msgstr "მეხსიერება"
 
 msgid "N/A"
 msgstr "არარსებული"
@@ -104,7 +105,7 @@ msgid "No hosts were found with that id, name or query filter"
 msgstr "მითითებული ID-ით, სახელით ან საძებნი სტრიქონით ჰოსტები ნაპოვნი არაა"
 
 msgid "Quiesce"
-msgstr ""
+msgstr "Quiesce"
 
 msgid "Revert Host to a snapshot"
 msgstr "ჰოსტის სწრაფ ასლზე დაბრუნება"
@@ -116,7 +117,7 @@ msgid "Rollback to \"%s\"?"
 msgstr "დავაბრუნო \"%s\"-ზე?"
 
 msgid "Select Snapshot Mode between mutually exclusive options, 'Memory' (includes RAM) and 'Quiesce'."
-msgstr ""
+msgstr "აირჩიეთ სწრაფი ასლის რეჟიმი ურთიერთგამომრიცხავი პარამეტრებიდან 'Memory' (მეხსიერების ჩათვლით) და 'Quiesce'."
 
 msgid "Snapshot"
 msgid_plural "Snapshots"
@@ -124,7 +125,7 @@ msgstr[0] "სწრაფი ასლი"
 msgstr[1] "სწრაფი ასლები"
 
 msgid "Snapshot Mode"
-msgstr ""
+msgstr "სწრაფი ასლის რეჟიმი"
 
 msgid "Snapshot name cannot be changed"
 msgstr "სწრაფი ასლის სახელის შეცვლა შეუძლებელია"

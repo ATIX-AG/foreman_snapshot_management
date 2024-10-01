@@ -3,11 +3,11 @@
   "locale_data": {
     "foreman_snapshot_management": {
       "": {
-        "Project-Id-Version": "foreman_snapshot_management 2.0.2",
+        "Project-Id-Version": "foreman_snapshot_management 3.0.1",
         "Report-Msgid-Bugs-To": "",
         "PO-Revision-Date": "2019-10-22 11:54+0000",
         "Last-Translator": "Amit Upadhye <aupadhye@redhat.com>, 2022",
-        "Language-Team": "Japanese (https://www.transifex.com/foreman/teams/114/ja/)",
+        "Language-Team": "Japanese (https://app.transifex.com/foreman/teams/114/ja/)",
         "MIME-Version": "1.0",
         "Content-Type": "text/plain; charset=UTF-8",
         "Content-Transfer-Encoding": "8bit",
@@ -17,32 +17,38 @@
         "domain": "foreman_snapshot_management",
         "plural_forms": "nplurals=1; plural=0;"
       },
-      "List all snapshots": [
-        "全スナップショットの一覧表示"
+      "Action": [
+        "アクション"
       ],
-      "Name of this snapshot": [
-        "このスナップショットの名前"
+      "Create Snapshot": [
+        "スナップショットの作成"
       ],
-      "Description of this snapshot": [
-        "このスナップショットの説明"
+      "Create Snapshot for %s": [
+        "%s のスナップショットの作成"
       ],
       "Create a snapshot": [
         "スナップショットの作成"
       ],
-      "Whether to include the RAM state in the snapshot": [
-        "スナップショットに RAM 状態を含めるかどうか"
+      "Created %{snapshots} for %{num} %{hosts}": [
+        "%{num} 個の %{hosts} に対して %{snapshots} を作成済み"
       ],
-      "Whether to include the Quiesce state in the snapshot": [
-        "スナップショットに Quiesce 状態を含めるかどうか。"
+      "Delete": [
+        "削除"
       ],
-      "Update a snapshot": [
-        "スナップショットの更新"
+      "Delete Snapshot \\\"%s\\\"?": [
+        "スナップショット \\\"%s\\\" を削除しますか ?"
       ],
       "Delete a snapshot": [
         "スナップショットの削除"
       ],
-      "Revert Host to a snapshot": [
-        "ホストをスナップショットに戻す"
+      "Description": [
+        "説明"
+      ],
+      "Description of this snapshot": [
+        "このスナップショットの説明"
+      ],
+      "Error occurred while creating Snapshot for:%s": [
+        "スナップショットの作成中にエラーが発生しました: %s"
       ],
       "Error occurred while creating Snapshot: %s": [
         "スナップショットの作成中にエラーが発生しました: %s"
@@ -50,56 +56,98 @@
       "Error occurred while removing Snapshot: %s": [
         "スナップショットの削除中にエラーが発生しました: %s"
       ],
-      "VM successfully rolled back.": [
-        "VM が正常にロールバックされました。"
-      ],
       "Error occurred while rolling back VM: %s": [
         "仮想マシンのロールバック中にエラーが発生しました: %s"
+      ],
+      "Error occurred while updating Snapshot: %s": [
+        "スナップショットの更新中にエラーが発生しました: %s"
+      ],
+      "Failed to load snapshot list": [
+        "スナップショットリストの読み込みに失敗しました"
       ],
       "Failed to update Snapshot: %s": [
         "スナップショットの更新に失敗しました: %s"
       ],
-      "Error occurred while creating Snapshot for:%s": [
-        "スナップショットの作成中にエラーが発生しました: %s"
+      "Foreman-plugin to manage snapshots in a virtual-hardware environments.": [
+        "仮想ハードウェア環境でスナップショットを管理する Foreman-plugin。"
       ],
-      "Created %{snapshots} for %{num} %{hosts}": [
-        "%{num} 個の %{hosts} に対して %{snapshots} を作成済み"
+      "List all snapshots": [
+        "全スナップショットの一覧表示"
       ],
-      "Snapshot": [
-        "スナップショット"
+      "Loading Snapshots information ...": [
+        "スナップショット情報の読み込み中 ..."
       ],
-      "host": [
-        "ホスト"
+      "Memory": [
+        "メモリー"
       ],
-      "No hosts were found with that id, name or query filter": [
-        "その ID、名前またはクエリーフィルターを使ってホストを見つけることができませんでした"
+      "N/A": [
+        "N/A"
       ],
-      "Something went wrong while selecting hosts - %s": [
-        "ホストの選択中に問題が発生しました: %s"
-      ],
-      "No capable hosts found.": [
-        "機能するホストが見つかりませんでした。"
-      ],
-      "Create Snapshot": [
-        "スナップショットの作成"
+      "Name": [
+        "名前"
       ],
       "Name must contain at least 2 characters starting with alphabet. Valid characters are A-Z a-z 0-9 _": [
         "名前には、アルファベットが少なくとも 2 文字含まれている必要があります。使用できる文字は A-Z a-z 0-9 _ です。"
       ],
-      "Unable to create Proxmox Snapshot": [
-        "Proxmox スナップショットを作成できません"
+      "Name of this snapshot": [
+        "このスナップショットの名前"
       ],
-      "Unable to remove Proxmox Snapshot": [
-        "Proxmox スナップショットを削除できません"
+      "No capable hosts found.": [
+        "機能するホストが見つかりませんでした。"
       ],
-      "Unable to revert Proxmox Snapshot": [
-        "Proxmox スナップショットを元に戻すことができません"
+      "No capable hosts selected": [
+        "有効にできるホストが選択されていません"
+      ],
+      "No hosts were found with that id, name or query filter": [
+        "その ID、名前またはクエリーフィルターを使ってホストを見つけることができませんでした"
+      ],
+      "Quiesce": [
+        ""
+      ],
+      "Revert Host to a snapshot": [
+        "ホストをスナップショットに戻す"
+      ],
+      "Rollback": [
+        "ロールバック"
+      ],
+      "Rollback to \\\"%s\\\"?": [
+        "\\\"%s\\\" へロールバックしますか ?"
+      ],
+      "Select Snapshot Mode between mutually exclusive options, 'Memory' (includes RAM) and 'Quiesce'.": [
+        ""
+      ],
+      "Snapshot": [
+        "スナップショット"
+      ],
+      "Snapshot Mode": [
+        ""
       ],
       "Snapshot name cannot be changed": [
         "スナップショット名は変更できません"
       ],
-      "Unable to update Proxmox Snapshot": [
-        "Proxmox スナップショットを更新できません"
+      "Snapshot successfully created!": [
+        "スナップショットが正常に作成されました!"
+      ],
+      "Snapshots": [
+        "スナップショット"
+      ],
+      "Something went wrong while selecting hosts - %s": [
+        "ホストの選択中に問題が発生しました: %s"
+      ],
+      "Successfully removed Snapshot \\\"%s\\\" from host %s": [
+        "ホスト %s からスナップショット \\\"%s\\\" を正常に削除しました"
+      ],
+      "Successfully rolled back Snapshot \\\"%s\\\" on host %s": [
+        "ホスト %s でスナップショット \\\"%s\\\" が正常にロールバックされました"
+      ],
+      "Successfully updated Snapshot \\\"%s\\\"": [
+        "スナップショット \\\"%s\\\" を正常に更新しました。"
+      ],
+      "Unable to create Proxmox Snapshot": [
+        "Proxmox スナップショットを作成できません"
+      ],
+      "Unable to create VMWare Snapshot": [
+        "VMWare スナップショットを作成できません"
       ],
       "Unable to create VMWare Snapshot with Quiesce. Check Power and VMWare Tools status.": [
         "Quiesce で VMWare スナップショットを作成できません。Power and VMWare Tools のステータスを確認してください。"
@@ -107,92 +155,41 @@
       "Unable to create VMWare Snapshot. Cannot set both Memory and Quiesce options.": [
         "VMWare スナップショットの作成ができません。Memory オプションと Quiesce オプションの両方を設定できません。"
       ],
-      "Unable to create VMWare Snapshot": [
-        "VMWare スナップショットを作成できません"
+      "Unable to remove Proxmox Snapshot": [
+        "Proxmox スナップショットを削除できません"
       ],
       "Unable to remove VMWare Snapshot": [
         "VMWare スナップショットを削除できません"
       ],
+      "Unable to revert Proxmox Snapshot": [
+        "Proxmox スナップショットを元に戻すことができません"
+      ],
       "Unable to revert VMWare Snapshot": [
         "VMWare スナップショットを元に戻すことができません"
+      ],
+      "Unable to update Proxmox Snapshot": [
+        "Proxmox スナップショットを更新できません"
       ],
       "Unable to update VMWare Snapshot": [
         "VMWare スナップショットを更新できません"
       ],
-      "No capable hosts selected": [
-        "有効にできるホストが選択されていません"
+      "Update a snapshot": [
+        "スナップショットの更新"
       ],
-      "Description": [
-        "説明"
+      "VM successfully rolled back.": [
+        "VM が正常にロールバックされました。"
       ],
-      "Snapshot Mode": [
-        ""
+      "Whether to include the Quiesce state in the snapshot": [
+        "スナップショットに Quiesce 状態を含めるかどうか。"
       ],
-      "Select Snapshot Mode between mutually exclusive options, 'Memory' (includes RAM) and 'Quiesce'.": [
-        ""
-      ],
-      "Loading Snapshots information ...": [
-        "スナップショット情報の読み込み中 ..."
-      ],
-      "Snapshots": [
-        "スナップショット"
-      ],
-      "Successfully removed Snapshot \\\"%s\\\" from host %s": [
-        "ホスト %s からスナップショット \\\"%s\\\" を正常に削除しました"
-      ],
-      "Successfully updated Snapshot \\\"%s\\\"": [
-        "スナップショット \\\"%s\\\" を正常に更新しました。"
-      ],
-      "Error occurred while updating Snapshot: %s": [
-        "スナップショットの更新中にエラーが発生しました: %s"
-      ],
-      "Successfully rolled back Snapshot \\\"%s\\\" on host %s": [
-        "ホスト %s でスナップショット \\\"%s\\\" が正常にロールバックされました"
-      ],
-      "Memory": [
-        ""
-      ],
-      "Quiesce": [
-        ""
-      ],
-      "Snapshot successfully created!": [
-        "スナップショットが正常に作成されました!"
-      ],
-      "Name": [
-        "名前"
-      ],
-      "Create Snapshot for %s": [
-        "%s のスナップショットの作成"
-      ],
-      "N/A": [
-        "N/A"
-      ],
-      "Action": [
-        "アクション"
-      ],
-      "Failed to load snapshot list": [
-        "スナップショットリストの読み込みに失敗しました"
+      "Whether to include the RAM state in the snapshot": [
+        "スナップショットに RAM 状態を含めるかどうか"
       ],
       "edit entry": [
         "エントリーの編集"
       ],
-      "Rollback to \\\"%s\\\"?": [
-        "\\\"%s\\\" へロールバックしますか ?"
-      ],
-      "Rollback": [
-        "ロールバック"
-      ],
-      "Delete Snapshot \\\"%s\\\"?": [
-        "スナップショット \\\"%s\\\" を削除しますか ?"
-      ],
-      "Delete": [
-        "削除"
-      ],
-      "Foreman-plugin to manage snapshots in a virtual-hardware environments.": [
-        "仮想ハードウェア環境でスナップショットを管理する Foreman-plugin。"
-      ],
-      "Include RAM": [
-        "メモリーの追加"
+      "host": [
+        "ホスト"
       ]
     }
   }

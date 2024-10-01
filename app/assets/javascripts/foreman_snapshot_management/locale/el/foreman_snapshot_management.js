@@ -3,11 +3,11 @@
   "locale_data": {
     "foreman_snapshot_management": {
       "": {
-        "Project-Id-Version": "foreman_snapshot_management 2.0.2",
+        "Project-Id-Version": "foreman_snapshot_management 3.0.1",
         "Report-Msgid-Bugs-To": "",
         "PO-Revision-Date": "2019-10-22 11:54+0000",
-        "Last-Translator": "Efstathios Iosifidis <iefstathios@gmail.com>, 2021",
-        "Language-Team": "Greek (https://www.transifex.com/foreman/teams/114/el/)",
+        "Last-Translator": "Efstathios Iosifidis <iefstathios@gmail.com>, 2022",
+        "Language-Team": "Greek (https://app.transifex.com/foreman/teams/114/el/)",
         "MIME-Version": "1.0",
         "Content-Type": "text/plain; charset=UTF-8",
         "Content-Transfer-Encoding": "8bit",
@@ -17,32 +17,38 @@
         "domain": "foreman_snapshot_management",
         "plural_forms": "nplurals=2; plural=(n != 1);"
       },
-      "List all snapshots": [
-        "Λίστα όλων των στιγμιοτύπων"
+      "Action": [
+        "Ενέργεια"
       ],
-      "Name of this snapshot": [
-        "Όνομα αυτού του στιγμιότυπου"
+      "Create Snapshot": [
+        "Διμουργία στιγμιότυπου"
       ],
-      "Description of this snapshot": [
-        "Περιγραφή αυτού του στιγμιότυπου"
+      "Create Snapshot for %s": [
+        ""
       ],
       "Create a snapshot": [
         "Δημιουργία στιγμιότυπου"
       ],
-      "Whether to include the RAM state in the snapshot": [
-        "Εάν θα συμπεριληφθεί η κατάσταση RAM στο στιγμιότυπο"
+      "Created %{snapshots} for %{num} %{hosts}": [
+        "Δημιουργήθηκαν %{snapshots} για %{num} %{hosts}"
       ],
-      "Whether to include the Quiesce state in the snapshot": [
+      "Delete": [
+        "Διαγραφή"
+      ],
+      "Delete Snapshot \\\"%s\\\"?": [
         ""
-      ],
-      "Update a snapshot": [
-        "Ενημέρωση στιγμιότυπου"
       ],
       "Delete a snapshot": [
         "Διαγραφή στιγμιότυπου"
       ],
-      "Revert Host to a snapshot": [
-        ""
+      "Description": [
+        "Περιγραφή"
+      ],
+      "Description of this snapshot": [
+        "Περιγραφή αυτού του στιγμιότυπου"
+      ],
+      "Error occurred while creating Snapshot for:%s": [
+        "Σφάλμα κατά την δημιουργία στιγμιότυπου για: %s"
       ],
       "Error occurred while creating Snapshot: %s": [
         "Σφάλμα κατά την δημιουργία στιγμιότυπου: %s"
@@ -50,58 +56,99 @@
       "Error occurred while removing Snapshot: %s": [
         "Σφάλμα κατά την αφαίρεση στιγμιότυπου: %s"
       ],
-      "VM successfully rolled back.": [
-        "Επιτυχημένη επαναφορά VM."
-      ],
       "Error occurred while rolling back VM: %s": [
         "Σφάλμα κατά την επαναφορά στιγμιότυπου: %s"
+      ],
+      "Error occurred while updating Snapshot: %s": [
+        ""
+      ],
+      "Failed to load snapshot list": [
+        ""
       ],
       "Failed to update Snapshot: %s": [
         "Αποτυχημένη ενημέρωση στιγμιότυπου: %s"
       ],
-      "Error occurred while creating Snapshot for:%s": [
-        "Σφάλμα κατά την δημιουργία στιγμιότυπου για: %s"
+      "Foreman-plugin to manage snapshots in a virtual-hardware environments.": [
+        ""
       ],
-      "Created %{snapshots} for %{num} %{hosts}": [
-        "Δημιουργήθηκαν %{snapshots} για %{num} %{hosts}"
+      "List all snapshots": [
+        "Λίστα όλων των στιγμιοτύπων"
       ],
-      "Snapshot": [
-        "Στιγμιότυπο",
-        "Στιγμιότυπα"
+      "Loading Snapshots information ...": [
+        "Γίνεται φόρτωση πληροφοριών στιγμιοτύπων ..."
       ],
-      "host": [
-        "",
+      "Memory": [
+        "Μνήμη"
+      ],
+      "N/A": [
+        "Δ/Υ"
+      ],
+      "Name": [
+        "Όνομα"
+      ],
+      "Name must contain at least 2 characters starting with alphabet. Valid characters are A-Z a-z 0-9 _": [
+        ""
+      ],
+      "Name of this snapshot": [
+        "Όνομα αυτού του στιγμιότυπου"
+      ],
+      "No capable hosts found.": [
+        ""
+      ],
+      "No capable hosts selected": [
         ""
       ],
       "No hosts were found with that id, name or query filter": [
         ""
       ],
-      "Something went wrong while selecting hosts - %s": [
+      "Quiesce": [
         ""
       ],
-      "No capable hosts found.": [
+      "Revert Host to a snapshot": [
         ""
       ],
-      "Create Snapshot": [
-        "Διμουργία στιγμιότυπου"
+      "Rollback": [
+        "Επαναφορά"
       ],
-      "Name must contain at least 2 characters starting with alphabet. Valid characters are A-Z a-z 0-9 _": [
+      "Rollback to \\\"%s\\\"?": [
         ""
       ],
-      "Unable to create Proxmox Snapshot": [
+      "Select Snapshot Mode between mutually exclusive options, 'Memory' (includes RAM) and 'Quiesce'.": [
         ""
       ],
-      "Unable to remove Proxmox Snapshot": [
-        ""
+      "Snapshot": [
+        "Στιγμιότυπο",
+        "Στιγμιότυπα"
       ],
-      "Unable to revert Proxmox Snapshot": [
+      "Snapshot Mode": [
         ""
       ],
       "Snapshot name cannot be changed": [
         ""
       ],
-      "Unable to update Proxmox Snapshot": [
+      "Snapshot successfully created!": [
         ""
+      ],
+      "Snapshots": [
+        "Στιγμιότυπα"
+      ],
+      "Something went wrong while selecting hosts - %s": [
+        ""
+      ],
+      "Successfully removed Snapshot \\\"%s\\\" from host %s": [
+        ""
+      ],
+      "Successfully rolled back Snapshot \\\"%s\\\" on host %s": [
+        ""
+      ],
+      "Successfully updated Snapshot \\\"%s\\\"": [
+        ""
+      ],
+      "Unable to create Proxmox Snapshot": [
+        ""
+      ],
+      "Unable to create VMWare Snapshot": [
+        "Αδυναμία δημιουργίας στιγμιότυπου VMWare"
       ],
       "Unable to create VMWare Snapshot with Quiesce. Check Power and VMWare Tools status.": [
         ""
@@ -109,92 +156,42 @@
       "Unable to create VMWare Snapshot. Cannot set both Memory and Quiesce options.": [
         ""
       ],
-      "Unable to create VMWare Snapshot": [
-        "Αδυναμία δημιουργίας στιγμιότυπου VMWare"
+      "Unable to remove Proxmox Snapshot": [
+        ""
       ],
       "Unable to remove VMWare Snapshot": [
         "Αδυναμία αφαίρεσης στιγμιότυπου VMWare"
       ],
+      "Unable to revert Proxmox Snapshot": [
+        ""
+      ],
       "Unable to revert VMWare Snapshot": [
         "Αδυναμία αντιστροφής στιγμιότυπου VMWare"
+      ],
+      "Unable to update Proxmox Snapshot": [
+        ""
       ],
       "Unable to update VMWare Snapshot": [
         "Αδυναμία ενημέρωσης στιγμιότυπου VMWare"
       ],
-      "No capable hosts selected": [
+      "Update a snapshot": [
+        "Ενημέρωση στιγμιότυπου"
+      ],
+      "VM successfully rolled back.": [
+        "Επιτυχημένη επαναφορά VM."
+      ],
+      "Whether to include the Quiesce state in the snapshot": [
         ""
       ],
-      "Description": [
-        "Περιγραφή"
-      ],
-      "Snapshot Mode": [
-        ""
-      ],
-      "Select Snapshot Mode between mutually exclusive options, 'Memory' (includes RAM) and 'Quiesce'.": [
-        ""
-      ],
-      "Loading Snapshots information ...": [
-        "Γίνεται φόρτωση πληροφοριών στιγμιοτύπων ..."
-      ],
-      "Snapshots": [
-        "Στιγμιότυπα"
-      ],
-      "Successfully removed Snapshot \\\"%s\\\" from host %s": [
-        ""
-      ],
-      "Successfully updated Snapshot \\\"%s\\\"": [
-        ""
-      ],
-      "Error occurred while updating Snapshot: %s": [
-        ""
-      ],
-      "Successfully rolled back Snapshot \\\"%s\\\" on host %s": [
-        ""
-      ],
-      "Memory": [
-        ""
-      ],
-      "Quiesce": [
-        ""
-      ],
-      "Snapshot successfully created!": [
-        ""
-      ],
-      "Name": [
-        "Όνομα"
-      ],
-      "Create Snapshot for %s": [
-        ""
-      ],
-      "N/A": [
-        "Δ/Υ"
-      ],
-      "Action": [
-        "Ενέργεια"
-      ],
-      "Failed to load snapshot list": [
-        ""
+      "Whether to include the RAM state in the snapshot": [
+        "Εάν θα συμπεριληφθεί η κατάσταση RAM στο στιγμιότυπο"
       ],
       "edit entry": [
         ""
       ],
-      "Rollback to \\\"%s\\\"?": [
+      "host": [
+        "",
         ""
-      ],
-      "Rollback": [
-        "Επαναφορά"
-      ],
-      "Delete Snapshot \\\"%s\\\"?": [
-        ""
-      ],
-      "Delete": [
-        "Διαγραφή"
-      ],
-      "Foreman-plugin to manage snapshots in a virtual-hardware environments.": [
-        ""
-      ],
-      "Include RAM": [
-        "Συμπερίληψη RAM"
       ]
     }
   }

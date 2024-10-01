@@ -8,13 +8,14 @@
 # Bryan Kearney <bryan.kearney@gmail.com>, 2019
 # Amit Upadhye <aupadhye@redhat.com>, 2022
 #
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_snapshot_management 2.0.2\n"
+"Project-Id-Version: foreman_snapshot_management 3.0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2019-10-22 11:54+0000\n"
 "Last-Translator: Amit Upadhye <aupadhye@redhat.com>, 2022\n"
-"Language-Team: Chinese (China) (https://www.transifex.com/foreman/teams/114/zh"
+"Language-Team: Chinese (China) (https://app.transifex.com/foreman/teams/114/zh"
 "_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -83,7 +84,7 @@ msgid "Loading Snapshots information ..."
 msgstr "加载快照信息..."
 
 msgid "Memory"
-msgstr ""
+msgstr "内存"
 
 msgid "N/A"
 msgstr "不适用"
