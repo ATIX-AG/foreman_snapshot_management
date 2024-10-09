@@ -18,7 +18,7 @@ As Hypervisor the following systems are supported:
 ## Installation
 
 You can install Foreman Snapshot Management plug-in using `foreman-installer`.
-For more information, see [Installing the Snapshot Management Plug-in](https://docs.theforeman.org/nightly/Managing_Hosts/index-katello.html#Installing_the_Snapshot_Management_Plugin_managing-hosts) in _Foreman documentation_.
+For more information, see [Installing the Snapshot Management Plug-in](https://docs.theforeman.org/nightly/Managing_Hosts/index-katello.html#Installing_the_Snapshot_Management_plugin_managing-hosts) in _Foreman documentation_.
 
 ## Compatibility
 
@@ -229,7 +229,7 @@ curl -s -u "$AUTH" \
 Fork and send a Pull Request. Thanks!
 
 ## Copyright
-Copyright (c) 2023 ATIX AG - http://www.atix.de
+Copyright (c) 2024 ATIX AG - http://www.atix.de
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
