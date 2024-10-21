@@ -15,6 +15,7 @@ Metrics/BlockLength:
   Max: 50
   Exclude:
     - 'test/**/*.rb'
+    - 'lib/foreman_snapshot_management/engine.rb'
 
 Metrics/ClassLength:
   Max: 500
