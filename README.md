@@ -24,6 +24,7 @@ For more information, see [Installing the Snapshot Management Plug-in](https://d
 
 | Foreman Version | Plugin Version |
 | --------------- | -------------- |
+| >= 3.13         | >= 4.0.0       |
 | >= 3.7          | >= 3.0.0       |
 | >= 2.3          | >= 2.0.0       |
 | 1.24            | >= 1.7.0       |
