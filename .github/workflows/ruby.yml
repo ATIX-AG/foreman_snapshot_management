@@ -21,8 +21,7 @@ jobs:
       matrix:
         foreman:
           - develop
-          - 3.12-stable
-          - 3.11-stable
+          - 3.13-stable
     needs: rubocop
     uses: theforeman/actions/.github/workflows/foreman_plugin.yml@v0
     with:
