@@ -27,14 +27,6 @@ For more information, see [Installing the Snapshot Management Plug-in](https://d
 | >= 3.13         | >= 4.0.0       |
 | >= 3.7          | >= 3.0.0       |
 | >= 2.3          | >= 2.0.0       |
-| 1.24            | >= 1.7.0       |
-| 1.23            | >= 1.7.0       |
-| 1.22            | >= 1.6.0       |
-| 1.21            | >= 1.5.0       |
-| 1.20            | >= 1.5.0       |
-| 1.19            | >= 1.5.0       |
-| 1.18            | >= 1.5.0       |
-| 1.17            | >= 1.5.0       |
 
 ## Usage
 
@@ -230,7 +222,7 @@ curl -s -u "$AUTH" \
 Fork and send a Pull Request. Thanks!
 
 ## Copyright
-Copyright (c) 2024 ATIX AG - http://www.atix.de
+Copyright (c) 2025 ATIX AG - http://www.atix.de
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
