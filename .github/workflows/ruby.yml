@@ -13,18 +13,14 @@ concurrency:
 jobs:
   rubocop:
     uses: theforeman/actions/.github/workflows/rubocop.yml@v0
+    with:
+      command: bundle exec rubocop --parallel --format github
 
   test:
     name: Ruby
     strategy:
       fail-fast: false
-      matrix:
-        foreman:
-          - develop
-          - 3.13-stable
     needs: rubocop
     uses: theforeman/actions/.github/workflows/foreman_plugin.yml@v0
     with:
       plugin: foreman_snapshot_management
-      matrix_exclude: '[{"ruby": "3.0", "node": "14"}]'
-      foreman_version: ${{ matrix.foreman }}
