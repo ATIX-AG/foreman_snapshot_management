@@ -6,10 +6,9 @@
 # Translators:
 # Temuri Doghonadze <temuri.doghonadze@gmail.com>, 2022
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_snapshot_management 3.0.1\n"
+"Project-Id-Version: foreman_snapshot_management 4.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2019-10-22 11:54+0000\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>, 2022\n"
@@ -38,8 +37,8 @@ msgstr "შექმნილია %{snapshots} %{num} %{hosts}-სთვის
 msgid "Delete"
 msgstr "წაშლა"
 
-msgid "Delete Snapshot \"%s\"?"
-msgstr "წავშალო სწრაფი ასლი \"%s\"?"
+msgid "Delete Snapshot \\\"%s\\\"?"
+msgstr ""
 
 msgid "Delete a snapshot"
 msgstr "სწრაფი ასლის წაშლა"
@@ -113,8 +112,8 @@ msgstr "ჰოსტის სწრაფ ასლზე დაბრუნე
 msgid "Rollback"
 msgstr "უკან დაბრუნება"
 
-msgid "Rollback to \"%s\"?"
-msgstr "დავაბრუნო \"%s\"-ზე?"
+msgid "Rollback to \\\"%s\\\"?"
+msgstr ""
 
 msgid "Select Snapshot Mode between mutually exclusive options, 'Memory' (includes RAM) and 'Quiesce'."
 msgstr "აირჩიეთ სწრაფი ასლის რეჟიმი ურთიერთგამომრიცხავი პარამეტრებიდან 'Memory' (მეხსიერების ჩათვლით) და 'Quiesce'."
@@ -139,14 +138,14 @@ msgstr "სწრაფი ასლები"
 msgid "Something went wrong while selecting hosts - %s"
 msgstr "შეცდომა ჰოსტების მონიშვნისას - %s"
 
-msgid "Successfully removed Snapshot \"%s\" from host %s"
-msgstr "სწრაფი ასლის (%s) წაშლა ჰოსტიდან %s წარმატებით დასრულდა"
+msgid "Successfully removed Snapshot \\\"%s\\\" from host %s"
+msgstr ""
 
-msgid "Successfully rolled back Snapshot \"%s\" on host %s"
-msgstr "ჰოსტი %s წარმატებით დაბრუნდა სწრაფ ასლზე \"%s\""
+msgid "Successfully rolled back Snapshot \\\"%s\\\" on host %s"
+msgstr ""
 
-msgid "Successfully updated Snapshot \"%s\""
-msgstr "სწრაფი ასლი (%s) წარმატებით განახლდა"
+msgid "Successfully updated Snapshot \\\"%s\\\""
+msgstr ""
 
 msgid "Unable to create Proxmox Snapshot"
 msgstr "Proxmox-ის სწრაფი ასლის შექმნა შეუძლებელია"

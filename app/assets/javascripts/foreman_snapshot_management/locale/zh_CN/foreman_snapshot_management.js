@@ -3,7 +3,7 @@
   "locale_data": {
     "foreman_snapshot_management": {
       "": {
-        "Project-Id-Version": "foreman_snapshot_management 3.0.1",
+        "Project-Id-Version": "foreman_snapshot_management 4.1.0",
         "Report-Msgid-Bugs-To": "",
         "PO-Revision-Date": "2019-10-22 11:54+0000",
         "Last-Translator": "Amit Upadhye <aupadhye@redhat.com>, 2022",
@@ -35,8 +35,8 @@
       "Delete": [
         "刪除"
       ],
-      "Delete Snapshot \\\"%s\\\"?": [
-        "删除快照 \\\"%s\\\"?"
+      "Delete Snapshot \\\\\\\"%s\\\\\\\"?": [
+        ""
       ],
       "Delete a snapshot": [
         "删除快照"
@@ -110,8 +110,8 @@
       "Rollback": [
         "回滚rollback"
       ],
-      "Rollback to \\\"%s\\\"?": [
-        "回滚到 \\\"%s\\\"?"
+      "Rollback to \\\\\\\"%s\\\\\\\"?": [
+        ""
       ],
       "Select Snapshot Mode between mutually exclusive options, 'Memory' (includes RAM) and 'Quiesce'.": [
         ""
@@ -134,14 +134,14 @@
       "Something went wrong while selecting hosts - %s": [
         "选择主机时出错 - %s"
       ],
-      "Successfully removed Snapshot \\\"%s\\\" from host %s": [
-        "成功从主机 %s 中删除快照 \\\"%s\\\""
+      "Successfully removed Snapshot \\\\\\\"%s\\\\\\\" from host %s": [
+        ""
       ],
-      "Successfully rolled back Snapshot \\\"%s\\\" on host %s": [
-        "在主机 %s 上成功回滚快照 \\\"%s\\\""
+      "Successfully rolled back Snapshot \\\\\\\"%s\\\\\\\" on host %s": [
+        ""
       ],
-      "Successfully updated Snapshot \\\"%s\\\"": [
-        "成功更新快照 \\\"%s\\\""
+      "Successfully updated Snapshot \\\\\\\"%s\\\\\\\"": [
+        ""
       ],
       "Unable to create Proxmox Snapshot": [
         "无法创建 Proxmox 快照"

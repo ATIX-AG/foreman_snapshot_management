@@ -3,7 +3,7 @@
   "locale_data": {
     "foreman_snapshot_management": {
       "": {
-        "Project-Id-Version": "foreman_snapshot_management 3.0.1",
+        "Project-Id-Version": "foreman_snapshot_management 4.1.0",
         "Report-Msgid-Bugs-To": "",
         "PO-Revision-Date": "2019-10-22 11:54+0000",
         "Last-Translator": "Temuri Doghonadze <temuri.doghonadze@gmail.com>, 2022",
@@ -35,8 +35,8 @@
       "Delete": [
         "წაშლა"
       ],
-      "Delete Snapshot \\\"%s\\\"?": [
-        "წავშალო სწრაფი ასლი \\\"%s\\\"?"
+      "Delete Snapshot \\\\\\\"%s\\\\\\\"?": [
+        ""
       ],
       "Delete a snapshot": [
         "სწრაფი ასლის წაშლა"
@@ -110,8 +110,8 @@
       "Rollback": [
         "უკან დაბრუნება"
       ],
-      "Rollback to \\\"%s\\\"?": [
-        "დავაბრუნო \\\"%s\\\"-ზე?"
+      "Rollback to \\\\\\\"%s\\\\\\\"?": [
+        ""
       ],
       "Select Snapshot Mode between mutually exclusive options, 'Memory' (includes RAM) and 'Quiesce'.": [
         "აირჩიეთ სწრაფი ასლის რეჟიმი ურთიერთგამომრიცხავი პარამეტრებიდან 'Memory' (მეხსიერების ჩათვლით) და 'Quiesce'."
@@ -135,14 +135,14 @@
       "Something went wrong while selecting hosts - %s": [
         "შეცდომა ჰოსტების მონიშვნისას - %s"
       ],
-      "Successfully removed Snapshot \\\"%s\\\" from host %s": [
-        "სწრაფი ასლის (%s) წაშლა ჰოსტიდან %s წარმატებით დასრულდა"
+      "Successfully removed Snapshot \\\\\\\"%s\\\\\\\" from host %s": [
+        ""
       ],
-      "Successfully rolled back Snapshot \\\"%s\\\" on host %s": [
-        "ჰოსტი %s წარმატებით დაბრუნდა სწრაფ ასლზე \\\"%s\\\""
+      "Successfully rolled back Snapshot \\\\\\\"%s\\\\\\\" on host %s": [
+        ""
       ],
-      "Successfully updated Snapshot \\\"%s\\\"": [
-        "სწრაფი ასლი (%s) წარმატებით განახლდა"
+      "Successfully updated Snapshot \\\\\\\"%s\\\\\\\"": [
+        ""
       ],
       "Unable to create Proxmox Snapshot": [
         "Proxmox-ის სწრაფი ასლის შექმნა შეუძლებელია"
