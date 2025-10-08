@@ -11,10 +11,9 @@
 # Markus Bucher <bucher@atix.de>, 2021
 # Wiederoder <stefanwiederoder@googlemail.com>, 2022
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_snapshot_management 3.0.1\n"
+"Project-Id-Version: foreman_snapshot_management 4.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2019-10-22 11:54+0000\n"
 "Last-Translator: Wiederoder <stefanwiederoder@googlemail.com>, 2022\n"
@@ -43,8 +42,8 @@ msgstr "%{snapshots} für %{num} %{hosts} erstellt"
 msgid "Delete"
 msgstr "Löschen"
 
-msgid "Delete Snapshot \"%s\"?"
-msgstr "\"%s\" wirklich löschen?"
+msgid "Delete Snapshot \\\"%s\\\"?"
+msgstr ""
 
 msgid "Delete a snapshot"
 msgstr "Snapshot löschen"
@@ -118,8 +117,8 @@ msgstr "Host auf einen Snapshot zurücksetzen"
 msgid "Rollback"
 msgstr "Wiederherstellen"
 
-msgid "Rollback to \"%s\"?"
-msgstr "\"%s\" wirklich wiederherstellen?"
+msgid "Rollback to \\\"%s\\\"?"
+msgstr ""
 
 msgid "Select Snapshot Mode between mutually exclusive options, 'Memory' (includes RAM) and 'Quiesce'."
 msgstr ""
@@ -144,14 +143,14 @@ msgstr "Snapshots"
 msgid "Something went wrong while selecting hosts - %s"
 msgstr "Fehler beim Auswählen der Hosts – %s"
 
-msgid "Successfully removed Snapshot \"%s\" from host %s"
-msgstr "Snapshot \"%s\" erfolgreich von Host %s entfernt."
+msgid "Successfully removed Snapshot \\\"%s\\\" from host %s"
+msgstr ""
 
-msgid "Successfully rolled back Snapshot \"%s\" on host %s"
-msgstr "Snapshot \"%s\" erfolgreich auf Host %s zurückgesetzt."
+msgid "Successfully rolled back Snapshot \\\"%s\\\" on host %s"
+msgstr ""
 
-msgid "Successfully updated Snapshot \"%s\""
-msgstr "Snapshot \"%s\" erfolgreich aktualisiert."
+msgid "Successfully updated Snapshot \\\"%s\\\""
+msgstr ""
 
 msgid "Unable to create Proxmox Snapshot"
 msgstr "Proxmox Snapshot konnte nicht erstellt werden"

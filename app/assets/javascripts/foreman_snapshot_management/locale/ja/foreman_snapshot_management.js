@@ -3,7 +3,7 @@
   "locale_data": {
     "foreman_snapshot_management": {
       "": {
-        "Project-Id-Version": "foreman_snapshot_management 3.0.1",
+        "Project-Id-Version": "foreman_snapshot_management 4.1.0",
         "Report-Msgid-Bugs-To": "",
         "PO-Revision-Date": "2019-10-22 11:54+0000",
         "Last-Translator": "Amit Upadhye <aupadhye@redhat.com>, 2022",
@@ -35,8 +35,8 @@
       "Delete": [
         "削除"
       ],
-      "Delete Snapshot \\\"%s\\\"?": [
-        "スナップショット \\\"%s\\\" を削除しますか ?"
+      "Delete Snapshot \\\\\\\"%s\\\\\\\"?": [
+        ""
       ],
       "Delete a snapshot": [
         "スナップショットの削除"
@@ -110,8 +110,8 @@
       "Rollback": [
         "ロールバック"
       ],
-      "Rollback to \\\"%s\\\"?": [
-        "\\\"%s\\\" へロールバックしますか ?"
+      "Rollback to \\\\\\\"%s\\\\\\\"?": [
+        ""
       ],
       "Select Snapshot Mode between mutually exclusive options, 'Memory' (includes RAM) and 'Quiesce'.": [
         ""
@@ -134,14 +134,14 @@
       "Something went wrong while selecting hosts - %s": [
         "ホストの選択中に問題が発生しました: %s"
       ],
-      "Successfully removed Snapshot \\\"%s\\\" from host %s": [
-        "ホスト %s からスナップショット \\\"%s\\\" を正常に削除しました"
+      "Successfully removed Snapshot \\\\\\\"%s\\\\\\\" from host %s": [
+        ""
       ],
-      "Successfully rolled back Snapshot \\\"%s\\\" on host %s": [
-        "ホスト %s でスナップショット \\\"%s\\\" が正常にロールバックされました"
+      "Successfully rolled back Snapshot \\\\\\\"%s\\\\\\\" on host %s": [
+        ""
       ],
-      "Successfully updated Snapshot \\\"%s\\\"": [
-        "スナップショット \\\"%s\\\" を正常に更新しました。"
+      "Successfully updated Snapshot \\\\\\\"%s\\\\\\\"": [
+        ""
       ],
       "Unable to create Proxmox Snapshot": [
         "Proxmox スナップショットを作成できません"

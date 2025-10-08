@@ -3,7 +3,7 @@
   "locale_data": {
     "foreman_snapshot_management": {
       "": {
-        "Project-Id-Version": "foreman_snapshot_management 3.0.1",
+        "Project-Id-Version": "foreman_snapshot_management 4.1.0",
         "Report-Msgid-Bugs-To": "",
         "PO-Revision-Date": "2019-10-22 11:54+0000",
         "Last-Translator": "Efstathios Iosifidis <iefstathios@gmail.com>, 2022",
@@ -35,7 +35,7 @@
       "Delete": [
         "Διαγραφή"
       ],
-      "Delete Snapshot \\\"%s\\\"?": [
+      "Delete Snapshot \\\\\\\"%s\\\\\\\"?": [
         ""
       ],
       "Delete a snapshot": [
@@ -110,7 +110,7 @@
       "Rollback": [
         "Επαναφορά"
       ],
-      "Rollback to \\\"%s\\\"?": [
+      "Rollback to \\\\\\\"%s\\\\\\\"?": [
         ""
       ],
       "Select Snapshot Mode between mutually exclusive options, 'Memory' (includes RAM) and 'Quiesce'.": [
@@ -135,13 +135,13 @@
       "Something went wrong while selecting hosts - %s": [
         ""
       ],
-      "Successfully removed Snapshot \\\"%s\\\" from host %s": [
+      "Successfully removed Snapshot \\\\\\\"%s\\\\\\\" from host %s": [
         ""
       ],
-      "Successfully rolled back Snapshot \\\"%s\\\" on host %s": [
+      "Successfully rolled back Snapshot \\\\\\\"%s\\\\\\\" on host %s": [
         ""
       ],
-      "Successfully updated Snapshot \\\"%s\\\"": [
+      "Successfully updated Snapshot \\\\\\\"%s\\\\\\\"": [
         ""
       ],
       "Unable to create Proxmox Snapshot": [

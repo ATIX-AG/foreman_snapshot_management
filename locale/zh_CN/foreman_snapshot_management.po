@@ -8,10 +8,9 @@
 # Bryan Kearney <bryan.kearney@gmail.com>, 2019
 # Amit Upadhye <aupadhye@redhat.com>, 2022
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_snapshot_management 3.0.1\n"
+"Project-Id-Version: foreman_snapshot_management 4.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2019-10-22 11:54+0000\n"
 "Last-Translator: Amit Upadhye <aupadhye@redhat.com>, 2022\n"
@@ -41,8 +40,8 @@ msgstr "为 %{num} %{hosts} 创建的 %{snapshots}"
 msgid "Delete"
 msgstr "刪除"
 
-msgid "Delete Snapshot \"%s\"?"
-msgstr "删除快照 \"%s\"?"
+msgid "Delete Snapshot \\\"%s\\\"?"
+msgstr ""
 
 msgid "Delete a snapshot"
 msgstr "删除快照"
@@ -116,8 +115,8 @@ msgstr "将主机恢复到快照"
 msgid "Rollback"
 msgstr "回滚rollback"
 
-msgid "Rollback to \"%s\"?"
-msgstr "回滚到 \"%s\"?"
+msgid "Rollback to \\\"%s\\\"?"
+msgstr ""
 
 msgid "Select Snapshot Mode between mutually exclusive options, 'Memory' (includes RAM) and 'Quiesce'."
 msgstr ""
@@ -141,14 +140,14 @@ msgstr "快照"
 msgid "Something went wrong while selecting hosts - %s"
 msgstr "选择主机时出错 - %s"
 
-msgid "Successfully removed Snapshot \"%s\" from host %s"
-msgstr "成功从主机 %s 中删除快照 \"%s\""
+msgid "Successfully removed Snapshot \\\"%s\\\" from host %s"
+msgstr ""
 
-msgid "Successfully rolled back Snapshot \"%s\" on host %s"
-msgstr "在主机 %s 上成功回滚快照 \"%s\""
+msgid "Successfully rolled back Snapshot \\\"%s\\\" on host %s"
+msgstr ""
 
-msgid "Successfully updated Snapshot \"%s\""
-msgstr "成功更新快照 \"%s\""
+msgid "Successfully updated Snapshot \\\"%s\\\""
+msgstr ""
 
 msgid "Unable to create Proxmox Snapshot"
 msgstr "无法创建 Proxmox 快照"

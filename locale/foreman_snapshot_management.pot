@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: foreman_snapshot_management 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-13 19:55+0100\n"
-"PO-Revision-Date: 2022-12-13 19:55+0100\n"
+"POT-Creation-Date: 2025-10-07 14:24+0200\n"
+"PO-Revision-Date: 2025-10-07 14:24+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -22,35 +22,35 @@ msgstr ""
 msgid "List all snapshots"
 msgstr ""
 
-#: ../app/controllers/api/v2/snapshots_controller.rb:41
+#: ../app/controllers/api/v2/snapshots_controller.rb:42
 msgid "Name of this snapshot"
 msgstr ""
 
-#: ../app/controllers/api/v2/snapshots_controller.rb:42
+#: ../app/controllers/api/v2/snapshots_controller.rb:43
 msgid "Description of this snapshot"
 msgstr ""
 
-#: ../app/controllers/api/v2/snapshots_controller.rb:46
+#: ../app/controllers/api/v2/snapshots_controller.rb:47
 msgid "Create a snapshot"
 msgstr ""
 
-#: ../app/controllers/api/v2/snapshots_controller.rb:48
+#: ../app/controllers/api/v2/snapshots_controller.rb:49
 msgid "Whether to include the RAM state in the snapshot"
 msgstr ""
 
-#: ../app/controllers/api/v2/snapshots_controller.rb:49
+#: ../app/controllers/api/v2/snapshots_controller.rb:50
 msgid "Whether to include the Quiesce state in the snapshot"
 msgstr ""
 
-#: ../app/controllers/api/v2/snapshots_controller.rb:59
+#: ../app/controllers/api/v2/snapshots_controller.rb:60
 msgid "Update a snapshot"
 msgstr ""
 
-#: ../app/controllers/api/v2/snapshots_controller.rb:68
+#: ../app/controllers/api/v2/snapshots_controller.rb:69
 msgid "Delete a snapshot"
 msgstr ""
 
-#: ../app/controllers/api/v2/snapshots_controller.rb:76
+#: ../app/controllers/api/v2/snapshots_controller.rb:77
 msgid "Revert Host to a snapshot"
 msgstr ""
 
@@ -76,16 +76,16 @@ msgstr ""
 msgid "Failed to update Snapshot: %s"
 msgstr ""
 
-#: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:93
+#: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:94
 msgid "Error occurred while creating Snapshot for:%s"
 msgstr ""
 
-#: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:95
+#: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:96
 msgid "Created %{snapshots} for %{num} %{hosts}"
 msgstr ""
 
-#: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:96
-#: ../app/models/foreman_snapshot_management/snapshot.rb:56
+#: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:97
+#: ../app/models/foreman_snapshot_management/snapshot.rb:57
 #: ../app/views/foreman_snapshot_management/snapshots/select_multiple_host.html.erb:8
 #: ../webpack/components/SnapshotManagement/components/SnapshotList/SnapshotList.js:156
 msgid "Snapshot"
@@ -93,26 +93,25 @@ msgid_plural "Snapshots"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:98
+#: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:99
 msgid "host"
 msgid_plural "hosts"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:154
+#: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:156
 msgid "No hosts were found with that id, name or query filter"
 msgstr ""
 
-#: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:161
+#: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:163
 msgid "Something went wrong while selecting hosts - %s"
 msgstr ""
 
-#: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:180
+#: ../app/controllers/foreman_snapshot_management/snapshots_controller.rb:182
 msgid "No capable hosts found."
 msgstr ""
 
-#:
-#: ../app/helpers/concerns/foreman_snapshot_management/hosts_helper_extension.rb:6
+#: ../app/helpers/foreman_snapshot_management/hosts_helper.rb:7
 #: ../webpack/components/SnapshotManagement/SnapshotManagement.js:46
 msgid "Create Snapshot"
 msgstr ""
@@ -124,23 +123,23 @@ msgid ""
 "rs are A-Z a-z 0-9 _"
 msgstr ""
 
-#: ../app/models/foreman_snapshot_management/proxmox_extensions.rb:22
+#: ../app/models/foreman_snapshot_management/proxmox_extensions.rb:23
 msgid "Unable to create Proxmox Snapshot"
 msgstr ""
 
-#: ../app/models/foreman_snapshot_management/proxmox_extensions.rb:32
+#: ../app/models/foreman_snapshot_management/proxmox_extensions.rb:33
 msgid "Unable to remove Proxmox Snapshot"
 msgstr ""
 
-#: ../app/models/foreman_snapshot_management/proxmox_extensions.rb:42
+#: ../app/models/foreman_snapshot_management/proxmox_extensions.rb:43
 msgid "Unable to revert Proxmox Snapshot"
 msgstr ""
 
-#: ../app/models/foreman_snapshot_management/proxmox_extensions.rb:49
+#: ../app/models/foreman_snapshot_management/proxmox_extensions.rb:50
 msgid "Snapshot name cannot be changed"
 msgstr ""
 
-#: ../app/models/foreman_snapshot_management/proxmox_extensions.rb:55
+#: ../app/models/foreman_snapshot_management/proxmox_extensions.rb:56
 msgid "Unable to update Proxmox Snapshot"
 msgstr ""
 
@@ -200,16 +199,17 @@ msgstr ""
 msgid "Loading Snapshots information ..."
 msgstr ""
 
-#: ../lib/foreman_snapshot_management/engine.rb:64
+#: ../lib/foreman_snapshot_management/engine.rb:62
+#: ../webpack/components/SnapshotManagementCard/SnapshotManagementCard.js:36
 msgid "Snapshots"
 msgstr ""
 
 #: ../webpack/components/SnapshotManagement/SnapshotManagementActions.js:60
-msgid "Successfully removed Snapshot \"%s\" from host %s"
+msgid "Successfully removed Snapshot \\\"%s\\\" from host %s"
 msgstr ""
 
 #: ../webpack/components/SnapshotManagement/SnapshotManagementActions.js:126
-msgid "Successfully updated Snapshot \"%s\""
+msgid "Successfully updated Snapshot \\\"%s\\\""
 msgstr ""
 
 #: ../webpack/components/SnapshotManagement/SnapshotManagementActions.js:145
@@ -217,7 +217,7 @@ msgid "Error occurred while updating Snapshot: %s"
 msgstr ""
 
 #: ../webpack/components/SnapshotManagement/SnapshotManagementActions.js:180
-msgid "Successfully rolled back Snapshot \"%s\" on host %s"
+msgid "Successfully rolled back Snapshot \\\"%s\\\" on host %s"
 msgstr ""
 
 #:
@@ -268,7 +268,7 @@ msgstr ""
 
 #:
 #: ../webpack/components/SnapshotManagement/components/SnapshotList/SnapshotListHelper.js:42
-msgid "Rollback to \"%s\"?"
+msgid "Rollback to \\\"%s\\\"?"
 msgstr ""
 
 #:
@@ -278,7 +278,7 @@ msgstr ""
 
 #:
 #: ../webpack/components/SnapshotManagement/components/SnapshotList/SnapshotListHelper.js:60
-msgid "Delete Snapshot \"%s\"?"
+msgid "Delete Snapshot \\\"%s\\\"?"
 msgstr ""
 
 #:

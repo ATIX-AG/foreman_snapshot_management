@@ -3,7 +3,7 @@
   "locale_data": {
     "foreman_snapshot_management": {
       "": {
-        "Project-Id-Version": "foreman_snapshot_management 3.0.1",
+        "Project-Id-Version": "foreman_snapshot_management 4.1.0",
         "Report-Msgid-Bugs-To": "",
         "PO-Revision-Date": "2019-10-22 11:54+0000",
         "Last-Translator": "Amit Upadhye <aupadhye@redhat.com>, 2023",
@@ -35,8 +35,8 @@
       "Delete": [
         "Supprimer"
       ],
-      "Delete Snapshot \\\"%s\\\"?": [
-        "Supprimer l'instantané \\\"%s\\\" ?"
+      "Delete Snapshot \\\\\\\"%s\\\\\\\"?": [
+        ""
       ],
       "Delete a snapshot": [
         "Supprimer un instantané"
@@ -110,8 +110,8 @@
       "Rollback": [
         "Rollback"
       ],
-      "Rollback to \\\"%s\\\"?": [
-        "Retour à \\\"%s\\\" ?"
+      "Rollback to \\\\\\\"%s\\\\\\\"?": [
+        ""
       ],
       "Select Snapshot Mode between mutually exclusive options, 'Memory' (includes RAM) and 'Quiesce'.": [
         ""
@@ -136,14 +136,14 @@
       "Something went wrong while selecting hosts - %s": [
         "Une erreur s'est produite lors de la sélection des hôtes - %s"
       ],
-      "Successfully removed Snapshot \\\"%s\\\" from host %s": [
-        "L’instantané \\\"%s\\\" a été supprimé de l'hôte %s"
+      "Successfully removed Snapshot \\\\\\\"%s\\\\\\\" from host %s": [
+        ""
       ],
-      "Successfully rolled back Snapshot \\\"%s\\\" on host %s": [
-        "L’instantané \\\"%s\\\" sur l'hôte %s a été retiré avec succès"
+      "Successfully rolled back Snapshot \\\\\\\"%s\\\\\\\" on host %s": [
+        ""
       ],
-      "Successfully updated Snapshot \\\"%s\\\"": [
-        "La mise à jour de l’instantané \\\"%s\\\" a réussi"
+      "Successfully updated Snapshot \\\\\\\"%s\\\\\\\"": [
+        ""
       ],
       "Unable to create Proxmox Snapshot": [
         "Impossible de créer un instantané de Proxmox"

@@ -3,7 +3,7 @@
   "locale_data": {
     "foreman_snapshot_management": {
       "": {
-        "Project-Id-Version": "foreman_snapshot_management 3.0.1",
+        "Project-Id-Version": "foreman_snapshot_management 4.1.0",
         "Report-Msgid-Bugs-To": "",
         "PO-Revision-Date": "2019-10-22 11:54+0000",
         "Last-Translator": "Wiederoder <stefanwiederoder@googlemail.com>, 2022",
@@ -35,8 +35,8 @@
       "Delete": [
         "Löschen"
       ],
-      "Delete Snapshot \\\"%s\\\"?": [
-        "\\\"%s\\\" wirklich löschen?"
+      "Delete Snapshot \\\\\\\"%s\\\\\\\"?": [
+        ""
       ],
       "Delete a snapshot": [
         "Snapshot löschen"
@@ -110,8 +110,8 @@
       "Rollback": [
         "Wiederherstellen"
       ],
-      "Rollback to \\\"%s\\\"?": [
-        "\\\"%s\\\" wirklich wiederherstellen?"
+      "Rollback to \\\\\\\"%s\\\\\\\"?": [
+        ""
       ],
       "Select Snapshot Mode between mutually exclusive options, 'Memory' (includes RAM) and 'Quiesce'.": [
         ""
@@ -135,14 +135,14 @@
       "Something went wrong while selecting hosts - %s": [
         "Fehler beim Auswählen der Hosts – %s"
       ],
-      "Successfully removed Snapshot \\\"%s\\\" from host %s": [
-        "Snapshot \\\"%s\\\" erfolgreich von Host %s entfernt."
+      "Successfully removed Snapshot \\\\\\\"%s\\\\\\\" from host %s": [
+        ""
       ],
-      "Successfully rolled back Snapshot \\\"%s\\\" on host %s": [
-        "Snapshot \\\"%s\\\" erfolgreich auf Host %s zurückgesetzt."
+      "Successfully rolled back Snapshot \\\\\\\"%s\\\\\\\" on host %s": [
+        ""
       ],
-      "Successfully updated Snapshot \\\"%s\\\"": [
-        "Snapshot \\\"%s\\\" erfolgreich aktualisiert."
+      "Successfully updated Snapshot \\\\\\\"%s\\\\\\\"": [
+        ""
       ],
       "Unable to create Proxmox Snapshot": [
         "Proxmox Snapshot konnte nicht erstellt werden"
