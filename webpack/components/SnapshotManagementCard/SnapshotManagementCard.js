@@ -8,6 +8,8 @@ import SnapshotManagement from '../SnapshotManagement';
 
 const SnapshotManagementCard = ({ hostDetails, ...props }) => {
   const children = [];
+  const snapshotsEnabled =
+    hostDetails?.capabilities?.includes('snapshots') || false;
   const capabilities = {
     editableSnapshotName:
       hostDetails?.capabilities?.includes('editable_snapshot_name') || false,
@@ -18,7 +20,12 @@ const SnapshotManagementCard = ({ hostDetails, ...props }) => {
       hostDetails?.capabilities?.includes('snapshot_include_quiesce') || false,
   };
 
-  if (hostDetails?.uuid && hostDetails?.id && hostDetails?.permissions) {
+  if (
+    snapshotsEnabled &&
+    hostDetails?.uuid &&
+    hostDetails?.id &&
+    hostDetails?.permissions
+  ) {
     children.push(
       <SnapshotManagement
         key="SnapshotManagement"
