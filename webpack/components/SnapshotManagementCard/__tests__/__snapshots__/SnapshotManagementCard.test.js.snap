@@ -1,5 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`SnapshotManagementCard renders with NotSupported CR capabilities 1`] = `""`;
+
 exports[`SnapshotManagementCard renders with Props 1`] = `
 <CardTemplate
   expandable={false}
