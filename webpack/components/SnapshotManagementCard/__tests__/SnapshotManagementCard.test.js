@@ -12,6 +12,7 @@ const hostDetails = {
     revert_snapshots: true,
     destroy_snapshots: false,
   },
+  capabilities: ['snapshots'],
 };
 
 const hostDetailsVmware = {
@@ -36,6 +37,10 @@ const hostDetailsProxmox = {
     'limit_snapshot_name_format',
   ],
 };
+const hostDetailsNotSupported = {
+  ...hostDetails,
+  capabilities: ['build', 'new_volume', 'new_interface', 'image'],
+};
 
 const fixtures = {
   'without optional Props': {},
@@ -45,6 +50,9 @@ const fixtures = {
   },
   'with Proxmox capabilities': {
     hostDetails: hostDetailsProxmox,
+  },
+  'with NotSupported CR capabilities': {
+    hostDetails: hostDetailsNotSupported,
   },
 };
 
