@@ -6,6 +6,7 @@ Rails.application.routes.draw do
                      :defaults => { :apiv => 'v2' },
                      :apiv => /v1|v2/,
                      :constraints => ApiConstraints.new(:version => 2, :default => true) do
+      post 'snapshots/bulk/create_snapshot', :to => 'bulk_snapshots#create'
       constraints(:host_id => /[^\/]+/) do
         resources :hosts, :only => [] do
           constraints(:id => /[^\/]+/) do

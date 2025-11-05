@@ -11,6 +11,8 @@ import {
   SNAPSHOT_UPDATE_URL,
   SNAPSHOT_ROLLBACK,
   SNAPSHOT_ROLLBACK_URL,
+  SNAPSHOT_BULK_CREATE,
+  SNAPSHOT_BULK_CREATE_URL,
 } from './SnapshotManagementConstants';
 
 export const loadSnapshotList = hostId => async dispatch => {
@@ -206,6 +208,56 @@ export const snapshotRollbackAction = (host, rowData) => async dispatch => {
         host,
         id: rowData.id,
       },
+      response: error,
+    });
+  }
+};
+
+export const bulkCreateSnapshotsAction = payload => async dispatch => {
+  const { REQUEST, SUCCESS, FAILURE } = actionTypeGenerator(
+    SNAPSHOT_BULK_CREATE
+  );
+
+  dispatch({ type: REQUEST, payload });
+
+  try {
+    const { data } = await API.post(SNAPSHOT_BULK_CREATE_URL, payload);
+
+    dispatch(
+      addToast({
+        type: 'success',
+        message: __('Successfully triggered bulk snapshot creation'),
+        key: SUCCESS,
+      })
+    );
+
+    return dispatch({ type: SUCCESS, payload, response: data });
+  } catch (error) {
+    const data = error?.response?.data;
+    const failedCount = data?.['failed_count'] || 0;
+    const successCount = data?.['success_count'] || 0;
+
+    dispatch(
+      addToast({
+        type: 'error',
+        message: sprintf(
+          successCount === 1
+            ? __(
+                '%d snapshot succeeded, %d failed. Check production logs for details.'
+              )
+            : __(
+                '%d snapshots succeeded, %d failed. Check production logs for details.'
+              ),
+          successCount,
+          failedCount
+        ),
+        key: FAILURE,
+      })
+    );
+
+    return dispatch({
+      type: FAILURE,
+      payload,
       response: error,
     });
   }

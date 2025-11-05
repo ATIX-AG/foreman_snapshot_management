@@ -22,20 +22,21 @@ exports[`SnapshotManagementCard renders with Props 1`] = `
     canDelete={false}
     canRevert={true}
     canUpdate={false}
-    capabilities={
-      Object {
-        "editableSnapshotName": false,
-        "limitSnapshotNameFormat": false,
-        "quiesceOption": false,
-      }
-    }
     host={
       Object {
         "id": 42,
         "name": "deep.thought",
       }
     }
+    hostCapabilities={
+      Object {
+        "editableSnapshotName": false,
+        "limitSnapshotNameFormat": false,
+        "quiesceOption": false,
+      }
+    }
     key="SnapshotManagement"
+    onSubmit={[MockFunction]}
   />
 </CardTemplate>
 `;
@@ -60,20 +61,21 @@ exports[`SnapshotManagementCard renders with Proxmox capabilities 1`] = `
     canDelete={false}
     canRevert={true}
     canUpdate={false}
-    capabilities={
-      Object {
-        "editableSnapshotName": false,
-        "limitSnapshotNameFormat": true,
-        "quiesceOption": false,
-      }
-    }
     host={
       Object {
         "id": 42,
         "name": "deep.thought",
       }
     }
+    hostCapabilities={
+      Object {
+        "editableSnapshotName": false,
+        "limitSnapshotNameFormat": true,
+        "quiesceOption": false,
+      }
+    }
     key="SnapshotManagement"
+    onSubmit={[MockFunction]}
   />
 </CardTemplate>
 `;
@@ -98,20 +100,21 @@ exports[`SnapshotManagementCard renders with VMWare capabilities 1`] = `
     canDelete={false}
     canRevert={true}
     canUpdate={false}
-    capabilities={
-      Object {
-        "editableSnapshotName": true,
-        "limitSnapshotNameFormat": false,
-        "quiesceOption": true,
-      }
-    }
     host={
       Object {
         "id": 42,
         "name": "deep.thought",
       }
     }
+    hostCapabilities={
+      Object {
+        "editableSnapshotName": true,
+        "limitSnapshotNameFormat": false,
+        "quiesceOption": true,
+      }
+    }
     key="SnapshotManagement"
+    onSubmit={[MockFunction]}
   />
 </CardTemplate>
 `;

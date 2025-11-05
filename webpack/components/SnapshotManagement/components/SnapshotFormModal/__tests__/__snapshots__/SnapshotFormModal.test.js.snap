@@ -4,16 +4,40 @@ exports[`SnapshotFormModal renders normal 1`] = `
 <ConnectedForemanModal
   enforceFocus={true}
   id="foremanSnapshotMgmtSnapshotFormModal"
-  title="Create Snapshot for deep.thought"
+  ouiaId="snapshot-form-modal"
+  title=""
 >
   <ForemanModalHeader
     closeButton={false}
+  >
+    <TextContent
+      className="pf-v5-u-mb-md"
+    >
+      <Title
+        headingLevel="h1"
+        ouiaId="snapshot-modal-title"
+        size="3xl"
+      >
+        Create snapshot
+      </Title>
+      <Text
+        className="pf-v5-u-color-200 pf-v5-u-font-size-sm pf-v5-u-mt-sm"
+        component="small"
+        ouiaId="snapshot-modal-hosts-count"
+      >
+        1 host is selected for snapshot creation
+      </Text>
+    </TextContent>
+  </ForemanModalHeader>
+  <WrappedSnapshotForm
+    host={
+      Object {
+        "id": 42,
+        "name": "deep.thought",
+      }
+    }
+    selectedHosts={Array []}
+    setModalClosed={[Function]}
   />
-  <div>
-    <WrappedSnapshotForm
-      hostId={42}
-      setModalClosed={[Function]}
-    />
-  </div>
 </ConnectedForemanModal>
 `;

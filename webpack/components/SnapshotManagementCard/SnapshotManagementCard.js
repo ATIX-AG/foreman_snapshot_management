@@ -5,9 +5,12 @@ import CardTemplate from 'foremanReact/components/HostDetails/Templates/CardItem
 import { translate as __ } from 'foremanReact/common/I18n';
 
 import SnapshotManagement from '../SnapshotManagement';
+import useSnapshotSubmit from '../SnapshotManagement/components/hooks/useSnapshotSubmit';
 
 const SnapshotManagementCard = ({ hostDetails, ...props }) => {
   const children = [];
+  const { handleSubmit } = useSnapshotSubmit();
+
   const snapshotsEnabled =
     hostDetails?.capabilities?.includes('snapshots') || false;
   const capabilities = {
@@ -34,7 +37,8 @@ const SnapshotManagementCard = ({ hostDetails, ...props }) => {
         canUpdate={hostDetails.permissions.edit_snapshots}
         canRevert={hostDetails.permissions.revert_snapshots}
         canDelete={hostDetails.permissions.destroy_snapshots}
-        capabilities={capabilities}
+        hostCapabilities={capabilities}
+        onSubmit={handleSubmit}
       />
     );
     return (

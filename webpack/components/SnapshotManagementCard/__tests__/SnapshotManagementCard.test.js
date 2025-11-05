@@ -2,6 +2,16 @@ import { testComponentSnapshotsWithFixtures } from 'react-redux-test-utils';
 
 import SnapshotManagementCard from '../SnapshotManagementCard';
 
+jest.mock(
+  '../../SnapshotManagement/components/hooks/useSnapshotSubmit',
+  () => ({
+    __esModule: true,
+    default: jest.fn(() => ({
+      handleSubmit: jest.fn(),
+    })),
+  })
+);
+
 const hostDetails = {
   id: 42,
   name: 'deep.thought',
