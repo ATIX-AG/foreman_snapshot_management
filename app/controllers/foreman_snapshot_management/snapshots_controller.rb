@@ -14,6 +14,7 @@ module ForemanSnapshotManagement
     before_action :enumerate_snapshots, only: [:index]
     before_action :find_snapshot, only: %i[destroy revert update]
     helper_method :xeditable?
+    helper_method :available_snapshot_modes
 
     def xeditable?(_object = nil)
       true
@@ -183,6 +184,15 @@ module ForemanSnapshotManagement
         @hosts = Host.where('false')
       else
         @hosts = Host.where('hosts.id IN (?)', capable_hosts.map(&:id))
+      end
+    end
+
+    def available_snapshot_modes
+      capable_hosts = @hosts.select { |h| h.compute_resource.capable?(:snapshot_include_quiesce) }
+      if capable_hosts.length < @hosts.length
+        { 'Include RAM' => 'memory' }
+      else
+        { 'Include RAM' => 'memory', 'Quiesce' => 'quiesce' }
       end
     end
 
