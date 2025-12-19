@@ -3,38 +3,46 @@ import PropTypes from 'prop-types';
 import { Button } from 'patternfly-react';
 
 import { translate as __ } from 'foremanReact/common/I18n';
-
 import SnapshotFormModal from './components/SnapshotFormModal';
 import useSnapshotFormModal from './components/SnapshotFormModal/useSnapshotFormModal';
 import SnapshotList from './components/SnapshotList/SnapshotList';
 import './snapshotManagement.scss';
 
-const SnapshotManagement = ({ canCreate, host, ...props }) => {
+const SnapshotManagement = ({
+  canCreate,
+  host,
+  onSubmit,
+  hostCapabilities,
+  ...props
+}) => {
   const children = [];
-  const { setModalOpen, setModalClosed } = useSnapshotFormModal();
+  const { setModalOpen } = useSnapshotFormModal();
+
+  if (!host) return null;
 
   const onCreateClick = () => {
     setModalOpen();
   };
   const allowedHostAttr = ['id', 'name'];
-  const filteredHost = Object.keys(host)
-    .filter(key => allowedHostAttr.includes(key))
-    .reduce(
-      (obj, key) => ({
-        ...obj,
-        [key]: host[key],
-      }),
-      {}
-    );
+  const filteredHost = {
+    ...Object.keys(host)
+      .filter(key => allowedHostAttr.includes(key))
+      .reduce(
+        (obj, key) => ({
+          ...obj,
+          [key]: host[key],
+        }),
+        {}
+      ),
+    capabilities: hostCapabilities,
+  };
 
   if (canCreate) {
     children.push(
       <SnapshotFormModal
         key="snapshot-form-modal"
-        setModalClosed={setModalClosed}
         host={filteredHost}
-        hostId={host.id}
-        {...props}
+        onSubmit={onSubmit}
       />
     );
     children.push(
@@ -59,13 +67,19 @@ SnapshotManagement.propTypes = {
   host: PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
-  }).isRequired,
+    capabilities: PropTypes.shape({
+      editableSnapshotName: PropTypes.bool,
+      limitSnapshotNameFormat: PropTypes.bool,
+      quiesceOption: PropTypes.bool,
+    }),
+  }),
   canCreate: PropTypes.bool,
   canUpdate: PropTypes.bool,
   canRevert: PropTypes.bool,
   canDelete: PropTypes.bool,
-  capabilities: PropTypes.shape({
-    editSnapshotName: PropTypes.bool,
+  onSubmit: PropTypes.func.isRequired,
+  hostCapabilities: PropTypes.shape({
+    editableSnapshotName: PropTypes.bool,
     limitSnapshotNameFormat: PropTypes.bool,
     quiesceOption: PropTypes.bool,
   }),
@@ -76,7 +90,8 @@ SnapshotManagement.defaultProps = {
   canUpdate: false,
   canRevert: false,
   canDelete: false,
-  capabilities: {
+  host: null,
+  hostCapabilities: {
     editSnapshotName: true,
     limitSnapshotNameFormat: false,
     quiesceOption: false,

@@ -25,6 +25,7 @@ module ForemanSnapshotManagement
             permission :create_snapshots, {
               :'foreman_snapshot_management/snapshots' => [:create, :select_multiple_host, :create_multiple_host],
               :'api/v2/snapshots' => [:create],
+              :'api/v2/bulk_snapshots' => [:create],
             }, :resource_type => 'Host'
 
             permission :edit_snapshots, {

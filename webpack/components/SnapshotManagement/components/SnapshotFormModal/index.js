@@ -1,5 +1,4 @@
 import React from 'react';
-
 import useSnapshotFormModal from './useSnapshotFormModal';
 import SnapshotFormModal from './SnapshotFormModal';
 

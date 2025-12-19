@@ -1,19 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SnapshotForm rendering render 1`] = `
-<ForemanForm
+<Formik
   enableReinitialize={false}
   initialValues={
     Object {
       "description": "",
       "includeRam": false,
       "name": "",
-      "snapshotMode": "",
       "useQuiesce": false,
     }
   }
-  onCancel={[Function]}
+  isInitialValid={false}
   onSubmit={[Function]}
+  validateOnBlur={true}
+  validateOnChange={true}
   validationSchema={
     ObjectSchema {
       "_blacklist": RefSet {
@@ -184,73 +185,25 @@ exports[`SnapshotForm rendering render 1`] = `
     }
   }
 >
-  <TextField
-    className=""
-    inputClassName="col-md-8"
-    label="Name"
-    name="name"
-    required="true"
-    type="text"
-  />
-  <TextField
-    className=""
-    inputClassName="col-md-8"
-    label="Description"
-    name="description"
-    required={false}
-    type="textarea"
-  />
-  <div
-    className="form-group"
-  >
-    <label
-      className="col-md-2 control-label"
-    >
-      Snapshot Mode
-      <FieldLevelHelp
-        buttonClass="field-help"
-        content="Select Snapshot Mode between mutually exclusive options, 'Memory' (includes RAM) and 'Quiesce'."
-        placement="top"
-        rootClose={true}
-      />
-    </label>
-    <div
-      className="col-md-8"
-    >
-      <select
-        className="common-select form-control"
-        onChange={[Function]}
-      >
-        <option
-          key=""
-          value=""
-        />
-        <option
-          key="Memory"
-          value="Memory"
-        >
-          Memory
-        </option>
-      </select>
-    </div>
-  </div>
-</ForemanForm>
+  <Component />
+</Formik>
 `;
 
 exports[`SnapshotForm rendering render with limitSnapshotNameFormat capability 1`] = `
-<ForemanForm
+<Formik
   enableReinitialize={false}
   initialValues={
     Object {
       "description": "",
       "includeRam": false,
       "name": "",
-      "snapshotMode": "",
       "useQuiesce": false,
     }
   }
-  onCancel={[Function]}
+  isInitialValid={false}
   onSubmit={[Function]}
+  validateOnBlur={true}
+  validateOnChange={true}
   validationSchema={
     ObjectSchema {
       "_blacklist": RefSet {
@@ -425,61 +378,12 @@ exports[`SnapshotForm rendering render with limitSnapshotNameFormat capability 1
     }
   }
 >
-  <TextField
-    className=""
-    inputClassName="col-md-8"
-    label="Name"
-    name="name"
-    required="true"
-    type="text"
-  />
-  <TextField
-    className=""
-    inputClassName="col-md-8"
-    label="Description"
-    name="description"
-    required={false}
-    type="textarea"
-  />
-  <div
-    className="form-group"
-  >
-    <label
-      className="col-md-2 control-label"
-    >
-      Snapshot Mode
-      <FieldLevelHelp
-        buttonClass="field-help"
-        content="Select Snapshot Mode between mutually exclusive options, 'Memory' (includes RAM) and 'Quiesce'."
-        placement="top"
-        rootClose={true}
-      />
-    </label>
-    <div
-      className="col-md-8"
-    >
-      <select
-        className="common-select form-control"
-        onChange={[Function]}
-      >
-        <option
-          key=""
-          value=""
-        />
-        <option
-          key="Memory"
-          value="Memory"
-        >
-          Memory
-        </option>
-      </select>
-    </div>
-  </div>
-</ForemanForm>
+  <Component />
+</Formik>
 `;
 
 exports[`SnapshotForm rendering render with optional Props 1`] = `
-<ForemanForm
+<Formik
   enableReinitialize={false}
   initialValues={
     Object {
@@ -488,8 +392,10 @@ exports[`SnapshotForm rendering render with optional Props 1`] = `
       "name": "Snapshot1",
     }
   }
-  onCancel={[Function]}
+  isInitialValid={false}
   onSubmit={[Function]}
+  validateOnBlur={true}
+  validateOnChange={true}
   validationSchema={
     ObjectSchema {
       "_blacklist": RefSet {
@@ -660,55 +566,6 @@ exports[`SnapshotForm rendering render with optional Props 1`] = `
     }
   }
 >
-  <TextField
-    className=""
-    inputClassName="col-md-8"
-    label="Name"
-    name="name"
-    required="true"
-    type="text"
-  />
-  <TextField
-    className=""
-    inputClassName="col-md-8"
-    label="Description"
-    name="description"
-    required={false}
-    type="textarea"
-  />
-  <div
-    className="form-group"
-  >
-    <label
-      className="col-md-2 control-label"
-    >
-      Snapshot Mode
-      <FieldLevelHelp
-        buttonClass="field-help"
-        content="Select Snapshot Mode between mutually exclusive options, 'Memory' (includes RAM) and 'Quiesce'."
-        placement="top"
-        rootClose={true}
-      />
-    </label>
-    <div
-      className="col-md-8"
-    >
-      <select
-        className="common-select form-control"
-        onChange={[Function]}
-      >
-        <option
-          key=""
-          value=""
-        />
-        <option
-          key="Memory"
-          value="Memory"
-        >
-          Memory
-        </option>
-      </select>
-    </div>
-  </div>
-</ForemanForm>
+  <Component />
+</Formik>
 `;
