@@ -3,12 +3,27 @@
 module Api
   module V2
     class BulkSnapshotsController < V2::BaseController
-      SNAPSHOT_MODES = %w[full include_ram quiesce].freeze
+      include ::Api::V2::BulkHostsExtension
 
-      before_action :validate_hosts, :validate_snapshot, :validate_mode, only: :create
+      SNAPSHOT_MODES = ForemanSnapshotManagement::Extensions::BulkHostsManager::SNAPSHOT_MODES
+
+      before_action :validate_snapshot, :validate_mode, :find_snapshotable_hosts, only: :create
 
       api :POST, '/snapshots/bulk/create_snapshot', N_('Create snapshots for multiple hosts')
-      param :host_ids, Array, of: Integer, desc: N_('Array of host IDs to create snapshots for'), required: true
+
+      param :organization_id, :number, required: true, desc: N_('ID of the organization')
+
+      param :included, Hash, required: true, action_aware: true do
+        param :search, String, required: false,
+          desc: N_('Search string for hosts to perform an action on')
+        param :ids, Array, required: false,
+          desc: N_('List of host ids to perform an action on')
+      end
+
+      param :excluded, Hash, required: true, action_aware: true do
+        param :ids, Array, required: false,
+          desc: N_('List of host ids to exclude and not run an action on')
+      end
 
       param :snapshot, Hash, desc: N_('Snapshot parameters'), required: true do
         param :name, String, desc: N_('Name of the snapshot'), required: true
@@ -21,16 +36,20 @@ module Api
         required: false
 
       def create
-        include_ram, quiesce = resolve_mode(params[:mode])
-
-        results = @hosts.map do |host|
-          process_host(host, @snapshot_name, @snapshot_description, include_ram, quiesce)
-        end
+        results = ::BulkHostsManager.new(hosts: @hosts).create_snapshots(
+          name: @snapshot_name,
+          description: @snapshot_description,
+          mode: params[:mode]
+        )
 
         render_results(results)
       end
 
       private
+
+      def find_snapshotable_hosts
+        find_bulk_hosts(:create_snapshots, params)
+      end
 
       def validate_mode
         mode = params[:mode]
@@ -40,44 +59,6 @@ module Api
           json: {
             error: _('Invalid mode'),
             valid_modes: SNAPSHOT_MODES,
-          },
-          status: :unprocessable_entity
-        )
-        false
-      end
-
-      def validate_hosts
-        host_ids = params[:host_ids]
-
-        if host_ids.blank?
-          render(
-            json: { error: _('host_ids parameter is required and cannot be empty') },
-            status: :unprocessable_entity
-          )
-          return false
-        end
-
-        unless host_ids.is_a?(Array)
-          render(
-            json: { error: _('host_ids must be an array') },
-            status: :unprocessable_entity
-          )
-          return false
-        end
-
-        @requested_host_ids = host_ids.map(&:to_i)
-        resource_base = Host.authorized("#{action_permission}_snapshots".to_sym, Host).friendly
-        @hosts = resource_base.where(id: @requested_host_ids)
-
-        found_ids = @hosts.pluck(:id)
-        missing_ids = @requested_host_ids - found_ids
-
-        return true if missing_ids.empty?
-
-        render(
-          json: {
-            error: _('Some host_ids are invalid'),
-            invalid_ids: missing_ids,
           },
           status: :unprocessable_entity
         )
@@ -101,13 +82,7 @@ module Api
       def render_results(results)
         failed_hosts = results.select { |r| r[:status] == 'failed' }
         failed_count = failed_hosts.length
-
-        status =
-          if failed_count.zero?
-            :ok
-          else
-            :unprocessable_entity
-          end
+        status = failed_count.zero? ? :ok : :unprocessable_entity
 
         render(
           json: {
@@ -119,66 +94,6 @@ module Api
           },
           status: status
         )
-      end
-
-      def resolve_mode(mode)
-        case mode
-        when 'include_ram'
-          [true, false]
-        when 'quiesce'
-          [false, true]
-        else
-          [false, false]
-        end
-      end
-
-      def process_host(host, name, description, include_ram, quiesce)
-        snapshot = ForemanSnapshotManagement::Snapshot.new(
-          name: name,
-          description: description,
-          include_ram: include_ram,
-          quiesce: quiesce,
-          host: host
-        )
-
-        if snapshot.create
-          {
-            host_id: host.id,
-            host_name: host.name,
-            status: 'success',
-          }
-        else
-          errors = snapshot.errors.full_messages
-          errors << quiesce_error_message if quiesce
-
-          {
-            host_id: host.id,
-            host_name: host.name,
-            status: 'failed',
-            errors: errors,
-          }
-        end
-      rescue StandardError => e
-        Foreman::Logging.exception(
-          "Failed to create snapshot for host #{host.name} (ID: #{host.id})",
-          e
-        )
-        {
-          host_id: host.id,
-          host_name: host.name,
-          status: 'failed',
-          errors: [_('Snapshot creation failed: %s') % e.message],
-        }
-      end
-
-      def quiesce_error_message
-        _(
-          'Unable to create VMWare Snapshot with Quiesce. Check Power and VMWare Tools status.'
-        )
-      end
-
-      def action_permission
-        :create
       end
 
       def resource_class

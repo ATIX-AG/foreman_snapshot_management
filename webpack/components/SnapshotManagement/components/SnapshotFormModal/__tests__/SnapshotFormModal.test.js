@@ -9,8 +9,13 @@ import SnapshotFormModal from '../SnapshotFormModal';
 // const mockStore = configureStore([]);
 
 const setModalClosed = () => null;
+const fetchBulkParams = () => null;
 const fixtures = {
-  normal: { host: { id: 42, name: 'deep.thought' }, setModalClosed },
+  normal: {
+    host: { id: 42, name: 'deep.thought' },
+    setModalClosed,
+    fetchBulkParams,
+  },
 };
 
 describe('SnapshotFormModal', () => {
