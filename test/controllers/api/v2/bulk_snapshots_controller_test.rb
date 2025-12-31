@@ -55,7 +55,15 @@ class Api::V2::BulkSnapshotsControllerTest < ActionController::TestCase
   setup { ::Fog.mock! }
   teardown { ::Fog.unmock! }
 
-  context 'view user without create permissions' do
+  def bulk_params(ids:)
+    {
+      :organization_id => tax_organization.id,
+      :included => { :ids => ids },
+      :excluded => { :ids => [] },
+    }
+  end
+
+  context 'user without edit_hosts permissions (bulk selection gate)' do
     setup do
       host1
       host2
@@ -67,11 +75,10 @@ class Api::V2::BulkSnapshotsControllerTest < ActionController::TestCase
       User.current = @orig_user
     end
 
-    test 'should refute create bulk snapshots without permission' do
-      post :create, params: {
-        :host_ids => [host1.id, host2.id],
-        :snapshot => { :name => 'test' },
-      }
+    test 'should forbid bulk snapshot create when user cannot bulk-select hosts' do
+      post :create, params: bulk_params(ids: [host1.id, host2.id]).merge(
+        :snapshot => { :name => 'test' }
+      )
       assert_response :forbidden
     end
   end
@@ -83,6 +90,8 @@ class Api::V2::BulkSnapshotsControllerTest < ActionController::TestCase
       host_without_compute
       @orig_user = User.current
       User.current = manager_user
+
+      ForemanSnapshotManagement::Snapshot.any_instance.stubs(:create).returns(true)
     end
 
     teardown do
@@ -90,97 +99,44 @@ class Api::V2::BulkSnapshotsControllerTest < ActionController::TestCase
     end
 
     test 'should return 422 when snapshot parameter is missing' do
-      post :create, params: { :host_ids => [host1.id, host2.id] }
+      post :create, params: bulk_params(ids: [host1.id, host2.id])
       assert_response :unprocessable_entity
       body = ActiveSupport::JSON.decode(@response.body)
       assert_includes body['error'], 'snapshot.name is required'
     end
 
     test 'should return 422 when snapshot name is missing' do
-      post :create, params: {
-        :host_ids => [host1.id, host2.id],
-        :snapshot => { :description => 'test description' },
-      }
+      post :create, params: bulk_params(ids: [host1.id, host2.id]).merge(
+        :snapshot => { :description => 'test description' }
+      )
       assert_response :unprocessable_entity
       body = ActiveSupport::JSON.decode(@response.body)
       assert_includes body['error'], 'snapshot.name is required'
     end
 
     test 'should return 422 when snapshot name is empty string' do
-      post :create, params: {
-        :host_ids => [host1.id, host2.id],
-        :snapshot => { :name => '' },
-      }
+      post :create, params: bulk_params(ids: [host1.id, host2.id]).merge(
+        :snapshot => { :name => '' }
+      )
       assert_response :unprocessable_entity
       body = ActiveSupport::JSON.decode(@response.body)
       assert_includes body['error'], 'snapshot.name is required'
     end
 
     test 'should return 422 when snapshot name is only whitespace' do
-      post :create, params: {
-        :host_ids => [host1.id, host2.id],
-        :snapshot => { :name => '   ' },
-      }
+      post :create, params: bulk_params(ids: [host1.id, host2.id]).merge(
+        :snapshot => { :name => '   ' }
+      )
       assert_response :unprocessable_entity
       body = ActiveSupport::JSON.decode(@response.body)
       assert_includes body['error'], 'snapshot.name is required'
     end
 
-    test 'should return error when host_ids parameter is missing' do
-      post :create, params: { :snapshot => { :name => 'test' } }
-      assert_response :unprocessable_entity
-      body = ActiveSupport::JSON.decode(@response.body)
-      assert_includes body['error'], 'host_ids'
-    end
-
-    test 'should return error when host_ids is empty array' do
-      post :create, params: {
-        :host_ids => [],
-        :snapshot => { :name => 'test' },
-      }
-      assert_response :unprocessable_entity
-      body = ActiveSupport::JSON.decode(@response.body)
-      assert_includes body['error'], 'host_ids'
-    end
-
-    test 'should return error when host_ids contains non-existent IDs' do
-      post :create, params: {
-        :host_ids => [99_999, 88_888],
-        :snapshot => { :name => 'test' },
-      }
-      assert_response :unprocessable_entity
-      body = ActiveSupport::JSON.decode(@response.body)
-      assert_includes body['error'], 'host_ids'
-    end
-
-    test 'should return error when some host_ids are invalid' do
-      post :create, params: {
-        :host_ids => [host1.id, 99_999],
-        :snapshot => { :name => 'test' },
-      }
-
-      assert_response :unprocessable_entity
-      body = ActiveSupport::JSON.decode(@response.body)
-      assert_includes body['error'], 'Some host_ids are invalid'
-      assert_equal [99_999], body['invalid_ids']
-    end
-
-    test 'should return error when host_ids is not an array' do
-      post :create, params: {
-        :host_ids => 'not-an-array',
-        :snapshot => { :name => 'test' },
-      }
-      assert_response :unprocessable_entity
-      body = ActiveSupport::JSON.decode(@response.body)
-      assert_includes body['error'], 'host_ids'
-    end
-
     test 'should create snapshots with include_ram mode' do
-      post :create, params: {
-        :host_ids => [host1.id],
+      post :create, params: bulk_params(ids: [host1.id]).merge(
         :snapshot => { :name => 'test_with_ram' },
-        :mode => 'include_ram',
-      }
+        :mode => 'include_ram'
+      )
       assert_response :ok
       body = ActiveSupport::JSON.decode(@response.body)
       assert_equal 1, body['total']
@@ -188,11 +144,10 @@ class Api::V2::BulkSnapshotsControllerTest < ActionController::TestCase
     end
 
     test 'should create snapshots with full mode' do
-      post :create, params: {
-        :host_ids => [host1.id],
+      post :create, params: bulk_params(ids: [host1.id]).merge(
         :snapshot => { :name => 'test_without_ram' },
-        :mode => 'full',
-      }
+        :mode => 'full'
+      )
       assert_response :ok
       body = ActiveSupport::JSON.decode(@response.body)
       assert_equal 1, body['total']
@@ -200,11 +155,10 @@ class Api::V2::BulkSnapshotsControllerTest < ActionController::TestCase
     end
 
     test 'should create snapshots with quiesce mode' do
-      post :create, params: {
-        :host_ids => [host1.id],
+      post :create, params: bulk_params(ids: [host1.id]).merge(
         :snapshot => { :name => 'test_quiesce' },
-        :mode => 'quiesce',
-      }
+        :mode => 'quiesce'
+      )
       assert_response :ok
       body = ActiveSupport::JSON.decode(@response.body)
       assert_equal 1, body['total']
@@ -212,23 +166,17 @@ class Api::V2::BulkSnapshotsControllerTest < ActionController::TestCase
     end
 
     test 'should return 422 when mode is invalid' do
-      post :create, params: {
-        :host_ids => [host1.id],
+      post :create, params: bulk_params(ids: [host1.id]).merge(
         :snapshot => { :name => 'invalid_mode_snapshot' },
-        :mode => 'invalid_mode',
-      }
-
+        :mode => 'invalid_mode'
+      )
       assert_response :unprocessable_entity
     end
 
     test 'should successfully create snapshot for single host' do
-      post :create, params: {
-        :host_ids => [host1.id],
-        :snapshot => {
-          :name => 'successful_snapshot',
-          :description => 'Test description',
-        },
-      }
+      post :create, params: bulk_params(ids: [host1.id]).merge(
+        :snapshot => { :name => 'successful_snapshot', :description => 'Test description' }
+      )
       assert_response :ok
       body = ActiveSupport::JSON.decode(@response.body)
       assert_equal 1, body['total']
@@ -241,41 +189,31 @@ class Api::V2::BulkSnapshotsControllerTest < ActionController::TestCase
     end
 
     test 'should successfully create snapshots for multiple hosts' do
-      post :create, params: {
-        :host_ids => [host1.id, host2.id],
-        :snapshot => {
-          :name => 'bulk_snapshot',
-          :description => 'Bulk test',
-        },
-      }
+      post :create, params: bulk_params(ids: [host1.id, host2.id]).merge(
+        :snapshot => { :name => 'bulk_snapshot', :description => 'Bulk test' }
+      )
       assert_response :ok
       body = ActiveSupport::JSON.decode(@response.body)
       assert_equal 2, body['total']
       assert_equal 2, body['success_count']
       assert_equal 0, body['failed_count']
-
       statuses = body['results'].map { |r| r['status'] }
       assert_equal ['success', 'success'], statuses
     end
 
     test 'should include snapshot description in request' do
-      post :create, params: {
-        :host_ids => [host1.id],
-        :snapshot => {
-          :name => 'test',
-          :description => 'Detailed description here',
-        },
-      }
+      post :create, params: bulk_params(ids: [host1.id]).merge(
+        :snapshot => { :name => 'test', :description => 'Detailed description here' }
+      )
       assert_response :ok
       body = ActiveSupport::JSON.decode(@response.body)
       assert_equal 1, body['success_count']
     end
 
     test 'should handle snapshot without description' do
-      post :create, params: {
-        :host_ids => [host1.id],
-        :snapshot => { :name => 'test' },
-      }
+      post :create, params: bulk_params(ids: [host1.id]).merge(
+        :snapshot => { :name => 'test' }
+      )
       assert_response :ok
       body = ActiveSupport::JSON.decode(@response.body)
       assert_equal 1, body['success_count']
@@ -287,10 +225,9 @@ class Api::V2::BulkSnapshotsControllerTest < ActionController::TestCase
         OpenStruct.new(full_messages: ['Snapshot creation failed'])
       )
 
-      post :create, params: {
-        :host_ids => [host1.id],
-        :snapshot => { :name => 'failing_snapshot' },
-      }
+      post :create, params: bulk_params(ids: [host1.id]).merge(
+        :snapshot => { :name => 'failing_snapshot' }
+      )
       assert_response :unprocessable_entity
       body = ActiveSupport::JSON.decode(@response.body)
       assert_equal 1, body['total']
@@ -305,10 +242,9 @@ class Api::V2::BulkSnapshotsControllerTest < ActionController::TestCase
         StandardError.new('Unexpected error')
       )
 
-      post :create, params: {
-        :host_ids => [host1.id],
-        :snapshot => { :name => 'exception_snapshot' },
-      }
+      post :create, params: bulk_params(ids: [host1.id]).merge(
+        :snapshot => { :name => 'exception_snapshot' }
+      )
       assert_response :unprocessable_entity
       body = ActiveSupport::JSON.decode(@response.body)
       assert_equal 1, body['total']
@@ -323,10 +259,9 @@ class Api::V2::BulkSnapshotsControllerTest < ActionController::TestCase
         OpenStruct.new(full_messages: ['Error message'])
       )
 
-      post :create, params: {
-        :host_ids => [host1.id],
-        :snapshot => { :name => 'test' },
-      }
+      post :create, params: bulk_params(ids: [host1.id]).merge(
+        :snapshot => { :name => 'test' }
+      )
       body = ActiveSupport::JSON.decode(@response.body)
 
       assert_nil body['results'].first['errors']
@@ -335,15 +270,14 @@ class Api::V2::BulkSnapshotsControllerTest < ActionController::TestCase
     end
 
     test 'should handle mixed success and failure results' do
-      ForemanSnapshotManagement::Snapshot.any_instance.stubs(:create).returns(true).then.returns(false)
+      ForemanSnapshotManagement::Snapshot.any_instance.stubs(:create).returns(true, false)
       ForemanSnapshotManagement::Snapshot.any_instance.stubs(:errors).returns(
         OpenStruct.new(full_messages: ['Failed for this host'])
       )
 
-      post :create, params: {
-        :host_ids => [host1.id, host2.id],
-        :snapshot => { :name => 'mixed_results' },
-      }
+      post :create, params: bulk_params(ids: [host1.id, host2.id]).merge(
+        :snapshot => { :name => 'mixed_results' }
+      )
       assert_response :unprocessable_entity
       body = ActiveSupport::JSON.decode(@response.body)
       assert_equal 2, body['total']
@@ -355,26 +289,23 @@ class Api::V2::BulkSnapshotsControllerTest < ActionController::TestCase
     test 'should return 422 when any host fails' do
       ForemanSnapshotManagement::Snapshot.any_instance.stubs(:create).returns(false)
 
-      post :create, params: {
-        :host_ids => [host1.id, host2.id],
-        :snapshot => { :name => 'test' },
-      }
+      post :create, params: bulk_params(ids: [host1.id, host2.id]).merge(
+        :snapshot => { :name => 'test' }
+      )
       assert_response :unprocessable_entity
     end
 
     test 'should return 200 when all hosts succeed' do
-      post :create, params: {
-        :host_ids => [host1.id, host2.id],
-        :snapshot => { :name => 'test' },
-      }
+      post :create, params: bulk_params(ids: [host1.id, host2.id]).merge(
+        :snapshot => { :name => 'test' }
+      )
       assert_response :ok
     end
 
     test 'should handle host without compute resource' do
-      post :create, params: {
-        :host_ids => [host_without_compute.id],
-        :snapshot => { :name => 'test' },
-      }
+      post :create, params: bulk_params(ids: [host_without_compute.id]).merge(
+        :snapshot => { :name => 'test' }
+      )
       assert_response :unprocessable_entity
       body = ActiveSupport::JSON.decode(@response.body)
       assert_equal 1, body['total']
@@ -383,10 +314,9 @@ class Api::V2::BulkSnapshotsControllerTest < ActionController::TestCase
     end
 
     test 'should handle mix of hosts with and without compute resources' do
-      post :create, params: {
-        :host_ids => [host1.id, host_without_compute.id],
-        :snapshot => { :name => 'test' },
-      }
+      post :create, params: bulk_params(ids: [host1.id, host_without_compute.id]).merge(
+        :snapshot => { :name => 'test' }
+      )
       assert_response :unprocessable_entity
       body = ActiveSupport::JSON.decode(@response.body)
       assert_equal 2, body['total']
@@ -399,11 +329,10 @@ class Api::V2::BulkSnapshotsControllerTest < ActionController::TestCase
         OpenStruct.new(full_messages: ['Underlying quiesce failure'])
       )
 
-      post :create, params: {
-        :host_ids => [host1.id, host2.id],
+      post :create, params: bulk_params(ids: [host1.id, host2.id]).merge(
         :snapshot => { :name => 'test_quiesce_fail' },
-        :mode => 'quiesce',
-      }
+        :mode => 'quiesce'
+      )
 
       assert_response :unprocessable_entity
       body = ActiveSupport::JSON.decode(@response.body)

@@ -91,6 +91,8 @@ module ForemanSnapshotManagement
     # Include concerns in this config.to_prepare block
     config.to_prepare do
       begin
+        ::BulkHostsManager.include ForemanSnapshotManagement::Extensions::BulkHostsManager
+
         ::ForemanFogProxmox::Proxmox.prepend ForemanSnapshotManagement::ProxmoxExtensions
 
         # Load Fog extensions

@@ -30,6 +30,7 @@ exports[`SnapshotFormModal renders normal 1`] = `
     </TextContent>
   </ForemanModalHeader>
   <WrappedSnapshotForm
+    fetchBulkParams={[Function]}
     host={
       Object {
         "id": 42,

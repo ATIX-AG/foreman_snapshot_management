@@ -11,6 +11,7 @@ const SnapshotFormModal = ({
   selectedHostsCount,
   setModalClosed,
   host,
+  fetchBulkParams,
   ...props
 }) => {
   const displayCount = selectedHostsCount === 0 ? 1 : selectedHostsCount;
@@ -50,6 +51,7 @@ const SnapshotFormModal = ({
           setModalClosed={setModalClosed}
           selectedHosts={selectedHosts}
           host={host}
+          fetchBulkParams={fetchBulkParams}
           {...props}
         />
       )}
@@ -76,6 +78,7 @@ SnapshotFormModal.propTypes = {
       quiesceOption: PropTypes.bool,
     }),
   }),
+  fetchBulkParams: PropTypes.func.isRequired,
 };
 
 SnapshotFormModal.defaultProps = {

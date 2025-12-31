@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import { API, actionTypeGenerator } from 'foremanReact/redux/API';
 import { sprintf, translate as __ } from 'foremanReact/common/I18n';
 import { addToast } from 'foremanReact/components/ToastsList';
@@ -213,6 +214,61 @@ export const snapshotRollbackAction = (host, rowData) => async dispatch => {
   }
 };
 
+const buildHostsSearchHref = query =>
+  `/new/hosts?search=${encodeURIComponent(query)}`;
+
+const failedHostsToastParams = ({ message, failedHostIds, key }) => {
+  const { FAILURE } = actionTypeGenerator(key);
+
+  const toastParams = {
+    type: 'danger',
+    message,
+    key: FAILURE,
+  };
+
+  if (failedHostIds?.length > 1) {
+    const query = `id ^ (${failedHostIds.join(',')})`;
+    toastParams.link = {
+      children: __('Failed hosts'),
+      href: buildHostsSearchHref(query),
+    };
+  }
+
+  return toastParams;
+};
+
+const buildEnhancedErrorMessage = ({
+  successCount,
+  failedCount,
+  failedHosts,
+  total,
+}) => {
+  const uniqueErrors = [
+    ...new Set(
+      (failedHosts || []).flatMap(h => h.errors || []).filter(Boolean)
+    ),
+  ];
+
+  if (total === 1) {
+    return uniqueErrors.length > 0
+      ? uniqueErrors.join(' ')
+      : __('Snapshot creation failed.');
+  }
+
+  const base = sprintf(
+    successCount === 1
+      ? __('%d snapshot succeeded, %d failed.')
+      : __('%d snapshots succeeded, %d failed.'),
+    successCount,
+    failedCount
+  );
+
+  const extra = uniqueErrors.length
+    ? ` ${uniqueErrors.slice(0, 2).join(' ')}`
+    : '';
+  return `${base}${extra}`;
+};
+
 export const bulkCreateSnapshotsAction = payload => async dispatch => {
   const { REQUEST, SUCCESS, FAILURE } = actionTypeGenerator(
     SNAPSHOT_BULK_CREATE
@@ -222,37 +278,50 @@ export const bulkCreateSnapshotsAction = payload => async dispatch => {
 
   try {
     const { data } = await API.post(SNAPSHOT_BULK_CREATE_URL, payload);
+    const total = data.total || 0;
+    const successMessage =
+      total === 1
+        ? __('Successfully triggered snapshot creation')
+        : __('Successfully triggered bulk snapshot creation');
 
     dispatch(
       addToast({
         type: 'success',
-        message: __('Successfully triggered bulk snapshot creation'),
+        message: successMessage,
         key: SUCCESS,
       })
     );
 
+    if (payload.hostId) {
+      dispatch(loadSnapshotList(payload.hostId));
+    }
+
     return dispatch({ type: SUCCESS, payload, response: data });
   } catch (error) {
-    const data = error?.response?.data;
-    const failedCount = data?.['failed_count'] || 0;
-    const successCount = data?.['success_count'] || 0;
+    const data = error?.response?.data || {};
+
+    const failedHosts = data.failed_hosts || [];
+    const failedHostIds = failedHosts.map(h => h.host_id).filter(Boolean);
+
+    const failedCount = data.failed_count || failedHosts.length || 0;
+    const successCount = data.success_count || 0;
+    const total = data.total || 0;
+
+    const message = buildEnhancedErrorMessage({
+      successCount,
+      failedCount,
+      failedHosts,
+      total,
+    });
 
     dispatch(
-      addToast({
-        type: 'error',
-        message: sprintf(
-          successCount === 1
-            ? __(
-                '%d snapshot succeeded, %d failed. Check production logs for details.'
-              )
-            : __(
-                '%d snapshots succeeded, %d failed. Check production logs for details.'
-              ),
-          successCount,
-          failedCount
-        ),
-        key: FAILURE,
-      })
+      addToast(
+        failedHostsToastParams({
+          message,
+          failedHostIds,
+          key: SNAPSHOT_BULK_CREATE,
+        })
+      )
     );
 
     return dispatch({

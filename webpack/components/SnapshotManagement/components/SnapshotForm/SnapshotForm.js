@@ -30,7 +30,9 @@ const SnapshotForm = ({
   onSubmit,
   selectedHosts,
   setModalClosed,
+  fetchBulkParams,
   host,
+  selectAllMode,
 }) => {
   let nameValidation = Yup.string().max(80, 'Too Long!');
   if (capabilities.limitSnapshotNameFormat)
@@ -55,16 +57,17 @@ const SnapshotForm = ({
   const [snapshotMode, setSnapshotMode] = useState('');
   const [isSelectOpen, setIsSelectOpen] = useState(false);
 
-  const allSelectedSupportQuiesce =
+  const singleHostSupportsQuiesce = host?.capabilities?.quiesceOption;
+
+  const selectedHostsSupportsQuiesce =
+    !selectAllMode &&
     selectedHosts?.length > 0 &&
     selectedHosts.every(h =>
       h.capabilities?.includes('snapshot_include_quiesce')
     );
 
-  const singleHostSupportsQuiesce = host?.capabilities?.quiesceOption;
-
   const canSupportQuiesce =
-    allSelectedSupportQuiesce || singleHostSupportsQuiesce;
+    selectAllMode || singleHostSupportsQuiesce || selectedHostsSupportsQuiesce;
 
   const options = [
     { label: '', value: '' },
@@ -101,25 +104,15 @@ const SnapshotForm = ({
         },
       };
 
-      const hostsIds =
-        Array.isArray(selectedHosts) && selectedHosts.length > 0
-          ? selectedHosts.map(h => h.id)
-          : [];
-
       const singleHostId = host?.id;
 
-      let ids = [];
-      if (hostsIds.length > 0) {
-        ids = hostsIds;
-      } else if (singleHostId) {
-        ids = [singleHostId];
-      }
-
-      if (ids.length === 0) {
-        actions.setSubmitting(false);
-        return;
-      }
-      const payload = { host_ids: ids, ...submitValues };
+      const payload = {
+        included: {
+          search: host ? `id = ${singleHostId}` : fetchBulkParams(),
+        },
+        ...(singleHostId && { hostId: singleHostId }),
+        ...submitValues,
+      };
       await onSubmit(payload, actions);
     } catch (error) {
       if (actions.setStatus) {
@@ -218,6 +211,16 @@ const SnapshotForm = ({
                     </SelectList>
                   </Select>
 
+                  {selectAllMode && capabilities.quiesceOption && (
+                    <HelperText isLiveRegion className="pf-v5-u-mt-xs">
+                      <HelperTextItem variant="warning">
+                        {__(
+                          'Warning: In Select All mode, we cannot guarantee that all hosts support the quiesce option as the data is not available. If a host does not support quiesce, the snapshot creation may fail for that host.'
+                        )}
+                      </HelperTextItem>
+                    </HelperText>
+                  )}
+
                   {!canSupportQuiesce && capabilities.quiesceOption && (
                     <HelperText isLiveRegion className="pf-v5-u-mt-xs">
                       <HelperTextItem variant="error">
@@ -298,6 +301,8 @@ SnapshotForm.propTypes = {
       quiesceOption: PropTypes.bool,
     }),
   }),
+  fetchBulkParams: PropTypes.func.isRequired,
+  selectAllMode: PropTypes.bool,
 };
 
 SnapshotForm.defaultProps = {
@@ -314,6 +319,7 @@ SnapshotForm.defaultProps = {
   },
   selectedHosts: [],
   host: null,
+  selectAllMode: false,
 };
 
 export default SnapshotForm;
