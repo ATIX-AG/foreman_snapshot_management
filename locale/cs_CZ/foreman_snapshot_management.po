@@ -10,7 +10,7 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_snapshot_management 3.0.1\n"
+"Project-Id-Version: foreman_snapshot_management 4.1.1\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2019-10-22 11:54+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2022\n"

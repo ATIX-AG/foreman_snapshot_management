@@ -3,10 +3,10 @@
   "locale_data": {
     "foreman_snapshot_management": {
       "": {
-        "Project-Id-Version": "foreman_snapshot_management 3.0.1",
+        "Project-Id-Version": "foreman_snapshot_management 4.1.1",
         "Report-Msgid-Bugs-To": "",
         "PO-Revision-Date": "2019-10-22 11:54+0000",
-        "Last-Translator": "Efstathios Iosifidis <iefstathios@gmail.com>, 2022",
+        "Last-Translator": "Efstathios Iosifidis <eiosifidis@gmail.com>, 2022",
         "Language-Team": "Greek (https://app.transifex.com/foreman/teams/114/el/)",
         "MIME-Version": "1.0",
         "Content-Type": "text/plain; charset=UTF-8",

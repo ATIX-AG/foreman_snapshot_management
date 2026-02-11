@@ -1,0 +1,288 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the foreman_snapshot_management package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: foreman_snapshot_management 4.1.1\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2026-02-11 19:31+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+msgid "%d snapshot succeeded, %d failed."
+msgstr ""
+
+msgid "%d snapshots succeeded, %d failed."
+msgstr ""
+
+msgid "%s host is selected for snapshot creation"
+msgstr ""
+
+msgid "%s hosts are selected for snapshot creation"
+msgstr ""
+
+msgid "Action"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Create"
+msgstr ""
+
+msgid "Create Snapshot"
+msgstr ""
+
+msgid "Create a snapshot"
+msgstr ""
+
+msgid "Create snapshot"
+msgstr ""
+
+msgid "Create snapshots for multiple hosts"
+msgstr ""
+
+msgid "Created %{snapshots} for %{num} %{hosts}"
+msgstr ""
+
+msgid "Creating..."
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+msgid "Delete Snapshot \\\"%s\\\"?"
+msgstr ""
+
+msgid "Delete a snapshot"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "Description of the snapshot"
+msgstr ""
+
+msgid "Description of this snapshot"
+msgstr ""
+
+msgid "Error occurred while creating Snapshot for:%s"
+msgstr ""
+
+msgid "Error occurred while creating Snapshot: %s"
+msgstr ""
+
+msgid "Error occurred while removing Snapshot: %s"
+msgstr ""
+
+msgid "Error occurred while rolling back VM: %s"
+msgstr ""
+
+msgid "Error occurred while updating Snapshot: %s"
+msgstr ""
+
+msgid "Failed hosts"
+msgstr ""
+
+msgid "Failed to load snapshot list"
+msgstr ""
+
+msgid "Failed to update Snapshot: %s"
+msgstr ""
+
+msgid "Foreman-plugin to manage snapshots in a virtual-hardware environments."
+msgstr ""
+
+msgid "Host has no UUID, cannot create snapshot."
+msgstr ""
+
+msgid "Host has no compute resource, cannot create snapshot."
+msgstr ""
+
+msgid "ID of the organization"
+msgstr ""
+
+msgid "Include RAM"
+msgstr ""
+
+msgid "Invalid mode"
+msgstr ""
+
+msgid "List all snapshots"
+msgstr ""
+
+msgid "List of host ids to exclude and not run an action on"
+msgstr ""
+
+msgid "List of host ids to perform an action on"
+msgstr ""
+
+msgid "Loading Snapshots information ..."
+msgstr ""
+
+msgid "N/A"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "Name must contain at least 2 characters starting with alphabet. Valid characters are A-Z a-z 0-9 _"
+msgstr ""
+
+msgid "Name of the snapshot"
+msgstr ""
+
+msgid "Name of this snapshot"
+msgstr ""
+
+msgid "No capable hosts found."
+msgstr ""
+
+msgid "No capable hosts selected"
+msgstr ""
+
+msgid "No hosts were found with that id, name or query filter"
+msgstr ""
+
+msgid "None"
+msgstr ""
+
+msgid "Note: Not all selected hosts support quiesce. The quiesce option is disabled."
+msgstr ""
+
+msgid "Quiesce"
+msgstr ""
+
+msgid "Revert Host to a snapshot"
+msgstr ""
+
+msgid "Rollback"
+msgstr ""
+
+msgid "Rollback to \\\"%s\\\"?"
+msgstr ""
+
+msgid "Search string for hosts to perform an action on"
+msgstr ""
+
+msgid "Select Snapshot Mode between mutually exclusive options, 'Memory' (includes RAM) and 'Quiesce'."
+msgstr ""
+
+msgid "Select Snapshot Mode between mutually exclusive options."
+msgstr ""
+
+msgid "Select snapshot mode"
+msgstr ""
+
+msgid "Snapshot"
+msgid_plural "Snapshots"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Snapshot Mode"
+msgstr ""
+
+msgid "Snapshot creation failed."
+msgstr ""
+
+msgid "Snapshot creation failed: %s"
+msgstr ""
+
+msgid "Snapshot mode"
+msgstr ""
+
+msgid "Snapshot mode: full (default), include_ram, or quiesce"
+msgstr ""
+
+msgid "Snapshot name cannot be changed"
+msgstr ""
+
+msgid "Snapshot parameters"
+msgstr ""
+
+msgid "Snapshots"
+msgstr ""
+
+msgid "Something went wrong while selecting hosts - %s"
+msgstr ""
+
+msgid "Successfully removed Snapshot \\\"%s\\\" from host %s"
+msgstr ""
+
+msgid "Successfully rolled back Snapshot \\\"%s\\\" on host %s"
+msgstr ""
+
+msgid "Successfully triggered bulk snapshot creation"
+msgstr ""
+
+msgid "Successfully triggered snapshot creation"
+msgstr ""
+
+msgid "Successfully updated Snapshot \\\"%s\\\""
+msgstr ""
+
+msgid "Unable to create Proxmox Snapshot"
+msgstr ""
+
+msgid "Unable to create VMWare Snapshot"
+msgstr ""
+
+msgid "Unable to create VMWare Snapshot with Quiesce. Check Power and VMWare Tools status."
+msgstr ""
+
+msgid "Unable to create VMWare Snapshot. Cannot set both Memory and Quiesce options."
+msgstr ""
+
+msgid "Unable to remove Proxmox Snapshot"
+msgstr ""
+
+msgid "Unable to remove VMWare Snapshot"
+msgstr ""
+
+msgid "Unable to revert Proxmox Snapshot"
+msgstr ""
+
+msgid "Unable to revert VMWare Snapshot"
+msgstr ""
+
+msgid "Unable to update Proxmox Snapshot"
+msgstr ""
+
+msgid "Unable to update VMWare Snapshot"
+msgstr ""
+
+msgid "Update a snapshot"
+msgstr ""
+
+msgid "VM details could not be retrieved from compute resource %s. The VM may be missing/deleted or inaccessible."
+msgstr ""
+
+msgid "VM successfully rolled back."
+msgstr ""
+
+msgid "Warning: In Select All mode, we cannot guarantee that all hosts support the quiesce option as the data is not available. If a host does not support quiesce, the snapshot creation may fail for that host."
+msgstr ""
+
+msgid "Whether to include the Quiesce state in the snapshot"
+msgstr ""
+
+msgid "Whether to include the RAM state in the snapshot"
+msgstr ""
+
+msgid "edit entry"
+msgstr ""
+
+msgid "host"
+msgid_plural "hosts"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "snapshot.name is required"
+msgstr ""

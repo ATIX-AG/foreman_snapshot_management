@@ -4,15 +4,15 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# Efstathios Iosifidis <iefstathios@gmail.com>, 2022
+# Efstathios Iosifidis <eiosifidis@gmail.com>, 2022
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_snapshot_management 3.0.1\n"
+"Project-Id-Version: foreman_snapshot_management 4.1.1\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2019-10-22 11:54+0000\n"
-"Last-Translator: Efstathios Iosifidis <iefstathios@gmail.com>, 2022\n"
+"Last-Translator: Efstathios Iosifidis <eiosifidis@gmail.com>, 2022\n"
 "Language-Team: Greek (https://app.transifex.com/foreman/teams/114/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
