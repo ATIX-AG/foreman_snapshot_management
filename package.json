@@ -1,7 +1,7 @@
 {
   "name": "foreman_snapshot_management",
   "version": "3.0.0",
-  "description": "Foreman-plugin to manage snapshots in a virtual-hardware environments.",
+  "description": "Foreman plugin to manage snapshots of virtual machines.",
   "main": "index.js",
   "scripts": {
     "lint": "tfm-lint --plugin -d /webpack",
