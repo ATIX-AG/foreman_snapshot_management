@@ -1,6 +1,6 @@
 {
   "name": "foreman_snapshot_management",
-  "version": "3.0.0",
+  "version": "4.2.1",
   "description": "Foreman plugin to manage snapshots of virtual machines.",
   "main": "index.js",
   "scripts": {
