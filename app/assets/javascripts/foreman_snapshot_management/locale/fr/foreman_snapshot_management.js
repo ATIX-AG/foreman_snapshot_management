@@ -3,7 +3,7 @@
   "locale_data": {
     "foreman_snapshot_management": {
       "": {
-        "Project-Id-Version": "foreman_snapshot_management 4.1.1",
+        "Project-Id-Version": "foreman_snapshot_management 4.2.1",
         "Report-Msgid-Bugs-To": "",
         "PO-Revision-Date": "2019-10-22 11:54+0000",
         "Last-Translator": "Amit Upadhye <aupadhye@redhat.com>, 2023",
@@ -17,32 +17,59 @@
         "domain": "foreman_snapshot_management",
         "plural_forms": "nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
       },
+      "%d snapshot succeeded, %d failed.": [
+        ""
+      ],
+      "%d snapshots succeeded, %d failed.": [
+        ""
+      ],
+      "%s host is selected for snapshot creation": [
+        ""
+      ],
+      "%s hosts are selected for snapshot creation": [
+        ""
+      ],
       "Action": [
         "Action"
+      ],
+      "Cancel": [
+        ""
+      ],
+      "Create": [
+        ""
       ],
       "Create Snapshot": [
         "Créer un instantané"
       ],
-      "Create Snapshot for %s": [
-        "Créer un instantané pour %s"
-      ],
       "Create a snapshot": [
         "Créer un instantané"
+      ],
+      "Create snapshot": [
+        ""
+      ],
+      "Create snapshots for multiple hosts": [
+        ""
       ],
       "Created %{snapshots} for %{num} %{hosts}": [
         "Créé %{snapshots} pour %{num} %{hosts}"
       ],
+      "Creating...": [
+        ""
+      ],
       "Delete": [
         "Supprimer"
       ],
-      "Delete Snapshot \\\"%s\\\"?": [
-        "Supprimer l'instantané \\\"%s\\\" ?"
+      "Delete Snapshot \\\\\\\"%s\\\\\\\"?": [
+        ""
       ],
       "Delete a snapshot": [
         "Supprimer un instantané"
       ],
       "Description": [
         "Description"
+      ],
+      "Description of the snapshot": [
+        ""
       ],
       "Description of this snapshot": [
         "Description de cet instantané"
@@ -62,23 +89,44 @@
       "Error occurred while updating Snapshot: %s": [
         "Une erreur s'est produite lors de la mise à jour de l’instantané : %s"
       ],
+      "Failed hosts": [
+        ""
+      ],
       "Failed to load snapshot list": [
         "Échec du chargement de la liste des instantanés"
       ],
       "Failed to update Snapshot: %s": [
         "Échec de la mise à jour de l’instantané : %s"
       ],
-      "Foreman-plugin to manage snapshots in a virtual-hardware environments.": [
-        "Plugin Foreman pour gérer les instantanés dans un environnement de matériel virtuel."
+      "Foreman plugin to manage snapshots of virtual machines.": [
+        ""
+      ],
+      "Host has no UUID, cannot create snapshot.": [
+        ""
+      ],
+      "Host has no compute resource, cannot create snapshot.": [
+        ""
+      ],
+      "ID of the organization": [
+        ""
+      ],
+      "Include RAM": [
+        ""
+      ],
+      "Invalid mode": [
+        ""
       ],
       "List all snapshots": [
         "Liste de tous les instantanés"
       ],
+      "List of host ids to exclude and not run an action on": [
+        ""
+      ],
+      "List of host ids to perform an action on": [
+        ""
+      ],
       "Loading Snapshots information ...": [
         "Chargement des informations sur les instantanés ..."
-      ],
-      "Memory": [
-        "Mémoire"
       ],
       "N/A": [
         "Sans objet"
@@ -88,6 +136,9 @@
       ],
       "Name must contain at least 2 characters starting with alphabet. Valid characters are A-Z a-z 0-9 _": [
         "Le nom doit contenir au moins 2 caractères commençant par l'alphabet. Les caractères valides sont A-Z a-z 0-9 _"
+      ],
+      "Name of the snapshot": [
+        ""
       ],
       "Name of this snapshot": [
         "Nom de cet instantané"
@@ -101,6 +152,12 @@
       "No hosts were found with that id, name or query filter": [
         "Aucun hôte trouvé avec cet ID, ce nom ou filtre de requête"
       ],
+      "None": [
+        ""
+      ],
+      "Note: Not all selected hosts support quiesce. The quiesce option is disabled.": [
+        ""
+      ],
       "Quiesce": [
         ""
       ],
@@ -110,10 +167,19 @@
       "Rollback": [
         "Rollback"
       ],
-      "Rollback to \\\"%s\\\"?": [
-        "Retour à \\\"%s\\\" ?"
+      "Rollback to \\\\\\\"%s\\\\\\\"?": [
+        ""
+      ],
+      "Search string for hosts to perform an action on": [
+        ""
       ],
       "Select Snapshot Mode between mutually exclusive options, 'Memory' (includes RAM) and 'Quiesce'.": [
+        ""
+      ],
+      "Select Snapshot Mode between mutually exclusive options.": [
+        ""
+      ],
+      "Select snapshot mode": [
         ""
       ],
       "Snapshot": [
@@ -124,11 +190,23 @@
       "Snapshot Mode": [
         ""
       ],
+      "Snapshot creation failed.": [
+        ""
+      ],
+      "Snapshot creation failed: %s": [
+        ""
+      ],
+      "Snapshot mode": [
+        ""
+      ],
+      "Snapshot mode: full (default), include_ram, or quiesce": [
+        ""
+      ],
       "Snapshot name cannot be changed": [
         "Le nom de l’instantané ne peut pas être modifié"
       ],
-      "Snapshot successfully created!": [
-        "L’instantané a été créé avec succès."
+      "Snapshot parameters": [
+        ""
       ],
       "Snapshots": [
         "Instantanés"
@@ -136,14 +214,20 @@
       "Something went wrong while selecting hosts - %s": [
         "Une erreur s'est produite lors de la sélection des hôtes - %s"
       ],
-      "Successfully removed Snapshot \\\"%s\\\" from host %s": [
-        "L’instantané \\\"%s\\\" a été supprimé de l'hôte %s"
+      "Successfully removed Snapshot \\\\\\\"%s\\\\\\\" from host %s": [
+        ""
       ],
-      "Successfully rolled back Snapshot \\\"%s\\\" on host %s": [
-        "L’instantané \\\"%s\\\" sur l'hôte %s a été retiré avec succès"
+      "Successfully rolled back Snapshot \\\\\\\"%s\\\\\\\" on host %s": [
+        ""
       ],
-      "Successfully updated Snapshot \\\"%s\\\"": [
-        "La mise à jour de l’instantané \\\"%s\\\" a réussi"
+      "Successfully triggered bulk snapshot creation": [
+        ""
+      ],
+      "Successfully triggered snapshot creation": [
+        ""
+      ],
+      "Successfully updated Snapshot \\\\\\\"%s\\\\\\\"": [
+        ""
       ],
       "Unable to create Proxmox Snapshot": [
         "Impossible de créer un instantané de Proxmox"
@@ -178,8 +262,14 @@
       "Update a snapshot": [
         "Mise à jour d'un instantané"
       ],
+      "VM details could not be retrieved from compute resource %s. The VM may be missing/deleted or inaccessible.": [
+        ""
+      ],
       "VM successfully rolled back.": [
         "La VM a été reprise avec succès."
+      ],
+      "Warning: In Select All mode, we cannot guarantee that all hosts support the quiesce option as the data is not available. If a host does not support quiesce, the snapshot creation may fail for that host.": [
+        ""
       ],
       "Whether to include the Quiesce state in the snapshot": [
         "Si l'état de repos doit être inclus dans l'instantané"
@@ -194,6 +284,9 @@
         "hôte",
         "hôtes",
         "hôtes"
+      ],
+      "snapshot.name is required": [
+        ""
       ]
     }
   }

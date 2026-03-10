@@ -3,7 +3,7 @@
   "locale_data": {
     "foreman_snapshot_management": {
       "": {
-        "Project-Id-Version": "foreman_snapshot_management 4.1.1",
+        "Project-Id-Version": "foreman_snapshot_management 4.2.1",
         "Report-Msgid-Bugs-To": "",
         "PO-Revision-Date": "2019-10-22 11:54+0000",
         "Last-Translator": "Amit Upadhye <aupadhye@redhat.com>, 2022",
@@ -17,32 +17,59 @@
         "domain": "foreman_snapshot_management",
         "plural_forms": "nplurals=1; plural=0;"
       },
+      "%d snapshot succeeded, %d failed.": [
+        ""
+      ],
+      "%d snapshots succeeded, %d failed.": [
+        ""
+      ],
+      "%s host is selected for snapshot creation": [
+        ""
+      ],
+      "%s hosts are selected for snapshot creation": [
+        ""
+      ],
       "Action": [
         "操作"
+      ],
+      "Cancel": [
+        ""
+      ],
+      "Create": [
+        ""
       ],
       "Create Snapshot": [
         "创建快照"
       ],
-      "Create Snapshot for %s": [
-        "为 %s 创建快照"
-      ],
       "Create a snapshot": [
         "创建快照"
+      ],
+      "Create snapshot": [
+        ""
+      ],
+      "Create snapshots for multiple hosts": [
+        ""
       ],
       "Created %{snapshots} for %{num} %{hosts}": [
         "为 %{num} %{hosts} 创建的 %{snapshots}"
       ],
+      "Creating...": [
+        ""
+      ],
       "Delete": [
         "刪除"
       ],
-      "Delete Snapshot \\\"%s\\\"?": [
-        "删除快照 \\\"%s\\\"?"
+      "Delete Snapshot \\\\\\\"%s\\\\\\\"?": [
+        ""
       ],
       "Delete a snapshot": [
         "删除快照"
       ],
       "Description": [
         "描述"
+      ],
+      "Description of the snapshot": [
+        ""
       ],
       "Description of this snapshot": [
         "此快照的描述"
@@ -62,23 +89,44 @@
       "Error occurred while updating Snapshot: %s": [
         "更新快照时发生错误：%s"
       ],
+      "Failed hosts": [
+        ""
+      ],
       "Failed to load snapshot list": [
         "加载快照列表失败"
       ],
       "Failed to update Snapshot: %s": [
         "更新快照失败：%s"
       ],
-      "Foreman-plugin to manage snapshots in a virtual-hardware environments.": [
-        "Foreman-plugin，用于在虚拟硬件环境中管理快照。"
+      "Foreman plugin to manage snapshots of virtual machines.": [
+        ""
+      ],
+      "Host has no UUID, cannot create snapshot.": [
+        ""
+      ],
+      "Host has no compute resource, cannot create snapshot.": [
+        ""
+      ],
+      "ID of the organization": [
+        ""
+      ],
+      "Include RAM": [
+        ""
+      ],
+      "Invalid mode": [
+        ""
       ],
       "List all snapshots": [
         "列出所有快照"
       ],
+      "List of host ids to exclude and not run an action on": [
+        ""
+      ],
+      "List of host ids to perform an action on": [
+        ""
+      ],
       "Loading Snapshots information ...": [
         "加载快照信息..."
-      ],
-      "Memory": [
-        "内存"
       ],
       "N/A": [
         "不适用"
@@ -88,6 +136,9 @@
       ],
       "Name must contain at least 2 characters starting with alphabet. Valid characters are A-Z a-z 0-9 _": [
         "名称必须至少包含以字面开头的 2 个字符。有效字符为 A-Z a-z 0-9 _"
+      ],
+      "Name of the snapshot": [
+        ""
       ],
       "Name of this snapshot": [
         "此快照的名称"
@@ -101,6 +152,12 @@
       "No hosts were found with that id, name or query filter": [
         "未找到符合此 id、名称或者查询过滤器的主机"
       ],
+      "None": [
+        ""
+      ],
+      "Note: Not all selected hosts support quiesce. The quiesce option is disabled.": [
+        ""
+      ],
       "Quiesce": [
         ""
       ],
@@ -110,10 +167,19 @@
       "Rollback": [
         "回滚rollback"
       ],
-      "Rollback to \\\"%s\\\"?": [
-        "回滚到 \\\"%s\\\"?"
+      "Rollback to \\\\\\\"%s\\\\\\\"?": [
+        ""
+      ],
+      "Search string for hosts to perform an action on": [
+        ""
       ],
       "Select Snapshot Mode between mutually exclusive options, 'Memory' (includes RAM) and 'Quiesce'.": [
+        ""
+      ],
+      "Select Snapshot Mode between mutually exclusive options.": [
+        ""
+      ],
+      "Select snapshot mode": [
         ""
       ],
       "Snapshot": [
@@ -122,11 +188,23 @@
       "Snapshot Mode": [
         ""
       ],
+      "Snapshot creation failed.": [
+        ""
+      ],
+      "Snapshot creation failed: %s": [
+        ""
+      ],
+      "Snapshot mode": [
+        ""
+      ],
+      "Snapshot mode: full (default), include_ram, or quiesce": [
+        ""
+      ],
       "Snapshot name cannot be changed": [
         "无法更改快照名称"
       ],
-      "Snapshot successfully created!": [
-        "成功创建快照！"
+      "Snapshot parameters": [
+        ""
       ],
       "Snapshots": [
         "快照"
@@ -134,14 +212,20 @@
       "Something went wrong while selecting hosts - %s": [
         "选择主机时出错 - %s"
       ],
-      "Successfully removed Snapshot \\\"%s\\\" from host %s": [
-        "成功从主机 %s 中删除快照 \\\"%s\\\""
+      "Successfully removed Snapshot \\\\\\\"%s\\\\\\\" from host %s": [
+        ""
       ],
-      "Successfully rolled back Snapshot \\\"%s\\\" on host %s": [
-        "在主机 %s 上成功回滚快照 \\\"%s\\\""
+      "Successfully rolled back Snapshot \\\\\\\"%s\\\\\\\" on host %s": [
+        ""
       ],
-      "Successfully updated Snapshot \\\"%s\\\"": [
-        "成功更新快照 \\\"%s\\\""
+      "Successfully triggered bulk snapshot creation": [
+        ""
+      ],
+      "Successfully triggered snapshot creation": [
+        ""
+      ],
+      "Successfully updated Snapshot \\\\\\\"%s\\\\\\\"": [
+        ""
       ],
       "Unable to create Proxmox Snapshot": [
         "无法创建 Proxmox 快照"
@@ -176,8 +260,14 @@
       "Update a snapshot": [
         "更新快照"
       ],
+      "VM details could not be retrieved from compute resource %s. The VM may be missing/deleted or inaccessible.": [
+        ""
+      ],
       "VM successfully rolled back.": [
         "虚拟机成功回滚。"
+      ],
+      "Warning: In Select All mode, we cannot guarantee that all hosts support the quiesce option as the data is not available. If a host does not support quiesce, the snapshot creation may fail for that host.": [
+        ""
       ],
       "Whether to include the Quiesce state in the snapshot": [
         "是否在快照中包含 Quiesce 状态"
@@ -190,6 +280,9 @@
       ],
       "host": [
         "主机"
+      ],
+      "snapshot.name is required": [
+        ""
       ]
     }
   }

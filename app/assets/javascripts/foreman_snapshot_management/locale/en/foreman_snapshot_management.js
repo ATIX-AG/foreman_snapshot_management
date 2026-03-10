@@ -3,9 +3,9 @@
   "locale_data": {
     "foreman_snapshot_management": {
       "": {
-        "Project-Id-Version": "foreman_snapshot_management 4.1.1",
+        "Project-Id-Version": "foreman_snapshot_management 1.0.0",
         "Report-Msgid-Bugs-To": "",
-        "PO-Revision-Date": "2026-02-11 19:31+0000",
+        "PO-Revision-Date": "2026-03-10 13:30+0100",
         "Last-Translator": "FULL NAME <EMAIL@ADDRESS>",
         "Language-Team": "LANGUAGE <LL@li.org>",
         "Language": "",
@@ -59,7 +59,7 @@
       "Delete": [
         ""
       ],
-      "Delete Snapshot \\\"%s\\\"?": [
+      "Delete Snapshot \\\\\\\"%s\\\\\\\"?": [
         ""
       ],
       "Delete a snapshot": [
@@ -98,7 +98,7 @@
       "Failed to update Snapshot: %s": [
         ""
       ],
-      "Foreman-plugin to manage snapshots in a virtual-hardware environments.": [
+      "Foreman plugin to manage snapshots of virtual machines.": [
         ""
       ],
       "Host has no UUID, cannot create snapshot.": [
@@ -167,7 +167,7 @@
       "Rollback": [
         ""
       ],
-      "Rollback to \\\"%s\\\"?": [
+      "Rollback to \\\\\\\"%s\\\\\\\"?": [
         ""
       ],
       "Search string for hosts to perform an action on": [
@@ -213,10 +213,10 @@
       "Something went wrong while selecting hosts - %s": [
         ""
       ],
-      "Successfully removed Snapshot \\\"%s\\\" from host %s": [
+      "Successfully removed Snapshot \\\\\\\"%s\\\\\\\" from host %s": [
         ""
       ],
-      "Successfully rolled back Snapshot \\\"%s\\\" on host %s": [
+      "Successfully rolled back Snapshot \\\\\\\"%s\\\\\\\" on host %s": [
         ""
       ],
       "Successfully triggered bulk snapshot creation": [
@@ -225,7 +225,7 @@
       "Successfully triggered snapshot creation": [
         ""
       ],
-      "Successfully updated Snapshot \\\"%s\\\"": [
+      "Successfully updated Snapshot \\\\\\\"%s\\\\\\\"": [
         ""
       ],
       "Unable to create Proxmox Snapshot": [
