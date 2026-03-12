@@ -3,7 +3,7 @@
   "locale_data": {
     "foreman_snapshot_management": {
       "": {
-        "Project-Id-Version": "foreman_snapshot_management 4.1.1",
+        "Project-Id-Version": "foreman_snapshot_management 4.2.1",
         "Report-Msgid-Bugs-To": "",
         "PO-Revision-Date": "2019-10-22 11:54+0000",
         "Last-Translator": "Temuri Doghonadze <temuri.doghonadze@gmail.com>, 2022",
@@ -17,32 +17,59 @@
         "domain": "foreman_snapshot_management",
         "plural_forms": "nplurals=2; plural=(n!=1);"
       },
+      "%d snapshot succeeded, %d failed.": [
+        ""
+      ],
+      "%d snapshots succeeded, %d failed.": [
+        ""
+      ],
+      "%s host is selected for snapshot creation": [
+        ""
+      ],
+      "%s hosts are selected for snapshot creation": [
+        ""
+      ],
       "Action": [
         "მოქმედება"
+      ],
+      "Cancel": [
+        ""
+      ],
+      "Create": [
+        ""
       ],
       "Create Snapshot": [
         "სწრაფი ასლის შექმნა"
       ],
-      "Create Snapshot for %s": [
-        "%s-ის სწრაფი ასლის შექმნა"
-      ],
       "Create a snapshot": [
         "სწრაფი ასლის შექმნა"
+      ],
+      "Create snapshot": [
+        ""
+      ],
+      "Create snapshots for multiple hosts": [
+        ""
       ],
       "Created %{snapshots} for %{num} %{hosts}": [
         "შექმნილია %{snapshots} %{num} %{hosts}-სთვის"
       ],
+      "Creating...": [
+        ""
+      ],
       "Delete": [
         "წაშლა"
       ],
-      "Delete Snapshot \\\"%s\\\"?": [
-        "წავშალო სწრაფი ასლი \\\"%s\\\"?"
+      "Delete Snapshot \\\\\\\"%s\\\\\\\"?": [
+        ""
       ],
       "Delete a snapshot": [
         "სწრაფი ასლის წაშლა"
       ],
       "Description": [
         "აღწერა"
+      ],
+      "Description of the snapshot": [
+        ""
       ],
       "Description of this snapshot": [
         "სწრაფი ასლის აღწერა"
@@ -62,23 +89,44 @@
       "Error occurred while updating Snapshot: %s": [
         "შეცდომა სწრაფი ასლის განახლებისას: %s"
       ],
+      "Failed hosts": [
+        ""
+      ],
       "Failed to load snapshot list": [
         "სწრაფი ასლების სიის ჩატვირთვის შეცდომა"
       ],
       "Failed to update Snapshot: %s": [
         "სწრაფი ასლის განახლების შეცდომა"
       ],
-      "Foreman-plugin to manage snapshots in a virtual-hardware environments.": [
-        "Foreman-ის დამატება ვირტუალურ გარემოში სწრაფი ასლების სამართავად."
+      "Foreman plugin to manage snapshots of virtual machines.": [
+        ""
+      ],
+      "Host has no UUID, cannot create snapshot.": [
+        ""
+      ],
+      "Host has no compute resource, cannot create snapshot.": [
+        ""
+      ],
+      "ID of the organization": [
+        ""
+      ],
+      "Include RAM": [
+        ""
+      ],
+      "Invalid mode": [
+        ""
       ],
       "List all snapshots": [
         "სწრაფი ასლების სია"
       ],
+      "List of host ids to exclude and not run an action on": [
+        ""
+      ],
+      "List of host ids to perform an action on": [
+        ""
+      ],
       "Loading Snapshots information ...": [
         "სწრაფი ასლების ინფორმაციის ჩატვირთვა ..."
-      ],
-      "Memory": [
-        "მეხსიერება"
       ],
       "N/A": [
         "არარსებული"
@@ -88,6 +136,9 @@
       ],
       "Name must contain at least 2 characters starting with alphabet. Valid characters are A-Z a-z 0-9 _": [
         "სახელი უნდა შეიცავდეს მინიმუმ 2 სიმბოლოს დაწყებული ასოებით. მისაღები სიმბოლოებია A-Z a-z 0-9 _"
+      ],
+      "Name of the snapshot": [
+        ""
       ],
       "Name of this snapshot": [
         "სწრაფი ასლის სახელი"
@@ -101,6 +152,12 @@
       "No hosts were found with that id, name or query filter": [
         "მითითებული ID-ით, სახელით ან საძებნი სტრიქონით ჰოსტები ნაპოვნი არაა"
       ],
+      "None": [
+        ""
+      ],
+      "Note: Not all selected hosts support quiesce. The quiesce option is disabled.": [
+        ""
+      ],
       "Quiesce": [
         "Quiesce"
       ],
@@ -110,11 +167,20 @@
       "Rollback": [
         "უკან დაბრუნება"
       ],
-      "Rollback to \\\"%s\\\"?": [
-        "დავაბრუნო \\\"%s\\\"-ზე?"
+      "Rollback to \\\\\\\"%s\\\\\\\"?": [
+        ""
+      ],
+      "Search string for hosts to perform an action on": [
+        ""
       ],
       "Select Snapshot Mode between mutually exclusive options, 'Memory' (includes RAM) and 'Quiesce'.": [
         "აირჩიეთ სწრაფი ასლის რეჟიმი ურთიერთგამომრიცხავი პარამეტრებიდან 'Memory' (მეხსიერების ჩათვლით) და 'Quiesce'."
+      ],
+      "Select Snapshot Mode between mutually exclusive options.": [
+        ""
+      ],
+      "Select snapshot mode": [
+        ""
       ],
       "Snapshot": [
         "სწრაფი ასლი",
@@ -123,11 +189,23 @@
       "Snapshot Mode": [
         "სწრაფი ასლის რეჟიმი"
       ],
+      "Snapshot creation failed.": [
+        ""
+      ],
+      "Snapshot creation failed: %s": [
+        ""
+      ],
+      "Snapshot mode": [
+        ""
+      ],
+      "Snapshot mode: full (default), include_ram, or quiesce": [
+        ""
+      ],
       "Snapshot name cannot be changed": [
         "სწრაფი ასლის სახელის შეცვლა შეუძლებელია"
       ],
-      "Snapshot successfully created!": [
-        "სწრაფი ასლი წარმატებით შეიქმნა!"
+      "Snapshot parameters": [
+        ""
       ],
       "Snapshots": [
         "სწრაფი ასლები"
@@ -135,14 +213,20 @@
       "Something went wrong while selecting hosts - %s": [
         "შეცდომა ჰოსტების მონიშვნისას - %s"
       ],
-      "Successfully removed Snapshot \\\"%s\\\" from host %s": [
-        "სწრაფი ასლის (%s) წაშლა ჰოსტიდან %s წარმატებით დასრულდა"
+      "Successfully removed Snapshot \\\\\\\"%s\\\\\\\" from host %s": [
+        ""
       ],
-      "Successfully rolled back Snapshot \\\"%s\\\" on host %s": [
-        "ჰოსტი %s წარმატებით დაბრუნდა სწრაფ ასლზე \\\"%s\\\""
+      "Successfully rolled back Snapshot \\\\\\\"%s\\\\\\\" on host %s": [
+        ""
       ],
-      "Successfully updated Snapshot \\\"%s\\\"": [
-        "სწრაფი ასლი (%s) წარმატებით განახლდა"
+      "Successfully triggered bulk snapshot creation": [
+        ""
+      ],
+      "Successfully triggered snapshot creation": [
+        ""
+      ],
+      "Successfully updated Snapshot \\\\\\\"%s\\\\\\\"": [
+        ""
       ],
       "Unable to create Proxmox Snapshot": [
         "Proxmox-ის სწრაფი ასლის შექმნა შეუძლებელია"
@@ -177,8 +261,14 @@
       "Update a snapshot": [
         "სწრაფი ასლის განახლება"
       ],
+      "VM details could not be retrieved from compute resource %s. The VM may be missing/deleted or inaccessible.": [
+        ""
+      ],
       "VM successfully rolled back.": [
         "ვმ-ი წარმატებით დაბრუნდა."
+      ],
+      "Warning: In Select All mode, we cannot guarantee that all hosts support the quiesce option as the data is not available. If a host does not support quiesce, the snapshot creation may fail for that host.": [
+        ""
       ],
       "Whether to include the Quiesce state in the snapshot": [
         "იქნება თუ არა ჩასმული სწრაფ ასლში Quiesce -ის მდგომარეობა"
@@ -192,6 +282,9 @@
       "host": [
         "ჰოსტი",
         "ჰოსტი"
+      ],
+      "snapshot.name is required": [
+        ""
       ]
     }
   }

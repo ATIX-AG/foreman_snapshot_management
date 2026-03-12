@@ -9,10 +9,9 @@
 # Claer <transiblu@claer.hammock.fr>, 2022
 # Amit Upadhye <aupadhye@redhat.com>, 2023
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_snapshot_management 4.1.1\n"
+"Project-Id-Version: foreman_snapshot_management 4.2.1\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2019-10-22 11:54+0000\n"
 "Last-Translator: Amit Upadhye <aupadhye@redhat.com>, 2023\n"
@@ -24,32 +23,59 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 100000"
 "0 == 0 ? 1 : 2;\n"
 
+msgid "%d snapshot succeeded, %d failed."
+msgstr ""
+
+msgid "%d snapshots succeeded, %d failed."
+msgstr ""
+
+msgid "%s host is selected for snapshot creation"
+msgstr ""
+
+msgid "%s hosts are selected for snapshot creation"
+msgstr ""
+
 msgid "Action"
 msgstr "Action"
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Create"
+msgstr ""
 
 msgid "Create Snapshot"
 msgstr "Créer un instantané"
 
-msgid "Create Snapshot for %s"
-msgstr "Créer un instantané pour %s"
-
 msgid "Create a snapshot"
 msgstr "Créer un instantané"
+
+msgid "Create snapshot"
+msgstr ""
+
+msgid "Create snapshots for multiple hosts"
+msgstr ""
 
 msgid "Created %{snapshots} for %{num} %{hosts}"
 msgstr "Créé %{snapshots} pour %{num} %{hosts}"
 
+msgid "Creating..."
+msgstr ""
+
 msgid "Delete"
 msgstr "Supprimer"
 
-msgid "Delete Snapshot \"%s\"?"
-msgstr "Supprimer l'instantané \"%s\" ?"
+msgid "Delete Snapshot \\\"%s\\\"?"
+msgstr ""
 
 msgid "Delete a snapshot"
 msgstr "Supprimer un instantané"
 
 msgid "Description"
 msgstr "Description"
+
+msgid "Description of the snapshot"
+msgstr ""
 
 msgid "Description of this snapshot"
 msgstr "Description de cet instantané"
@@ -69,23 +95,44 @@ msgstr "Une erreur s'est produite lors de la reprise de la VM : %s"
 msgid "Error occurred while updating Snapshot: %s"
 msgstr "Une erreur s'est produite lors de la mise à jour de l’instantané : %s"
 
+msgid "Failed hosts"
+msgstr ""
+
 msgid "Failed to load snapshot list"
 msgstr "Échec du chargement de la liste des instantanés"
 
 msgid "Failed to update Snapshot: %s"
 msgstr "Échec de la mise à jour de l’instantané : %s"
 
-msgid "Foreman-plugin to manage snapshots in a virtual-hardware environments."
-msgstr "Plugin Foreman pour gérer les instantanés dans un environnement de matériel virtuel."
+msgid "Foreman plugin to manage snapshots of virtual machines."
+msgstr ""
+
+msgid "Host has no UUID, cannot create snapshot."
+msgstr ""
+
+msgid "Host has no compute resource, cannot create snapshot."
+msgstr ""
+
+msgid "ID of the organization"
+msgstr ""
+
+msgid "Include RAM"
+msgstr ""
+
+msgid "Invalid mode"
+msgstr ""
 
 msgid "List all snapshots"
 msgstr "Liste de tous les instantanés"
 
+msgid "List of host ids to exclude and not run an action on"
+msgstr ""
+
+msgid "List of host ids to perform an action on"
+msgstr ""
+
 msgid "Loading Snapshots information ..."
 msgstr "Chargement des informations sur les instantanés ..."
-
-msgid "Memory"
-msgstr "Mémoire"
 
 msgid "N/A"
 msgstr "Sans objet"
@@ -95,6 +142,9 @@ msgstr "Nom"
 
 msgid "Name must contain at least 2 characters starting with alphabet. Valid characters are A-Z a-z 0-9 _"
 msgstr "Le nom doit contenir au moins 2 caractères commençant par l'alphabet. Les caractères valides sont A-Z a-z 0-9 _"
+
+msgid "Name of the snapshot"
+msgstr ""
 
 msgid "Name of this snapshot"
 msgstr "Nom de cet instantané"
@@ -108,6 +158,12 @@ msgstr "Aucun hôte capable sélectionné"
 msgid "No hosts were found with that id, name or query filter"
 msgstr "Aucun hôte trouvé avec cet ID, ce nom ou filtre de requête"
 
+msgid "None"
+msgstr ""
+
+msgid "Note: Not all selected hosts support quiesce. The quiesce option is disabled."
+msgstr ""
+
 msgid "Quiesce"
 msgstr ""
 
@@ -117,10 +173,19 @@ msgstr "Revenir à un instantané de l'hôte"
 msgid "Rollback"
 msgstr "Rollback"
 
-msgid "Rollback to \"%s\"?"
-msgstr "Retour à \"%s\" ?"
+msgid "Rollback to \\\"%s\\\"?"
+msgstr ""
+
+msgid "Search string for hosts to perform an action on"
+msgstr ""
 
 msgid "Select Snapshot Mode between mutually exclusive options, 'Memory' (includes RAM) and 'Quiesce'."
+msgstr ""
+
+msgid "Select Snapshot Mode between mutually exclusive options."
+msgstr ""
+
+msgid "Select snapshot mode"
 msgstr ""
 
 msgid "Snapshot"
@@ -132,11 +197,23 @@ msgstr[2] "Instantanés"
 msgid "Snapshot Mode"
 msgstr ""
 
+msgid "Snapshot creation failed."
+msgstr ""
+
+msgid "Snapshot creation failed: %s"
+msgstr ""
+
+msgid "Snapshot mode"
+msgstr ""
+
+msgid "Snapshot mode: full (default), include_ram, or quiesce"
+msgstr ""
+
 msgid "Snapshot name cannot be changed"
 msgstr "Le nom de l’instantané ne peut pas être modifié"
 
-msgid "Snapshot successfully created!"
-msgstr "L’instantané a été créé avec succès."
+msgid "Snapshot parameters"
+msgstr ""
 
 msgid "Snapshots"
 msgstr "Instantanés"
@@ -144,14 +221,20 @@ msgstr "Instantanés"
 msgid "Something went wrong while selecting hosts - %s"
 msgstr "Une erreur s'est produite lors de la sélection des hôtes - %s"
 
-msgid "Successfully removed Snapshot \"%s\" from host %s"
-msgstr "L’instantané \"%s\" a été supprimé de l'hôte %s"
+msgid "Successfully removed Snapshot \\\"%s\\\" from host %s"
+msgstr ""
 
-msgid "Successfully rolled back Snapshot \"%s\" on host %s"
-msgstr "L’instantané \"%s\" sur l'hôte %s a été retiré avec succès"
+msgid "Successfully rolled back Snapshot \\\"%s\\\" on host %s"
+msgstr ""
 
-msgid "Successfully updated Snapshot \"%s\""
-msgstr "La mise à jour de l’instantané \"%s\" a réussi"
+msgid "Successfully triggered bulk snapshot creation"
+msgstr ""
+
+msgid "Successfully triggered snapshot creation"
+msgstr ""
+
+msgid "Successfully updated Snapshot \\\"%s\\\""
+msgstr ""
 
 msgid "Unable to create Proxmox Snapshot"
 msgstr "Impossible de créer un instantané de Proxmox"
@@ -186,8 +269,14 @@ msgstr "Impossible de mettre à jour l’instantané VMWare"
 msgid "Update a snapshot"
 msgstr "Mise à jour d'un instantané"
 
+msgid "VM details could not be retrieved from compute resource %s. The VM may be missing/deleted or inaccessible."
+msgstr ""
+
 msgid "VM successfully rolled back."
 msgstr "La VM a été reprise avec succès."
+
+msgid "Warning: In Select All mode, we cannot guarantee that all hosts support the quiesce option as the data is not available. If a host does not support quiesce, the snapshot creation may fail for that host."
+msgstr ""
 
 msgid "Whether to include the Quiesce state in the snapshot"
 msgstr "Si l'état de repos doit être inclus dans l'instantané"
@@ -203,3 +292,6 @@ msgid_plural "hosts"
 msgstr[0] "hôte"
 msgstr[1] "hôtes"
 msgstr[2] "hôtes"
+
+msgid "snapshot.name is required"
+msgstr ""

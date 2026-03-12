@@ -3,11 +3,12 @@
 # This file is distributed under the same license as the foreman_snapshot_management package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_snapshot_management 4.1.1\n"
+"Project-Id-Version: foreman_snapshot_management 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-02-11 19:31+0000\n"
+"PO-Revision-Date: 2026-03-10 13:30+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -97,7 +98,7 @@ msgstr ""
 msgid "Failed to update Snapshot: %s"
 msgstr ""
 
-msgid "Foreman-plugin to manage snapshots in a virtual-hardware environments."
+msgid "Foreman plugin to manage snapshots of virtual machines."
 msgstr ""
 
 msgid "Host has no UUID, cannot create snapshot."

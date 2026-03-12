@@ -6,10 +6,9 @@
 # Translators:
 # Efstathios Iosifidis <eiosifidis@gmail.com>, 2022
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_snapshot_management 4.1.1\n"
+"Project-Id-Version: foreman_snapshot_management 4.2.1\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2019-10-22 11:54+0000\n"
 "Last-Translator: Efstathios Iosifidis <eiosifidis@gmail.com>, 2022\n"
@@ -20,25 +19,49 @@ msgstr ""
 "Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+msgid "%d snapshot succeeded, %d failed."
+msgstr ""
+
+msgid "%d snapshots succeeded, %d failed."
+msgstr ""
+
+msgid "%s host is selected for snapshot creation"
+msgstr ""
+
+msgid "%s hosts are selected for snapshot creation"
+msgstr ""
+
 msgid "Action"
 msgstr "Ενέργεια"
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Create"
+msgstr ""
 
 msgid "Create Snapshot"
 msgstr "Διμουργία στιγμιότυπου"
 
-msgid "Create Snapshot for %s"
-msgstr ""
-
 msgid "Create a snapshot"
 msgstr "Δημιουργία στιγμιότυπου"
+
+msgid "Create snapshot"
+msgstr ""
+
+msgid "Create snapshots for multiple hosts"
+msgstr ""
 
 msgid "Created %{snapshots} for %{num} %{hosts}"
 msgstr "Δημιουργήθηκαν %{snapshots} για %{num} %{hosts}"
 
+msgid "Creating..."
+msgstr ""
+
 msgid "Delete"
 msgstr "Διαγραφή"
 
-msgid "Delete Snapshot \"%s\"?"
+msgid "Delete Snapshot \\\"%s\\\"?"
 msgstr ""
 
 msgid "Delete a snapshot"
@@ -46,6 +69,9 @@ msgstr "Διαγραφή στιγμιότυπου"
 
 msgid "Description"
 msgstr "Περιγραφή"
+
+msgid "Description of the snapshot"
+msgstr ""
 
 msgid "Description of this snapshot"
 msgstr "Περιγραφή αυτού του στιγμιότυπου"
@@ -65,23 +91,44 @@ msgstr "Σφάλμα κατά την επαναφορά στιγμιότυπου
 msgid "Error occurred while updating Snapshot: %s"
 msgstr ""
 
+msgid "Failed hosts"
+msgstr ""
+
 msgid "Failed to load snapshot list"
 msgstr ""
 
 msgid "Failed to update Snapshot: %s"
 msgstr "Αποτυχημένη ενημέρωση στιγμιότυπου: %s"
 
-msgid "Foreman-plugin to manage snapshots in a virtual-hardware environments."
+msgid "Foreman plugin to manage snapshots of virtual machines."
+msgstr ""
+
+msgid "Host has no UUID, cannot create snapshot."
+msgstr ""
+
+msgid "Host has no compute resource, cannot create snapshot."
+msgstr ""
+
+msgid "ID of the organization"
+msgstr ""
+
+msgid "Include RAM"
+msgstr ""
+
+msgid "Invalid mode"
 msgstr ""
 
 msgid "List all snapshots"
 msgstr "Λίστα όλων των στιγμιοτύπων"
 
+msgid "List of host ids to exclude and not run an action on"
+msgstr ""
+
+msgid "List of host ids to perform an action on"
+msgstr ""
+
 msgid "Loading Snapshots information ..."
 msgstr "Γίνεται φόρτωση πληροφοριών στιγμιοτύπων ..."
-
-msgid "Memory"
-msgstr "Μνήμη"
 
 msgid "N/A"
 msgstr "Δ/Υ"
@@ -90,6 +137,9 @@ msgid "Name"
 msgstr "Όνομα"
 
 msgid "Name must contain at least 2 characters starting with alphabet. Valid characters are A-Z a-z 0-9 _"
+msgstr ""
+
+msgid "Name of the snapshot"
 msgstr ""
 
 msgid "Name of this snapshot"
@@ -104,6 +154,12 @@ msgstr ""
 msgid "No hosts were found with that id, name or query filter"
 msgstr ""
 
+msgid "None"
+msgstr ""
+
+msgid "Note: Not all selected hosts support quiesce. The quiesce option is disabled."
+msgstr ""
+
 msgid "Quiesce"
 msgstr ""
 
@@ -113,10 +169,19 @@ msgstr ""
 msgid "Rollback"
 msgstr "Επαναφορά"
 
-msgid "Rollback to \"%s\"?"
+msgid "Rollback to \\\"%s\\\"?"
+msgstr ""
+
+msgid "Search string for hosts to perform an action on"
 msgstr ""
 
 msgid "Select Snapshot Mode between mutually exclusive options, 'Memory' (includes RAM) and 'Quiesce'."
+msgstr ""
+
+msgid "Select Snapshot Mode between mutually exclusive options."
+msgstr ""
+
+msgid "Select snapshot mode"
 msgstr ""
 
 msgid "Snapshot"
@@ -127,10 +192,22 @@ msgstr[1] "Στιγμιότυπα"
 msgid "Snapshot Mode"
 msgstr ""
 
+msgid "Snapshot creation failed."
+msgstr ""
+
+msgid "Snapshot creation failed: %s"
+msgstr ""
+
+msgid "Snapshot mode"
+msgstr ""
+
+msgid "Snapshot mode: full (default), include_ram, or quiesce"
+msgstr ""
+
 msgid "Snapshot name cannot be changed"
 msgstr ""
 
-msgid "Snapshot successfully created!"
+msgid "Snapshot parameters"
 msgstr ""
 
 msgid "Snapshots"
@@ -139,13 +216,19 @@ msgstr "Στιγμιότυπα"
 msgid "Something went wrong while selecting hosts - %s"
 msgstr ""
 
-msgid "Successfully removed Snapshot \"%s\" from host %s"
+msgid "Successfully removed Snapshot \\\"%s\\\" from host %s"
 msgstr ""
 
-msgid "Successfully rolled back Snapshot \"%s\" on host %s"
+msgid "Successfully rolled back Snapshot \\\"%s\\\" on host %s"
 msgstr ""
 
-msgid "Successfully updated Snapshot \"%s\""
+msgid "Successfully triggered bulk snapshot creation"
+msgstr ""
+
+msgid "Successfully triggered snapshot creation"
+msgstr ""
+
+msgid "Successfully updated Snapshot \\\"%s\\\""
 msgstr ""
 
 msgid "Unable to create Proxmox Snapshot"
@@ -181,8 +264,14 @@ msgstr "Αδυναμία ενημέρωσης στιγμιότυπου VMWare"
 msgid "Update a snapshot"
 msgstr "Ενημέρωση στιγμιότυπου"
 
+msgid "VM details could not be retrieved from compute resource %s. The VM may be missing/deleted or inaccessible."
+msgstr ""
+
 msgid "VM successfully rolled back."
 msgstr "Επιτυχημένη επαναφορά VM."
+
+msgid "Warning: In Select All mode, we cannot guarantee that all hosts support the quiesce option as the data is not available. If a host does not support quiesce, the snapshot creation may fail for that host."
+msgstr ""
 
 msgid "Whether to include the Quiesce state in the snapshot"
 msgstr ""
@@ -197,3 +286,6 @@ msgid "host"
 msgid_plural "hosts"
 msgstr[0] ""
 msgstr[1] ""
+
+msgid "snapshot.name is required"
+msgstr ""

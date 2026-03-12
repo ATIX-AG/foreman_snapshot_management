@@ -3,7 +3,7 @@
   "locale_data": {
     "foreman_snapshot_management": {
       "": {
-        "Project-Id-Version": "foreman_snapshot_management 4.1.1",
+        "Project-Id-Version": "foreman_snapshot_management 4.2.1",
         "Report-Msgid-Bugs-To": "",
         "PO-Revision-Date": "2019-10-22 11:54+0000",
         "Last-Translator": "Efstathios Iosifidis <eiosifidis@gmail.com>, 2022",
@@ -17,25 +17,49 @@
         "domain": "foreman_snapshot_management",
         "plural_forms": "nplurals=2; plural=(n != 1);"
       },
+      "%d snapshot succeeded, %d failed.": [
+        ""
+      ],
+      "%d snapshots succeeded, %d failed.": [
+        ""
+      ],
+      "%s host is selected for snapshot creation": [
+        ""
+      ],
+      "%s hosts are selected for snapshot creation": [
+        ""
+      ],
       "Action": [
         "Ενέργεια"
+      ],
+      "Cancel": [
+        ""
+      ],
+      "Create": [
+        ""
       ],
       "Create Snapshot": [
         "Διμουργία στιγμιότυπου"
       ],
-      "Create Snapshot for %s": [
-        ""
-      ],
       "Create a snapshot": [
         "Δημιουργία στιγμιότυπου"
+      ],
+      "Create snapshot": [
+        ""
+      ],
+      "Create snapshots for multiple hosts": [
+        ""
       ],
       "Created %{snapshots} for %{num} %{hosts}": [
         "Δημιουργήθηκαν %{snapshots} για %{num} %{hosts}"
       ],
+      "Creating...": [
+        ""
+      ],
       "Delete": [
         "Διαγραφή"
       ],
-      "Delete Snapshot \\\"%s\\\"?": [
+      "Delete Snapshot \\\\\\\"%s\\\\\\\"?": [
         ""
       ],
       "Delete a snapshot": [
@@ -43,6 +67,9 @@
       ],
       "Description": [
         "Περιγραφή"
+      ],
+      "Description of the snapshot": [
+        ""
       ],
       "Description of this snapshot": [
         "Περιγραφή αυτού του στιγμιότυπου"
@@ -62,23 +89,44 @@
       "Error occurred while updating Snapshot: %s": [
         ""
       ],
+      "Failed hosts": [
+        ""
+      ],
       "Failed to load snapshot list": [
         ""
       ],
       "Failed to update Snapshot: %s": [
         "Αποτυχημένη ενημέρωση στιγμιότυπου: %s"
       ],
-      "Foreman-plugin to manage snapshots in a virtual-hardware environments.": [
+      "Foreman plugin to manage snapshots of virtual machines.": [
+        ""
+      ],
+      "Host has no UUID, cannot create snapshot.": [
+        ""
+      ],
+      "Host has no compute resource, cannot create snapshot.": [
+        ""
+      ],
+      "ID of the organization": [
+        ""
+      ],
+      "Include RAM": [
+        ""
+      ],
+      "Invalid mode": [
         ""
       ],
       "List all snapshots": [
         "Λίστα όλων των στιγμιοτύπων"
       ],
+      "List of host ids to exclude and not run an action on": [
+        ""
+      ],
+      "List of host ids to perform an action on": [
+        ""
+      ],
       "Loading Snapshots information ...": [
         "Γίνεται φόρτωση πληροφοριών στιγμιοτύπων ..."
-      ],
-      "Memory": [
-        "Μνήμη"
       ],
       "N/A": [
         "Δ/Υ"
@@ -87,6 +135,9 @@
         "Όνομα"
       ],
       "Name must contain at least 2 characters starting with alphabet. Valid characters are A-Z a-z 0-9 _": [
+        ""
+      ],
+      "Name of the snapshot": [
         ""
       ],
       "Name of this snapshot": [
@@ -101,6 +152,12 @@
       "No hosts were found with that id, name or query filter": [
         ""
       ],
+      "None": [
+        ""
+      ],
+      "Note: Not all selected hosts support quiesce. The quiesce option is disabled.": [
+        ""
+      ],
       "Quiesce": [
         ""
       ],
@@ -110,10 +167,19 @@
       "Rollback": [
         "Επαναφορά"
       ],
-      "Rollback to \\\"%s\\\"?": [
+      "Rollback to \\\\\\\"%s\\\\\\\"?": [
+        ""
+      ],
+      "Search string for hosts to perform an action on": [
         ""
       ],
       "Select Snapshot Mode between mutually exclusive options, 'Memory' (includes RAM) and 'Quiesce'.": [
+        ""
+      ],
+      "Select Snapshot Mode between mutually exclusive options.": [
+        ""
+      ],
+      "Select snapshot mode": [
         ""
       ],
       "Snapshot": [
@@ -123,10 +189,22 @@
       "Snapshot Mode": [
         ""
       ],
+      "Snapshot creation failed.": [
+        ""
+      ],
+      "Snapshot creation failed: %s": [
+        ""
+      ],
+      "Snapshot mode": [
+        ""
+      ],
+      "Snapshot mode: full (default), include_ram, or quiesce": [
+        ""
+      ],
       "Snapshot name cannot be changed": [
         ""
       ],
-      "Snapshot successfully created!": [
+      "Snapshot parameters": [
         ""
       ],
       "Snapshots": [
@@ -135,13 +213,19 @@
       "Something went wrong while selecting hosts - %s": [
         ""
       ],
-      "Successfully removed Snapshot \\\"%s\\\" from host %s": [
+      "Successfully removed Snapshot \\\\\\\"%s\\\\\\\" from host %s": [
         ""
       ],
-      "Successfully rolled back Snapshot \\\"%s\\\" on host %s": [
+      "Successfully rolled back Snapshot \\\\\\\"%s\\\\\\\" on host %s": [
         ""
       ],
-      "Successfully updated Snapshot \\\"%s\\\"": [
+      "Successfully triggered bulk snapshot creation": [
+        ""
+      ],
+      "Successfully triggered snapshot creation": [
+        ""
+      ],
+      "Successfully updated Snapshot \\\\\\\"%s\\\\\\\"": [
         ""
       ],
       "Unable to create Proxmox Snapshot": [
@@ -177,8 +261,14 @@
       "Update a snapshot": [
         "Ενημέρωση στιγμιότυπου"
       ],
+      "VM details could not be retrieved from compute resource %s. The VM may be missing/deleted or inaccessible.": [
+        ""
+      ],
       "VM successfully rolled back.": [
         "Επιτυχημένη επαναφορά VM."
+      ],
+      "Warning: In Select All mode, we cannot guarantee that all hosts support the quiesce option as the data is not available. If a host does not support quiesce, the snapshot creation may fail for that host.": [
+        ""
       ],
       "Whether to include the Quiesce state in the snapshot": [
         ""
@@ -191,6 +281,9 @@
       ],
       "host": [
         "",
+        ""
+      ],
+      "snapshot.name is required": [
         ""
       ]
     }
