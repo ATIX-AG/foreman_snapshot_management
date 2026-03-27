@@ -70,7 +70,7 @@ const SnapshotForm = ({
     selectAllMode || singleHostSupportsQuiesce || selectedHostsSupportsQuiesce;
 
   const options = [
-    { label: '', value: '' },
+    { label: __('Disk only'), value: 'disk_only' },
     { label: __('Include RAM'), value: 'include_ram' },
     ...(capabilities.quiesceOption
       ? [{ label: __('Quiesce'), value: 'quiesce' }]
@@ -167,7 +167,7 @@ const SnapshotForm = ({
                     buttonClass="field-help"
                     placement="top"
                     content={__(
-                      "Select Snapshot Mode between mutually exclusive options, 'Memory' (includes RAM) and 'Quiesce'."
+                      "Select Snapshot Mode between 'Disk only' (default) or mutually exclusive options, 'Memory' (includes RAM) and 'Quiesce'."
                     )}
                   />
                 </label>
@@ -205,7 +205,7 @@ const SnapshotForm = ({
                             !canSupportQuiesce && opt.value === 'quiesce'
                           }
                         >
-                          {opt.label || __('None')}
+                          {opt.label || __('Disk only')}
                         </SelectOption>
                       ))}
                     </SelectList>
