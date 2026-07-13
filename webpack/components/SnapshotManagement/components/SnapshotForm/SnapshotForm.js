@@ -24,6 +24,9 @@ import {
 
 import './snapshotForm.scss';
 
+const MAX_SNAPSHOT_NAME_LENGTH = 80;
+const LIMITED_MAX_SNAPSHOT_NAME_LENGTH = 40;
+
 const SnapshotForm = ({
   initialValues,
   capabilities,
@@ -34,7 +37,7 @@ const SnapshotForm = ({
   host,
   selectAllMode,
 }) => {
-  let nameValidation = Yup.string().max(80, 'Too Long!');
+  let nameValidation = Yup.string().max(MAX_SNAPSHOT_NAME_LENGTH, 'Too Long!');
   if (capabilities.limitSnapshotNameFormat)
     nameValidation = nameValidation
       .min(2, 'Too Short!')
@@ -44,7 +47,7 @@ const SnapshotForm = ({
           'Name must contain at least 2 characters starting with alphabet. Valid characters are A-Z a-z 0-9 _'
         )
       )
-      .max(40, 'Too Long!');
+      .max(LIMITED_MAX_SNAPSHOT_NAME_LENGTH, 'Too Long!');
 
   const validationSchema = Yup.object().shape({
     name: nameValidation.required('is required'),
