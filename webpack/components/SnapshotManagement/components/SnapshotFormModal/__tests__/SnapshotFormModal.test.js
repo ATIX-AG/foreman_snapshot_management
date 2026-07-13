@@ -12,6 +12,7 @@ const setModalClosed = () => null;
 const fetchBulkParams = () => null;
 const fixtures = {
   normal: {
+    isOpen: true,
     host: { id: 42, name: 'deep.thought' },
     setModalClosed,
     fetchBulkParams,
