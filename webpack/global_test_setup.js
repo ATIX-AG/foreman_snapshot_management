@@ -1,6 +1,8 @@
 // runs before each test to make sure console.error output will
 // fail a test (i.e. default PropType missing). Check the error
 // output and traceback for actual error.
+const JEST_TIMEOUT_MS = 10000;
+
 global.console.error = (error, stack) => {
   /* eslint-disable-next-line no-console */
   if (stack) console.log(stack); // Prints out original stack trace
@@ -8,4 +10,4 @@ global.console.error = (error, stack) => {
 };
 
 // Increase jest timeout as some tests using multiple http mocks can time out on CI systems.
-jest.setTimeout(10000);
+jest.setTimeout(JEST_TIMEOUT_MS);
