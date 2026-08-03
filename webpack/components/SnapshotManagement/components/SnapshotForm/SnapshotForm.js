@@ -5,7 +5,6 @@ import { Formik } from 'formik';
 
 import { translate as __ } from 'foremanReact/common/I18n';
 import TextField from 'foremanReact/components/common/forms/TextField';
-import { FieldLevelHelp } from 'patternfly-react';
 
 import {
   Form as PfForm,
@@ -13,6 +12,7 @@ import {
   Button,
   Card,
   CardBody,
+  FormGroup,
   Select,
   SelectList,
   SelectOption,
@@ -161,22 +161,19 @@ const SnapshotForm = ({
                 inputClassName="pf-v5-u-w-90"
               />
 
-              <div>
-                <label className="pf-v5-c-form__label">
-                  <span className="pf-v5-c-form__label-text">
-                    {__('Snapshot Mode')}
-                  </span>
-                  <FieldLevelHelp
-                    buttonClass="field-help"
-                    placement="top"
-                    content={__(
-                      "Select Snapshot Mode between 'Disk only' (default) or mutually exclusive options, 'Memory' (includes RAM) and 'Quiesce'."
-                    )}
-                  />
-                </label>
-
+              <FormGroup
+                label={__('Snapshot Mode')}
+                fieldId="snapshot-mode-select"
+                labelHelp={{
+                  content: __(
+                    "Select Snapshot Mode between 'Disk only' (default) or mutually exclusive options, 'Memory' (includes RAM) and 'Quiesce'."
+                  ),
+                  'aria-label': __('Snapshot mode help'),
+                }}
+              >
                 <div className="pf-v5-u-mt-sm">
                   <Select
+                    id="snapshot-mode-select"
                     isOpen={isSelectOpen}
                     selected={snapshotMode || undefined}
                     onOpenChange={setIsSelectOpen}
@@ -190,8 +187,7 @@ const SnapshotForm = ({
                         ref={toggleRef}
                         onClick={() => setIsSelectOpen(prev => !prev)}
                         isExpanded={isSelectOpen}
-                        isFullWidth
-                        className="pf-v5-c-form-control"
+                        style={{ width: '100%' }}
                         aria-label={__('Snapshot mode')}
                         ouiaId="snapshot-mode-toggle"
                       >
@@ -234,7 +230,7 @@ const SnapshotForm = ({
                     </HelperText>
                   )}
                 </div>
-              </div>
+              </FormGroup>
 
               {status && (
                 <HelperText isLiveRegion className="pf-v5-u-mt-sm">
