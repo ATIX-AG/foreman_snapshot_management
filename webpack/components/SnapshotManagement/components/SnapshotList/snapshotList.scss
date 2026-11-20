@@ -11,3 +11,9 @@
 .action-buttons {
   width: 20%;
 }
+
+.snapshot-action-buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}

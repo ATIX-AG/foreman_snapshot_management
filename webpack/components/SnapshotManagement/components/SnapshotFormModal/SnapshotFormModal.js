@@ -53,6 +53,7 @@ const SnapshotFormModal = ({
       onClose={setModalClosed}
       onEscapePress={setModalClosed}
       header={header}
+      aria-label={__('Create snapshot')}
       ouiaId="snapshot-form-modal"
     >
       {hasSelection && (

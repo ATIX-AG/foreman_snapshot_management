@@ -62,7 +62,6 @@ Object {
   "hasError": true,
   "isLoading": false,
   "isWorking": false,
-  "needsReload": false,
   "snapshots": Array [
     Object {
       "children_ids": null,
@@ -81,7 +80,6 @@ Object {
   "hasError": false,
   "isLoading": true,
   "isWorking": false,
-  "needsReload": false,
   "snapshots": Array [],
 }
 `;
@@ -91,7 +89,6 @@ Object {
   "hasError": false,
   "isLoading": false,
   "isWorking": false,
-  "needsReload": false,
   "snapshots": Array [],
 }
 `;

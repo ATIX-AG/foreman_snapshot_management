@@ -16,7 +16,6 @@ const mapStateToProps = state => ({
   isWorking: Selector.selectIsWorking(state),
   hasError: Selector.selectHasError(state),
   error: Selector.selectError(state),
-  needsReload: Selector.selectNeedsReload(state),
 });
 
 // dispatch actions from Component to Store
