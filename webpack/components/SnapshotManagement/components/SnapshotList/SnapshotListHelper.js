@@ -1,5 +1,12 @@
 import React from 'react';
-import { Button, Icon } from 'patternfly-react';
+import { Button } from '@patternfly/react-core';
+import {
+  PencilAltIcon,
+  HistoryIcon,
+  TrashIcon,
+  CheckIcon,
+  TimesIcon,
+} from '@patternfly/react-icons';
 
 import { sprintf, translate as __ } from 'foremanReact/common/I18n';
 
@@ -13,58 +20,82 @@ export const renderListEntryButtons = (
   snapshotRollbackAction,
   snapshotDeleteAction,
   inlineEditController
-) => disabled => (value, additionalData) => {
+) => (rowData, isEditingRow, disabled) => {
+  if (isEditingRow) {
+    return [
+      <Button
+        key="confirm-button"
+        variant="plain"
+        aria-label={__('Confirm')}
+        onClick={() => inlineEditController.onConfirm({ rowData })}
+        ouiaId="snapshot-confirm-button"
+      >
+        <CheckIcon />
+      </Button>,
+      <Button
+        key="cancel-button"
+        variant="plain"
+        aria-label={__('Cancel')}
+        onClick={() => inlineEditController.onCancel({ rowData })}
+        ouiaId="snapshot-cancel-edit-button"
+      >
+        <TimesIcon />
+      </Button>,
+    ];
+  }
+
   const buttons = [];
 
-  // Edit Button
   if (canUpdate) {
     buttons.push(
       <Button
         key="edit-button"
-        bsStyle="default"
-        disabled={disabled}
-        onClick={() => inlineEditController.onActivate(additionalData)}
+        variant="plain"
+        isDisabled={disabled}
+        aria-label={__('edit entry')}
+        onClick={() => inlineEditController.onActivate({ rowData })}
+        ouiaId="snapshot-edit-button"
       >
-        <Icon type="pf" name="edit" title={__('edit entry')} />
+        <PencilAltIcon />
       </Button>
     );
   }
 
-  // Rollback button
   if (canRevert) {
     buttons.push(
       <Button
         key="rollback-button"
-        bsStyle="default"
-        disabled={disabled}
+        variant="plain"
+        isDisabled={disabled}
+        aria-label={__('Rollback')}
         onClick={() =>
-          window.confirm(
-            sprintf(__('Rollback to "%s"?'), additionalData.rowData.name)
-          ) && snapshotRollbackAction(host, additionalData.rowData)
+          window.confirm(sprintf(__('Rollback to "%s"?'), rowData.name)) &&
+          snapshotRollbackAction(host, rowData)
         }
+        ouiaId="snapshot-rollback-button"
       >
-        <Icon type="pf" name="history" title={__('Rollback')} />
+        <HistoryIcon />
       </Button>
     );
   }
 
-  // Delete Button
   if (canDelete) {
     buttons.push(
       <Button
         key="delete-button"
-        bsStyle="default"
-        disabled={disabled}
+        variant="plain"
+        isDisabled={disabled}
+        aria-label={__('Delete')}
         onClick={() =>
-          window.confirm(
-            sprintf(__('Delete Snapshot "%s"?'), additionalData.rowData.name)
-          ) && snapshotDeleteAction(host, additionalData.rowData)
+          window.confirm(sprintf(__('Delete Snapshot "%s"?'), rowData.name)) &&
+          snapshotDeleteAction(host, rowData)
         }
+        ouiaId="snapshot-delete-button"
       >
-        <Icon type="pf" name="delete" title={__('Delete')} />
+        <TrashIcon />
       </Button>
     );
   }
 
-  return <td className="action-buttons">{buttons}</td>;
+  return buttons;
 };
