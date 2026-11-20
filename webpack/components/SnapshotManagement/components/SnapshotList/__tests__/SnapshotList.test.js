@@ -1,12 +1,7 @@
-import {
-  testComponentSnapshotsWithFixtures,
-  // shallowRenderComponentWithFixtures,
-} from 'react-redux-test-utils';
-// import configureStore from 'redux-mock-store';
+import React from 'react';
+import { render, screen } from '@testing-library/react';
 
 import SnapshotList from '../SnapshotList';
-
-// const mockStore = configureStore([]);
 
 const funcDummies = {
   loadSnapshots: hostId => null,
@@ -32,57 +27,62 @@ const testSnapshots = [
     created_at: '2021-04-28 10:22:06 UTC',
   },
 ];
-const fixtures = {
-  'without optional Props': { host, ...funcDummies },
-  loading: { host, isLoading: true, ...funcDummies },
-  working: { host, isWorking: true, ...funcDummies },
-  error: {
-    host,
-    hasError: true,
-    error: { message: 'TEST' },
-    ...funcDummies,
-  },
-  'snapshot list': { host, snapshots: testSnapshots, ...funcDummies },
-  'without any permissions': {
-    host,
-    snapshots: testSnapshots,
-    canUpdate: false,
-    canRevert: false,
-    canDelete: false,
-    ...funcDummies,
-  },
-  'without delete permission': {
-    host,
-    snapshots: testSnapshots,
-    canUpdate: true,
-    canRevert: true,
-    canDelete: false,
-    ...funcDummies,
-  },
-  'without editableSnapshotName capability': {
-    host,
-    snapshots: testSnapshots,
-    capabilities: { editableSnapshotName: false },
-    ...funcDummies,
-  },
-};
+const permissions = { canUpdate: true, canRevert: true, canDelete: true };
+const renderList = props =>
+  render(
+    <SnapshotList host={host} isLoading={false} {...funcDummies} {...props} />
+  );
 
 describe('SnapshotList', () => {
-  /*
-  let store;
-  let component;
-
-  beforeEach(() => {
-    store = mockStore({
-      myState: 'sample text',
-    });
-    component = renderer.create(
-      <Provider store={store}>
-        <SnapshotList />
-      </Provider>
-    );
+  it('renders without optional props', () => {
+    renderList();
+    expect(screen.queryByText('test')).not.toBeInTheDocument();
   });
-  */
-  describe('renders', () =>
-    testComponentSnapshotsWithFixtures(SnapshotList, fixtures));
+
+  it('renders loading state', () => {
+    renderList({ isLoading: true });
+    expect(screen.getByRole('progressbar')).toBeInTheDocument();
+  });
+
+  it('renders working state', () => {
+    renderList({ isWorking: true, snapshots: testSnapshots });
+    expect(screen.getByRole('progressbar')).toBeInTheDocument();
+  });
+
+  it('renders error', () => {
+    renderList({ hasError: true, error: { message: 'TEST' } });
+    expect(screen.getByText(/TEST/)).toBeInTheDocument();
+  });
+
+  it('renders the snapshot list', () => {
+    renderList({ snapshots: testSnapshots, ...permissions });
+    expect(screen.getByText('test')).toBeInTheDocument();
+    expect(screen.getByText('Hello')).toBeInTheDocument();
+    expect(screen.getByText('123 testSnapshot')).toBeInTheDocument();
+  });
+
+  it('renders without any permissions', () => {
+    renderList({
+      snapshots: testSnapshots,
+      canUpdate: false,
+      canRevert: false,
+      canDelete: false,
+    });
+    expect(screen.getByText('test')).toBeInTheDocument();
+    expect(screen.queryByText('Delete')).not.toBeInTheDocument();
+  });
+
+  it('renders without delete permission', () => {
+    renderList({ snapshots: testSnapshots, ...permissions, canDelete: false });
+    expect(screen.queryByText('Delete')).not.toBeInTheDocument();
+  });
+
+  it('renders without editableSnapshotName capability', () => {
+    renderList({
+      snapshots: testSnapshots,
+      ...permissions,
+      capabilities: { editableSnapshotName: false },
+    });
+    expect(screen.getByText('test')).toBeInTheDocument();
+  });
 });

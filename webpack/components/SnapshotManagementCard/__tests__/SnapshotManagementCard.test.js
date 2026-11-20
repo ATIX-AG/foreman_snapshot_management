@@ -1,6 +1,11 @@
-import { testComponentSnapshotsWithFixtures } from 'react-redux-test-utils';
+import React from 'react';
+import { render } from '@testing-library/react';
 
 import SnapshotManagementCard from '../SnapshotManagementCard';
+
+jest.mock('../../SnapshotManagement', () => () => (
+  <div data-testid="snapshot-management" />
+));
 
 jest.mock(
   '../../SnapshotManagement/components/hooks/useSnapshotSubmit',
@@ -52,21 +57,27 @@ const hostDetailsNotSupported = {
   capabilities: ['build', 'new_volume', 'new_interface', 'image'],
 };
 
-const fixtures = {
-  'without optional Props': {},
-  'with Props': { hostDetails },
-  'with VMWare capabilities': {
-    hostDetails: hostDetailsVmware,
-  },
-  'with Proxmox capabilities': {
-    hostDetails: hostDetailsProxmox,
-  },
-  'with NotSupported CR capabilities': {
-    hostDetails: hostDetailsNotSupported,
-  },
-};
-
 describe('SnapshotManagementCard', () => {
-  describe('renders', () =>
-    testComponentSnapshotsWithFixtures(SnapshotManagementCard, fixtures));
+  it('renders nothing without optional props', () => {
+    const { container } = render(<SnapshotManagementCard />);
+    expect(container).toBeEmptyDOMElement();
+  });
+
+  it('renders nothing with NotSupported CR capabilities', () => {
+    const { container } = render(
+      <SnapshotManagementCard hostDetails={hostDetailsNotSupported} />
+    );
+    expect(container).toBeEmptyDOMElement();
+  });
+
+  it.each([
+    ['basic props', hostDetails],
+    ['VMWare capabilities', hostDetailsVmware],
+    ['Proxmox capabilities', hostDetailsProxmox],
+  ])('renders the card with %s', (_name, details) => {
+    const { getByTestId } = render(
+      <SnapshotManagementCard hostDetails={details} />
+    );
+    expect(getByTestId('snapshot-management')).toBeInTheDocument();
+  });
 });
