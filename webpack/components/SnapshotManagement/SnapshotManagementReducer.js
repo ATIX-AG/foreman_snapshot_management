@@ -30,29 +30,22 @@ export default (state = initialState, action) => {
   const rollbackTypes = actionTypeGenerator(SNAPSHOT_ROLLBACK);
 
   switch (action.type) {
-    case 'SNAPSHOT_FORM_SUBMITTED':
-      return state.merge({
-        needsReload: true,
-      });
     case listTypes.REQUEST:
       return state.merge({
         snapshots: [],
         isLoading: true,
         hasError: false,
-        needsReload: false,
       });
     case listTypes.SUCCESS:
       return state.merge({
         snapshots: response.results,
         isLoading: false,
-        needsReload: false,
       });
     case listTypes.FAILURE:
       return state.merge({
         error: response,
         hasError: true,
         isLoading: false,
-        needsReload: false,
       });
     case deleteTypes.REQUEST:
       return state.merge({

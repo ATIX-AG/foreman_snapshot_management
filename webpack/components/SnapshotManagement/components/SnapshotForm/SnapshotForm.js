@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import * as Yup from 'yup';
 import { Formik } from 'formik';
 
 import { translate as __ } from 'foremanReact/common/I18n';
-import TextField from 'foremanReact/components/common/forms/TextField';
 
 import {
   Form as PfForm,
@@ -13,6 +11,7 @@ import {
   Card,
   CardBody,
   FormGroup,
+  Popover,
   Select,
   SelectList,
   SelectOption,
@@ -22,10 +21,14 @@ import {
   Spinner,
 } from '@patternfly/react-core';
 
-import './snapshotForm.scss';
+import { HelpIcon } from '@patternfly/react-icons';
 
-const MAX_SNAPSHOT_NAME_LENGTH = 80;
-const LIMITED_MAX_SNAPSHOT_NAME_LENGTH = 40;
+import SnapshotFormField from './SnapshotFormField';
+import {
+  buildValidationSchema,
+  buildSnapshotPayload,
+} from './SnapshotFormHelper';
+import './snapshotForm.scss';
 
 const SnapshotForm = ({
   initialValues,
@@ -37,25 +40,7 @@ const SnapshotForm = ({
   host,
   selectAllMode,
 }) => {
-  let nameValidation = Yup.string().max(MAX_SNAPSHOT_NAME_LENGTH, 'Too Long!');
-  if (capabilities.limitSnapshotNameFormat)
-    nameValidation = nameValidation
-      .min(2, 'Too Short!')
-      .matches(
-        /^[A-z]\w+$/,
-        __(
-          'Name must contain at least 2 characters starting with alphabet. Valid characters are A-Z a-z 0-9 _'
-        )
-      )
-      .max(LIMITED_MAX_SNAPSHOT_NAME_LENGTH, 'Too Long!');
-
-  const validationSchema = Yup.object().shape({
-    name: nameValidation.required('is required'),
-    description: Yup.string(),
-    includeRam: Yup.bool(),
-    useQuiesce: Yup.bool(),
-    snapshotMode: Yup.string(),
-  });
+  const validationSchema = buildValidationSchema(capabilities);
 
   const [snapshotMode, setSnapshotMode] = useState('');
   const [isSelectOpen, setIsSelectOpen] = useState(false);
@@ -84,38 +69,12 @@ const SnapshotForm = ({
     actions.setSubmitting(true);
 
     try {
-      if (snapshotMode === 'quiesce') {
-        values.useQuiesce = true;
-        values.includeRam = false;
-      } else if (snapshotMode === 'include_ram') {
-        values.includeRam = true;
-        values.useQuiesce = false;
-      }
-
-      let mode = 'full';
-      if (values.includeRam) {
-        mode = 'include_ram';
-      } else if (values.useQuiesce) {
-        mode = 'quiesce';
-      }
-
-      const submitValues = {
-        mode,
-        snapshot: {
-          name: values.name,
-          description: values.description || '',
-        },
-      };
-
-      const singleHostId = host?.id;
-
-      const payload = {
-        included: {
-          search: host ? `id = ${singleHostId}` : fetchBulkParams(),
-        },
-        ...(singleHostId && { hostId: singleHostId }),
-        ...submitValues,
-      };
+      const payload = buildSnapshotPayload(
+        values,
+        snapshotMode,
+        host,
+        fetchBulkParams
+      );
       await onSubmit(payload, actions);
     } catch (error) {
       if (actions.setStatus) {
@@ -143,33 +102,40 @@ const SnapshotForm = ({
           ouiaId="snapshot-form-card"
         >
           <CardBody>
-            <PfForm onSubmit={formikSubmit} ouiaId="snapshot-form">
-              <TextField
+            <PfForm onSubmit={formikSubmit}>
+              <SnapshotFormField
                 name="name"
                 type="text"
                 required
                 label={__('Name')}
                 ouiaId="snapshot-name-field"
-                inputClassName="pf-v5-u-w-90"
               />
 
-              <TextField
+              <SnapshotFormField
                 name="description"
                 type="textarea"
                 label={__('Description')}
                 ouiaId="snapshot-description-field"
-                inputClassName="pf-v5-u-w-90"
               />
 
               <FormGroup
                 label={__('Snapshot Mode')}
                 fieldId="snapshot-mode-select"
-                labelHelp={{
-                  content: __(
-                    "Select Snapshot Mode between 'Disk only' (default) or mutually exclusive options, 'Memory' (includes RAM) and 'Quiesce'."
-                  ),
-                  'aria-label': __('Snapshot mode help'),
-                }}
+                labelIcon={
+                  <Popover
+                    bodyContent={__(
+                      "Select Snapshot Mode between 'Disk only' (default) or mutually exclusive options, 'Memory' (includes RAM) and 'Quiesce'."
+                    )}
+                  >
+                    <Button
+                      variant="plain"
+                      aria-label={__('Snapshot mode help')}
+                      ouiaId="snapshot-mode-help-button"
+                    >
+                      <HelpIcon />
+                    </Button>
+                  </Popover>
+                }
               >
                 <div className="pf-v5-u-mt-sm">
                   <Select

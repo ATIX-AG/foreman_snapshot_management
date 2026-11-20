@@ -1,267 +1,223 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
   Alert,
-  // Button,
-  Table as PfTable,
-  FormControl,
-  inlineEditFormatterFactory,
-} from 'patternfly-react';
+  EmptyState,
+  EmptyStateBody,
+  TextArea,
+  TextInput,
+} from '@patternfly/react-core';
+import { Table, Thead, Tbody, Tr, Th, Td } from '@patternfly/react-table';
 import { cloneDeep, findIndex } from 'lodash';
 
 import { translate as __ } from 'foremanReact/common/I18n';
-import {
-  Table,
-  TableBody,
-  column,
-  headerFormatterWithProps,
-  cellFormatterWithProps,
-} from 'foremanReact/components/common/table';
 import ShortDateTime from 'foremanReact/components/common/dates/ShortDateTime';
-import AlertBody from 'foremanReact/components/common/Alert/AlertBody';
 import Loading from 'foremanReact/components/Loading/Loading';
 import 'foremanReact/redux/API';
 
 import { renderListEntryButtons } from './SnapshotListHelper';
 import './snapshotList.scss';
 
-class SnapshotList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      columns: this.defineColumns(),
-      editMode: false,
-      rows: cloneDeep(props.snapshots),
-    };
-  }
+const SnapshotList = ({
+  host,
+  loadSnapshots,
+  deleteAction,
+  updateAction,
+  rollbackAction,
+  isLoading,
+  isWorking,
+  hasError,
+  error,
+  snapshots,
+  canDelete,
+  canRevert,
+  canUpdate,
+  capabilities,
+}) => {
+  const [editMode, setEditMode] = useState(false);
+  const [rows, setRows] = useState(() => cloneDeep(snapshots));
 
-  defineColumns() {
-    const {
-      canDelete,
-      canRevert,
-      canUpdate,
-      host,
-      deleteAction,
-      updateAction,
-      rollbackAction,
-    } = this.props;
+  useEffect(() => {
+    loadSnapshots(host.id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-    const inlineEditController = {
-      isEditing: ({ rowData }) => rowData.backup !== undefined,
-      onActivate: ({ rowData }) => {
-        const rows = cloneDeep(this.state.rows);
-        const index = findIndex(rows, { id: rowData.id });
+  useEffect(() => {
+    setRows(cloneDeep(snapshots));
+  }, [snapshots]);
 
-        rows[index].backup = cloneDeep(rows[index]);
-
-        this.setState({ rows, editMode: true });
-      },
-      onConfirm: ({ rowData }) => {
-        const rows = cloneDeep(this.state.rows);
-        const index = findIndex(rows, { id: rowData.id });
-
-        delete rows[index].backup;
-
-        this.setState({ rows, editMode: false });
-        updateAction(host, rowData);
-      },
-      onCancel: ({ rowData }) => {
-        const rows = cloneDeep(this.state.rows);
-        const index = findIndex(rows, { id: rowData.id });
-
-        rows[index] = cloneDeep(rows[index].backup);
-        delete rows[index].backup;
-
-        this.setState({ rows, editMode: false });
-      },
-      onChange: (value, { rowData, property }) => {
-        const rows = cloneDeep(this.state.rows);
-        const index = findIndex(rows, { id: rowData.id });
-
-        rows[index][property] = value;
-
-        this.setState({ rows });
-      },
-    };
-    this.inlineEditController = inlineEditController;
-
-    const renderButtons = renderListEntryButtons(
-      canDelete,
-      canRevert,
-      canUpdate,
-      host,
-      rollbackAction,
-      deleteAction,
-      inlineEditController
-    );
-    const inlineEditButtonCellFormatter = inlineEditFormatterFactory({
-      isEditing: additionalData => this.state.editMode,
-      renderValue: renderButtons(false),
-      renderEdit: renderButtons(true),
+  const updateRow = (rowData, change) =>
+    setRows(currentRows => {
+      const newRows = cloneDeep(currentRows);
+      const index = findIndex(newRows, { id: rowData.id });
+      return change(newRows, index);
     });
 
-    const inlineEditFormatter = inlineEditFormatterFactory({
-      isEditing: additionalData => {
-        if (
-          additionalData.property === 'name' &&
-          !this.props.capabilities.editableSnapshotName
-        )
-          return false;
-        return inlineEditController.isEditing(additionalData);
-      },
-      renderValue: (value, additionalData) => {
-        let date = '';
-        if (
-          additionalData.property === 'name' &&
-          additionalData.rowData.formatted_created_at
-        )
-          date = (
-            <span className="snapshot-date">
-              <ShortDateTime
-                date={new Date(additionalData.rowData.formatted_created_at)}
-                defaultValue={__('N/A')}
-                showRelativeTimeTooltip
-              />
-            </span>
-          );
-        return (
-          <span className="static description">
-            {value}
-            <br />
-            {date}
-          </span>
-        );
-      },
-      renderEdit: (value, additionalData) => {
-        let type = 'input';
-        if (additionalData.property === 'description') type = 'textarea';
-        return (
-          <FormControl
-            type="text"
-            defaultValue={value}
-            onBlur={e =>
-              inlineEditController.onChange(e.target.value, additionalData)
-            }
-            componentClass={type}
-          />
-        );
-      },
-    });
-    const editCellFormatters = [cellFormatterWithProps];
-    if (canUpdate) editCellFormatters.unshift(inlineEditFormatter);
+  const inlineEditController = {
+    isEditing: ({ rowData }) => rowData.backup !== undefined,
+    onActivate: ({ rowData }) => {
+      updateRow(rowData, (newRows, index) => {
+        newRows[index].backup = cloneDeep(newRows[index]);
+        return newRows;
+      });
+      setEditMode(true);
+    },
+    onConfirm: ({ rowData }) => {
+      const index = findIndex(rows, { id: rowData.id });
+      const updated = cloneDeep(rows[index]);
+      delete updated.backup;
 
-    const columns = [
-      column(
-        'name',
-        __('Snapshot'),
-        [headerFormatterWithProps],
-        editCellFormatters
-      ),
-      column(
-        'description',
-        __('Description'),
-        [headerFormatterWithProps],
-        editCellFormatters
-      ),
-    ];
-    if (canDelete || canUpdate || canRevert)
-      columns.push(
-        column(
-          '',
-          __('Action'),
-          [headerFormatterWithProps],
-          [inlineEditButtonCellFormatter],
-          { className: 'action-buttons' }
-        )
-      );
-    return columns;
-  }
+      updateRow(rowData, (newRows, i) => {
+        delete newRows[i].backup;
+        return newRows;
+      });
+      setEditMode(false);
+      updateAction(host, updated);
+    },
+    onCancel: ({ rowData }) => {
+      updateRow(rowData, (newRows, index) => {
+        newRows[index] = cloneDeep(newRows[index].backup);
+        delete newRows[index].backup;
+        return newRows;
+      });
+      setEditMode(false);
+    },
+    onChange: (value, { rowData, property }) => {
+      updateRow(rowData, (newRows, index) => {
+        newRows[index][property] = value;
+        return newRows;
+      });
+    },
+  };
 
-  componentDidMount() {
-    this.props.loadSnapshots(this.props.host.id);
-  }
+  const getBodyMessage = () => {
+    if (isLoading || isWorking) return <Loading textSize="sm" />;
 
-  // FIXME: Remove soon, as this is deprecated!
-  componentWillReceiveProps(newProps) {
-    if (newProps.snapshots !== this.props.snapshots) {
-      this.setState({ rows: newProps.snapshots });
-    }
-    if (newProps.needsReload) {
-      newProps.loadSnapshots(newProps.host.id);
-    }
-  }
-
-  getBodyMessage() {
-    if (this.props.isLoading || this.props.isWorking)
-      return <Loading textSize="sm" />;
-
-    if (this.props.hasError)
+    if (hasError)
       return (
         <Alert
           variant="danger"
           isInline
           title={__('Failed to load snapshot list')}
+          ouiaId="snapshot-list-error"
         >
-          <AlertBody title={__('Failed to load snapshot list')}>
-            {/* IMHO the line-break should be done by AlertBody :-( */}
-            <br />
-            {this.props.error.message}
-          </AlertBody>
+          {error?.message}
         </Alert>
       );
 
     return undefined;
-  }
+  };
 
-  render() {
-    const { columns } = this.state;
-    const bodyMessage = this.getBodyMessage();
+  const renderCell = (rowData, property, isEditingRow) => {
+    const value = rowData[property];
+    const editable = property !== 'name' || capabilities.editableSnapshotName;
+
+    if (isEditingRow && editable) {
+      const Input = property === 'description' ? TextArea : TextInput;
+      return (
+        <Input
+          aria-label={property}
+          value={value || ''}
+          onChange={(_event, newValue) =>
+            inlineEditController.onChange(newValue, {
+              rowData,
+              property,
+            })
+          }
+          {...(property === 'description'
+            ? {}
+            : { ouiaId: `snapshot-${property}-input` })}
+        />
+      );
+    }
 
     return (
-      <div>
-        {/*
-        <Button
-          disabled={this.props.isLoading}
-          onClick={() => this.props.loadSnapshots(this.props.host.id)}
-        >
-          ReloadData
-        </Button>
-        */}
-        <Table
-          caption="Snapshot List"
-          columns={columns}
-          rows={this.state.rows}
-          bodyMessage={bodyMessage}
-          inlineEdit
-          components={{
-            body: {
-              row: PfTable.InlineEditRow,
-              cell: cellProps => cellProps.children,
-            },
-          }}
-        >
-          <PfTable.Header key="header" />
-          <TableBody
-            key="body"
-            columns={columns}
-            rows={this.state.rows}
-            message={bodyMessage}
-            rowKey="id"
-            onRow={(rowData, { rowIndex }) => ({
-              role: 'row',
-              isEditing: () => this.inlineEditController.isEditing({ rowData }),
-              onCancel: () =>
-                this.inlineEditController.onCancel({ rowData, rowIndex }),
-              onConfirm: () =>
-                this.inlineEditController.onConfirm({ rowData, rowIndex }),
-              last: rowIndex === this.state.rows.length - 1,
-            })}
-          />
-        </Table>
-      </div>
+      <span className="static description">
+        {value}
+        <br />
+        {property === 'name' && rowData.formatted_created_at && (
+          <span className="snapshot-date">
+            <ShortDateTime
+              date={new Date(rowData.formatted_created_at)}
+              defaultValue={__('N/A')}
+              showRelativeTimeTooltip
+            />
+          </span>
+        )}
+      </span>
     );
-  }
-}
+  };
+
+  const bodyMessage = getBodyMessage();
+  const hasActions = canDelete || canUpdate || canRevert;
+  const renderButtons = renderListEntryButtons(
+    canDelete,
+    canRevert,
+    canUpdate,
+    host,
+    rollbackAction,
+    deleteAction,
+    inlineEditController
+  );
+  const columnCount = hasActions ? 3 : 2;
+
+  return (
+    <div>
+      <Table
+        aria-label={__('Snapshot List')}
+        variant="compact"
+        ouiaId="snapshot-list-table"
+      >
+        <Thead>
+          <Tr ouiaId="snapshot-list-row-head">
+            <Th>{__('Snapshot')}</Th>
+            <Th>{__('Description')}</Th>
+            {hasActions && <Th>{__('Action')}</Th>}
+          </Tr>
+        </Thead>
+        <Tbody>
+          {bodyMessage && (
+            <Tr ouiaId="snapshot-list-rows">
+              <Td colSpan={columnCount}>{bodyMessage}</Td>
+            </Tr>
+          )}
+          {!bodyMessage && rows.length === 0 && (
+            <Tr ouiaId="snapshot-list-row-empty">
+              <Td colSpan={columnCount}>
+                <EmptyState>
+                  <EmptyStateBody>{__('No snapshots found')}</EmptyStateBody>
+                </EmptyState>
+              </Td>
+            </Tr>
+          )}
+          {!bodyMessage &&
+            rows.map(rowData => {
+              const isEditingRow = inlineEditController.isEditing({ rowData });
+              return (
+                <Tr key={rowData.id} ouiaId={`snapshot-row-${rowData.id}`}>
+                  <Td dataLabel={__('Snapshot')}>
+                    {renderCell(rowData, 'name', isEditingRow)}
+                  </Td>
+                  <Td dataLabel={__('Description')}>
+                    {renderCell(rowData, 'description', isEditingRow)}
+                  </Td>
+                  {hasActions && (
+                    <Td
+                      dataLabel={__('Action')}
+                      className="action-buttons"
+                      isActionCell
+                    >
+                      {renderButtons(rowData, isEditingRow, editMode)}
+                    </Td>
+                  )}
+                </Tr>
+              );
+            })}
+        </Tbody>
+      </Table>
+    </div>
+  );
+};
 
 SnapshotList.propTypes = {
   /*
