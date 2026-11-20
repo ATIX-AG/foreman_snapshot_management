@@ -13,7 +13,7 @@ concurrency:
 
 jobs:
   rubocop:
-    uses: theforeman/actions/.github/workflows/rubocop.yml@v0
+    uses: theforeman/actions/.github/workflows/rubocop.yml@v1
     with:
       command: bundle exec rubocop --parallel --format github
 
@@ -22,6 +22,6 @@ jobs:
     strategy:
       fail-fast: false
     needs: rubocop
-    uses: theforeman/actions/.github/workflows/foreman_plugin.yml@v0
+    uses: theforeman/actions/.github/workflows/foreman_plugin.yml@v1
     with:
       plugin: foreman_snapshot_management
